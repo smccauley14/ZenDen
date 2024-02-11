@@ -6,11 +6,16 @@ using TMPro;
 using System;
 using UnityEngine.InputSystem;
 
+//attach script to player object
+
 public class DirectionButtons : MonoBehaviour
 {
+
+    //variables
     private float movementSpeed = 5f;
-    private float rotationSpeed = 60f;
+    private float rotationSpeed = 80f;
     public Button forwardButton;
+    public Button backButton;
 
 
     // Start is called before the first frame update
@@ -23,14 +28,32 @@ public class DirectionButtons : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //calling controller methods
+        JoystickControls();
+        DpadControls();
 
+    }
+
+
+    private void DpadControls()
+    {
         //FORWARD BUTTON
         if (Gamepad.all[0].dpad.up.isPressed)
         {
             transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed);
         }
 
+        //BACKWARD BUTTON
+        if (Gamepad.all[0].dpad.down.isPressed)
+        {
+            transform.Translate(Vector3.back * Time.deltaTime * movementSpeed);
+        }
 
+        //add right and left if this is something we want to implement
+    }
+
+    private void JoystickControls()
+    {
         //LEFT STICK CONTROLLER:
 
         //left movement
@@ -65,13 +88,6 @@ public class DirectionButtons : MonoBehaviour
         {
             transform.Rotate(Vector3.down, Time.deltaTime * rotationSpeed);
         }
-
-    }
-
-
-    private void forwardMovement()
-    {
-        transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed);
     }
     
 }
