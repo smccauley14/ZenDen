@@ -14,8 +14,8 @@ public class DirectionButtons : MonoBehaviour
     //variables
     private float movementSpeed = 5f;
     private float rotationSpeed = 80f;
-    public Button forwardButton;
-    public Button backButton;
+    [SerializeField] Button forwardButton;
+    [SerializeField] Button backButton;
 
 
     // Start is called before the first frame update
@@ -78,12 +78,13 @@ public class DirectionButtons : MonoBehaviour
         }
 
         //RIGHT JOYSTICK
-        //right and left rotation
+        //right rotation
         if (Gamepad.all[0].rightStick.right.isPressed)
         {
             transform.Rotate(Vector3.up, Time.deltaTime * rotationSpeed);
         }
 
+        //left rotation
         if (Gamepad.all[0].rightStick.left.isPressed)
         {
             transform.Rotate(Vector3.down, Time.deltaTime * rotationSpeed);
