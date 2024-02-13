@@ -4,8 +4,8 @@ using UnityEngine.InputSystem;
 public class PS4Controller : MonoBehaviour
 {
     //variables
-    float movementSpeed = 5f;
-    float rotationSpeed = 80f;
+    private float movementSpeed = 5f;
+    private float rotationSpeed = 80f;
 
     // Start is called before the first frame update
     void Start()
