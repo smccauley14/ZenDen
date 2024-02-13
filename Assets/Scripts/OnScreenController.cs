@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 
 //attach script to player object
 
-public class DirectionButtons : MonoBehaviour
+public class OnScreenController : MonoBehaviour
 {
 
     //variables
@@ -21,8 +21,8 @@ public class DirectionButtons : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-        
+
+
     }
 
     // Update is called once per frame
@@ -90,5 +90,5 @@ public class DirectionButtons : MonoBehaviour
             transform.Rotate(Vector3.down, Time.deltaTime * rotationSpeed);
         }
     }
-    
+
 }
