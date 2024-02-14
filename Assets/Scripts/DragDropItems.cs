@@ -6,13 +6,16 @@ using UnityEngine.InputSystem;
 public class DragDropItems : MonoBehaviour
 {
 
+    //followed this tutorial: https://www.youtube.com/watch?v=zo1dkYfIJVg
+
+    //variables
     [SerializeField] InputAction press;
     [SerializeField] InputAction screenPosition;
-
-    private Vector3 currentScreenPosition;
-
     [SerializeField] Camera playerCamera;
-    private bool isDragging;
+    private Vector3 currentScreenPosition;
+    private bool isDragging = false;
+
+    //returns the position of the clicked on object, relevant to the camera
     private Vector3 worldPosition
     {
         get
@@ -22,6 +25,7 @@ public class DragDropItems : MonoBehaviour
         }
     }
 
+    //returns true if raycast hits an item with the drag object script attached
     private bool isClickedOn
     {
         get
@@ -61,8 +65,10 @@ public class DragDropItems : MonoBehaviour
 
     private IEnumerator Drag()
     {
+        //variables
         isDragging = true;
         Vector3 offset = transform.position - worldPosition;
+
         //grab
         GetComponent<Rigidbody>().useGravity = false;
         while(isDragging)
