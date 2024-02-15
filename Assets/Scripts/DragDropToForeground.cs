@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEngine.GraphicsBuffer;
 
-public class DragDropItems : MonoBehaviour
+public class DragDropToForeground : MonoBehaviour
 {
 
     //followed this tutorial: https://www.youtube.com/watch?v=zo1dkYfIJVg
@@ -14,8 +13,8 @@ public class DragDropItems : MonoBehaviour
     [SerializeField] InputAction screenPosition;
     [SerializeField] Camera playerCamera;
     private Vector3 currentScreenPosition;
+    private float targetZ = 4f;
     private bool isDragging = false;
-    private float targetZ = 0.5f;
 
     //returns the position of the clicked on object, relevant to the camera
     private Vector3 worldPosition
@@ -23,7 +22,7 @@ public class DragDropItems : MonoBehaviour
         get
         {
             float z = playerCamera.WorldToScreenPoint(transform.position).z;
-            return playerCamera.ScreenToWorldPoint(currentScreenPosition + new Vector3 (0,0,z));
+            return playerCamera.ScreenToWorldPoint(currentScreenPosition + new Vector3(0, 0, z));
         }
     }
 
@@ -32,9 +31,9 @@ public class DragDropItems : MonoBehaviour
     {
         get
         {
-            Ray  ray = playerCamera.ScreenPointToRay(currentScreenPosition);
+            Ray ray = playerCamera.ScreenPointToRay(currentScreenPosition);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit ))
+            if (Physics.Raycast(ray, out hit))
             {
                 return hit.transform == transform;
             }
@@ -45,7 +44,7 @@ public class DragDropItems : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     private void Awake()
@@ -61,7 +60,7 @@ public class DragDropItems : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
 
@@ -71,15 +70,15 @@ public class DragDropItems : MonoBehaviour
         isDragging = true;
         Vector3 offset = transform.position - worldPosition;
 
-        for (int i = 0; i < 1; i++)
-        {
-            transform.position = new Vector3(0, 0, targetZ);
-        }
-
         //grab
         GetComponent<Rigidbody>().useGravity = false;
-        while(isDragging)
+        while (isDragging)
         {
+            for (int i = 0; i < 1; i++)
+            {
+                transform.position = new Vector3(0, 0, targetZ);
+            }
+
             //dragging
             transform.position = worldPosition + offset;
             yield return null;
