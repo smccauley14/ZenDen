@@ -14,6 +14,7 @@ public class DragDropToForeground : MonoBehaviour
     private Vector3 currentScreenPosition;
     private float targetZ = 0.5f;
     private GameManager gameManager;
+    private Rigidbody objectRB;
     //public bool isDragging = false; - not needed?
 
     private Vector3 worldPosition //returns the position of the clicked on object, relevant to the camera
@@ -44,6 +45,9 @@ public class DragDropToForeground : MonoBehaviour
     {
         //get game manager script
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        //getting rigid body component
+        objectRB = GetComponent<Rigidbody>();
     }
 
     private void Awake()
@@ -78,9 +82,12 @@ public class DragDropToForeground : MonoBehaviour
 
     private IEnumerator Drag()
     {
-        //making both 'isDragging' scripts true when object interaction is taking place
-        //isDragging = true;
+        //making 'isDragging' script true when object interaction is taking place
+        //isDragging = true; - not necessary
         gameManager.isDragging = true;
+
+        //removing off any RB physics effects from previous interactions
+        objectRB.velocity = new Vector3(0, 0, 0);
 
         //finding the necessary offset
         Vector3 offset = transform.position - worldPosition;
@@ -91,7 +98,7 @@ public class DragDropToForeground : MonoBehaviour
         //pulling object into foreground
         transform.position = new Vector3(0, 0, targetZ);
 
-        //drag along X axis
+        //drag object along X axis
         while (gameManager.isDragging)
         {
             //dragging
