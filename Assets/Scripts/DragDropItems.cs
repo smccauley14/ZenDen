@@ -6,6 +6,9 @@ using static UnityEngine.GraphicsBuffer;
 
 public class DragDropItems : MonoBehaviour
 {
+    //RE-WRITE TO PREVIOUS VERSION WITHOUT DRAGGING TO FOREGROUND
+
+
 
     //followed this tutorial: https://www.youtube.com/watch?v=zo1dkYfIJVg
 

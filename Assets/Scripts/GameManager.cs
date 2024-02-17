@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
-
-    private Rigidbody objectRb;
-
     // Start is called before the first frame update
+
+    //variables
+    [HideInInspector] public bool isDragging;
+    public GameObject dragText;//for debugging - canvas object appears
+
     void Start()
     {
         
@@ -17,20 +18,16 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        
-        if (other.CompareTag("Red"))
+        //DEBUGGING - shows on screen is a method is currently being dragged
+        if (!isDragging)
         {
-            Debug.Log("collision");
-            Destroy(other.gameObject);
+            dragText.SetActive(false);
+
         }
-        else if (other.CompareTag("Yellow"))
-        {   objectRb = other.GetComponent<Rigidbody>();
-            objectRb.AddForce(Vector3.right * 2f, ForceMode.Impulse);
+        else if (isDragging)
+        {
+            dragText.SetActive(true);
+
         }
     }
 }
