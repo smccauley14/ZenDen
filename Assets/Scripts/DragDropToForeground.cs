@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class DragDropToForeground : MonoBehaviour
 {
-    //followed this tutorial: https://www.youtube.com/watch?v=zo1dkYfIJVg
+    //followed this tutorial for basic touchscreen dragging: https://www.youtube.com/watch?v=zo1dkYfIJVg
 
     //variables
     [SerializeField] InputAction press;
@@ -60,7 +60,10 @@ public class DragDropToForeground : MonoBehaviour
         screenPosition.performed += context => { currentScreenPosition = context.ReadValue<Vector2>(); };
 
         //declaring what should happen press interaction starts
-        press.performed += _ => { if (isClickedOn) StartCoroutine(Drag()); };
+        press.performed += _ =>
+        {
+            if (isClickedOn) StartCoroutine(Drag());
+        };
 
         //declaring what should happen press interaction ends
         press.canceled += _ =>
@@ -68,7 +71,6 @@ public class DragDropToForeground : MonoBehaviour
             //isDragging = false; - npt needed; just refer to gameManager 'isDragging instead'
             gameManager.isDragging = false;
         };
-
 
     }
 
@@ -86,8 +88,9 @@ public class DragDropToForeground : MonoBehaviour
         //isDragging = true; - not necessary
         gameManager.isDragging = true;
 
-        //removing off any RB physics effects from previous interactions
+        //removing any RB physics effects from previous interactions
         objectRB.velocity = new Vector3(0, 0, 0);
+        objectRB.angularVelocity = new Vector3(0, 0, 0);
 
         //finding the necessary offset
         Vector3 offset = transform.position - worldPosition;

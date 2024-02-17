@@ -8,7 +8,9 @@ public class GameManager : MonoBehaviour
 
     //variables
     [HideInInspector] public bool isDragging;
-    public GameObject dragText;//for debugging - canvas object appears
+
+    //for debugging - canvas object appears
+    public GameObject dragText;
 
     void Start()
     {
@@ -18,7 +20,13 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //DEBUGGING - shows on screen is a method is currently being dragged
+        //DebugDraggingMessage();
+    }
+
+    //for DEBUGGING shows message on screen when dragging is occurring
+    private void DebugDraggingMessage()
+    {
+
         if (!isDragging)
         {
             dragText.SetActive(false);
@@ -27,7 +35,7 @@ public class GameManager : MonoBehaviour
         else if (isDragging)
         {
             dragText.SetActive(true);
-
         }
+        
     }
 }
