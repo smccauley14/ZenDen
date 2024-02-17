@@ -47,7 +47,10 @@ public class BinController : MonoBehaviour
             }
         }
 
+        //SEE NOTE IS GAME MANAGER
+        //perhaps 'isDragging' could be a static variable, rather than within GameManager?
+
     }
 
-    
+
 }

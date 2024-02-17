@@ -8,9 +8,11 @@ public class GameManager : MonoBehaviour
 
     //variables
     [HideInInspector] public bool isDragging;
+    //perhaps this could be more efficient if it was a static variable within 'DragDropToForeground' script
+    //but I struggled to get it to work that way
 
     //for debugging - canvas object appears
-    public GameObject dragText;
+    public GameObject DebugDragText;
 
     void Start()
     {
@@ -29,12 +31,12 @@ public class GameManager : MonoBehaviour
 
         if (!isDragging)
         {
-            dragText.SetActive(false);
+            DebugDragText.SetActive(false);
 
         }
         else if (isDragging)
         {
-            dragText.SetActive(true);
+            DebugDragText.SetActive(true);
         }
         
     }
