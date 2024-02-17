@@ -92,7 +92,6 @@ public class DragDropToForeground : MonoBehaviour
         objectRB.velocity = new Vector3(0, 0, 0);
         objectRB.angularVelocity = new Vector3(0, 0, 0);
 
-
         //finding the necessary offset
         Vector3 offset = transform.position - worldPosition;
 
