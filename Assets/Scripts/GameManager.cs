@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool isDragging;
 
     //for debugging - canvas object appears
-    public GameObject dragText;
+    public GameObject debugDragText;
 
     void Start()
     {
@@ -29,12 +29,12 @@ public class GameManager : MonoBehaviour
 
         if (!isDragging)
         {
-            dragText.SetActive(false);
+            debugDragText.SetActive(false);
 
         }
         else if (isDragging)
         {
-            dragText.SetActive(true);
+            debugDragText.SetActive(true);
         }
         
     }

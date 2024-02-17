@@ -149,7 +149,7 @@ Transform:
   m_GameObject: {fileID: 44717998}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.99595, y: 5.2015557, z: 2.492548}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDragging: 0
-  dragText: {fileID: 1852844723}
+  debugDragText: {fileID: 1852844723}
 --- !u!1 &51898293
 GameObject:
   m_ObjectHideFlags: 0
@@ -1543,7 +1543,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2118444228}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1266759644046232377, guid: 9418398df27503d4b8be0ca550198be3, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9418398df27503d4b8be0ca550198be3, type: 3}
