@@ -11,7 +11,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/OnScreenTouchControls.unity
     guid: 6dc9c950bf477df45b834ee03f30a51f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Colour Sort Objects.unity
     guid: 4d90bd18a385c0948ae4489adfa9fce5
+  - enabled: 1
+    path: Assets/Scenes/Rotate Cubes Picture Game.unity
+    guid: 25b1a70564e7fc0498deff98ae20effc
   m_configObjects: {}
