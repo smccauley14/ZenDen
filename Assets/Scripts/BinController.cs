@@ -43,7 +43,7 @@ public class BinController : MonoBehaviour
             else if (!other.CompareTag(colour))
             {
                 objectRb = other.GetComponent<Rigidbody>();
-                objectRb.AddForce(new Vector3(0, 1.2f, -0.10f) * 18f, ForceMode.Impulse);
+                objectRb.AddForce(new Vector3(0, 1.2f, 0.10f) * 18f, ForceMode.Impulse);
             }
         }
 

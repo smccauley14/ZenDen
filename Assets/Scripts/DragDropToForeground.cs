@@ -14,7 +14,7 @@ public class DragDropToForeground : MonoBehaviour
     //[SerializeField] Camera cameraNoRotation;
     //[SerializeField] GameObject cameraNoRotation;
     private Vector3 currentScreenPosition;
-    public float targetZ = -45.5f;
+    private float targetZ = -45.5f;
     private GameManager gameManager;
     private Rigidbody objectRB;
     //public bool isDragging = false; - not needed?
@@ -96,14 +96,14 @@ public class DragDropToForeground : MonoBehaviour
 
         //finding the necessary offset
         Vector3 offset = transform.position - worldPosition;
-        Debug.Log(offset);
+        //Debug.Log(offset);
 
         //turn off RB
         GetComponent<Rigidbody>().useGravity = false;
 
         //pulling object into foreground
         transform.position = new Vector3(0, 0, targetZ);
-        objectRB.constraints = RigidbodyConstraints.FreezePositionZ;
+        //objectRB.constraints = RigidbodyConstraints.FreezePositionZ;
 
         //drag object along X axis
         while (gameManager.isDragging)
