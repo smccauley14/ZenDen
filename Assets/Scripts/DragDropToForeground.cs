@@ -11,10 +11,9 @@ public class DragDropToForeground : MonoBehaviour
     [SerializeField] InputAction press;
     [SerializeField] InputAction screenPosition;
     [SerializeField] Camera playerCamera;
-    //[SerializeField] Camera cameraNoRotation;
-    //[SerializeField] GameObject cameraNoRotation;
     private Vector3 currentScreenPosition;
-    private float targetZ = -45.5f;
+    private float cameraDifferential = 10.5f;
+    private float targetZ;// = -45.5f;
     private GameManager gameManager;
     private Rigidbody objectRB;
     //public bool isDragging = false; - not needed?
@@ -50,6 +49,9 @@ public class DragDropToForeground : MonoBehaviour
 
         //getting rigid body component
         objectRB = GetComponent<Rigidbody>();
+
+        playerCamera = Camera.main;
+        targetZ = playerCamera.transform.position.z + cameraDifferential;
     }
 
     private void Awake()
@@ -109,7 +111,7 @@ public class DragDropToForeground : MonoBehaviour
         while (gameManager.isDragging)
         {
             //dragging
-            transform.position = worldPosition + offset;
+            transform.position = worldPosition + (offset/2);
 
             yield return null;
         }

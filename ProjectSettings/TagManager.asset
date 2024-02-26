@@ -6,6 +6,8 @@ TagManager:
   tags:
   - green
   - brown
+  - gold
+  - pink
   layers:
   - Default
   - TransparentFX
