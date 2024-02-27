@@ -13,10 +13,11 @@ public class DragDropToForeground : MonoBehaviour
     [SerializeField] Camera playerCamera;
     private Vector3 currentScreenPosition;
     private float cameraDifferential = 10.5f;
-    private float targetZ;// = -45.5f;
+    private float targetZ;
     private GameManager gameManager;
     private Rigidbody objectRB;
     //public bool isDragging = false; - not needed?
+    //public Transform originalPosition;
 
     private Vector3 worldPosition //returns the position of the clicked on object, relevant to the camera
     {
@@ -35,6 +36,10 @@ public class DragDropToForeground : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
+                gameManager.originalPosition = hit.transform.position;
+
+                Debug.Log(gameManager.originalPosition);
+
                 return hit.transform == transform;
             }
             return false;
@@ -50,6 +55,7 @@ public class DragDropToForeground : MonoBehaviour
         //getting rigid body component
         objectRB = GetComponent<Rigidbody>();
 
+        //setting the target point in the Z axis for objects to be dragged into
         playerCamera = Camera.main;
         targetZ = playerCamera.transform.position.z + cameraDifferential;
     }
@@ -74,6 +80,7 @@ public class DragDropToForeground : MonoBehaviour
         {
             //isDragging = false; - npt needed; just refer to gameManager 'isDragging instead'
             gameManager.isDragging = false;
+            //gameManager.originalPosition = ;
         };
 
     }
@@ -100,8 +107,9 @@ public class DragDropToForeground : MonoBehaviour
         Vector3 offset = transform.position - worldPosition;
         //Debug.Log(offset);
 
-        //turn off RB
+        //turn off RB and Box Collider while dragging
         GetComponent<Rigidbody>().useGravity = false;
+        GetComponent<BoxCollider>().enabled = false;
 
         //pulling object into foreground
         transform.position = new Vector3(0, 0, targetZ);
@@ -117,6 +125,9 @@ public class DragDropToForeground : MonoBehaviour
         }
         //droping object - turn RB back on
         GetComponent<Rigidbody>().useGravity = true;
+
+        //turning rigid body back on
+        GetComponent<BoxCollider>().enabled = true;
     }
 
 }

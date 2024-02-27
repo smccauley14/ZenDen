@@ -1332,11 +1332,6 @@ MonoBehaviour:
   dinoPrefab1: {fileID: 4763208389700852717, guid: d841323570aa658448fc49766b3d6637, type: 3}
   dinoPrefab2: {fileID: 4763208389700852717, guid: 7fff7947fdb092441b38bc77af15b841, type: 3}
   dinoPrefab3: {fileID: 4763208389700852717, guid: 57ed6f30d254e3444aab147a80a44258, type: 3}
-  prefab1Colour: {fileID: 2100000, guid: 1ed47b8fe6254cd46aea945a9609d382, type: 2}
-  dinoColours:
-  - {fileID: 2100000, guid: b166efefdd5d58643bd09b417103701f, type: 2}
-  - {fileID: 2100000, guid: 2990e0d3bcd368d4999bba719243fd19, type: 2}
-  - {fileID: 2100000, guid: a3d0471dd85ffeb42af08c08e1d57e8e, type: 2}
 --- !u!4 &1599688049
 Transform:
   m_ObjectHideFlags: 0
@@ -1672,6 +1667,63 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1100078576}
   m_SourcePrefab: {fileID: 100100000, guid: 01d2d1e8515204ab583ce941a963213a, type: 3}
+--- !u!1001 &2137244958
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4763208389700852717, guid: d841323570aa658448fc49766b3d6637, type: 3}
+      propertyPath: m_Name
+      value: Brachiosaurus - Gold
+      objectReference: {fileID: 0}
+    - target: {fileID: 5283145020469657943, guid: d841323570aa658448fc49766b3d6637, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.2321038
+      objectReference: {fileID: 0}
+    - target: {fileID: 5283145020469657943, guid: d841323570aa658448fc49766b3d6637, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.2306949
+      objectReference: {fileID: 0}
+    - target: {fileID: 5283145020469657943, guid: d841323570aa658448fc49766b3d6637, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 12.87314
+      objectReference: {fileID: 0}
+    - target: {fileID: 5283145020469657943, guid: d841323570aa658448fc49766b3d6637, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: 5283145020469657943, guid: d841323570aa658448fc49766b3d6637, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5283145020469657943, guid: d841323570aa658448fc49766b3d6637, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5283145020469657943, guid: d841323570aa658448fc49766b3d6637, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5283145020469657943, guid: d841323570aa658448fc49766b3d6637, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5283145020469657943, guid: d841323570aa658448fc49766b3d6637, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5283145020469657943, guid: d841323570aa658448fc49766b3d6637, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d841323570aa658448fc49766b3d6637, type: 3}
 --- !u!1001 &6201458828718447606
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1821,3 +1873,4 @@ SceneRoots:
   - {fileID: 2019092523}
   - {fileID: 1492742862}
   - {fileID: 1020504635}
+  - {fileID: 2137244958}

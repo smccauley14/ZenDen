@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
 {
@@ -24,7 +25,11 @@ public class GameManager : MonoBehaviour
     private float tableYheight = -1.2f;
     private float tableZmin = 4;
     private float tableZmax = 20;
+    private float randomRotation;
 
+    public Vector3 originalPosition;
+
+    [HideInInspector] public Vector3[] originalPositions = new Vector3[15];
 
 
     void Start()
@@ -33,8 +38,12 @@ public class GameManager : MonoBehaviour
         //instantiates 15 dinosaur prefabs
         for (int i = 0; i < 15; i++)
         {
+
             InstantiateDino();
+
         }
+
+        //Debug.Log(Random.rotation);
 
 
 
@@ -75,7 +84,14 @@ public class GameManager : MonoBehaviour
         return spawnPos;
     }
 
-    //generates a random number from 0-2, corresponding with prefab number
+    private void GenerateRandomRotation()
+    {
+        randomRotation = Random.Range(0, 1);
+
+        
+    }
+
+    //generates a random number between 0-2, corresponding with prefab number
     private int GenerateRandomArray() 
     {
         //variables
@@ -87,24 +103,26 @@ public class GameManager : MonoBehaviour
     private void InstantiateDino()
     {
         //get a random number
-        int random = GenerateRandomArray();
+        int randomNum = GenerateRandomArray();
 
         //generate a dinosaur prefab, based on random number
-        //N.B - can't seem to do this with an array of game objects. Instantiate doesn't work.
-        if (random == 0)
+        //N.B - can't seem to do this with an array of game objects; Instantiate doesn't work with them.
+        if (randomNum == 0)
         {
             Instantiate(dinoPrefab1, GenerateSpawnPos(), dinoPrefab1.transform.rotation);
         }
-        else if (random == 1)
+        else if (randomNum == 1)
         {
             Instantiate(dinoPrefab2, GenerateSpawnPos(), dinoPrefab2.transform.rotation);
         }
-        else if (random == 2)
+        else if (randomNum == 2)
         {
             Instantiate(dinoPrefab3, GenerateSpawnPos(), dinoPrefab3.transform.rotation);
         }
 
-        
+
+        //Random.rotation
+
     }
 
 }

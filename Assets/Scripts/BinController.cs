@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class BinController : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class BinController : MonoBehaviour
     private Rigidbody objectRb;
     private string colour;
     private GameManager gameManager;
+    
+    //private DragDropToForeground draggingScript;
+    //private Transform originalPosition;
 
 
     // Start is called before the first frame update
@@ -19,6 +23,7 @@ public class BinController : MonoBehaviour
 
         //get access to Game Manager script
         gameManager = GameObject.Find("GameManager").GetComponent <GameManager>();
+
 
     }
 
@@ -42,12 +47,14 @@ public class BinController : MonoBehaviour
             //if the object is a different colour, bounce object vertically
             else if (!other.CompareTag(colour))
             {
+                //other.gameObject.transform.position = gameManager.originalPosition;
+
                 objectRb = other.GetComponent<Rigidbody>();
                 objectRb.AddForce(new Vector3(0, 1.2f, 0.10f) * 18f, ForceMode.Impulse);
             }
         }
 
-        //SEE NOTE IS GAME MANAGER
+        //SEE NOTE IN GAME MANAGER
         //perhaps 'isDragging' could be a static variable, rather than within GameManager?
 
     }
