@@ -99,6 +99,9 @@ public class DragDropToForeground : MonoBehaviour
         //isDragging = true; - not necessary
         gameManager.isDragging = true;
 
+        //play 'picked up popping' sound effect
+        gameManager.gameAudio.PlayOneShot(gameManager.pickedUpSound);
+
         //removing any RB physics effects from previous interactions
         objectRB.velocity = new Vector3(0, 0, 0);
         objectRB.angularVelocity = new Vector3(0, 0, 0);

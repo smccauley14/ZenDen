@@ -28,6 +28,11 @@ public class GameManager : MonoBehaviour
     private float tableZmax = 20;
     private float randomRotation;
 
+    [HideInInspector] public AudioSource gameAudio;
+    public AudioClip correctSound;
+    public AudioClip wrongSound;
+    public AudioClip pickedUpSound;
+
     public Vector3 originalPosition;
 
     [HideInInspector] public Vector3[] originalPositions = new Vector3[15];
@@ -35,6 +40,11 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        //gameAudio.PlayOneShot(correctSound);
+
+        //getting player audio
+        gameAudio = GetComponent<AudioSource>();
+
 
         //instantiates 15 dinosaur prefabs
         for (int i = 0; i < 15; i++)
