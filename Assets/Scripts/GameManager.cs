@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject dinoPrefab1;
     [SerializeField] GameObject dinoPrefab2;
     [SerializeField] GameObject dinoPrefab3;
+    public GameObject handObject;
     //[SerializeField] Material prefab1Colour;
     //[SerializeField] Material[] dinoColours;
 

@@ -113,21 +113,40 @@ public class DragDropToForeground : MonoBehaviour
 
         //pulling object into foreground
         transform.position = new Vector3(0, 0, targetZ);
+        
         //objectRB.constraints = RigidbodyConstraints.FreezePositionZ;
 
         //drag object along X axis
         while (gameManager.isDragging)
         {
             //dragging
-            transform.position = worldPosition + (offset/2);
+
+            transform.position = worldPosition + offset;
+
+            gameManager.handObject.SetActive(true);
+            gameManager.handObject.transform.position = worldPosition + new Vector3 (3f, 2.5f, 1f);
 
             yield return null;
         }
+
+        //make hand disappear
+        StartCoroutine(handDisappear());
+
         //droping object - turn RB back on
         GetComponent<Rigidbody>().useGravity = true;
 
         //turning rigid body back on
         GetComponent<BoxCollider>().enabled = true;
+
+
+    }
+
+
+    private IEnumerator handDisappear()
+    {
+
+        yield return new WaitForSeconds(1f);
+        gameManager.handObject.SetActive(false);
     }
 
 }
