@@ -33,6 +33,7 @@ public class BinController : MonoBehaviour
 
     }
 
+    /*
     private void OnTriggerEnter(Collider other)
     {
         //if the object is not being dragged (i.e. if it has been dropped)
@@ -63,6 +64,7 @@ public class BinController : MonoBehaviour
         //perhaps 'isDragging' could be a static variable, rather than within GameManager?
 
     }
+    */
 
 
 }

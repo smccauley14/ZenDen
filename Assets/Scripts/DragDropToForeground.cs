@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,8 +17,10 @@ public class DragDropToForeground : MonoBehaviour
     private float targetZ;
     private GameManager gameManager;
     private Rigidbody objectRB;
-    //public bool isDragging = false; - not needed?
+    public bool isDragging = false;
     //public Transform originalPosition;
+
+    private string colour;
 
     private Vector3 worldPosition //returns the position of the clicked on object, relevant to the camera
     {
@@ -36,9 +39,8 @@ public class DragDropToForeground : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                gameManager.originalPosition = hit.transform.position;
-
-                Debug.Log(gameManager.originalPosition);
+                //gameManager.originalPosition = hit.transform.position;
+                //Debug.Log(gameManager.originalPosition);
 
                 return hit.transform == transform;
             }
@@ -51,6 +53,9 @@ public class DragDropToForeground : MonoBehaviour
     {
         //get game manager script
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        //get the colour tag of the object from the tag
+        colour = gameObject.tag;
 
         //getting rigid body component
         objectRB = GetComponent<Rigidbody>();
@@ -79,7 +84,7 @@ public class DragDropToForeground : MonoBehaviour
         press.canceled += _ =>
         {
             //isDragging = false; - npt needed; just refer to gameManager 'isDragging instead'
-            gameManager.isDragging = false;
+            isDragging = false;
             //gameManager.originalPosition = ;
         };
 
@@ -97,7 +102,7 @@ public class DragDropToForeground : MonoBehaviour
     {
         //making 'isDragging' script true when object interaction is taking place
         //isDragging = true; - not necessary
-        gameManager.isDragging = true;
+        isDragging = true;
 
         //play 'picked up popping' sound effect
         gameManager.gameAudio.PlayOneShot(gameManager.pickedUpSound);
@@ -110,38 +115,48 @@ public class DragDropToForeground : MonoBehaviour
         Vector3 offset = transform.position - worldPosition;
         //Debug.Log(offset);
 
-        //turn off RB and Box Collider while dragging
-        GetComponent<Rigidbody>().useGravity = false;
-        GetComponent<BoxCollider>().enabled = false;
+        TurnOffRB();
 
         //pulling object into foreground
         transform.position = new Vector3(0, 0, targetZ);
-        
+
         //objectRB.constraints = RigidbodyConstraints.FreezePositionZ;
 
         //drag object along X axis
-        while (gameManager.isDragging)
+        while (isDragging)
         {
             //dragging
-
             transform.position = worldPosition + offset;
 
             gameManager.handObject.SetActive(true);
-            gameManager.handObject.transform.position = worldPosition + new Vector3 (3f, 2.5f, 1f);
+            gameManager.handObject.transform.position = worldPosition + new Vector3(3f, 2.5f, 1f);
 
             yield return null;
         }
 
+        TurnOnRB();
+
         //make hand disappear
         StartCoroutine(handDisappear());
 
+
+
+    }
+
+
+    private void TurnOffRB()
+    {
+        GetComponent<Rigidbody>().useGravity = false;
+        GetComponent<BoxCollider>().enabled = false;
+    }
+
+    private void TurnOnRB()
+    {
         //droping object - turn RB back on
         GetComponent<Rigidbody>().useGravity = true;
 
         //turning rigid body back on
         GetComponent<BoxCollider>().enabled = true;
-
-
     }
 
 
@@ -152,4 +167,31 @@ public class DragDropToForeground : MonoBehaviour
         gameManager.handObject.SetActive(false);
     }
 
+
+    private void OnTriggerEnter(Collider other)
+    {
+        //if the object is not being dragged (i.e. if it has been dropped)
+        if (!isDragging)
+        {
+            //if the object dropped is the same colour as the bin, destroy object
+            if (other.CompareTag(colour))
+            {
+
+                Destroy(gameObject);
+                //play 'correct' sound effect
+                gameManager.gameAudio.PlayOneShot(gameManager.correctSound);
+            }
+            //if the object is a different colour, bounce object vertically
+            else if (!other.CompareTag(colour))
+            {
+                //other.gameObject.transform.position = gameManager.originalPosition;
+
+                //play 'wrong' sound effect
+                gameManager.gameAudio.PlayOneShot(gameManager.wrongSound);
+
+                objectRB.AddForce(new Vector3(0, 1.2f, 0.10f) * 18f, ForceMode.Impulse);
+            }
+        }
+
+    }
 }

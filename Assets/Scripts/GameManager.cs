@@ -29,22 +29,23 @@ public class GameManager : MonoBehaviour
     private float randomRotation;
 
     [HideInInspector] public AudioSource gameAudio;
+
+    //public sound clips that are called in other scripts
     public AudioClip correctSound;
     public AudioClip wrongSound;
     public AudioClip pickedUpSound;
 
-    public Vector3 originalPosition;
 
-    [HideInInspector] public Vector3[] originalPositions = new Vector3[15];
+    //experiments with holding original positions (not working)
+    //public Vector3 originalPosition;
+    //[HideInInspector] public Vector3[] originalPositions = new Vector3[15];
 
 
     void Start()
     {
-        //gameAudio.PlayOneShot(correctSound);
 
         //getting player audio
         gameAudio = GetComponent<AudioSource>();
-
 
         //instantiates 15 dinosaur prefabs
         for (int i = 0; i < 15; i++)
@@ -63,26 +64,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //DebugDraggingMessage();
+
     }
 
-    //for DEBUGGING shows message on screen when dragging is occurring
-    /*
-    private void DebugDraggingMessage()
-    {
 
-        if (!isDragging)
-        {
-            DebugDragText.SetActive(false);
-
-        }
-        else if (isDragging)
-        {
-            DebugDragText.SetActive(true);
-        }
-        
-    }
-    */
 
     //generates a random position within bounds to spawn dino prefab
     public Vector3 GenerateSpawnPos()
@@ -95,11 +80,10 @@ public class GameManager : MonoBehaviour
         return spawnPos;
     }
 
+    //experiment to give objects a randomised rotation...
     private void GenerateRandomRotation()
     {
         randomRotation = Random.Range(0, 1);
-
-        
     }
 
     //generates a random number between 0-2, corresponding with prefab number
@@ -110,7 +94,7 @@ public class GameManager : MonoBehaviour
         return number;
     }
     
-    //instantiates a random dinosaur randomly
+    //instantiates a dinosaur in random location within bounds
     private void InstantiateDino()
     {
         //get a random number
@@ -131,8 +115,6 @@ public class GameManager : MonoBehaviour
             Instantiate(dinoPrefab3, GenerateSpawnPos(), dinoPrefab3.transform.rotation);
         }
 
-
-        //Random.rotation
 
     }
 
