@@ -1335,6 +1335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDragging: 0
+  objectsClickedOn: 0
   dinoPrefab1: {fileID: 4763208389700852717, guid: d841323570aa658448fc49766b3d6637, type: 3}
   dinoPrefab2: {fileID: 4763208389700852717, guid: 7fff7947fdb092441b38bc77af15b841, type: 3}
   dinoPrefab3: {fileID: 4763208389700852717, guid: 57ed6f30d254e3444aab147a80a44258, type: 3}
@@ -1890,6 +1891,10 @@ PrefabInstance:
     - target: {fileID: 4583773765525902481, guid: a0989427fa1464bca91762ef46a6d325, type: 3}
       propertyPath: m_Name
       value: Hand Open
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583773765525902481, guid: a0989427fa1464bca91762ef46a6d325, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

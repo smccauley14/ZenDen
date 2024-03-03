@@ -18,9 +18,11 @@ public class DragDropToForeground : MonoBehaviour
     private GameManager gameManager;
     private Rigidbody objectRB;
     public bool isDragging = false;
-    //public Transform originalPosition;
-
+    public Vector3 originalPosition;
     private string colour;
+
+    [SerializeField] GameObject correctParticle;
+    [SerializeField] GameObject wrongParticle;
 
     private Vector3 worldPosition //returns the position of the clicked on object, relevant to the camera
     {
@@ -33,15 +35,14 @@ public class DragDropToForeground : MonoBehaviour
 
     private bool isClickedOn //returns true if raycast hits an item with the drag object script attached
     {
+        
         get
         {
             Ray ray = playerCamera.ScreenPointToRay(currentScreenPosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                //gameManager.originalPosition = hit.transform.position;
-                //Debug.Log(gameManager.originalPosition);
-
+                //gameManager.objectsClickedOn++;
                 return hit.transform == transform;
             }
             return false;
@@ -63,6 +64,8 @@ public class DragDropToForeground : MonoBehaviour
         //setting the target point in the Z axis for objects to be dragged into
         playerCamera = Camera.main;
         targetZ = playerCamera.transform.position.z + cameraDifferential;
+
+        originalPosition = transform.position;
     }
 
     private void Awake()
@@ -77,17 +80,17 @@ public class DragDropToForeground : MonoBehaviour
         //declaring what should happen press interaction starts
         press.performed += _ =>
         {
-            if (isClickedOn) StartCoroutine(Drag());
+            if (isClickedOn)
+            {
+                StartCoroutine(Drag());
+            }
         };
 
         //declaring what should happen press interaction ends
         press.canceled += _ =>
         {
-            //isDragging = false; - npt needed; just refer to gameManager 'isDragging instead'
             isDragging = false;
-            //gameManager.originalPosition = ;
         };
-
     }
 
     // Update is called once per frame
@@ -100,8 +103,12 @@ public class DragDropToForeground : MonoBehaviour
 
     private IEnumerator Drag()
     {
+
+        //telling the game manager to count how many objects have been clicked on
+        //to avoid lifting more than one
+        //gameManager.objectsClickedOn++;
+
         //making 'isDragging' script true when object interaction is taking place
-        //isDragging = true; - not necessary
         isDragging = true;
 
         //play 'picked up popping' sound effect
@@ -120,8 +127,6 @@ public class DragDropToForeground : MonoBehaviour
         //pulling object into foreground
         transform.position = new Vector3(0, 0, targetZ);
 
-        //objectRB.constraints = RigidbodyConstraints.FreezePositionZ;
-
         //drag object along X axis
         while (isDragging)
         {
@@ -134,12 +139,11 @@ public class DragDropToForeground : MonoBehaviour
             yield return null;
         }
 
+        //turning RB back on
         TurnOnRB();
 
         //make hand disappear
         StartCoroutine(handDisappear());
-
-
 
     }
 
@@ -167,6 +171,29 @@ public class DragDropToForeground : MonoBehaviour
         gameManager.handObject.SetActive(false);
     }
 
+    //return the object to where it was first instantiated
+    private IEnumerator ReturnToOriginalPosition()
+    {
+        yield return new WaitForSeconds(1.25f);
+        //removing any RB physics effects from previous interactions
+        objectRB.velocity = new Vector3(0, 0, 0);
+        objectRB.angularVelocity = new Vector3(0, 0, 0);
+        transform.position = originalPosition;
+    }
+
+
+    private IEnumerator DestroyDelay ()
+    {
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject);
+    }
+
+    private IEnumerator TurnOffWrongParticle()
+    {
+        yield return new WaitForSeconds(2f);
+        wrongParticle.SetActive(false);
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -176,20 +203,27 @@ public class DragDropToForeground : MonoBehaviour
             //if the object dropped is the same colour as the bin, destroy object
             if (other.CompareTag(colour))
             {
-
-                Destroy(gameObject);
+                StartCoroutine(DestroyDelay());
                 //play 'correct' sound effect
                 gameManager.gameAudio.PlayOneShot(gameManager.correctSound);
+                correctParticle.SetActive(true);
             }
             //if the object is a different colour, bounce object vertically
             else if (!other.CompareTag(colour))
             {
                 //other.gameObject.transform.position = gameManager.originalPosition;
 
+                wrongParticle.SetActive(true);
+
+                StartCoroutine(TurnOffWrongParticle());
+
                 //play 'wrong' sound effect
                 gameManager.gameAudio.PlayOneShot(gameManager.wrongSound);
 
                 objectRB.AddForce(new Vector3(0, 1.2f, 0.10f) * 18f, ForceMode.Impulse);
+
+                //return to original position after a moment.
+                StartCoroutine(ReturnToOriginalPosition());
             }
         }
 

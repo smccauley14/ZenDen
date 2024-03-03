@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     //for debugging - canvas object appears
     //public GameObject DebugDragText;
 
+    public int objectsClickedOn = 0;
+
     [SerializeField] GameObject dinoPrefab1;
     [SerializeField] GameObject dinoPrefab2;
     [SerializeField] GameObject dinoPrefab3;
