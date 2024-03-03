@@ -18,6 +18,7 @@ public class DragDropToForeground : MonoBehaviour
     private GameManager gameManager;
     private Rigidbody objectRB;
     public bool isDragging = false;
+    //private bool isBouncing = false;
     public Vector3 originalPosition;
     private string colour;
 
@@ -35,7 +36,6 @@ public class DragDropToForeground : MonoBehaviour
 
     private bool isClickedOn //returns true if raycast hits an item with the drag object script attached
     {
-        
         get
         {
             Ray ray = playerCamera.ScreenPointToRay(currentScreenPosition);
@@ -48,6 +48,7 @@ public class DragDropToForeground : MonoBehaviour
             return false;
         }
     }
+
 
     // Start is called before the first frame update
     void Start()
@@ -174,13 +175,16 @@ public class DragDropToForeground : MonoBehaviour
     //return the object to where it was first instantiated
     private IEnumerator ReturnToOriginalPosition()
     {
-        yield return new WaitForSeconds(1.25f);
+        yield return new WaitForSeconds(1.75f);
         //removing any RB physics effects from previous interactions
         objectRB.velocity = new Vector3(0, 0, 0);
         objectRB.angularVelocity = new Vector3(0, 0, 0);
-        transform.position = originalPosition;
-    }
 
+        transform.position = originalPosition;
+        
+
+        //isBouncing = false;
+    }
 
     private IEnumerator DestroyDelay ()
     {
@@ -188,9 +192,17 @@ public class DragDropToForeground : MonoBehaviour
         Destroy(gameObject);
     }
 
+    private IEnumerator TurnOnWrongParticle()
+    {
+        yield return new WaitForSeconds(1.15f);
+        wrongParticle.SetActive(true);
+    
+        
+    }
+
     private IEnumerator TurnOffWrongParticle()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(2.5f);
         wrongParticle.SetActive(false);
     }
 
@@ -212,9 +224,10 @@ public class DragDropToForeground : MonoBehaviour
             else if (!other.CompareTag(colour))
             {
                 //other.gameObject.transform.position = gameManager.originalPosition;
+                //isBouncing = true;
 
-                wrongParticle.SetActive(true);
-
+                //wrongParticle.SetActive(true);
+                StartCoroutine(TurnOnWrongParticle());
                 StartCoroutine(TurnOffWrongParticle());
 
                 //play 'wrong' sound effect
@@ -223,6 +236,7 @@ public class DragDropToForeground : MonoBehaviour
                 objectRB.AddForce(new Vector3(0, 1.2f, 0.10f) * 18f, ForceMode.Impulse);
 
                 //return to original position after a moment.
+
                 StartCoroutine(ReturnToOriginalPosition());
             }
         }
