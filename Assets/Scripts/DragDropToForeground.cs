@@ -17,9 +17,10 @@ public class DragDropToForeground : MonoBehaviour
     private float targetZ;
     private GameManager gameManager;
     private Rigidbody objectRB;
-    public bool isDragging = false;
+    private bool isDragging = false;
     //private bool isBouncing = false;
-    public Vector3 originalPosition;
+    private Vector3 originalPosition;
+    private Quaternion originalRotation;
     private string colour;
 
     [SerializeField] GameObject correctParticle;
@@ -40,7 +41,7 @@ public class DragDropToForeground : MonoBehaviour
         {
             Ray ray = playerCamera.ScreenPointToRay(currentScreenPosition);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(ray, out hit) && gameManager.objectsClickedOn == 0)
             {
                 //gameManager.objectsClickedOn++;
                 return hit.transform == transform;
@@ -66,7 +67,9 @@ public class DragDropToForeground : MonoBehaviour
         playerCamera = Camera.main;
         targetZ = playerCamera.transform.position.z + cameraDifferential;
 
+        //getting the orginal instantiated position/rotation
         originalPosition = transform.position;
+        originalRotation = transform.rotation;
     }
 
     private void Awake()
@@ -107,7 +110,7 @@ public class DragDropToForeground : MonoBehaviour
 
         //telling the game manager to count how many objects have been clicked on
         //to avoid lifting more than one
-        //gameManager.objectsClickedOn++;
+        gameManager.objectsClickedOn++;
 
         //making 'isDragging' script true when object interaction is taking place
         isDragging = true;
@@ -121,8 +124,8 @@ public class DragDropToForeground : MonoBehaviour
 
         //finding the necessary offset
         Vector3 offset = transform.position - worldPosition;
-        //Debug.Log(offset);
 
+        //turning off Rb
         TurnOffRB();
 
         //pulling object into foreground
@@ -139,6 +142,9 @@ public class DragDropToForeground : MonoBehaviour
 
             yield return null;
         }
+
+        //reducing variable in GameManager by 1
+        gameManager.objectsClickedOn--;
 
         //turning RB back on
         TurnOnRB();
@@ -181,6 +187,7 @@ public class DragDropToForeground : MonoBehaviour
         objectRB.angularVelocity = new Vector3(0, 0, 0);
 
         transform.position = originalPosition;
+        transform.rotation = originalRotation;
         
 
         //isBouncing = false;
@@ -189,6 +196,7 @@ public class DragDropToForeground : MonoBehaviour
     private IEnumerator DestroyDelay ()
     {
         yield return new WaitForSeconds(1f);
+        gameManager.dinosInScene--;
         Destroy(gameObject);
     }
 
