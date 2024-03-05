@@ -97,11 +97,7 @@ public class GameManager : MonoBehaviour
         //get a random number
         int randomNum = GenerateRandomArray();
 
-        Quaternion facingLeft = Quaternion.Euler(-90f, 180f, 0f);
-        Quaternion facingRight = Quaternion.Euler(-90f, 0f, 0f);
-
         //generate a dinosaur prefab, based on random number
-        //N.B - can't seem to do this with an array of game objects; Instantiate doesn't work with them.
         if (randomNum == 0)
         {
             Instantiate(dinoPrefabs[0], GenerateSpawnPos(), GenerateRandomRotation());
