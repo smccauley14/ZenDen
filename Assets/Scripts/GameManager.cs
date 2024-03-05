@@ -13,9 +13,13 @@ public class GameManager : MonoBehaviour
     //being added/substracted from to by DragDropToForeground script
     public int objectsClickedOn = 0;
 
+    [SerializeField] GameObject[] dinoPrefabs;
+
+    /*
     [SerializeField] GameObject dinoPrefab1;
     [SerializeField] GameObject dinoPrefab2;
     [SerializeField] GameObject dinoPrefab3;
+    */
     public GameObject handObject;
 
     //[SerializeField] Material prefab1Colour;
@@ -83,7 +87,7 @@ public class GameManager : MonoBehaviour
     private int GenerateRandomArray() 
     {
         //variables
-        int number = Random.Range(0, 3);
+        int number = Random.Range(0, 6);
         return number;
     }
     
@@ -100,15 +104,27 @@ public class GameManager : MonoBehaviour
         //N.B - can't seem to do this with an array of game objects; Instantiate doesn't work with them.
         if (randomNum == 0)
         {
-            Instantiate(dinoPrefab1, GenerateSpawnPos(), GenerateRandomRotation());
+            Instantiate(dinoPrefabs[0], GenerateSpawnPos(), GenerateRandomRotation());
         }
         else if (randomNum == 1)
         {
-            Instantiate(dinoPrefab2, GenerateSpawnPos(), GenerateRandomRotation());
+            Instantiate(dinoPrefabs[1], GenerateSpawnPos(), GenerateRandomRotation());
         }
         else if (randomNum == 2)
         {
-            Instantiate(dinoPrefab3, GenerateSpawnPos(), GenerateRandomRotation());
+            Instantiate(dinoPrefabs[2], GenerateSpawnPos(), GenerateRandomRotation());
+        }
+        if (randomNum == 3)
+        {
+            Instantiate(dinoPrefabs[3], GenerateSpawnPos(), GenerateRandomRotation());
+        }
+        else if (randomNum == 4)
+        {
+            Instantiate(dinoPrefabs[4], GenerateSpawnPos(), GenerateRandomRotation());
+        }
+        else if (randomNum == 5)
+        {
+            Instantiate(dinoPrefabs[5], GenerateSpawnPos(), GenerateRandomRotation());
         }
     }
 

@@ -1336,9 +1336,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDragging: 0
   objectsClickedOn: 0
-  dinoPrefab1: {fileID: 4763208389700852717, guid: d841323570aa658448fc49766b3d6637, type: 3}
-  dinoPrefab2: {fileID: 4763208389700852717, guid: 7fff7947fdb092441b38bc77af15b841, type: 3}
-  dinoPrefab3: {fileID: 4763208389700852717, guid: 57ed6f30d254e3444aab147a80a44258, type: 3}
+  dinoPrefabs:
+  - {fileID: 4763208389700852717, guid: d841323570aa658448fc49766b3d6637, type: 3}
+  - {fileID: 4763208389700852717, guid: 7fff7947fdb092441b38bc77af15b841, type: 3}
+  - {fileID: 4763208389700852717, guid: 57ed6f30d254e3444aab147a80a44258, type: 3}
+  - {fileID: 2612093651737164969, guid: a6a16434d0e694517b36b1c844dfaeb8, type: 3}
+  - {fileID: 2612093651737164969, guid: 57d35293fca262243896f01727c57949, type: 3}
+  - {fileID: 2612093651737164969, guid: cdfb2aba954c7e848b86e2cc0ba2eaf6, type: 3}
   handObject: {fileID: 1148690212}
   dinosInScene: 0
   gameAudio: {fileID: 0}
