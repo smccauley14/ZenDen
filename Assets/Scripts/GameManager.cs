@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
         return spawnPos;
     }
 
-    //experiment to give objects a randomised rotation...
+    //Randomly choose whether to rotate right or left
     private Quaternion GenerateRandomRotation()
     {
         Quaternion facingLeft = Quaternion.Euler(-90f, 180f, 0f);
@@ -97,6 +97,9 @@ public class GameManager : MonoBehaviour
         //get a random number
         int randomNum = GenerateRandomArray();
 
+        Instantiate(dinoPrefabs[randomNum], GenerateSpawnPos(), GenerateRandomRotation());
+
+        /*
         //generate a dinosaur prefab, based on random number
         if (randomNum == 0)
         {
@@ -122,6 +125,8 @@ public class GameManager : MonoBehaviour
         {
             Instantiate(dinoPrefabs[5], GenerateSpawnPos(), GenerateRandomRotation());
         }
+        */
+
     }
 
     private void InstantiateDinos()
