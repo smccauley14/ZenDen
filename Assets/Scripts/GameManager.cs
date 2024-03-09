@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,25 +12,23 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool isDragging;
 
     //being added/substracted from to by DragDropToForeground script
-    public int objectsClickedOn = 0;
+    [HideInInspector] public int objectsClickedOn = 0;
 
     [SerializeField] GameObject[] dinoPrefabs;
 
-    /*
-    [SerializeField] GameObject dinoPrefab1;
-    [SerializeField] GameObject dinoPrefab2;
-    [SerializeField] GameObject dinoPrefab3;
-    */
     public GameObject handObject;
 
     //[SerializeField] Material prefab1Colour;
     //[SerializeField] Material[] dinoColours;
 
-    public int dinosInScene;
+    [HideInInspector] public int dinosInScene;
     private float tableXlength = 19;
     private float tableYheight = -1.2f;
     private float tableZmin = 4;
     private float tableZmax = 20;
+
+    private int prefabNumberMinimum = 0;
+    private int prefabNumberMaximum = 5;
 
     [HideInInspector] public AudioSource gameAudio;
 
@@ -38,18 +37,34 @@ public class GameManager : MonoBehaviour
     public AudioClip wrongSound;
     public AudioClip pickedUpSound;
 
+    [SerializeField] private Button dinoButton;
+    [SerializeField] private Button tractorButton;
+    [SerializeField] private GameObject tractorSelected;
+    [SerializeField] private GameObject dinoSelected;
+
 
 
     void Start()
     {
         //getting player audio
         gameAudio = GetComponent<AudioSource>();
+
+        dinoButton.onClick.AddListener(DinoSelected);
+        tractorButton.onClick.AddListener(TractorSelected);
+
     }
+
 
     // Update is called once per frame
     void Update()
     {
-        InstantiateDinos();
+
+
+
+        InstantiateObjects();
+
+
+
     }
 
 
@@ -83,62 +98,69 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //generates a random number between 0-2, corresponding with prefab number
+
+    private void DinoSelected()
+    {
+        prefabNumberMinimum = 0;
+        prefabNumberMaximum = 5;
+        dinoSelected.SetActive(true);
+        tractorSelected.SetActive(false);
+        DestroyAllObjects();
+    }
+
+    private void TractorSelected()
+    {
+        prefabNumberMinimum = 6;
+        prefabNumberMaximum = 9;
+        dinoSelected.SetActive(false);
+        tractorSelected.SetActive(true);
+        DestroyAllObjects();
+    }
+
+    //generates a random number, corresponding with prefab number
     private int GenerateRandomArray() 
     {
+
         //variables
-        int number = Random.Range(0, 6);
+        int number = Random.Range(prefabNumberMinimum, prefabNumberMaximum);
         return number;
     }
     
-    //instantiates a dinosaur in random location within bounds
-    private void InstantiateDino()
+    //instantiates a sinlge dinosaur in random location within bounds
+    private void InstantiateOneObject()
     {
         //get a random number
         int randomNum = GenerateRandomArray();
 
         Instantiate(dinoPrefabs[randomNum], GenerateSpawnPos(), GenerateRandomRotation());
 
-        /*
-        //generate a dinosaur prefab, based on random number
-        if (randomNum == 0)
-        {
-            Instantiate(dinoPrefabs[0], GenerateSpawnPos(), GenerateRandomRotation());
-        }
-        else if (randomNum == 1)
-        {
-            Instantiate(dinoPrefabs[1], GenerateSpawnPos(), GenerateRandomRotation());
-        }
-        else if (randomNum == 2)
-        {
-            Instantiate(dinoPrefabs[2], GenerateSpawnPos(), GenerateRandomRotation());
-        }
-        if (randomNum == 3)
-        {
-            Instantiate(dinoPrefabs[3], GenerateSpawnPos(), GenerateRandomRotation());
-        }
-        else if (randomNum == 4)
-        {
-            Instantiate(dinoPrefabs[4], GenerateSpawnPos(), GenerateRandomRotation());
-        }
-        else if (randomNum == 5)
-        {
-            Instantiate(dinoPrefabs[5], GenerateSpawnPos(), GenerateRandomRotation());
-        }
-        */
-
     }
 
-    private void InstantiateDinos()
+    //instantiate 15 objects (i.e. a wave)
+    private void InstantiateObjects()
     {
         if (dinosInScene < 1)
         {
             for (int i = 0; i < 15; i++)
             {
-                InstantiateDino();
+                InstantiateOneObject();
                 dinosInScene++;
             }
         }
+    }
+
+    //method to get rid of every draggable object in the scene
+    private void DestroyAllObjects()
+    {
+        DragDropToForeground[] allObjects = FindObjectsOfType<DragDropToForeground>();
+        foreach (DragDropToForeground singleObject in allObjects)
+        {
+            Destroy(singleObject.gameObject);
+        }
+
+        //reduce number objects to 0, to trigger another wave
+        dinosInScene = 0;
+
     }
 
 }

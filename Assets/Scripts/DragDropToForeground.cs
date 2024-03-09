@@ -247,6 +247,7 @@ public class DragDropToForeground : MonoBehaviour
 
                 StartCoroutine(ReturnToOriginalPosition());
             }
+            
         }
 
     }
