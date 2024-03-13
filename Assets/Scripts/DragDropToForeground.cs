@@ -15,7 +15,7 @@ public class DragDropToForeground : MonoBehaviour
     private Vector3 currentScreenPosition;
     private float cameraDifferential = 10.5f;
     private float targetZ;
-    private GameManager gameManager;
+    private ColourSorting_GameManager gameManager;
     private Rigidbody objectRB;
     private bool isDragging = false;
     //private bool isBouncing = false;
@@ -55,7 +55,7 @@ public class DragDropToForeground : MonoBehaviour
     void Start()
     {
         //get game manager script
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gameManager = GameObject.Find("GameManager").GetComponent<ColourSorting_GameManager>();
 
         //get the colour tag of the object from the tag
         colour = gameObject.tag;

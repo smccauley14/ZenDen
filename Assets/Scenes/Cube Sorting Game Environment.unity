@@ -509,6 +509,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3e98c1fc8896d647bd2603c2199a603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectRb: {fileID: 0}
+  colour: 
+  gameManager: {fileID: 0}
 --- !u!65 &720947918
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1231,6 +1234,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3e98c1fc8896d647bd2603c2199a603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectRb: {fileID: 0}
+  colour: 
+  gameManager: {fileID: 0}
 --- !u!1 &1134010575
 GameObject:
   m_ObjectHideFlags: 0
@@ -1766,6 +1772,7 @@ GameObject:
   - component: {fileID: 1599688049}
   - component: {fileID: 1599688048}
   - component: {fileID: 1599688050}
+  - component: {fileID: 1599688051}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1780,7 +1787,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1599688047}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e97b4952853aae24c820915c35f33d22, type: 3}
   m_Name: 
@@ -1918,6 +1925,40 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1599688051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599688047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40a5824e733445e4e861e76ac86a41a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDragging: 0
+  objectsClickedOn: 0
+  dinoPrefabs:
+  - {fileID: 4763208389700852717, guid: d841323570aa658448fc49766b3d6637, type: 3}
+  - {fileID: 4763208389700852717, guid: 7fff7947fdb092441b38bc77af15b841, type: 3}
+  - {fileID: 4763208389700852717, guid: 57ed6f30d254e3444aab147a80a44258, type: 3}
+  - {fileID: 2612093651737164969, guid: a6a16434d0e694517b36b1c844dfaeb8, type: 3}
+  - {fileID: 2612093651737164969, guid: 57d35293fca262243896f01727c57949, type: 3}
+  - {fileID: 2612093651737164969, guid: cdfb2aba954c7e848b86e2cc0ba2eaf6, type: 3}
+  - {fileID: 536435857011307193, guid: 652eb542663e94a4c99c55817cb82585, type: 3}
+  - {fileID: 536435857011307193, guid: 464642b38049f174390da531daa34b54, type: 3}
+  - {fileID: 536435857011307193, guid: 3cb81bdef210a374b9427cc8a16f4ca5, type: 3}
+  handObject: {fileID: 1148690212}
+  dinosInScene: 0
+  gameAudio: {fileID: 0}
+  correctSound: {fileID: 8300000, guid: 280dc4c71ed7818458e0659ad167debc, type: 3}
+  wrongSound: {fileID: 8300000, guid: 39f9cf31d5a423e4ea7330686a8bc03e, type: 3}
+  pickedUpSound: {fileID: 8300000, guid: ba37d10fce0573b4ba2310a8bd3564d4, type: 3}
+  dinoButton: {fileID: 1134010579}
+  tractorButton: {fileID: 1155029948}
+  tractorSelected: {fileID: 1822069364}
+  dinoSelected: {fileID: 997025774}
 --- !u!1 &1651215240
 GameObject:
   m_ObjectHideFlags: 0
@@ -2227,6 +2268,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3e98c1fc8896d647bd2603c2199a603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectRb: {fileID: 0}
+  colour: 
+  gameManager: {fileID: 0}
 --- !u!1001 &2019092523
 PrefabInstance:
   m_ObjectHideFlags: 0
