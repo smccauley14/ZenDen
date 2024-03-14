@@ -197,7 +197,9 @@ public class DragDropToForeground : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         gameManager.dinosInScene--;
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+        correctParticle.SetActive(false);
+        //Destroy(gameObject);
     }
 
     private IEnumerator TurnOnWrongParticle()

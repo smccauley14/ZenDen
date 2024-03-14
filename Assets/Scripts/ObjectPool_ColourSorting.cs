@@ -3,11 +3,10 @@ using UnityEngine;
 
 public class ObjectPool_ColourSorting : MonoBehaviour
 {
-
+    //variables
     public static ObjectPool_ColourSorting SharedInstance;
     public List<GameObject>[] pooledObjects = new List<GameObject>[9];
     public GameObject[] objectsToPool;
-
     private int amountToPool = 5;
 
     void Awake()
@@ -17,12 +16,14 @@ public class ObjectPool_ColourSorting : MonoBehaviour
 
     void Start()
     {
+        //instantiate all of the pool objects
         for (int i = 0; i < objectsToPool.Length; i++)
         {
             InstantiatePoolObject(objectsToPool[i]);
         }
     }
 
+    //instantiate 5 of chosen pool object
     private void InstantiatePoolObject(GameObject objectToPool)
     {
         int index = System.Array.IndexOf(objectsToPool, objectToPool);
