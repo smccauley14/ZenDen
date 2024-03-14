@@ -11,6 +11,8 @@ public class ColourSorting_GameManager : MonoBehaviour
     //variables
     [HideInInspector] public bool isDragging;
 
+    public ObjectPool_ColourSorting poolScript;
+
     //being added/substracted from to by DragDropToForeground script
     [HideInInspector] public int objectsClickedOn = 0;
 
@@ -37,6 +39,7 @@ public class ColourSorting_GameManager : MonoBehaviour
     public AudioClip wrongSound;
     public AudioClip pickedUpSound;
 
+    //UI
     [SerializeField] private Button dinoButton;
     [SerializeField] private Button tractorButton;
     [SerializeField] private GameObject tractorSelected;
@@ -52,6 +55,13 @@ public class ColourSorting_GameManager : MonoBehaviour
         dinoButton.onClick.AddListener(DinoSelected);
         tractorButton.onClick.AddListener(TractorSelected);
 
+
+        poolScript = GetComponent<ObjectPool_ColourSorting>();
+
+
+        //TEST OBJECT POOLING
+        ActivateWaveOfObjects();
+
     }
 
 
@@ -61,7 +71,7 @@ public class ColourSorting_GameManager : MonoBehaviour
 
 
 
-        InstantiateObjects();
+        //InstantiateObjects();
 
 
 
@@ -126,7 +136,7 @@ public class ColourSorting_GameManager : MonoBehaviour
         return number;
     }
 
-    //instantiates a sinlge dinosaur in random location within bounds
+    //instantiates a single dinosaur in random location within bounds
     private void InstantiateOneObject()
     {
         //get a random number
@@ -134,6 +144,47 @@ public class ColourSorting_GameManager : MonoBehaviour
 
         Instantiate(dinoPrefabs[randomNum], GenerateSpawnPos(), GenerateRandomRotation());
 
+    }
+
+    private void ActivateOnePoolObject()
+    {
+        GameObject draggableObject = ObjectPool_ColourSorting.SharedInstance.GetPooledObject(2);
+
+        draggableObject.transform.position = GenerateSpawnPos();
+        draggableObject.transform.rotation = GenerateRandomRotation();
+        draggableObject.SetActive(true);
+
+        /*
+        for (int i =0; i < 5; i++)
+        {
+            GameObject draggableObject = ObjectPool_ColourSorting.SharedInstance.GetPooledObject(2);
+
+            draggableObject.transform.position = GenerateSpawnPos();
+            draggableObject.transform.rotation = GenerateRandomRotation();
+            draggableObject.SetActive(true);
+        }
+        */
+
+        /*
+        GameObject draggableObject = ObjectPool_ColourSorting.SharedInstance.GetPooledObject();
+
+        draggableObject.transform.position = GenerateSpawnPos();
+        draggableObject.transform.rotation = GenerateRandomRotation();
+        draggableObject.SetActive(true);
+        */
+
+
+    }
+
+    private void ActivateWaveOfObjects()
+    {
+            //activating 5 objects
+            for (int i = 0; i < 5; i++)
+            {
+            ActivateOnePoolObject();
+                dinosInScene++;
+            }
+        
     }
 
     //instantiate 15 objects (i.e. a wave)

@@ -1770,9 +1770,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1599688049}
-  - component: {fileID: 1599688048}
   - component: {fileID: 1599688050}
   - component: {fileID: 1599688051}
+  - component: {fileID: 1599688052}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1780,40 +1780,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1599688048
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1599688047}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e97b4952853aae24c820915c35f33d22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isDragging: 0
-  objectsClickedOn: 0
-  dinoPrefabs:
-  - {fileID: 4763208389700852717, guid: d841323570aa658448fc49766b3d6637, type: 3}
-  - {fileID: 4763208389700852717, guid: 7fff7947fdb092441b38bc77af15b841, type: 3}
-  - {fileID: 4763208389700852717, guid: 57ed6f30d254e3444aab147a80a44258, type: 3}
-  - {fileID: 2612093651737164969, guid: a6a16434d0e694517b36b1c844dfaeb8, type: 3}
-  - {fileID: 2612093651737164969, guid: 57d35293fca262243896f01727c57949, type: 3}
-  - {fileID: 2612093651737164969, guid: cdfb2aba954c7e848b86e2cc0ba2eaf6, type: 3}
-  - {fileID: 536435857011307193, guid: 652eb542663e94a4c99c55817cb82585, type: 3}
-  - {fileID: 536435857011307193, guid: 464642b38049f174390da531daa34b54, type: 3}
-  - {fileID: 536435857011307193, guid: 3cb81bdef210a374b9427cc8a16f4ca5, type: 3}
-  handObject: {fileID: 1148690212}
-  dinosInScene: 0
-  gameAudio: {fileID: 0}
-  correctSound: {fileID: 8300000, guid: 280dc4c71ed7818458e0659ad167debc, type: 3}
-  wrongSound: {fileID: 8300000, guid: 39f9cf31d5a423e4ea7330686a8bc03e, type: 3}
-  pickedUpSound: {fileID: 8300000, guid: ba37d10fce0573b4ba2310a8bd3564d4, type: 3}
-  dinoButton: {fileID: 1134010579}
-  tractorButton: {fileID: 1155029948}
-  tractorSelected: {fileID: 1822069364}
-  dinoSelected: {fileID: 997025774}
 --- !u!4 &1599688049
 Transform:
   m_ObjectHideFlags: 0
@@ -1938,6 +1904,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDragging: 0
+  poolScript: {fileID: 0}
   objectsClickedOn: 0
   dinoPrefabs:
   - {fileID: 4763208389700852717, guid: d841323570aa658448fc49766b3d6637, type: 3}
@@ -1959,6 +1926,28 @@ MonoBehaviour:
   tractorButton: {fileID: 1155029948}
   tractorSelected: {fileID: 1822069364}
   dinoSelected: {fileID: 997025774}
+--- !u!114 &1599688052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599688047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8390e49876cb12e49b36fa247b88a1e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectsToPool:
+  - {fileID: 4763208389700852717, guid: d841323570aa658448fc49766b3d6637, type: 3}
+  - {fileID: 4763208389700852717, guid: 7fff7947fdb092441b38bc77af15b841, type: 3}
+  - {fileID: 4763208389700852717, guid: 57ed6f30d254e3444aab147a80a44258, type: 3}
+  - {fileID: 2612093651737164969, guid: a6a16434d0e694517b36b1c844dfaeb8, type: 3}
+  - {fileID: 2612093651737164969, guid: 57d35293fca262243896f01727c57949, type: 3}
+  - {fileID: 2612093651737164969, guid: cdfb2aba954c7e848b86e2cc0ba2eaf6, type: 3}
+  - {fileID: 536435857011307193, guid: 652eb542663e94a4c99c55817cb82585, type: 3}
+  - {fileID: 536435857011307193, guid: 464642b38049f174390da531daa34b54, type: 3}
+  - {fileID: 536435857011307193, guid: 3cb81bdef210a374b9427cc8a16f4ca5, type: 3}
 --- !u!1 &1651215240
 GameObject:
   m_ObjectHideFlags: 0
