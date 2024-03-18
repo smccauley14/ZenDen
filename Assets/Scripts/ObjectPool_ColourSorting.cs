@@ -7,7 +7,10 @@ public class ObjectPool_ColourSorting : MonoBehaviour
     public static ObjectPool_ColourSorting SharedInstance;
     public List<GameObject>[] pooledObjects = new List<GameObject>[9];
     public GameObject[] objectsToPool;
-    private int amountToPool = 5;
+    private int amountToPool = 4;
+
+    //test
+    //public List<Vector3>[] originalPositions = new List<Vector3>[9];
 
     void Awake()
     {
@@ -35,8 +38,6 @@ public class ObjectPool_ColourSorting : MonoBehaviour
             tmp = Instantiate(objectToPool);
             tmp.SetActive(false);
             pooledObjects[index].Add(tmp);
-
-
         }
         
     }
@@ -44,13 +45,14 @@ public class ObjectPool_ColourSorting : MonoBehaviour
     public GameObject GetPooledObject(int poolIndex)
     {
 
-
+        //if requesting an invalid pool number
         if (poolIndex < 0 || poolIndex >= pooledObjects.Length)
         {
             Debug.LogError("Invalid pool index");
             return null;
         }
 
+        //work through pooledObjects index until you find one that is currently inactive
         for (int i = 0; i < amountToPool; i++)
         {
             if (!pooledObjects[poolIndex][i].activeInHierarchy)
@@ -59,7 +61,6 @@ public class ObjectPool_ColourSorting : MonoBehaviour
             }
         }
 
-        
         // If no inactive objects found, instantiate a new one and add it to the pool
         GameObject newObj = Instantiate(objectsToPool[poolIndex]);
         newObj.SetActive(false);
@@ -68,5 +69,21 @@ public class ObjectPool_ColourSorting : MonoBehaviour
         
     }
 
+    //TEST
+    /*
+    public void AssignOriginalPosition(Vector3 AssignedPosition, int poolObject, int poolIndex)
+    {
+        originalPositions[poolObject][poolIndex] = AssignedPosition;
+    }
+
+    public void UpdateSpawnPosition(Vector3 newPosition, int poolObject, int poolIndex)
+    {
+        if (poolObject >= 0 && poolObject < originalPositions.Length &&
+            poolIndex >= 0 && poolIndex < originalPositions[poolObject].Count)
+        {
+            originalPositions[poolObject][poolIndex] = newPosition;
+        }
+    }
+    */
 
 }

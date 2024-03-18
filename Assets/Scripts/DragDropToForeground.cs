@@ -18,13 +18,15 @@ public class DragDropToForeground : MonoBehaviour
     private ColourSorting_GameManager gameManager;
     private Rigidbody objectRB;
     private bool isDragging = false;
-    //private bool isBouncing = false;
-    private Vector3 originalPosition;
-    private Quaternion originalRotation;
     private string colour;
 
+    //particle effects
     [SerializeField] GameObject correctParticle;
     [SerializeField] GameObject wrongParticle;
+
+    //private Vector3 originalPosition;
+    //private Quaternion originalRotation;
+
 
     private Vector3 worldPosition //returns the position of the clicked on object, relevant to the camera
     {
@@ -68,8 +70,8 @@ public class DragDropToForeground : MonoBehaviour
         targetZ = playerCamera.transform.position.z + cameraDifferential;
 
         //getting the orginal instantiated position/rotation
-        originalPosition = transform.position;
-        originalRotation = transform.rotation;
+        //originalPosition = transform.position;
+        //originalRotation = transform.rotation;
     }
 
     private void Awake()
@@ -154,13 +156,12 @@ public class DragDropToForeground : MonoBehaviour
 
     }
 
-
+    //methods to turn off/on the Rigid Body
     private void TurnOffRB()
     {
         GetComponent<Rigidbody>().useGravity = false;
         GetComponent<BoxCollider>().enabled = false;
     }
-
     private void TurnOnRB()
     {
         //droping object - turn RB back on
@@ -170,7 +171,7 @@ public class DragDropToForeground : MonoBehaviour
         GetComponent<BoxCollider>().enabled = true;
     }
 
-
+    //make the hand disappear after a delay
     private IEnumerator handDisappear()
     {
 
@@ -178,7 +179,20 @@ public class DragDropToForeground : MonoBehaviour
         gameManager.handObject.SetActive(false);
     }
 
+    //move object to a new random position within bounds
+    private IEnumerator ReturnToRandomPosition()
+    {
+        yield return new WaitForSeconds(1.75f);
+        //removing any RB physics effects from previous interactions
+        objectRB.velocity = new Vector3(0, 0, 0);
+        objectRB.angularVelocity = new Vector3(0, 0, 0);
+
+        transform.position = gameManager.GenerateSpawnPos();
+
+    }
+
     //return the object to where it was first instantiated
+    /*
     private IEnumerator ReturnToOriginalPosition()
     {
         yield return new WaitForSeconds(1.75f);
@@ -188,28 +202,27 @@ public class DragDropToForeground : MonoBehaviour
 
         transform.position = originalPosition;
         transform.rotation = originalRotation;
-        
-
-        //isBouncing = false;
     }
+    */
 
+    //set object inactive, after a delay
     private IEnumerator DestroyDelay ()
     {
         yield return new WaitForSeconds(1f);
-        gameManager.dinosInScene--;
+        gameManager.objectsInScene--;
         gameObject.SetActive(false);
         correctParticle.SetActive(false);
         //Destroy(gameObject);
     }
 
+    //turn on particle effect
     private IEnumerator TurnOnWrongParticle()
     {
         yield return new WaitForSeconds(1.15f);
         wrongParticle.SetActive(true);
-    
         
     }
-
+    //turn off particle effect
     private IEnumerator TurnOffWrongParticle()
     {
         yield return new WaitForSeconds(2.5f);
@@ -233,8 +246,6 @@ public class DragDropToForeground : MonoBehaviour
             //if the object is a different colour, bounce object vertically
             else if (!other.CompareTag(colour))
             {
-                //other.gameObject.transform.position = gameManager.originalPosition;
-                //isBouncing = true;
 
                 //wrongParticle.SetActive(true);
                 StartCoroutine(TurnOnWrongParticle());
@@ -245,11 +256,14 @@ public class DragDropToForeground : MonoBehaviour
 
                 objectRB.AddForce(new Vector3(0, 1.2f, 0.10f) * 18f, ForceMode.Impulse);
 
-                //return to original position after a moment.
+                //transporting to a random position - perhaps fix below method if possible
+                StartCoroutine(ReturnToRandomPosition());
 
-                StartCoroutine(ReturnToOriginalPosition());
+                //return to original position after a moment. NB - object pooling has made this more difficult
+                //StartCoroutine(ReturnToOriginalPosition());
+
             }
-            
+
         }
 
     }

@@ -16,7 +16,7 @@ public class ColourSorting_GameManager : MonoBehaviour
     //being added/substracted from to by DragDropToForeground script
     [HideInInspector] public int objectsClickedOn = 0;
 
-    [SerializeField] GameObject[] dinoPrefabs;
+    [SerializeField] GameObject[] objectPrefabs;
 
     public GameObject handObject;
 
@@ -24,7 +24,7 @@ public class ColourSorting_GameManager : MonoBehaviour
     //[SerializeField] Material[] dinoColours;
 
     //[HideInInspector]
-    public int dinosInScene;
+    public int objectsInScene;
     private float tableXlength = 19;
     private float tableYheight = -1.2f;
     private float tableZmin = 4;
@@ -53,14 +53,12 @@ public class ColourSorting_GameManager : MonoBehaviour
         //getting player audio
         gameAudio = GetComponent<AudioSource>();
 
+        //adding listeners to UI buttons
         dinoButton.onClick.AddListener(DinoSelected);
         tractorButton.onClick.AddListener(TractorSelected);
 
-
+        //getting pooling script
         poolScript = GetComponent<ObjectPool_ColourSorting>();
-
-
-
 
     }
 
@@ -69,16 +67,9 @@ public class ColourSorting_GameManager : MonoBehaviour
     void Update()
     {
 
-
-
-        //InstantiateObjects();
-
-
-        //TEST
-        if (dinosInScene < 1)
-        {
-            ActivateWaveOfObjects(prefabNumberMinimum, prefabNumberMaximum);
-        }
+        //activate a new wave when all objects are inactive
+        ActivateWaveOfObjects(prefabNumberMinimum, prefabNumberMaximum);
+        
 
 
     }
@@ -121,7 +112,6 @@ public class ColourSorting_GameManager : MonoBehaviour
         prefabNumberMaximum = 3;
         dinoSelected.SetActive(true);
         tractorSelected.SetActive(false);
-        //DestroyAllObjects();
         DeactivateAllObjects();
     }
 
@@ -131,7 +121,6 @@ public class ColourSorting_GameManager : MonoBehaviour
         prefabNumberMaximum = 10;
         dinoSelected.SetActive(false);
         tractorSelected.SetActive(true);
-        //DestroyAllObjects();
         DeactivateAllObjects();
     }
 
@@ -148,71 +137,57 @@ public class ColourSorting_GameManager : MonoBehaviour
         //get a random number
         int randomNum = GenerateRandomArray();
 
-        Instantiate(dinoPrefabs[randomNum], GenerateSpawnPos(), GenerateRandomRotation());
+        Instantiate(objectPrefabs[randomNum], GenerateSpawnPos(), GenerateRandomRotation());
     }
 
-
+    //activating a single pool object
     private void ActivateOnePoolObject(int objectNumber)
     {
 
         //get a random number
         //int randomNum = GenerateRandomArray();
 
+        //variables
+        Vector3 spawnPos = GenerateSpawnPos();
+        Quaternion spawnRotation = GenerateRandomRotation();
+
+        //assign one pool object to GameObject variable
         GameObject draggableObject = ObjectPool_ColourSorting.SharedInstance.GetPooledObject(objectNumber);
 
-        draggableObject.transform.position = GenerateSpawnPos();
-        draggableObject.transform.rotation = GenerateRandomRotation();
+        draggableObject.transform.position = spawnPos;
+        draggableObject.transform.rotation = spawnRotation;
+
         draggableObject.SetActive(true);
+
+        //TEST
+        //ObjectPool_ColourSorting.SharedInstance.AssignOriginalPosition(spawnPos, objectNumber, 1);
+        //draggableObject.SharedInstance.AssignOriginalPosition(spawnPos, objectNumber, 1);
 
     }
 
     private void ActivateWaveOfObjects(int min, int max)
     {
-            //activating 15 objects - 5 of each colour
+        //specifying the number of each separate prefab
+        int numberOfEachPrefab = 4;
+
+        //if all objects are deactivated, activate a new wave
+        if (objectsInScene < 1)
+        {
+            //activating 12 objects - 4 of each colour
             for (int i = min; i < max; i++)
             {
-                for(int j = 0; j < 5; j++)
+                for (int j = 0; j < numberOfEachPrefab; j++)
                 {
                     ActivateOnePoolObject(i);
-                    dinosInScene++;
+                    objectsInScene++;
+                }
             }
-
-                //ActivateOnePoolObject(i);
-                //dinosInScene++;
-                //Debug.Log("Success");
-
-            }
+        }
         
     }
 
-    //instantiate 15 objects (i.e. a wave)
-    private void InstantiateObjects()
-    {
-        if (dinosInScene < 1)
-        {
-            for (int i = 0; i < 15; i++)
-            {
-                InstantiateOneObject();
-                dinosInScene++;
-            }
-        }
-    }
 
-    //method to get rid of every draggable object in the scene
-    private void DestroyAllObjects()
-    {
-        DragDropToForeground[] allObjects = FindObjectsOfType<DragDropToForeground>();
-        foreach (DragDropToForeground singleObject in allObjects)
-        {
-            Destroy(singleObject.gameObject);
-        }
-
-        //reduce number objects to 0, to trigger another wave
-        dinosInScene = 0;
-
-    }
-
-    //TEST METHOD
+    //method to deactivate every draggable object in the scene
     private void DeactivateAllObjects()
     {
         DragDropToForeground[] allObjects = FindObjectsOfType<DragDropToForeground>();
@@ -222,7 +197,7 @@ public class ColourSorting_GameManager : MonoBehaviour
         }
 
         //reduce number objects to 0, to trigger another wave
-        dinosInScene = 0;
+        objectsInScene = 0;
 
     }
 
