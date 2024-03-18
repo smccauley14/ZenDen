@@ -20,6 +20,8 @@ public class DragDropToForeground : MonoBehaviour
     private bool isDragging = false;
     private string colour;
 
+    [HideInInspector] public MeshRenderer PrefabMeshRenderer;
+
     //particle effects
     [SerializeField] GameObject correctParticle;
     [SerializeField] GameObject wrongParticle;
@@ -68,6 +70,8 @@ public class DragDropToForeground : MonoBehaviour
         //setting the target point in the Z axis for objects to be dragged into
         playerCamera = Camera.main;
         targetZ = playerCamera.transform.position.z + cameraDifferential;
+
+        PrefabMeshRenderer = GetComponent<MeshRenderer>();
 
         //getting the orginal instantiated position/rotation
         //originalPosition = transform.position;

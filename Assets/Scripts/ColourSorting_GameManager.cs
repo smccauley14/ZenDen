@@ -46,10 +46,16 @@ public class ColourSorting_GameManager : MonoBehaviour
     [SerializeField] private GameObject tractorSelected;
     [SerializeField] private GameObject dinoSelected;
 
+    //TEST
+    [HideInInspector] public MeshRenderer Prefab1MeshRenderer;
+    public Material material1;
 
 
     void Start()
     {
+        //test
+        ChangePrefabMaterialColour();
+
         //getting player audio
         gameAudio = GetComponent<AudioSource>();
 
@@ -59,6 +65,12 @@ public class ColourSorting_GameManager : MonoBehaviour
 
         //getting pooling script
         poolScript = GetComponent<ObjectPool_ColourSorting>();
+
+        //TEST
+        Prefab1MeshRenderer = objectPrefabs[0].GetComponent<MeshRenderer>();
+
+        //PrefabMeshRenderer = GetComponent<MeshRenderer>();
+
 
     }
 
@@ -200,6 +212,20 @@ public class ColourSorting_GameManager : MonoBehaviour
         objectsInScene = 0;
 
     }
+
+    //TEST
+    void ChangePrefabMaterialColour()
+    {
+        /*
+        Material material = Prefab1MeshRenderer.material;
+        
+        material.color = Color.black;
+        */
+
+        material1.color = Color.white;
+
+    }
+
 
 
 }

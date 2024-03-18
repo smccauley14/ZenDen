@@ -348,9 +348,6 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
   playerCamera: {fileID: 0}
-  isDragging: 0
-  originalPosition: {x: 0, y: 0, z: 0}
-  originalRotation: {x: 0, y: 0, z: 0, w: 0}
   correctParticle: {fileID: 4359119753108867433}
   wrongParticle: {fileID: 4114317860864962581}
 --- !u!4 &8827247552345606140 stripped
