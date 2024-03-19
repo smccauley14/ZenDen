@@ -12,7 +12,7 @@ public class OnScreenController : MonoBehaviour
 {
 
     //variables
-    private float movementSpeed = 5f;
+    private float movementSpeed = 3f;
     private float rotationSpeed = 80f;
     [SerializeField] Button forwardButton;
     [SerializeField] Button backButton;
