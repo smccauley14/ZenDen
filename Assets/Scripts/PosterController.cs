@@ -1,92 +1,49 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.HID;
-using TouchPhase = UnityEngine.TouchPhase;
 
 public class PosterController : MonoBehaviour
 {
+    // Reference to the player's camera
     [SerializeField] private Camera playerCamera;
-    [SerializeField] private float maxDistance = 2f;
-    private Vector3 currentScreenPosition;
-    private bool isClickable;
-    
-    // InputAction for object click
-    [SerializeField] private InputAction clickAction;
-    [SerializeField] private InputAction screenPosition;
+    [SerializeField] private ParticleSystem particle;
+    private float distanceThreshold = 2.5f;
+    private bool clickable;
 
-    void OnEnable()
-    {
-        // Enable the click action
-        clickAction.Enable();
-    }
+    // Adjust this angle to set the field of view
+    public float fieldOfViewAngle = 60f;
 
-    void OnDisable()
+    // Check if the player is looking at this object
+    bool IsInSight()
     {
-        // Disable the click action
-        clickAction.Disable();
+        if (playerCamera == null)
+        {
+            Debug.LogError("Player camera reference not set.");
+            return false;
+        }
+
+        if (Vector3.Distance(transform.position, playerCamera.transform.position) <= distanceThreshold)
+        {
+            Vector3 directionToObject = (transform.position - playerCamera.transform.position).normalized;
+            Vector3 forwardDirection = playerCamera.transform.forward;
+            float dotProduct = Vector3.Dot(forwardDirection, directionToObject);
+
+            if (dotProduct > 0.85f)
+            {
+                particle.Play();
+                clickable = true;
+                return true;
+            }
+        }
+        particle.Stop();
+        clickable = false;
+        return false;
     }
 
     void Update()
     {
-        // Ensure the playerCamera is set
-        if (playerCamera == null)
+        if (IsInSight())
         {
-            Debug.LogError("Player camera is not assigned to the ClickableObject script.");
-            return;
-        }
-
-        // Cast a ray from the player's camera through the center of the screen
-        //var ray = playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0f));
-
-        //// Check if the ray hits this object
-        //if (Physics.Raycast(ray, out RaycastHit hit, maxDistance))
-        //{
-        //    if (hit.collider.gameObject == gameObject)
-        //    {
-        //        isClickable = true;
-        //    }
-        //    else
-        //    {
-        //        isClickable = false;
-        //    }
-        //}
-        //else
-        //{
-        //    isClickable = false;
-        //}
-    }
-
-    private void Awake()
-    {
-        // Enabling interaction events
-        screenPosition.Enable();
-        clickAction.Enable();
-
-        // To allow you to assess where on the screen has been clicked
-        screenPosition.performed += context => { currentScreenPosition = context.ReadValue<Vector2>(); };
-
-        // Declaring what should happen press interaction starts
-        clickAction.performed += context => PosterClicked();
-    }
-
-    void PosterClicked()
-    {
-        // Cast a ray from the player's camera through the center of the screen
-        var ray = playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0f));
-
-        // Check if the ray hits any object within maxDistance
-        if (Physics.Raycast(ray, out RaycastHit hit, maxDistance))
-        {
-            // Check if the hit point is within the bounds of the poster's collider
-            Collider posterCollider = GetComponent<Collider>();
-
-            if (posterCollider != null && posterCollider == hit.collider)
-            {
-                // Log a message to the debug log
-                Debug.Log("Object Clicked: " + gameObject.name);
-            }
+            //Debug.Log("Player is looking at this object!");
+            // Perform actions when the player is looking at this object
         }
     }
 }
