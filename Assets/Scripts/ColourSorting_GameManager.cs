@@ -16,6 +16,8 @@ public class ColourSorting_GameManager : MonoBehaviour
     //being added/substracted from to by DragDropToForeground script
     [HideInInspector] public int objectsClickedOn = 0;
 
+    [HideInInspector] public bool UIisActive;//true if UI menu is activated by colour selector script
+
     [SerializeField] GameObject[] objectPrefabs;
 
     public GameObject handObject;

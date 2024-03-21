@@ -87,7 +87,7 @@ public class DragDropToForeground : MonoBehaviour
         //declaring what should happen press interaction starts
         press.performed += _ =>
         {
-            if (isClickedOn)
+            if (isClickedOn && !gameManager.UIisActive)//only starts if UI menu is not active
             {
                 StartCoroutine(Drag());
             }
