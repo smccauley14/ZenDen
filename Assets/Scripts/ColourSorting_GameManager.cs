@@ -47,14 +47,16 @@ public class ColourSorting_GameManager : MonoBehaviour
     [SerializeField] private GameObject dinoSelected;
 
     //TEST
-    [HideInInspector] public MeshRenderer Prefab1MeshRenderer;
-    public Material material1;
+    //[HideInInspector] public MeshRenderer Prefab1MeshRenderer;
+    public Color[] allColours;
+    [SerializeField] Material[] prefabMaterials;
 
 
     void Start()
     {
         //test
-        ChangePrefabMaterialColour();
+        //ChangePrefabMaterialColour();
+        //ResetPrefabMaterialColour();
 
         //getting player audio
         gameAudio = GetComponent<AudioSource>();
@@ -67,7 +69,7 @@ public class ColourSorting_GameManager : MonoBehaviour
         poolScript = GetComponent<ObjectPool_ColourSorting>();
 
         //TEST
-        Prefab1MeshRenderer = objectPrefabs[0].GetComponent<MeshRenderer>();
+        //Prefab1MeshRenderer = objectPrefabs[0].GetComponent<MeshRenderer>();
 
         //PrefabMeshRenderer = GetComponent<MeshRenderer>();
 
@@ -216,16 +218,31 @@ public class ColourSorting_GameManager : MonoBehaviour
     //TEST
     void ChangePrefabMaterialColour()
     {
-        /*
-        Material material = Prefab1MeshRenderer.material;
         
-        material.color = Color.black;
-        */
+        //Material material = Prefab1MeshRenderer.material;
 
-        material1.color = Color.white;
+        //Color colour1 = Prefab1MeshRenderer.material.color;
+
+
+        //colour1 = Color.black;
+        
+
+        //material1.color = Color.white;
 
     }
 
+    void ResetPrefabMaterialColour()
+    {
+
+        //material1.color = Color.white;
+        
+        prefabMaterials[0].color = allColours[0];
+        prefabMaterials[1].color = allColours[1];
+        prefabMaterials[2].color = allColours[2];
+
+
+
+    }
 
 
 }
