@@ -20,7 +20,6 @@ public class DragDropToForeground : MonoBehaviour
     private bool isDragging = false;
     private string colour;
 
-
     //particle effects
     [SerializeField] GameObject correctParticle;
     [SerializeField] GameObject wrongParticle;
@@ -44,6 +43,7 @@ public class DragDropToForeground : MonoBehaviour
         {
             Ray ray = playerCamera.ScreenPointToRay(currentScreenPosition);
             RaycastHit hit;
+
             if (Physics.Raycast(ray, out hit) && gameManager.objectsClickedOn == 0)
             {
                 //gameManager.objectsClickedOn++;
@@ -53,11 +53,11 @@ public class DragDropToForeground : MonoBehaviour
         }
     }
 
-
     // Start is called before the first frame update
     void Start()
     {
         //get game manager script
+
         gameManager = GameObject.Find("GameManager").GetComponent<ColourSorting_GameManager>();
 
         //get the colour tag of the object from the tag
@@ -73,6 +73,7 @@ public class DragDropToForeground : MonoBehaviour
         //getting the orginal instantiated position/rotation
         //originalPosition = transform.position;
         //originalRotation = transform.rotation;
+
     }
 
     private void Awake()
@@ -87,10 +88,12 @@ public class DragDropToForeground : MonoBehaviour
         //declaring what should happen press interaction starts
         press.performed += _ =>
         {
+
             if (isClickedOn && !gameManager.UIisActive)//only starts if UI menu is not active
             {
                 StartCoroutine(Drag());
             }
+
         };
 
         //declaring what should happen press interaction ends
@@ -98,6 +101,7 @@ public class DragDropToForeground : MonoBehaviour
         {
             isDragging = false;
         };
+
     }
 
     // Update is called once per frame
@@ -110,7 +114,6 @@ public class DragDropToForeground : MonoBehaviour
 
     private IEnumerator Drag()
     {
-
         //telling the game manager to count how many objects have been clicked on
         //to avoid lifting more than one
         gameManager.objectsClickedOn++;
@@ -131,10 +134,12 @@ public class DragDropToForeground : MonoBehaviour
         //turning off Rb
         TurnOffRB();
 
+
         //pulling object into foreground
         transform.position = new Vector3(0, 0, targetZ);
 
         //drag object along X axis
+
         while (isDragging)
         {
             //dragging
