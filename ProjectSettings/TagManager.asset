@@ -4,12 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-
-  - green
-  - brown
   - gold
   - pink
-
+  - green
+  - brown
+  - Circle
   layers:
   - Default
   - TransparentFX
