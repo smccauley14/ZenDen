@@ -18,10 +18,11 @@ public class DragDropToDistance : MonoBehaviour
     private Rigidbody objectRB;
     private bool isDragging;
 
-    private float moveSpeed = 1f;
-    public string targetTag = "Circle";
+    private float moveSpeed = 2.5f;
+    public string targetTag;
 
     private bool isMoving = false; // Flag to track whether movement is in progress
+    private bool isAtMiddle = false;//to check whether object has reached middle;
     private Transform targetTransform; // Reference to the transform of the target object
 
 
@@ -112,14 +113,21 @@ public class DragDropToDistance : MonoBehaviour
             // Move towards the target with interpolation
             transform.position += direction * moveSpeed * Time.deltaTime;
 
-            //SHOULDN'T BE IF STATEMENT
-            // If the distance is very small, stop moving
+            
+            // Once the distance is very small, stop moving to middle
             if (distance < 0.1f)
             {
+                isAtMiddle = true;
                 isMoving = false;
-                MoveBackWard();
             }
         }
+
+        //once middle is reached, move backwards
+        if (isAtMiddle)
+        {
+            MoveBackWard();
+        }
+
     }
 
     private void MoveBackWard()
@@ -165,16 +173,16 @@ public class DragDropToDistance : MonoBehaviour
     //methods to turn off/on the Rigid Body
     private void TurnOffRB()
     {
-        GetComponent<Rigidbody>().useGravity = false;
-        GetComponent<CapsuleCollider>().enabled = false;
+        //GetComponent<Rigidbody>().useGravity = false;
+        GetComponent<BoxCollider>().enabled = false;
     }
     private void TurnOnRB()
     {
         //droping object - turn RB back on
-        GetComponent<Rigidbody>().useGravity = true;
+        //GetComponent<Rigidbody>().useGravity = true;
 
         //turning rigid body back on
-        GetComponent<CapsuleCollider>().enabled = true;
+        GetComponent<BoxCollider>().enabled = true;
     }
 
     private void OnTriggerEnter(Collider other)

@@ -9,6 +9,8 @@ TagManager:
   - green
   - brown
   - Circle
+  - Red
+  - Square
   layers:
   - Default
   - TransparentFX
