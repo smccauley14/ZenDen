@@ -24,9 +24,6 @@ public class DragDropToForeground : MonoBehaviour
     [SerializeField] GameObject correctParticle;
     [SerializeField] GameObject wrongParticle;
 
-    //private Vector3 originalPosition;
-    //private Quaternion originalRotation;
-
 
     private Vector3 worldPosition //returns the position of the clicked on object, relevant to the camera
     {
@@ -70,7 +67,7 @@ public class DragDropToForeground : MonoBehaviour
         playerCamera = Camera.main;
         targetZ = playerCamera.transform.position.z + cameraDifferential;
 
-        //getting the orginal instantiated position/rotation
+        //getting the orginal instantiated position/rotation - KEEP IN CODE FOR NOW
         //originalPosition = transform.position;
         //originalRotation = transform.rotation;
 
@@ -134,12 +131,10 @@ public class DragDropToForeground : MonoBehaviour
         //turning off Rb
         TurnOffRB();
 
-
         //pulling object into foreground
         transform.position = new Vector3(0, 0, targetZ);
 
-        //drag object along X axis
-
+        //drag object
         while (isDragging)
         {
             //dragging
@@ -197,7 +192,7 @@ public class DragDropToForeground : MonoBehaviour
 
     }
 
-    //return the object to where it was first instantiated
+    //return the object to where it was first instantiated - KEEP FOR NOW
     /*
     private IEnumerator ReturnToOriginalPosition()
     {
@@ -265,6 +260,7 @@ public class DragDropToForeground : MonoBehaviour
                 //transporting to a random position - perhaps fix below method if possible
                 StartCoroutine(ReturnToRandomPosition());
 
+                //KEEP FOR NOW
                 //return to original position after a moment. NB - object pooling has made this more difficult
                 //StartCoroutine(ReturnToOriginalPosition());
 

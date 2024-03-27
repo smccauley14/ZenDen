@@ -16,10 +16,10 @@ public class ColourSorting_ColourSelector : MonoBehaviour
     private int currentRight = 3;//green at start
 
     //holding all available colours for user to choose between
-    [SerializeField] Color[] allColours;
+    [SerializeField] private Color[] allColours;
 
     //holds the 3 materials used to give colour to the prefabs
-    [SerializeField] Material[] prefabMaterials;
+    [SerializeField] private Material[] prefabMaterials;
 
     //UI
     [SerializeField] private Button[] colourMenuButtons;
@@ -29,13 +29,13 @@ public class ColourSorting_ColourSelector : MonoBehaviour
     [SerializeField] private GameObject menuIcons;
     [SerializeField] private GameObject background;
 
-    ColourSorting_GameManager gameManager;
+    private ColourSorting_GameManager gameManager;
 
 
     // Start is called before the first frame update
     void Start()
     {
-
+        //getting gameManager script
         gameManager = GameObject.Find("GameManager").GetComponent<ColourSorting_GameManager>();
 
         //adding all required listeners to UI buttons
@@ -74,19 +74,15 @@ public class ColourSorting_ColourSelector : MonoBehaviour
     //sets the selected prefab to the selected colour (provided the colour isn't already attached to another prefab)
     void SetPrefabMaterialColour(int prefabNumber, int colourNumber)
     {
-
-        //TEST
         if (prefabNumber == 0 && colourNumber != currentLeft && colourNumber != currentMiddle && colourNumber != currentRight)
         {
             prefabMaterials[prefabSelector].color = allColours[colourNumber];
-            //currentLeft = colourNumber;
             ActivateCorrectIcon(prefabNumber, colourNumber);
             currentLeft = colourNumber;
         }
         else if (prefabNumber == 1 && colourNumber != currentLeft && colourNumber != currentMiddle && colourNumber != currentRight)
         {
             prefabMaterials[prefabSelector].color = allColours[colourNumber];
-            //currentMiddle = colourNumber;
             ActivateCorrectIcon(prefabNumber, colourNumber);
             currentMiddle = colourNumber;
 
@@ -94,12 +90,9 @@ public class ColourSorting_ColourSelector : MonoBehaviour
         else if (prefabNumber == 2 && colourNumber != currentLeft && colourNumber != currentMiddle && colourNumber != currentRight)
         {
             prefabMaterials[prefabSelector].color = allColours[colourNumber];
-            //currentRight = colourNumber;
             ActivateCorrectIcon(prefabNumber, colourNumber);
             currentRight = colourNumber;
         }
-
-
     }
 
     //turns on the colour selector UI
@@ -118,32 +111,29 @@ public class ColourSorting_ColourSelector : MonoBehaviour
         gameManager.UIisActive = false;
     }
 
-    //activates the correct icon colour, corresponding to the current colour
+    //activates the correct UI icon colour, corresponding to the current colour
     void ActivateCorrectIcon(int iconNumber, int colourNumber)
     {
 
         if (iconNumber == 0)
         {
-            //SetAllIconsInactive(colourIconLeft);
             colourIconLeft[currentLeft].gameObject.SetActive(false);
             colourIconLeft[colourNumber].gameObject.SetActive(true);
         }
         else if (iconNumber == 1)
         {
-            //SetAllIconsInactive(colourIconMiddle);
             colourIconMiddle[currentMiddle].gameObject.SetActive(false);
             colourIconMiddle[colourNumber].gameObject.SetActive(true);
         }
         else if (iconNumber == 2)
         {
-            //SetAllIconsInactive(colourIconRight);
             colourIconRight[currentRight].gameObject.SetActive(false);
             colourIconRight[colourNumber].gameObject.SetActive(true);
         }
         
     }
 
-    //turns off the whole array of buttons (NO LONGER REQUIRED)
+    //turns off the whole array of buttons (NOT CURRENTLY REQUIRED)
     void SetAllIconsInactive(Button[] iconNumber)
     {
 
@@ -152,14 +142,6 @@ public class ColourSorting_ColourSelector : MonoBehaviour
             iconNumber[i].gameObject.SetActive(false);
         }
 
-    }
-
-    //TEST - setting current colours inactive in colour selector menu
-    void SetCurrentColoursInactive()
-    {
-        colourMenuButtons[currentLeft].gameObject.SetActive(false);
-        colourMenuButtons[currentMiddle].gameObject.SetActive(false);
-        colourMenuButtons[currentRight].gameObject.SetActive(false);
     }
 
     //adding all required listeners to all UI buttons
@@ -178,6 +160,7 @@ public class ColourSorting_ColourSelector : MonoBehaviour
         }
     }
 
+    //reset the prefab colours back to the initial colour scheme
     void ResetPrefabMaterialColour()
     {
         prefabMaterials[0].color = allColours[0];//yellow
