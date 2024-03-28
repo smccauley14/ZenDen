@@ -11,6 +11,7 @@ TagManager:
   - Circle
   - Red
   - Square
+  - Prism
   layers:
   - Default
   - TransparentFX
