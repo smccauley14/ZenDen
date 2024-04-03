@@ -1,10 +1,16 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.Video;
 
 public class PosterController : MonoBehaviour
 {
     // Reference to the player's camera
     [SerializeField] private Camera playerCamera;
     [SerializeField] private ParticleSystem particle;
+    [SerializeField] private VideoPlayer video;
+    [SerializeField] private String scene;
     private float distanceThreshold = 2.5f;
     private bool clickable;
 
@@ -12,7 +18,7 @@ public class PosterController : MonoBehaviour
     public float fieldOfViewAngle = 60f;
 
     // Check if the player is looking at this object
-    bool IsInSight()
+    private bool IsInSight()
     {
         if (playerCamera == null)
         {
@@ -40,10 +46,36 @@ public class PosterController : MonoBehaviour
 
     void Update()
     {
-        if (IsInSight())
+        IsInSight();
+    }
+
+    public void PosterClick()
+    {
+        Debug.Log("Poster Clicked");
+        if (clickable)
         {
-            //Debug.Log("Player is looking at this object!");
-            // Perform actions when the player is looking at this object
+            if (video != null)
+            {
+                video.gameObject.SetActive(true);
+                video.Play();
+                video.loopPointReached += OnVideoEnd;
+            }
+
+            if(scene != null)
+            {
+                SceneManager.LoadSceneAsync(scene);
+            }
+                
         }
+    }
+
+    public void test()
+    {
+        Debug.Log("Poster Clicked");
+    }
+
+    private void OnVideoEnd(VideoPlayer vp)
+    {
+        vp.gameObject.SetActive(false);
     }
 }
