@@ -69,11 +69,6 @@ public class PosterController : MonoBehaviour
         }
     }
 
-    public void test()
-    {
-        Debug.Log("Poster Clicked");
-    }
-
     private void OnVideoEnd(VideoPlayer vp)
     {
         vp.gameObject.SetActive(false);
