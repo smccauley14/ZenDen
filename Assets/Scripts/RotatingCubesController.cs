@@ -24,7 +24,7 @@ public class RotatingCubesController : MonoBehaviour
 
     void Start()
     {
-        _sensitivity = 0.2f;
+        _sensitivity = 0.4f;
         _rotation = Vector3.zero;
     }
 
