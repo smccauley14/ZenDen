@@ -16,12 +16,15 @@ public class OnScreenController : MonoBehaviour
     private float rotationSpeed = 80f;
     [SerializeField] Button forwardButton;
     [SerializeField] Button backButton;
+    [SerializeField] GameObject cameraObject;
+    private Transform cameraTransform;
 
 
     // Start is called before the first frame update
     void Start()
     {
-
+        //get tranform of camera
+        cameraTransform = cameraObject.transform;
 
     }
 
@@ -89,6 +92,21 @@ public class OnScreenController : MonoBehaviour
         {
             transform.Rotate(Vector3.down, Time.deltaTime * rotationSpeed);
         }
+
+        //TEST
+
+        //vertical rotation up
+        if (Gamepad.all[0].rightStick.up.isPressed)
+        {
+            cameraTransform.Rotate(Vector3.left, Time.deltaTime * rotationSpeed);
+        }
+
+        //vertical rotation down
+        if (Gamepad.all[0].rightStick.down.isPressed)
+        {
+            cameraTransform.transform.Rotate(Vector3.right, Time.deltaTime * rotationSpeed);
+        }
+
     }
 
 }
