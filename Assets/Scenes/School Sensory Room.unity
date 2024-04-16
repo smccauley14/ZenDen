@@ -1873,7 +1873,7 @@ GameObject:
   - component: {fileID: 1144073936}
   - component: {fileID: 1144073935}
   - component: {fileID: 1144073934}
-  - component: {fileID: 1144073933}
+  - component: {fileID: 1144073938}
   m_Layer: 0
   m_Name: Player Object
   m_TagString: Untagged
@@ -1881,20 +1881,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1144073933
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1144073932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5a4576ae37eff34aad487363b04ef8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  forwardButton: {fileID: 686805705}
-  backButton: {fileID: 85552645}
 --- !u!136 &1144073934
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1925,7 +1911,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1144073932}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1984,6 +1970,21 @@ Transform:
   - {fileID: 1038908373}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1144073938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1144073932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5a4576ae37eff34aad487363b04ef8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forwardButton: {fileID: 686805705}
+  backButton: {fileID: 85552645}
+  cameraObject: {fileID: 1038908372}
 --- !u!1 &1247819712
 GameObject:
   m_ObjectHideFlags: 0
