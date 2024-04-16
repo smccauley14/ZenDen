@@ -12,6 +12,8 @@ TagManager:
   - Red
   - Square
   - Prism
+  - Yellow
+  - Star
   layers:
   - Default
   - TransparentFX

@@ -14,7 +14,7 @@ public class DragDropToDistance : MonoBehaviour
     [SerializeField] Camera playerCamera;
     private Vector3 currentScreenPosition;
     private float targetZ;
-    private float cameraDifferential = 20f;
+    private float cameraDifferential = 5.75f;
     private Rigidbody objectRB;
     private bool isDragging;
 
