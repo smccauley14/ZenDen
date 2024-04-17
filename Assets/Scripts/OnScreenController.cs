@@ -16,12 +16,17 @@ public class OnScreenController : MonoBehaviour
     private float rotationSpeed = 80f;
     [SerializeField] Button forwardButton;
     [SerializeField] Button backButton;
+    [SerializeField] GameObject cameraObject;
+    private Transform cameraTransform;
+
+    private float cameraMaxAngle = 10f;
 
 
     // Start is called before the first frame update
     void Start()
     {
-
+        //get tranform of camera
+        cameraTransform = cameraObject.transform;
 
     }
 
@@ -89,6 +94,21 @@ public class OnScreenController : MonoBehaviour
         {
             transform.Rotate(Vector3.down, Time.deltaTime * rotationSpeed);
         }
+        
+        //vertical rotation up (max angle not working)
+        if (Gamepad.all[0].rightStick.up.isPressed && cameraTransform.rotation.x > -cameraMaxAngle)
+        {
+            cameraTransform.Rotate(Vector3.left, Time.deltaTime * rotationSpeed);
+        }
+
+        //vertical rotation down (max angle not working)
+        if (Gamepad.all[0].rightStick.down.isPressed && cameraTransform.rotation.x < cameraMaxAngle)
+        {
+            cameraTransform.transform.Rotate(Vector3.right, Time.deltaTime * rotationSpeed);
+        }
+        
+
+
     }
 
 }
