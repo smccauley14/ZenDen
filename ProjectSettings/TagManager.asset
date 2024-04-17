@@ -9,11 +9,12 @@ TagManager:
   - green
   - brown
   - Circle
-  - Red
   - Square
-  - Prism
   - Yellow
   - Star
+  - Arch
+  - Rectangle
+  - Pentagon
   layers:
   - Default
   - TransparentFX

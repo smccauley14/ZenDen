@@ -14,11 +14,11 @@ public class DragDropToDistance : MonoBehaviour
     [SerializeField] Camera playerCamera;
     private Vector3 currentScreenPosition;
     private float targetZ;
-    private float cameraDifferential = 5.75f;
+    private float cameraDifferential = 5.5f;
     private Rigidbody objectRB;
     private bool isDragging;
 
-    private float moveSpeed = 2.5f;
+    private float moveSpeed = 1.5f;
     public string targetTag;
 
     private bool isMoving = false; // Flag to track whether movement is in progress
@@ -113,7 +113,6 @@ public class DragDropToDistance : MonoBehaviour
             // Move towards the target with interpolation
             transform.position += direction * moveSpeed * Time.deltaTime;
 
-            
             // Once the distance is very small, stop moving to middle
             if (distance < 0.1f)
             {
