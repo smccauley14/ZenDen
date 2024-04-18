@@ -12,11 +12,14 @@ public class DragDropToDistance : MonoBehaviour
     [SerializeField] InputAction press;
     [SerializeField] InputAction screenPosition;
     [SerializeField] Camera playerCamera;
+    [SerializeField] GameObject objectHighlight;
+
     private Vector3 currentScreenPosition;
     private float targetZ;
     private float cameraDifferential = 5.5f;
     private Rigidbody objectRB;
     private bool isDragging;
+
 
     private float moveSpeed = 1.5f;
     public string targetTag;
@@ -94,6 +97,7 @@ public class DragDropToDistance : MonoBehaviour
         press.canceled += _ =>
         {
             isDragging = false;
+            objectHighlight.SetActive(false);
         };
 
     }
@@ -139,6 +143,9 @@ public class DragDropToDistance : MonoBehaviour
 
         //making 'isDragging' script true when object interaction is taking place
         isDragging = true;
+
+        //making highlighter active in scene
+        objectHighlight.SetActive(true);
 
         //removing any RB physics effects from previous interactions
         objectRB.velocity = new Vector3(0, 0, 0);
