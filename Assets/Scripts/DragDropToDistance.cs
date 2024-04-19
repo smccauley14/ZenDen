@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class DragDropToDistance : MonoBehaviour
@@ -12,7 +13,11 @@ public class DragDropToDistance : MonoBehaviour
     [SerializeField] InputAction press;
     [SerializeField] InputAction screenPosition;
     [SerializeField] Camera playerCamera;
-    [SerializeField] GameObject objectHighlight;
+    [SerializeField] GameObject yellowHighlight;
+    [SerializeField] GameObject redHighlight;
+    private Vector3 centrePosition = new Vector3(-0.614f, 11.33f, 7.18f);
+    private Vector3 moveDirection;
+    private bool noTriggers;
 
     private Vector3 currentScreenPosition;
     private float targetZ;
@@ -97,14 +102,26 @@ public class DragDropToDistance : MonoBehaviour
         press.canceled += _ =>
         {
             isDragging = false;
-            objectHighlight.SetActive(false);
+            yellowHighlight.SetActive(false);
         };
 
+    }
+
+
+    //setting noTriggers as true as standard
+    void FixedUpdate()
+    {
+        noTriggers = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //turning off red highlight
+        if (noTriggers)
+        {
+            TurnOffRedHighlight();
+        }
 
         if (isMoving && targetTransform != null)
         {
@@ -145,7 +162,7 @@ public class DragDropToDistance : MonoBehaviour
         isDragging = true;
 
         //making highlighter active in scene
-        objectHighlight.SetActive(true);
+        yellowHighlight.SetActive(true);
 
         //removing any RB physics effects from previous interactions
         objectRB.velocity = new Vector3(0, 0, 0);
@@ -191,8 +208,17 @@ public class DragDropToDistance : MonoBehaviour
         GetComponent<BoxCollider>().enabled = true;
     }
 
+    //method to make block move toward centre of the surface
+    void CalculateMoveDirection()
+    {
+        // Calculate the movement direction towards the centre
+        moveDirection = (centrePosition - transform.position).normalized;
+
+    }
+
     private void OnTriggerEnter(Collider other)
     {
+        //if object tag matches the target
         if (other.CompareTag(targetTag))
         {
             // Set the target transform and start moving towards it
@@ -200,33 +226,33 @@ public class DragDropToDistance : MonoBehaviour
             TurnOffRB();
             isMoving = true;
         }
-    }
-
-    /*
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag("Circle"))
+        //or if object tag doesn't match target
+        else if (!other.CompareTag(targetTag))
         {
-
-            // Get the position of the other object
-            Vector3 targetPosition = other.transform.position;
-
-            transform.Translate(targetPosition * speed * Time.deltaTime);
-            // Move this object to the same position
-            //transform.position = targetPosition;
-
-            
-
-            TurnOffRB();
-            float targetPositionX = other.transform.position.x;
-            float targetPositionY = other.transform.position.y;
-            transform.Translate(other.transform.position * speed * Time.deltaTime);
-
-            //Destroy(gameObject);
-            
+            redHighlight.SetActive(true);
+            //CalculateMoveDirection();
+            //objectRB.AddForce(moveDirection * 1f, ForceMode.Impulse);
         }
 
-    
     }
-    */
+
+    //checking whether triggers are empty
+    //to turn off 'red highlight' object
+    void OnTriggerStay(Collider other)
+    {
+        noTriggers = false;
+    }
+
+
+
+    private void TurnOffRedHighlight()
+    {
+        redHighlight.SetActive(false);
+    }
+
+
+
+
+
+
 }

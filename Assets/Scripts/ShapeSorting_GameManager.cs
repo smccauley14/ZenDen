@@ -7,7 +7,7 @@ public class ShapeSorting_GameManager : MonoBehaviour
 
     private Vector3[] receiverLocations = new Vector3[6];
     [SerializeField] GameObject[] shapeHoles = new GameObject[6];
-
+    private int blocksInScene;
 
 
     // Start is called before the first frame update
@@ -51,7 +51,7 @@ public class ShapeSorting_GameManager : MonoBehaviour
 
     void ShuffleArray(Vector3[] array)
     {
-        // Fisher-Yates shuffle algorithm
+        //shuffle algorithm
         for (int i = array.Length - 1; i > 0; i--)
         {
             int j = Random.Range(0, i + 1);
