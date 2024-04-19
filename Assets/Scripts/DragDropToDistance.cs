@@ -10,15 +10,14 @@ public class DragDropToDistance : MonoBehaviour
     //followed this tutorial for basic touchscreen dragging: https://www.youtube.com/watch?v=zo1dkYfIJVg
 
     //variables
-    [SerializeField] InputAction press;
-    [SerializeField] InputAction screenPosition;
-    [SerializeField] Camera playerCamera;
-    [SerializeField] GameObject yellowHighlight;
-    [SerializeField] GameObject redHighlight;
-    [SerializeField] GameObject greenCorrectIcon;
+    [SerializeField] private InputAction press;
+    [SerializeField] private InputAction screenPosition;
+    [SerializeField] private Camera playerCamera;
+    [SerializeField] private GameObject yellowHighlight;
+    [SerializeField] private GameObject redHighlight;
+    [SerializeField] private GameObject greenCorrectIcon;
     private ShapeSorting_GameManager gameManagerScript;
     private Vector3 centrePosition = new Vector3(-0.614f, 11.33f, 7.18f);
-    private Vector3 moveDirection;
     private bool noTriggers;
 
     private Vector3 currentScreenPosition;
@@ -27,10 +26,8 @@ public class DragDropToDistance : MonoBehaviour
     private Rigidbody objectRB;
     private bool isDragging;
 
-
     private float moveSpeed = 0.9f;
-    [SerializeField] string targetTag;
-    private string rearTag = "Rear";
+    [SerializeField] private string targetTag;
 
     private bool isMoving = false; // Flag to track whether movement is in progress
     private bool isAtMiddle = false;//to check whether object has reached middle;
@@ -66,7 +63,6 @@ public class DragDropToDistance : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         //getting GameManager
         gameManagerScript = GameObject.Find("GameManager").GetComponent<ShapeSorting_GameManager>();
 
@@ -76,10 +72,6 @@ public class DragDropToDistance : MonoBehaviour
 
         //getting rigid body component
         objectRB = GetComponent<Rigidbody>();
-
-        //getting the orginal instantiated position/rotation
-        //originalPosition = transform.position;
-        //originalRotation = transform.rotation;
 
     }
 
@@ -114,6 +106,7 @@ public class DragDropToDistance : MonoBehaviour
 
 
     //setting noTriggers as true as standard
+    //necessary to make the red 'wrong' highlight function properly
     void FixedUpdate()
     {
         noTriggers = true;
@@ -155,6 +148,7 @@ public class DragDropToDistance : MonoBehaviour
 
     }
 
+    //move object backward and through hole
     private void MoveBackWard()
     {
         transform.position += Vector3.forward * moveSpeed * Time.deltaTime;
@@ -213,14 +207,6 @@ public class DragDropToDistance : MonoBehaviour
         GetComponent<BoxCollider>().enabled = true;
     }
 
-    //method to make block move toward centre of the surface
-    void CalculateMoveDirection()
-    {
-        // Calculate the movement direction towards the centre
-        moveDirection = (centrePosition - transform.position).normalized;
-
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         //if object tag matches the target
@@ -238,23 +224,8 @@ public class DragDropToDistance : MonoBehaviour
         else if (!other.CompareTag(targetTag))
         {
             redHighlight.SetActive(true);
-            //CalculateMoveDirection();
-            //objectRB.AddForce(moveDirection * 1f, ForceMode.Impulse);
-        }
-
-        //NOT WORKING
-        /*
-        //and when shapes hit the 'death floor'
-        else if(other.CompareTag(rearTag))
-        {
-            //setting object inactive
-            gameObject.SetActive(false);
-            
-            //reducing the number of shapes in the scene by one
-            gameManagerScript.shapesInScene--;
 
         }
-        */
 
     }
 
@@ -264,7 +235,6 @@ public class DragDropToDistance : MonoBehaviour
     {
         noTriggers = false;
     }
-
 
 
     private void TurnOffRedHighlight()
