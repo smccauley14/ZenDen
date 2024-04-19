@@ -15,6 +15,7 @@ public class DragDropToDistance : MonoBehaviour
     [SerializeField] Camera playerCamera;
     [SerializeField] GameObject yellowHighlight;
     [SerializeField] GameObject redHighlight;
+    [SerializeField] GameObject greenCorrectIcon;
     private Vector3 centrePosition = new Vector3(-0.614f, 11.33f, 7.18f);
     private Vector3 moveDirection;
     private bool noTriggers;
@@ -26,7 +27,7 @@ public class DragDropToDistance : MonoBehaviour
     private bool isDragging;
 
 
-    private float moveSpeed = 1.5f;
+    private float moveSpeed = 0.9f;
     public string targetTag;
 
     private bool isMoving = false; // Flag to track whether movement is in progress
@@ -135,7 +136,7 @@ public class DragDropToDistance : MonoBehaviour
             transform.position += direction * moveSpeed * Time.deltaTime;
 
             // Once the distance is very small, stop moving to middle
-            if (distance < 0.1f)
+            if (distance < 0.05f)
             {
                 isAtMiddle = true;
                 isMoving = false;
@@ -222,6 +223,8 @@ public class DragDropToDistance : MonoBehaviour
         if (other.CompareTag(targetTag))
         {
             // Set the target transform and start moving towards it
+            greenCorrectIcon.SetActive(true);
+            StartCoroutine(TurnOffGreenCorrectIcon());
             targetTransform = other.transform;
             TurnOffRB();
             isMoving = true;
@@ -250,8 +253,12 @@ public class DragDropToDistance : MonoBehaviour
         redHighlight.SetActive(false);
     }
 
-
-
+    
+    IEnumerator TurnOffGreenCorrectIcon()
+    {
+        yield return new WaitForSeconds(2f);
+        greenCorrectIcon.SetActive(false);
+    }
 
 
 
