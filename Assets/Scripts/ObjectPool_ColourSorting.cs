@@ -9,8 +9,6 @@ public class ObjectPool_ColourSorting : MonoBehaviour
     public GameObject[] objectsToPool;
     private int amountToPool = 4;
 
-    //test
-    //public List<Vector3>[] originalPositions = new List<Vector3>[9];
 
     void Awake()
     {
@@ -26,7 +24,7 @@ public class ObjectPool_ColourSorting : MonoBehaviour
         }
     }
 
-    //instantiate 5 of chosen pool object
+    //instantiate set number of chosen pool object
     private void InstantiatePoolObject(GameObject objectToPool)
     {
         int index = System.Array.IndexOf(objectsToPool, objectToPool);
@@ -41,7 +39,8 @@ public class ObjectPool_ColourSorting : MonoBehaviour
         }
         
     }
-
+    
+    //access one of the objects from pool
     public GameObject GetPooledObject(int poolIndex)
     {
 
@@ -69,7 +68,7 @@ public class ObjectPool_ColourSorting : MonoBehaviour
         
     }
 
-    //TEST
+    //TEST - KEEP FOR NOW, AS I MAY WISH TO RETURN TO IT...
     /*
     public void AssignOriginalPosition(Vector3 AssignedPosition, int poolObject, int poolIndex)
     {

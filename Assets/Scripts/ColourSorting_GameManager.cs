@@ -18,12 +18,9 @@ public class ColourSorting_GameManager : MonoBehaviour
 
     [HideInInspector] public bool UIisActive;//true if UI menu is activated by colour selector script
 
-    [SerializeField] GameObject[] objectPrefabs;
+    [SerializeField] private GameObject[] objectPrefabs;
 
     public GameObject handObject;
-
-    //[SerializeField] Material prefab1Colour;
-    //[SerializeField] Material[] dinoColours;
 
     //[HideInInspector]
     public int objectsInScene;
@@ -48,17 +45,13 @@ public class ColourSorting_GameManager : MonoBehaviour
     [SerializeField] private GameObject tractorSelected;
     [SerializeField] private GameObject dinoSelected;
 
-    //TEST
-    //[HideInInspector] public MeshRenderer Prefab1MeshRenderer;
+    //for managing colour changing functionality
     public Color[] allColours;
-    [SerializeField] Material[] prefabMaterials;
+    [SerializeField] private Material[] prefabMaterials;
 
 
     void Start()
     {
-        //test
-        //ChangePrefabMaterialColour();
-        //ResetPrefabMaterialColour();
 
         //getting player audio
         gameAudio = GetComponent<AudioSource>();
@@ -70,24 +63,14 @@ public class ColourSorting_GameManager : MonoBehaviour
         //getting pooling script
         poolScript = GetComponent<ObjectPool_ColourSorting>();
 
-        //TEST
-        //Prefab1MeshRenderer = objectPrefabs[0].GetComponent<MeshRenderer>();
-
-        //PrefabMeshRenderer = GetComponent<MeshRenderer>();
-
-
     }
 
 
     // Update is called once per frame
     void Update()
     {
-
         //activate a new wave when all objects are inactive
         ActivateWaveOfObjects(prefabNumberMinimum, prefabNumberMaximum);
-        
-
-
     }
 
 
@@ -121,7 +104,7 @@ public class ColourSorting_GameManager : MonoBehaviour
         }
     }
 
-
+    //if user presses dinosaur UI button
     private void DinoSelected()
     {
         prefabNumberMinimum = 0;
@@ -131,6 +114,7 @@ public class ColourSorting_GameManager : MonoBehaviour
         DeactivateAllObjects();
     }
 
+    //if user presses tractor UI button
     private void TractorSelected()
     {
         prefabNumberMinimum = 6;
@@ -147,21 +131,10 @@ public class ColourSorting_GameManager : MonoBehaviour
         return number;
     }
 
-    //instantiates a single dinosaur in random location within bounds
-    private void InstantiateOneObject()
-    {
-        //get a random number
-        int randomNum = GenerateRandomArray();
-
-        Instantiate(objectPrefabs[randomNum], GenerateSpawnPos(), GenerateRandomRotation());
-    }
 
     //activating a single pool object
     private void ActivateOnePoolObject(int objectNumber)
     {
-
-        //get a random number
-        //int randomNum = GenerateRandomArray();
 
         //variables
         Vector3 spawnPos = GenerateSpawnPos();
@@ -175,12 +148,9 @@ public class ColourSorting_GameManager : MonoBehaviour
 
         draggableObject.SetActive(true);
 
-        //TEST
-        //ObjectPool_ColourSorting.SharedInstance.AssignOriginalPosition(spawnPos, objectNumber, 1);
-        //draggableObject.SharedInstance.AssignOriginalPosition(spawnPos, objectNumber, 1);
-
     }
 
+    //nested for loop to activate a full wave of objects
     private void ActivateWaveOfObjects(int min, int max)
     {
         //specifying the number of each separate prefab
@@ -199,7 +169,6 @@ public class ColourSorting_GameManager : MonoBehaviour
                 }
             }
         }
-        
     }
 
 
@@ -216,35 +185,5 @@ public class ColourSorting_GameManager : MonoBehaviour
         objectsInScene = 0;
 
     }
-
-    //TEST
-    void ChangePrefabMaterialColour()
-    {
-        
-        //Material material = Prefab1MeshRenderer.material;
-
-        //Color colour1 = Prefab1MeshRenderer.material.color;
-
-
-        //colour1 = Color.black;
-        
-
-        //material1.color = Color.white;
-
-    }
-
-    void ResetPrefabMaterialColour()
-    {
-
-        //material1.color = Color.white;
-        
-        prefabMaterials[0].color = allColours[0];
-        prefabMaterials[1].color = allColours[1];
-        prefabMaterials[2].color = allColours[2];
-
-
-
-    }
-
 
 }
