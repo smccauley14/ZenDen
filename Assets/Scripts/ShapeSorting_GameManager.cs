@@ -9,20 +9,24 @@ public class ShapeSorting_GameManager : MonoBehaviour
     private Vector3[] shapeLocations = new Vector3[6];
     [SerializeField] private GameObject[] shapeHoles = new GameObject[6];
     [SerializeField] private GameObject[] shapeObjects = new GameObject[6];
+    private Rigidbody[] objectRBs = new Rigidbody[6];
 
     [HideInInspector] public int shapesInScene = 6;
     private int waveCount;
+
+    public bool shapeReturning = false;
+    public int shapeToReturn;
 
 
     // Start is called before the first frame update
     void Start()
     {
 
-
         GetStartingPositionsOfHoles();
 
         GetStartingPositionsOfShapes();
 
+        GetRigidBodies();
 
     }
 
@@ -37,20 +41,31 @@ public class ShapeSorting_GameManager : MonoBehaviour
             RandomizeHolePositions();
         }
 
-        // Check if the Escape key is pressed
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            // Randomly swap the positions of the objects
-            RandomizeShapePositions();
-        }
 
-        if(shapesInScene <1)
+        //new wave of objects
+        if (shapesInScene <1)
         {
             RespawnShapesInNewPositions();
             shapesInScene = 6;
         }
 
+
+        if (shapeReturning == true)
+        {
+            ReturnShapeToOrigPosition(shapeToReturn);
+        }
+
     }
+
+    void ReturnShapeToOrigPosition(int shapeNum)
+    {
+        shapeObjects[shapeNum].transform.position = shapeLocations[shapeNum];
+        shapeReturning = false;
+
+        RemoveRBEffects(shapeNum);
+
+    }
+
 
     void RespawnShapesInNewPositions()
     {
@@ -60,8 +75,19 @@ public class ShapeSorting_GameManager : MonoBehaviour
         for (int i = 0; i < 6; i++)
         {
             shapeObjects[i].SetActive(true);
+            RemoveRBEffects(i);
         }
     }
+
+    
+    private void RemoveRBEffects(int shapeNum)
+    {
+        //removing any RB physics effects from previous interactions
+
+        objectRBs[shapeNum].velocity = new Vector3(0, 0, 0);
+        objectRBs[shapeNum].angularVelocity = new Vector3(0, 0, 0);
+    }
+    
 
     void GetStartingPositionsOfHoles()
     {
@@ -79,8 +105,18 @@ public class ShapeSorting_GameManager : MonoBehaviour
         {
             shapeLocations[i] = shapeObjects[i].transform.position;
         }
-
     }
+
+    //get RBs of all shapes
+    void GetRigidBodies()
+    {
+        //getting RBs of each shape
+        for (int i = 0; i < 6; i++)
+        {
+            objectRBs[i] = shapeObjects[i].GetComponent<Rigidbody>();
+        }
+    }
+
 
     void RandomizeHolePositions()
     {
@@ -117,5 +153,7 @@ public class ShapeSorting_GameManager : MonoBehaviour
             array[j] = temp;
         }
     }
+
+
 
 }
