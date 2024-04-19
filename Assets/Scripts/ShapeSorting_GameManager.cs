@@ -10,8 +10,7 @@ public class ShapeSorting_GameManager : MonoBehaviour
     [SerializeField] private GameObject[] shapeHoles = new GameObject[6];
     [SerializeField] private GameObject[] shapeObjects = new GameObject[6];
 
-
-    private int blocksInScene;
+    [HideInInspector] public int shapesInScene = 6;
     private int waveCount;
 
 
@@ -20,9 +19,9 @@ public class ShapeSorting_GameManager : MonoBehaviour
     {
 
 
-        getStartingPositionsOfHoles();
+        GetStartingPositionsOfHoles();
 
-        getStartingPositionsOfBlocks();
+        GetStartingPositionsOfShapes();
 
 
     }
@@ -45,9 +44,26 @@ public class ShapeSorting_GameManager : MonoBehaviour
             RandomizeShapePositions();
         }
 
+        if(shapesInScene <1)
+        {
+            RespawnShapesInNewPositions();
+            shapesInScene = 6;
+        }
+
     }
 
-    void getStartingPositionsOfHoles()
+    void RespawnShapesInNewPositions()
+    {
+        RandomizeHolePositions();
+        RandomizeShapePositions();
+
+        for (int i = 0; i < 6; i++)
+        {
+            shapeObjects[i].SetActive(true);
+        }
+    }
+
+    void GetStartingPositionsOfHoles()
     {
         //getting initial positions of each hole
         for (int i = 0; i < 6; i++)
@@ -56,7 +72,7 @@ public class ShapeSorting_GameManager : MonoBehaviour
         }
     }
 
-    void getStartingPositionsOfBlocks()
+    void GetStartingPositionsOfShapes()
     {
         //getting initial positions of each hole
         for (int i = 0; i < 6; i++)

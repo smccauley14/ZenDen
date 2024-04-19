@@ -15,6 +15,8 @@ TagManager:
   - Arch
   - Rectangle
   - Pentagon
+  - Rear
+  - Prism
   layers:
   - Default
   - TransparentFX

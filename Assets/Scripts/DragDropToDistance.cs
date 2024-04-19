@@ -16,6 +16,7 @@ public class DragDropToDistance : MonoBehaviour
     [SerializeField] GameObject yellowHighlight;
     [SerializeField] GameObject redHighlight;
     [SerializeField] GameObject greenCorrectIcon;
+    private ShapeSorting_GameManager gameManagerScript;
     private Vector3 centrePosition = new Vector3(-0.614f, 11.33f, 7.18f);
     private Vector3 moveDirection;
     private bool noTriggers;
@@ -28,7 +29,8 @@ public class DragDropToDistance : MonoBehaviour
 
 
     private float moveSpeed = 0.9f;
-    public string targetTag;
+    [SerializeField] string targetTag;
+    private string rearTag = "Rear";
 
     private bool isMoving = false; // Flag to track whether movement is in progress
     private bool isAtMiddle = false;//to check whether object has reached middle;
@@ -65,6 +67,8 @@ public class DragDropToDistance : MonoBehaviour
     void Start()
     {
 
+        //getting GameManager
+        gameManagerScript = GameObject.Find("GameManager").GetComponent<ShapeSorting_GameManager>();
 
         //setting the target point in the Z axis for objects to be dragged into
         playerCamera = Camera.main;
@@ -224,6 +228,7 @@ public class DragDropToDistance : MonoBehaviour
         {
             // Set the target transform and start moving towards it
             greenCorrectIcon.SetActive(true);
+            StartCoroutine(SetShapeInactive());
             StartCoroutine(TurnOffGreenCorrectIcon());
             targetTransform = other.transform;
             TurnOffRB();
@@ -236,6 +241,20 @@ public class DragDropToDistance : MonoBehaviour
             //CalculateMoveDirection();
             //objectRB.AddForce(moveDirection * 1f, ForceMode.Impulse);
         }
+
+        //NOT WORKING
+        /*
+        //and when shapes hit the 'death floor'
+        else if(other.CompareTag(rearTag))
+        {
+            //setting object inactive
+            gameObject.SetActive(false);
+            
+            //reducing the number of shapes in the scene by one
+            gameManagerScript.shapesInScene--;
+
+        }
+        */
 
     }
 
@@ -258,6 +277,20 @@ public class DragDropToDistance : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         greenCorrectIcon.SetActive(false);
+    }
+
+    IEnumerator SetShapeInactive()
+    {
+        yield return new WaitForSeconds(3f);
+        gameManagerScript.shapesInScene--;
+        
+        //resetting object for next interactions
+        isAtMiddle = false;
+        TurnOnRB();
+
+        //setting shape inactive
+        gameObject.SetActive(false);
+
     }
 
 
