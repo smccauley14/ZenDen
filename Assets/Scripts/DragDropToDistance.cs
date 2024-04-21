@@ -19,21 +19,16 @@ public class DragDropToDistance : MonoBehaviour
     private ShapeSorting_GameManager gameManagerScript;
     private Vector3 centrePosition = new Vector3(-0.614f, 11.33f, 7.18f);
     private bool noTriggers;
-
     private Vector3 currentScreenPosition;
     private float targetZ;
     private float cameraDifferential = 5.5f;
     private Rigidbody objectRB;
     private bool isDragging;
-
     private float moveSpeed = 0.9f;
     [SerializeField] private string targetTag;
-
-    private bool isMoving = false; // Flag to track whether movement is in progress
-    private bool isAtMiddle = false;//to check whether object has reached middle;
+    private bool isShapeMoving = false; // Flag to track whether movement is in progress
+    private bool isShapeAtMiddleOfShapeSpace = false;//to check whether object has reached middle;
     private Transform targetTransform; // Reference to the transform of the target object
-
-
 
     private Vector3 worldPosition //returns the position of the clicked on object, relevant to the camera
     {
@@ -55,7 +50,6 @@ public class DragDropToDistance : MonoBehaviour
             {
                 return hit.transform == transform;
             }
-
             return false;
         }
     }
@@ -72,7 +66,6 @@ public class DragDropToDistance : MonoBehaviour
 
         //getting rigid body component
         objectRB = GetComponent<Rigidbody>();
-
     }
 
     private void Awake()
@@ -87,12 +80,10 @@ public class DragDropToDistance : MonoBehaviour
         //declaring what should happen press interaction starts
         press.performed += _ =>
         {
-
             if (isClickedOn)
             {
                 StartCoroutine(Drag());
             }
-
         };
 
         //declaring what should happen press interaction ends
@@ -101,9 +92,7 @@ public class DragDropToDistance : MonoBehaviour
             isDragging = false;
             yellowHighlight.SetActive(false);
         };
-
     }
-
 
     //setting noTriggers as true as standard
     //necessary to make the red 'wrong' highlight function properly
@@ -121,7 +110,7 @@ public class DragDropToDistance : MonoBehaviour
             TurnOffRedHighlight();
         }
 
-        if (isMoving && targetTransform != null)
+        if (isShapeMoving && targetTransform != null)
         {
             // Calculate the direction towards the target
             Vector3 direction = (targetTransform.position - transform.position).normalized;
@@ -135,28 +124,26 @@ public class DragDropToDistance : MonoBehaviour
             // Once the distance is very small, stop moving to middle
             if (distance < 0.05f)
             {
-                isAtMiddle = true;
-                isMoving = false;
+                isShapeAtMiddleOfShapeSpace = true;
+                isShapeMoving = false;
             }
         }
 
-        //once middle is reached, move backwards
-        if (isAtMiddle)
+        //once middle is reached, move through the hole
+        if (isShapeAtMiddleOfShapeSpace)
         {
-            MoveBackWard();
+            MoveObjectThroughHole();
         }
-
     }
 
     //move object backward and through hole
-    private void MoveBackWard()
+    private void MoveObjectThroughHole()
     {
         transform.position += Vector3.forward * moveSpeed * Time.deltaTime;
     }
 
     private IEnumerator Drag()
     {
-
         //making 'isDragging' script true when object interaction is taking place
         isDragging = true;
 
@@ -173,12 +160,10 @@ public class DragDropToDistance : MonoBehaviour
         //turning off Rb
         TurnOffRB();
 
-
         //pulling object into foreground
         transform.position = new Vector3(0, 0, targetZ);
 
         //drag object along X axis
-
         while (isDragging)
         {
             //dragging
@@ -189,20 +174,15 @@ public class DragDropToDistance : MonoBehaviour
 
         //turning RB back on
         TurnOnRB();
-
     }
 
     //methods to turn off/on the Rigid Body
     private void TurnOffRB()
     {
-        //GetComponent<Rigidbody>().useGravity = false;
         GetComponent<BoxCollider>().enabled = false;
     }
     private void TurnOnRB()
     {
-        //droping object - turn RB back on
-        //GetComponent<Rigidbody>().useGravity = true;
-
         //turning rigid body back on
         GetComponent<BoxCollider>().enabled = true;
     }
@@ -218,15 +198,13 @@ public class DragDropToDistance : MonoBehaviour
             StartCoroutine(TurnOffGreenCorrectIcon());
             targetTransform = other.transform;
             TurnOffRB();
-            isMoving = true;
+            isShapeMoving = true;
         }
         //or if object tag doesn't match target
         else if (!other.CompareTag(targetTag))
         {
             redHighlight.SetActive(true);
-
         }
-
     }
 
     //checking whether triggers are empty
@@ -236,13 +214,11 @@ public class DragDropToDistance : MonoBehaviour
         noTriggers = false;
     }
 
-
     private void TurnOffRedHighlight()
     {
         redHighlight.SetActive(false);
     }
 
-    
     IEnumerator TurnOffGreenCorrectIcon()
     {
         yield return new WaitForSeconds(2f);
@@ -255,14 +231,10 @@ public class DragDropToDistance : MonoBehaviour
         gameManagerScript.shapesInScene--;
         
         //resetting object for next interactions
-        isAtMiddle = false;
+        isShapeAtMiddleOfShapeSpace = false;
         TurnOnRB();
 
         //setting shape inactive
         gameObject.SetActive(false);
-
     }
-
-
-
 }
