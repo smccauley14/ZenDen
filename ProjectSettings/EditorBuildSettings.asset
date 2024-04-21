@@ -8,10 +8,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SensoryRoom.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 0
-    path: Assets/Scenes/OnScreenTouchControls.unity
-    guid: 6dc9c950bf477df45b834ee03f30a51f
+
   - enabled: 1
+<<<<<<< HEAD
     path: Assets/Scenes/Colour Sort Objects.unity
     guid: 4d90bd18a385c0948ae4489adfa9fce5
   - enabled: 0
@@ -20,4 +19,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Finger Tip Scene.unity
     guid: 0f7fc3f254ce5fe44ac15b3ce707f0f3
+=======
+    path: Assets/Scenes/Cube Sorting Game Environment.unity
+    guid: ad6ee6fd58e6a41e884db749aa558867
+
+>>>>>>> main
   m_configObjects: {}
