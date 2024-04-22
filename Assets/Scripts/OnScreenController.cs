@@ -21,11 +21,6 @@ public class OnScreenController : MonoBehaviour
 
     private float cameraMaxAngle = 10f;
 
-    private float xUpperBoundary = 6.5f;
-    private float zUpperBoundary = 3f;
-    private float xLowerBoundary = -5.2f;
-    private float zLowerBoundary = -14.5f;
-
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +34,6 @@ public class OnScreenController : MonoBehaviour
     void Update()
     {
         //calling controller methods
-        PlayerBoundaryControls();
         JoystickControls();
         DpadControls();
 
@@ -100,7 +94,7 @@ public class OnScreenController : MonoBehaviour
         {
             transform.Rotate(Vector3.down, Time.deltaTime * rotationSpeed);
         }
-
+        
         //vertical rotation up (max angle not working)
         if (Gamepad.all[0].rightStick.up.isPressed && cameraTransform.rotation.x > -cameraMaxAngle)
         {
@@ -112,58 +106,6 @@ public class OnScreenController : MonoBehaviour
         {
             cameraTransform.transform.Rotate(Vector3.right, Time.deltaTime * rotationSpeed);
         }
-
-    }
-
-    //keeping player within bounds
-    private void PlayerBoundaryControls()
-    {
-        //if statement to control left player boundary
-        if (transform.position.x < xLowerBoundary)
-        {
-            transform.position = new Vector3(xLowerBoundary, transform.position.y, transform.position.z);
-        }//if
-
-        //if statement to control right player boundary
-        if (transform.position.x > xUpperBoundary)
-        {
-            transform.position = new Vector3(xUpperBoundary, transform.position.y, transform.position.z);
-        }//if
-
-        //if statement to control player Z-axis upper boundary
-        if (transform.position.z > zUpperBoundary)
-        {
-            transform.position = new Vector3(transform.position.x, transform.position.y, zUpperBoundary);
-        }//if
-
-        //if statement to control player Z-axis lower boundary
-        if (transform.position.z < zLowerBoundary)
-        {
-            transform.position = new Vector3(transform.position.x, transform.position.y, zLowerBoundary);
-        }//if
-
-        /*
-        //left movement
-        if (Gamepad.all[0].leftStick.left.isPressed)
-        {
-            transform.Translate(Vector3.left * Time.deltaTime * movementSpeed);
-        }
-        //right movement
-        if (Gamepad.all[0].leftStick.right.isPressed)
-        {
-            transform.Translate(Vector3.right * Time.deltaTime * movementSpeed);
-        }
-        //forward movemment
-        if (Gamepad.all[0].leftStick.up.isPressed)
-        {
-            transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed);
-        }
-        //backward movement
-        if (Gamepad.all[0].leftStick.down.isPressed)
-        {
-            transform.Translate(Vector3.back * Time.deltaTime * movementSpeed);
-        }
-        */
         
 
 
