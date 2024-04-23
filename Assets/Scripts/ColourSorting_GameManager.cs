@@ -10,28 +10,22 @@ public class ColourSorting_GameManager : MonoBehaviour
 
     //variables
     [HideInInspector] public bool isDragging;
-
     [HideInInspector] public ObjectPool_ColourSorting poolScript;
 
     //being added/substracted from to by DragDropToForeground script
     [HideInInspector] public int objectsClickedOn = 0;
 
     [HideInInspector] public bool UIisActive;//true if UI menu is activated by colour selector script
-
     [SerializeField] private GameObject[] objectPrefabs;
-
     public GameObject handObject;
 
-    //[HideInInspector]
-    public int objectsInScene;
+    [HideInInspector] public int objectsInScene;
     private float tableXlength = 19;
     private float tableYheight = -1.2f;
     private float tableZmin = 4;
     private float tableZmax = 20;
-
     private int prefabNumberMinimum = 0;
     private int prefabNumberMaximum = 3;
-
     [HideInInspector] public AudioSource gameAudio;
 
     //public sound clips that are called in other scripts
@@ -65,15 +59,12 @@ public class ColourSorting_GameManager : MonoBehaviour
 
     }
 
-
     // Update is called once per frame
     void Update()
     {
         //activate a new wave when all objects are inactive
         ActivateWaveOfObjects(prefabNumberMinimum, prefabNumberMaximum);
     }
-
-
 
     //generates a random position within bounds to spawn dino prefab
     public Vector3 GenerateSpawnPos()

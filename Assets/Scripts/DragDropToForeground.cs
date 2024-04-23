@@ -19,6 +19,8 @@ public class DragDropToForeground : MonoBehaviour
     private Rigidbody objectRB;
     private bool isDragging = false;
     private string colour;
+    private string positionOfPickedUpObject;
+    private string colourOfPickedUpObject;
 
     //particle effects
     [SerializeField] GameObject correctParticle;
@@ -44,6 +46,7 @@ public class DragDropToForeground : MonoBehaviour
             if (Physics.Raycast(ray, out hit) && gameManager.objectsClickedOn == 0)
             {
                 //gameManager.objectsClickedOn++;
+                hit.transform.tag = positionOfPickedUpObject;
                 return hit.transform == transform;
             }
             return false;
@@ -54,7 +57,6 @@ public class DragDropToForeground : MonoBehaviour
     void Start()
     {
         //get game manager script
-
         gameManager = GameObject.Find("GameManager").GetComponent<ColourSorting_GameManager>();
 
         //get the colour tag of the object from the tag
@@ -237,7 +239,7 @@ public class DragDropToForeground : MonoBehaviour
         if (!isDragging)
         {
             //if the object dropped is the same colour as the bin, destroy object
-            if (other.CompareTag(colour))
+            if (other.CompareTag(gameObject.tag))
             {
                 StartCoroutine(DestroyDelay());
                 //play 'correct' sound effect
@@ -265,8 +267,36 @@ public class DragDropToForeground : MonoBehaviour
                 //StartCoroutine(ReturnToOriginalPosition());
 
             }
+        }
+    }
 
+
+    private int determineWhatColourIsPickedUp()
+    {
+        if (colourOfPickedUpObject == "yellow")
+        {
+            return 1;
         }
 
+        return 0;
     }
+
+    //to be used within Game Manager script;
+    public int determineWhatObjectIsPickedUp()
+    {
+        if (colourOfPickedUpObject == "left")
+        {
+            return 1;
+        }
+        else if (colourOfPickedUpObject == "middle")
+        {
+            return 2;
+        }
+        else if (colourOfPickedUpObject == "right")
+        {
+            return 3;
+        }
+        else return 0;
+    }
+
 }

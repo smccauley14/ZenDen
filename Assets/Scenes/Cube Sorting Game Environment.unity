@@ -3741,11 +3741,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: b166efefdd5d58643bd09b417103701f, type: 2}
     - target: {fileID: 919132149155446097, guid: 01d2d1e8515204ab583ce941a963213a, type: 3}
       propertyPath: m_Name
-      value: game basket gold
+      value: game basket left
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 01d2d1e8515204ab583ce941a963213a, type: 3}
       propertyPath: m_TagString
-      value: gold
+      value: left
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5251,11 +5251,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: a3d0471dd85ffeb42af08c08e1d57e8e, type: 2}
     - target: {fileID: 919132149155446097, guid: 01d2d1e8515204ab583ce941a963213a, type: 3}
       propertyPath: m_Name
-      value: game basket pink
+      value: game basket middle
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 01d2d1e8515204ab583ce941a963213a, type: 3}
       propertyPath: m_TagString
-      value: pink
+      value: middle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5330,6 +5330,7 @@ GameObject:
   - component: {fileID: 1599688051}
   - component: {fileID: 1599688052}
   - component: {fileID: 1599688053}
+  - component: {fileID: 1599688054}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -5579,6 +5580,49 @@ MonoBehaviour:
   - {fileID: 1305509353}
   menuIcons: {fileID: 1585595332}
   background: {fileID: 222236011}
+--- !u!114 &1599688054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599688047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 565bc35f965b6004c9a91e8eb1ccd6c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameAudio: {fileID: 0}
+  wellDoneWisper: {fileID: 8300000, guid: 7cd7b64a4c2e8b24aa63e9c17eb7fb4c, type: 3}
+  wellDoneMoreForceful: {fileID: 8300000, guid: 78963d527a6ae7b4d9124a72f00ca109, type: 3}
+  wellDoneEncouraging: {fileID: 8300000, guid: a56c50f43470ee743bfa1cfdc874df90, type: 3}
+  wellDoneBrief: {fileID: 8300000, guid: 3eed1c6a1e182cb4d853658410ec5efb, type: 3}
+  yellow: {fileID: 8300000, guid: 5293ee62620d388478c062c5b77d1b60, type: 3}
+  Red: {fileID: 8300000, guid: 21fe350cc1e233a42b2bd24696715e9f, type: 3}
+  pink: {fileID: 8300000, guid: 2215735fe23960245a9f43f1179012c3, type: 3}
+  green: {fileID: 8300000, guid: dbea39dee3cc7584a81b3f96333f23bc, type: 3}
+  thisToyIsYellow: {fileID: 8300000, guid: a67df3a97ccd24645ac617297f70f0be, type: 3}
+  thisToyIsRed: {fileID: 8300000, guid: dd878675a4f0dc245814b43bffebecd2, type: 3}
+  thisToyIsPink: {fileID: 8300000, guid: 5f95541121c98654c97be2f10fa40b39, type: 3}
+  thisToyIsGreen: {fileID: 8300000, guid: 46fbf7f02a3c5b848a11382039e729d9, type: 3}
+  thatTrayWasYellow: {fileID: 8300000, guid: bd390875f93be66419888bf473914514, type: 3}
+  thatTrayWasRed: {fileID: 8300000, guid: aa7bef102f5405d4588236c8786d8bc0, type: 3}
+  thatTrayWasGreen: {fileID: 8300000, guid: 23d993227b6ea714a897e5a0f1aa2ea8, type: 3}
+  thatTrayWasPink: {fileID: 8300000, guid: 11f6746aba1eba249bd4605d9c3626b7, type: 3}
+  thatToyWasYellow: {fileID: 8300000, guid: c036576cb65630b42be2b9a430d33d7b, type: 3}
+  thatToyWasRed: {fileID: 8300000, guid: aa7bef102f5405d4588236c8786d8bc0, type: 3}
+  thatToyWasPink: {fileID: 8300000, guid: 93efd83ccbf911942a4cd6a4becf1d5b, type: 3}
+  thatToyWasGreen: {fileID: 8300000, guid: d8b99f815243f164abddc9c741be98c1, type: 3}
+  sortToysInToTraysOfTheSameColour: {fileID: 8300000, guid: 4443a54c007cfe343b1e8d6975736ff0, type: 3}
+  matchToysToTheColourOfTheTray: {fileID: 8300000, guid: 6e73224bd5af6ee448573d5ca9d027c3, type: 3}
+  matchTheColours: {fileID: 8300000, guid: cebbcfe12848de0428244393b71022a8, type: 3}
+  toysGoBackIntheTrays: {fileID: 8300000, guid: e7f14ee0060595b4186c4f97e37c0b82, type: 3}
+  ohhTryAgain: {fileID: 8300000, guid: 8197cb3b3300dc443b0c207159654778, type: 3}
+  tryAgain: {fileID: 8300000, guid: 0f28e437f576b654daf10886a57115c5, type: 3}
+  putThisInTheYellowTray: {fileID: 8300000, guid: 5200c2dcfd9ae3c469d571ee81f141b2, type: 3}
+  putThisInTheRedTray: {fileID: 8300000, guid: f2a1798d48713f6418e3a5b6241f3bd7, type: 3}
+  putThisInThePinkTray: {fileID: 8300000, guid: a8b00163f7d77424285ba3115d86865a, type: 3}
+  putThisInTheGreenTray: {fileID: 8300000, guid: 55ebef2599f10344ba48e1b13fe5a69c, type: 3}
 --- !u!1 &1651215240
 GameObject:
   m_ObjectHideFlags: 0
@@ -6794,11 +6838,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 2990e0d3bcd368d4999bba719243fd19, type: 2}
     - target: {fileID: 919132149155446097, guid: 01d2d1e8515204ab583ce941a963213a, type: 3}
       propertyPath: m_Name
-      value: game basket green
+      value: game basket right
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 01d2d1e8515204ab583ce941a963213a, type: 3}
       propertyPath: m_TagString
-      value: green
+      value: right
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

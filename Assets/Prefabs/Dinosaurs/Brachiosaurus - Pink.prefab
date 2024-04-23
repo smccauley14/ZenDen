@@ -268,7 +268,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: be30e95a8fd5e43988c3356f485ce00f, type: 3}
       propertyPath: m_TagString
-      value: pink
+      value: middle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -451,9 +451,6 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
   playerCamera: {fileID: 0}
-  isDragging: 0
-  originalPosition: {x: 0, y: 0, z: 0}
-  originalRotation: {x: 0, y: 0, z: 0, w: 0}
   correctParticle: {fileID: 8053111396123968514}
   wrongParticle: {fileID: 3023389672507272327}
 --- !u!4 &5283145020469657943 stripped
