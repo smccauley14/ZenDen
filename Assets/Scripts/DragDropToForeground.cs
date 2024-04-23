@@ -22,7 +22,6 @@ public class DragDropToForeground : MonoBehaviour
     private bool isDragging = false;
     private string colour;
     private string TrayPositionOfPickedUpObject;
-    //private string colourOfPickedUpObject;
 
     //particle effects
     [SerializeField] GameObject correctParticle;
@@ -251,6 +250,9 @@ public class DragDropToForeground : MonoBehaviour
             //if the object dropped is the same colour as the bin, destroy object
             if (other.CompareTag(gameObject.tag))
             {
+                //audioManager sound effects:
+                audioManagerScript.WhenToyPutInCorrectTray();
+
                 StartCoroutine(DestroyDelay());
                 //play 'correct' sound effect
                 gameManagerScript.gameAudio.PlayOneShot(gameManagerScript.correctSound);
@@ -259,13 +261,15 @@ public class DragDropToForeground : MonoBehaviour
             //if the object is a different colour, bounce object vertically
             else if (!other.CompareTag(colour))
             {
-
                 //wrongParticle.SetActive(true);
                 StartCoroutine(TurnOnWrongParticle());
                 StartCoroutine(TurnOffWrongParticle());
 
-                //play 'wrong' sound effect
+                //play 'wrong' bleep sound effect
                 gameManagerScript.gameAudio.PlayOneShot(gameManagerScript.wrongSound);
+                
+                //bespoke sound effects from audioManager
+                audioManagerScript.AdviceForWrongTray_MaleVoice(GetColourNumber(), GetWrongTrayNumber(other.tag));
 
                 objectRB.AddForce(new Vector3(0, 1.2f, 0.10f) * 18f, ForceMode.Impulse);
 
@@ -303,7 +307,7 @@ public class DragDropToForeground : MonoBehaviour
         
     }
 
-    public int determineWhatObjectIsPickedUp()
+    private int determineWhatObjectIsPickedUp()
     {
         if (TrayPositionOfPickedUpObject == "left")
         {
@@ -318,6 +322,23 @@ public class DragDropToForeground : MonoBehaviour
             return 3;
         }
         else return 0;
+    }
+
+    private int GetWrongTrayNumber(string trayTag)
+    {
+        if (trayTag == "left")
+        {
+            return colourSelectorScript.currentLeft;
+        }
+        else if (trayTag == "middle")
+        {
+            return colourSelectorScript.currentMiddle;
+        }
+        else
+        {
+            return colourSelectorScript.currentRight;
+        }
+
     }
 
 }

@@ -27,6 +27,7 @@ public class ColourSorting_GameManager : MonoBehaviour
     private int prefabNumberMinimum = 0;
     private int prefabNumberMaximum = 3;
     [HideInInspector] public AudioSource gameAudio;
+    private ColourSorting_AudioManager audioManagerScript;
 
     //public sound clips that are called in other scripts
     public AudioClip correctSound;
@@ -46,9 +47,11 @@ public class ColourSorting_GameManager : MonoBehaviour
 
     void Start()
     {
-
         //getting player audio
         gameAudio = GetComponent<AudioSource>();
+
+        //get audioManager
+        audioManagerScript = GameObject.Find("GameManager").GetComponent<ColourSorting_AudioManager>();
 
         //adding listeners to UI buttons
         dinoButton.onClick.AddListener(DinoSelected);
@@ -56,7 +59,6 @@ public class ColourSorting_GameManager : MonoBehaviour
 
         //getting pooling script
         poolScript = GetComponent<ObjectPool_ColourSorting>();
-
     }
 
     // Update is called once per frame
@@ -144,12 +146,16 @@ public class ColourSorting_GameManager : MonoBehaviour
     //nested for loop to activate a full wave of objects
     private void ActivateWaveOfObjects(int min, int max)
     {
+
         //specifying the number of each separate prefab
         int numberOfEachPrefab = 4;
 
         //if all objects are deactivated, activate a new wave
         if (objectsInScene < 1)
         {
+            //resetting 'well-done' audio effect counter
+            audioManagerScript.wellDoneCounter = 0;
+
             //activating 12 objects - 4 of each colour
             for (int i = min; i < max; i++)
             {
