@@ -26,13 +26,11 @@ public class PosterController : MonoBehaviour
             return false;
         }
 
-        Debug.Log(Vector3.Distance(transform.position, playerCamera.transform.position));
         if (Vector3.Distance(transform.position, playerCamera.transform.position) <= distanceThreshold)
         {
             Vector3 directionToObject = (transform.position - playerCamera.transform.position).normalized;
             Vector3 forwardDirection = playerCamera.transform.forward;
             float dotProduct = Vector3.Dot(forwardDirection, directionToObject);
-            Debug.Log(dotProduct);
 
             if (dotProduct > 0.85f)
             {
