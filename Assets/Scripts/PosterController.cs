@@ -11,7 +11,7 @@ public class PosterController : MonoBehaviour
     [SerializeField] private ParticleSystem particle;
     [SerializeField] private VideoPlayer video;
     [SerializeField] private String scene;
-    private float distanceThreshold = 2.5f;
+    private float distanceThreshold = 5f;
     private bool clickable;
 
     // Adjust this angle to set the field of view
@@ -51,7 +51,6 @@ public class PosterController : MonoBehaviour
 
     public void PosterClick()
     {
-        Debug.Log("Poster Clicked");
         if (clickable)
         {
             if (video != null)
