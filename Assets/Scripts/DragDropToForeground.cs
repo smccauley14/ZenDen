@@ -15,16 +15,20 @@ public class DragDropToForeground : MonoBehaviour
     private Vector3 currentScreenPosition;
     private float cameraDifferential = 10.5f;
     private float targetZ;
-    private ColourSorting_GameManager gameManager;
+    private ColourSorting_GameManager gameManagerScript;
+    private ColourSorting_AudioManager audioManagerScript;
+    private ColourSorting_ColourSelector colourSelectorScript;
     private Rigidbody objectRB;
     private bool isDragging = false;
     private string colour;
-    private string positionOfPickedUpObject;
-    private string colourOfPickedUpObject;
+    private string TrayPositionOfPickedUpObject;
+    //private string colourOfPickedUpObject;
 
     //particle effects
     [SerializeField] GameObject correctParticle;
     [SerializeField] GameObject wrongParticle;
+
+
 
 
     private Vector3 worldPosition //returns the position of the clicked on object, relevant to the camera
@@ -43,10 +47,11 @@ public class DragDropToForeground : MonoBehaviour
             Ray ray = playerCamera.ScreenPointToRay(currentScreenPosition);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit) && gameManager.objectsClickedOn == 0)
+            if (Physics.Raycast(ray, out hit) && gameManagerScript.objectsClickedOn == 0)
             {
-                //gameManager.objectsClickedOn++;
-                hit.transform.tag = positionOfPickedUpObject;
+                //getting the relevant tray position, determine colour
+                TrayPositionOfPickedUpObject = hit.transform.tag;
+
                 return hit.transform == transform;
             }
             return false;
@@ -57,7 +62,9 @@ public class DragDropToForeground : MonoBehaviour
     void Start()
     {
         //get game manager script
-        gameManager = GameObject.Find("GameManager").GetComponent<ColourSorting_GameManager>();
+        gameManagerScript = GameObject.Find("GameManager").GetComponent<ColourSorting_GameManager>();
+        audioManagerScript = GameObject.Find("GameManager").GetComponent<ColourSorting_AudioManager>();
+        colourSelectorScript = GameObject.Find("GameManager").GetComponent<ColourSorting_ColourSelector>();
 
         //get the colour tag of the object from the tag
         colour = gameObject.tag;
@@ -88,7 +95,7 @@ public class DragDropToForeground : MonoBehaviour
         press.performed += _ =>
         {
 
-            if (isClickedOn && !gameManager.UIisActive)//only starts if UI menu is not active
+            if (isClickedOn && !gameManagerScript.UIisActive)//only starts if UI menu is not active
             {
                 StartCoroutine(Drag());
             }
@@ -115,13 +122,16 @@ public class DragDropToForeground : MonoBehaviour
     {
         //telling the game manager to count how many objects have been clicked on
         //to avoid lifting more than one
-        gameManager.objectsClickedOn++;
+        gameManagerScript.objectsClickedOn++;
 
         //making 'isDragging' script true when object interaction is taking place
         isDragging = true;
 
         //play 'picked up popping' sound effect
-        gameManager.gameAudio.PlayOneShot(gameManager.pickedUpSound);
+        gameManagerScript.gameAudio.PlayOneShot(gameManagerScript.pickedUpSound);
+
+        //play appropriate colour naming sound;
+        audioManagerScript.NamePickedUpColour_MaleVoice(GetColourNumber());
 
         //removing any RB physics effects from previous interactions
         objectRB.velocity = new Vector3(0, 0, 0);
@@ -142,14 +152,14 @@ public class DragDropToForeground : MonoBehaviour
             //dragging
             transform.position = worldPosition + offset;
 
-            gameManager.handObject.SetActive(true);
-            gameManager.handObject.transform.position = worldPosition + new Vector3(3f, 2.5f, 1f);
+            gameManagerScript.handObject.SetActive(true);
+            gameManagerScript.handObject.transform.position = worldPosition + new Vector3(3f, 2.5f, 1f);
 
             yield return null;
         }
 
         //reducing variable in GameManager by 1
-        gameManager.objectsClickedOn--;
+        gameManagerScript.objectsClickedOn--;
 
         //turning RB back on
         TurnOnRB();
@@ -179,7 +189,7 @@ public class DragDropToForeground : MonoBehaviour
     {
 
         yield return new WaitForSeconds(1f);
-        gameManager.handObject.SetActive(false);
+        gameManagerScript.handObject.SetActive(false);
     }
 
     //move object to a new random position within bounds
@@ -190,7 +200,7 @@ public class DragDropToForeground : MonoBehaviour
         objectRB.velocity = new Vector3(0, 0, 0);
         objectRB.angularVelocity = new Vector3(0, 0, 0);
 
-        transform.position = gameManager.GenerateSpawnPos();
+        transform.position = gameManagerScript.GenerateSpawnPos();
 
     }
 
@@ -212,7 +222,7 @@ public class DragDropToForeground : MonoBehaviour
     private IEnumerator DestroyDelay ()
     {
         yield return new WaitForSeconds(1f);
-        gameManager.objectsInScene--;
+        gameManagerScript.objectsInScene--;
         gameObject.SetActive(false);
         correctParticle.SetActive(false);
         //Destroy(gameObject);
@@ -243,7 +253,7 @@ public class DragDropToForeground : MonoBehaviour
             {
                 StartCoroutine(DestroyDelay());
                 //play 'correct' sound effect
-                gameManager.gameAudio.PlayOneShot(gameManager.correctSound);
+                gameManagerScript.gameAudio.PlayOneShot(gameManagerScript.correctSound);
                 correctParticle.SetActive(true);
             }
             //if the object is a different colour, bounce object vertically
@@ -255,7 +265,7 @@ public class DragDropToForeground : MonoBehaviour
                 StartCoroutine(TurnOffWrongParticle());
 
                 //play 'wrong' sound effect
-                gameManager.gameAudio.PlayOneShot(gameManager.wrongSound);
+                gameManagerScript.gameAudio.PlayOneShot(gameManagerScript.wrongSound);
 
                 objectRB.AddForce(new Vector3(0, 1.2f, 0.10f) * 18f, ForceMode.Impulse);
 
@@ -271,28 +281,39 @@ public class DragDropToForeground : MonoBehaviour
     }
 
 
-    private int determineWhatColourIsPickedUp()
-    {
-        if (colourOfPickedUpObject == "yellow")
-        {
-            return 1;
-        }
 
-        return 0;
+    private int GetColourNumber()
+    {
+        return determineColourOfObject(determineWhatObjectIsPickedUp());
     }
 
-    //to be used within Game Manager script;
+
+    private int determineColourOfObject(int objectPickedUp)
+    {
+        if (objectPickedUp == 1)
+        {
+            return colourSelectorScript.currentLeft;
+        }
+        else if (objectPickedUp == 2)
+        {
+            return colourSelectorScript.currentMiddle;
+        }
+        else
+            return colourSelectorScript.currentRight;
+        
+    }
+
     public int determineWhatObjectIsPickedUp()
     {
-        if (colourOfPickedUpObject == "left")
+        if (TrayPositionOfPickedUpObject == "left")
         {
             return 1;
         }
-        else if (colourOfPickedUpObject == "middle")
+        else if (TrayPositionOfPickedUpObject == "middle")
         {
             return 2;
         }
-        else if (colourOfPickedUpObject == "right")
+        else if (TrayPositionOfPickedUpObject == "right")
         {
             return 3;
         }

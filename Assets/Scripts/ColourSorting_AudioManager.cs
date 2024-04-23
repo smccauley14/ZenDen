@@ -35,7 +35,7 @@ colour array number code:
     //naming picked up colours
     public AudioClip yellow;
     public AudioClip thisToyIsYellow;
-    public AudioClip Red;
+    public AudioClip red;
     public AudioClip thisToyIsRed;
     public AudioClip pink;
     public AudioClip thisToyIsPink;
@@ -116,9 +116,47 @@ colour array number code:
             }
             else
             {
-                gameAudio.PlayOneShot(thatToyWasYellow);
+                gameAudio.PlayOneShot(thisToyIsYellow);
             }  
         }
+
+        if (colourNumber == 1)
+        {
+            if (randomNum == 0)
+            {
+                gameAudio.PlayOneShot(red);
+            }
+            else
+            {
+                gameAudio.PlayOneShot(thisToyIsRed);
+            }
+        }
+
+        if (colourNumber == 3)
+        {
+            if (randomNum == 0)
+            {
+                gameAudio.PlayOneShot(green);
+            }
+            else
+            {
+                gameAudio.PlayOneShot(thisToyIsGreen);
+            }
+        }
+
+        if (colourNumber == 5)
+        {
+            if (randomNum == 0)
+            {
+                gameAudio.PlayOneShot(pink);
+            }
+            else
+            {
+                gameAudio.PlayOneShot(thisToyIsPink);
+            }
+        }
+
+
     }
 
 }
