@@ -9,9 +9,15 @@ public class FingerTipGame : MonoBehaviour
 {
     [SerializeField] private Button[] fingerButtons;
     [SerializeField] private Button restartButton;
+    [SerializeField] private Button exitButton;
+    [SerializeField] private Button levelOneButton;
+    [SerializeField] private Button levelTwoButton;
+    [SerializeField] private Button levelThreeButton;
     [SerializeField] private int level;
     [SerializeField] private TextMeshProUGUI messageText;
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private Image gameOverImage;
+
 
     private int currentIndex = 0;
     private int score = 0;
@@ -27,13 +33,21 @@ public class FingerTipGame : MonoBehaviour
     {
         InitializeGame();
         AttachButtonListeners();
+        HighlightActiveLevel();
+        levelOneButton.onClick.AddListener(() => SetNewLevel(1));
+        levelTwoButton.onClick.AddListener(() => SetNewLevel(2));
+        levelThreeButton.onClick.AddListener(() => SetNewLevel(3));
     }
 
     private void InitializeGame()
     {
-        if (level == 2)
+        if (level == 2 || level == 1)
         {
-            ShuffleButtons();
+            if (level == 2)
+            {
+                ShuffleButtons();
+            }
+            
             InitializeButtons();
         }
         else if (level == 3)
@@ -71,6 +85,7 @@ public class FingerTipGame : MonoBehaviour
 
     private void InitializeLevel3()
     {
+        scoreText.gameObject.SetActive(true);
         SetNextSelections();
     }
 
@@ -117,6 +132,43 @@ public class FingerTipGame : MonoBehaviour
         }
     }
 
+    public void SetNewLevel(int newLevel)
+    {
+        level = newLevel;
+        HighlightActiveLevel();
+        ResetGame();
+    }
+
+    public void ResetGame()
+    {
+        FilterGameEndButtons(false);
+        scoreText.gameObject.SetActive(false);
+        currentIndex = 0;
+        score = 0;
+        StopCoroutine(nameof(UpdateTimer));
+        RemoveButtonListeners();
+        InitializeGame();
+        AttachButtonListeners();
+    }
+
+    public void LoadSensoryRoomScene() => SceneManager.LoadScene(0, LoadSceneMode.Single);
+
+    private void FilterGameEndButtons(bool status)
+    {
+        restartButton.gameObject.SetActive(status);
+        exitButton.gameObject.SetActive(status);
+        gameOverImage.gameObject.SetActive(status);
+    }
+
+    private void RemoveButtonListeners()
+    {
+        for (int i = 0; i < fingerButtons.Length; i++)
+        {
+            int buttonIndex = i;
+            fingerButtons[i].onClick.RemoveAllListeners();
+        }
+    }
+
     private void FingerClicked(int buttonIndex)
     {
         if (level == 3 && buttonIndex == redButtonIndex)
@@ -125,7 +177,7 @@ public class FingerTipGame : MonoBehaviour
             return;
         }
 
-        if (level != 3 && (messageText.enabled || buttonIndex != currentIndex))
+        if (level != 3 && (messageText.IsActive() || buttonIndex != currentIndex))
             return;
 
         SetButtonImageTransparent(fingerButtons[currentIndex].GetComponent<Image>());
@@ -150,18 +202,19 @@ public class FingerTipGame : MonoBehaviour
         }
 
         if (allButtonsPressed && level != 3)
-            restartButton.gameObject.SetActive(true);
+        {
+            FilterGameEndButtons(true);
+        }
     }
 
     private void HandleGameOver()
     {
-        messageText.text = "Game Over!";
-        restartButton.gameObject.SetActive(true);
+        FilterGameEndButtons(true);
     }
 
     private IEnumerator ShowBreatheMessages()
     {
-        messageText.enabled = true;
+        messageText.gameObject.SetActive(true);
         foreach (var button in fingerButtons)
             button.interactable = false;
 
@@ -176,16 +229,18 @@ public class FingerTipGame : MonoBehaviour
         foreach (var button in fingerButtons)
             button.interactable = true;
 
-        messageText.enabled = false;
+        messageText.gameObject.SetActive(false);
 
         if (allButtonsPressed && level != 3)
-            restartButton.gameObject.SetActive(true);
+        {
+            FilterGameEndButtons(true);
+        }
     }
 
     private void StartTimer()
     {
         timer = TimerDuration;
-        StartCoroutine(UpdateTimer());
+        StartCoroutine(nameof(UpdateTimer));
     }
 
     private IEnumerator UpdateTimer()
@@ -211,5 +266,25 @@ public class FingerTipGame : MonoBehaviour
     private void SetButtonImageTransparent(Image buttonImage)
     {
         buttonImage.color = new Color(0f, 0f, 0f, 0f);
+    }
+
+    private void HighlightActiveLevel()
+    {
+        levelThreeButton.GetComponent<Outline>().enabled = false;
+        levelTwoButton.GetComponent<Outline>().enabled = false;
+        levelOneButton.GetComponent<Outline>().enabled = false;
+
+        if (level == 3)
+        {
+            levelThreeButton.GetComponent<Outline>().enabled = true;
+        }
+        if (level == 2)
+        {
+            levelTwoButton.GetComponent<Outline>().enabled = true;
+        }
+        if (level == 1)
+        {
+            levelOneButton.GetComponent<Outline>().enabled = true;
+        }
     }
 }
