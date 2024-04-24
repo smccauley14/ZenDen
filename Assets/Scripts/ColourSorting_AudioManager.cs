@@ -23,6 +23,7 @@ public class ColourSorting_AudioManager : MonoBehaviour
 
     [HideInInspector] public int wellDoneCounter = 0;
     [HideInInspector] public AudioSource gameAudio;
+    private bool isPreviousAudioFinished = true;
 
     //encouragements
     public AudioClip wellDoneWisper;
@@ -114,69 +115,77 @@ public class ColourSorting_AudioManager : MonoBehaviour
     {
         int randomNum = Random.Range(0, 3);
 
-        if (colourNumber == 0)
+        if (isPreviousAudioFinished == true)
         {
-            if (randomNum == 0)
-            {
-                gameAudio.PlayOneShot(yellow);
-            }
-            else if ( randomNum == 1)
-            {
-                gameAudio.PlayOneShot(putThisInTheYellowTray);
-            }
-            else
-            {
-                gameAudio.PlayOneShot(thisToyIsYellow);
-            }  
-        }
+            //TESTING
+            isPreviousAudioFinished = false;
+            StartCoroutine(AudioDelay(2f));
 
-        if (colourNumber == 1)
-        {
-            if (randomNum == 0)
+            if (colourNumber == 0)
             {
-                gameAudio.PlayOneShot(red);
+                if (randomNum == 0)
+                {
+                    gameAudio.PlayOneShot(yellow);
+                }
+                else if (randomNum == 1)
+                {
+                    gameAudio.PlayOneShot(putThisInTheYellowTray);
+                }
+                else
+                {
+                    gameAudio.PlayOneShot(thisToyIsYellow);
+                }
             }
-            else if (randomNum == 1)
-            {
-                gameAudio.PlayOneShot(putThisInTheRedTray);
-            }
-            else
-            {
-                gameAudio.PlayOneShot(thisToyIsRed);
-            }
-        }
 
-        if (colourNumber == 3)
-        {
-            if (randomNum == 0)
+            if (colourNumber == 1)
             {
-                gameAudio.PlayOneShot(green);
+                if (randomNum == 0)
+                {
+                    gameAudio.PlayOneShot(red);
+                }
+                else if (randomNum == 1)
+                {
+                    gameAudio.PlayOneShot(putThisInTheRedTray);
+                }
+                else
+                {
+                    gameAudio.PlayOneShot(thisToyIsRed);
+                }
             }
-            else if (randomNum == 1)
-            {
-                gameAudio.PlayOneShot(putThisInTheGreenTray);
-            }
-            else
-            {
-                gameAudio.PlayOneShot(thisToyIsGreen);
-            }
-        }
 
-        if (colourNumber == 5)
-        {
-            if (randomNum == 0)
+            if (colourNumber == 3)
             {
-                gameAudio.PlayOneShot(pink);
+                if (randomNum == 0)
+                {
+                    gameAudio.PlayOneShot(green);
+                }
+                else if (randomNum == 1)
+                {
+                    gameAudio.PlayOneShot(putThisInTheGreenTray);
+                }
+                else
+                {
+                    gameAudio.PlayOneShot(thisToyIsGreen);
+                }
             }
-            else if (randomNum == 1)
+
+            if (colourNumber == 5)
             {
-                gameAudio.PlayOneShot(putThisInThePinkTray);
-            }
-            else
-            {
-                gameAudio.PlayOneShot(thisToyIsPink);
+                if (randomNum == 0)
+                {
+                    gameAudio.PlayOneShot(pink);
+                }
+                else if (randomNum == 1)
+                {
+                    gameAudio.PlayOneShot(putThisInThePinkTray);
+                }
+                else
+                {
+                    gameAudio.PlayOneShot(thisToyIsPink);
+                }
             }
         }
+ 
     }
 
     //sounds for when a user has put the object in the wrong tray
@@ -266,4 +275,9 @@ public class ColourSorting_AudioManager : MonoBehaviour
         }
     }
 
+    private IEnumerator AudioDelay(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        isPreviousAudioFinished = true;
+    }
 }
