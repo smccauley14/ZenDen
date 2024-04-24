@@ -24,13 +24,13 @@ public class ColourSorting_AudioManager : MonoBehaviour
     [HideInInspector] public int wellDoneCounter = 0;
     [HideInInspector] public AudioSource gameAudio;
 
-    //encouragements - DONE
+    //encouragements
     public AudioClip wellDoneWisper;
     public AudioClip wellDoneMoreForceful;
     public AudioClip wellDoneEncouraging;
     public AudioClip wellDoneBrief;
 
-    //naming picked up colours - DONE
+    //naming picked up colours
     public AudioClip yellow;
     public AudioClip thisToyIsYellow;
     public AudioClip red;
@@ -40,19 +40,19 @@ public class ColourSorting_AudioManager : MonoBehaviour
     public AudioClip green;
     public AudioClip thisToyIsGreen;
 
-    //colour-based directions - DONE
+    //colour-based directions
     public AudioClip putThisInTheYellowTray;
     public AudioClip putThisInTheRedTray;
     public AudioClip putThisInThePinkTray;
     public AudioClip putThisInTheGreenTray;
 
-    //naming tray colours - DONE
+    //naming tray colours
     public AudioClip thatTrayWasYellow;
     public AudioClip thatTrayWasRed;
     public AudioClip thatTrayWasGreen;
     public AudioClip thatTrayWasPink;
 
-    //naming toys after being dropped - DONE
+    //naming toys after being dropped
     public AudioClip thatToyWasYellow;
     public AudioClip thatToyWasRed;
     public AudioClip thatToyWasPink;
@@ -64,7 +64,7 @@ public class ColourSorting_AudioManager : MonoBehaviour
     public AudioClip matchTheColours;
     public AudioClip toysGoBackIntheTrays;
 
-    //try agains - DONE
+    //try agains
     public AudioClip ohhTryAgain;
     public AudioClip tryAgain;
 
@@ -83,6 +83,29 @@ public class ColourSorting_AudioManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    //general directions
+    public void GiveUserVerbalDirectionsAtBeginningOfGame()
+    {
+        int randomNum = Random.Range(0, 4);
+
+        if (randomNum == 0)
+        {
+            gameAudio.PlayOneShot(sortToysInToTraysOfTheSameColour);
+        }
+        else if (randomNum == 1)
+        {
+            gameAudio.PlayOneShot(matchToysToTheColourOfTheTray);
+        }
+        else if (randomNum == 2)
+        {
+            gameAudio.PlayOneShot(matchTheColours);
+        }
+        else
+        {
+            gameAudio.PlayOneShot(toysGoBackIntheTrays);
+        }
     }
 
     //sounds for when an object is picked up
@@ -214,32 +237,31 @@ public class ColourSorting_AudioManager : MonoBehaviour
     public void WhenToyPutInCorrectTray()
     {
         //N.B. I have deliberately allowed for random outcomes with no sound effects
-        //so sounds won't necessarily be played every time
-        //well-done counter prevents sounds effects from being called too often in one wave
+        //meaning sounds won't necessarily be played every time
+        //the 'wellDoneCounter' prevents these sounds effects from being called too often in one wave
 
         int randomNum = Random.Range(0, 6);
 
         if (wellDoneCounter < 3)
         {
+            //add 1 to counter
+            wellDoneCounter++;
+
             if (randomNum == 0)
             {
                 gameAudio.PlayOneShot(wellDoneBrief);
-                wellDoneCounter++;
             }
             else if (randomNum == 1)
             {
                 gameAudio.PlayOneShot(wellDoneEncouraging);
-                wellDoneCounter++;
             }
             else if (randomNum == 2)
             {
                 gameAudio.PlayOneShot(wellDoneMoreForceful);
-                wellDoneCounter++;
             }
             else if (randomNum == 3)
             {
                 gameAudio.PlayOneShot(wellDoneWisper);
-                wellDoneCounter++;
             }
         }
     }

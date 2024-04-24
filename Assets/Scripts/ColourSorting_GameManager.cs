@@ -105,6 +105,9 @@ public class ColourSorting_GameManager : MonoBehaviour
         dinoSelected.SetActive(true);
         tractorSelected.SetActive(false);
         DeactivateAllObjects();
+
+        //resetting 'well-done' audio effect counter
+        audioManagerScript.wellDoneCounter = 0;
     }
 
     //if user presses tractor UI button
@@ -115,6 +118,9 @@ public class ColourSorting_GameManager : MonoBehaviour
         dinoSelected.SetActive(false);
         tractorSelected.SetActive(true);
         DeactivateAllObjects();
+
+        //resetting 'well-done' audio effect counter
+        audioManagerScript.wellDoneCounter = 0;
     }
 
     //generates a random number, corresponding with prefab number
@@ -147,7 +153,7 @@ public class ColourSorting_GameManager : MonoBehaviour
     private void ActivateWaveOfObjects(int min, int max)
     {
 
-        //specifying the number of each separate prefab
+        //specifying the quantity of each separate prefab
         int numberOfEachPrefab = 4;
 
         //if all objects are deactivated, activate a new wave
@@ -155,6 +161,9 @@ public class ColourSorting_GameManager : MonoBehaviour
         {
             //resetting 'well-done' audio effect counter
             audioManagerScript.wellDoneCounter = 0;
+
+            //giving instruction at start of wave
+            audioManagerScript.GiveUserVerbalDirectionsAtBeginningOfGame();
 
             //activating 12 objects - 4 of each colour
             for (int i = min; i < max; i++)
@@ -166,6 +175,9 @@ public class ColourSorting_GameManager : MonoBehaviour
                 }
             }
         }
+
+
+
     }
 
 
