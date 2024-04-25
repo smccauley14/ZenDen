@@ -14,12 +14,16 @@ public class FingerTipGame : MonoBehaviour
     [SerializeField] private Button levelTwoButton;
     [SerializeField] private Button levelThreeButton;
     [SerializeField] private int level;
-    //[SerializeField] private TextMeshProUGUI messageText;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private Image gameOverImage;
     [SerializeField] private Image breatheInMessage;
     [SerializeField] private Image breatheOutMessage;
 
+    [SerializeField] private AudioClip breatheInFemaleVoice;
+    [SerializeField] private AudioClip breatheOutFemaleVoice;
+    [SerializeField] private AudioClip breatheInMaleVoice;
+    [SerializeField] private AudioClip breatheOutMaleVoice;
+    private AudioSource gameAudio;
 
     private int currentIndex = 0;
     private int score = 0;
@@ -31,6 +35,8 @@ public class FingerTipGame : MonoBehaviour
     private const float TimerDuration = 10f;
     private float timer;
 
+    private string voiceGender = "female";
+
     private void Start()
     {
         InitializeGame();
@@ -39,6 +45,8 @@ public class FingerTipGame : MonoBehaviour
         levelOneButton.onClick.AddListener(() => SetNewLevel(1));
         levelTwoButton.onClick.AddListener(() => SetNewLevel(2));
         levelThreeButton.onClick.AddListener(() => SetNewLevel(3));
+
+        gameAudio = GetComponent<AudioSource>();
     }
 
     private void InitializeGame()
@@ -216,15 +224,17 @@ public class FingerTipGame : MonoBehaviour
 
     private IEnumerator ShowBreatheMessages()
     {
-        
+
         foreach (var button in fingerButtons)
             button.interactable = false;
 
         breatheInMessage.gameObject.SetActive(true);
+        PlayBreathingAudio(breatheInFemaleVoice, breatheInMaleVoice);
         yield return new WaitForSeconds(MessageDisplayDuration);
 
         breatheInMessage.gameObject.SetActive(false);
         breatheOutMessage.gameObject.SetActive(true);
+        PlayBreathingAudio(breatheOutFemaleVoice, breatheOutMaleVoice);
         yield return new WaitForSeconds(MessageDisplayDuration);
 
         breatheOutMessage.gameObject.SetActive(false);
@@ -238,6 +248,14 @@ public class FingerTipGame : MonoBehaviour
         {
             FilterGameEndButtons(true);
         }
+    }
+
+    private void PlayBreathingAudio(AudioClip female, AudioClip male)
+    {
+        if (voiceGender == "female")
+            gameAudio.PlayOneShot(female);
+        if (voiceGender == "male")
+            gameAudio.PlayOneShot(male);
     }
 
     private void StartTimer()
