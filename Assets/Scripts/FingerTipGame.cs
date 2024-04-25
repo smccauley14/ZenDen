@@ -14,9 +14,11 @@ public class FingerTipGame : MonoBehaviour
     [SerializeField] private Button levelTwoButton;
     [SerializeField] private Button levelThreeButton;
     [SerializeField] private int level;
-    [SerializeField] private TextMeshProUGUI messageText;
+    //[SerializeField] private TextMeshProUGUI messageText;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private Image gameOverImage;
+    [SerializeField] private Image breatheInMessage;
+    [SerializeField] private Image breatheOutMessage;
 
 
     private int currentIndex = 0;
@@ -177,7 +179,7 @@ public class FingerTipGame : MonoBehaviour
             return;
         }
 
-        if (level != 3 && (messageText.IsActive() || buttonIndex != currentIndex))
+        if (level != 3 && (breatheInMessage.IsActive() || breatheOutMessage.IsActive() || buttonIndex != currentIndex))
             return;
 
         SetButtonImageTransparent(fingerButtons[currentIndex].GetComponent<Image>());
@@ -214,22 +216,23 @@ public class FingerTipGame : MonoBehaviour
 
     private IEnumerator ShowBreatheMessages()
     {
-        messageText.gameObject.SetActive(true);
+        
         foreach (var button in fingerButtons)
             button.interactable = false;
 
-        messageText.text = "Breathe In";
+        breatheInMessage.gameObject.SetActive(true);
         yield return new WaitForSeconds(MessageDisplayDuration);
 
-        messageText.text = "Breathe Out";
+        breatheInMessage.gameObject.SetActive(false);
+        breatheOutMessage.gameObject.SetActive(true);
         yield return new WaitForSeconds(MessageDisplayDuration);
 
-        messageText.text = "";
+        breatheOutMessage.gameObject.SetActive(false);
 
         foreach (var button in fingerButtons)
             button.interactable = true;
 
-        messageText.gameObject.SetActive(false);
+        //messageText.gameObject.SetActive(false);
 
         if (allButtonsPressed && level != 3)
         {
