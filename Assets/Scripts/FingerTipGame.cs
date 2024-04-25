@@ -42,11 +42,16 @@ public class FingerTipGame : MonoBehaviour
         InitializeGame();
         AttachButtonListeners();
         HighlightActiveLevel();
+        SetupLevelButtonListeners();
+
+        gameAudio = GetComponent<AudioSource>();
+    }
+
+    private void SetupLevelButtonListeners()
+    {
         levelOneButton.onClick.AddListener(() => SetNewLevel(1));
         levelTwoButton.onClick.AddListener(() => SetNewLevel(2));
         levelThreeButton.onClick.AddListener(() => SetNewLevel(3));
-
-        gameAudio = GetComponent<AudioSource>();
     }
 
     private void InitializeGame()
@@ -72,7 +77,7 @@ public class FingerTipGame : MonoBehaviour
         for (int i = 0; i < fingerButtons.Length; i++)
         {
             int randomIndex = Random.Range(i, fingerButtons.Length);
-            Button temp = fingerButtons[i];
+            var temp = fingerButtons[i];
             fingerButtons[i] = fingerButtons[randomIndex];
             fingerButtons[randomIndex] = temp;
         }
@@ -217,10 +222,7 @@ public class FingerTipGame : MonoBehaviour
         }
     }
 
-    private void HandleGameOver()
-    {
-        FilterGameEndButtons(true);
-    }
+    private void HandleGameOver() => FilterGameEndButtons(true);
 
     private IEnumerator ShowBreatheMessages()
     {
@@ -241,8 +243,6 @@ public class FingerTipGame : MonoBehaviour
 
         foreach (var button in fingerButtons)
             button.interactable = true;
-
-        //messageText.gameObject.SetActive(false);
 
         if (allButtonsPressed && level != 3)
         {
@@ -274,20 +274,11 @@ public class FingerTipGame : MonoBehaviour
         HandleGameOver();
     }
 
-    private void ResetTimer()
-    {
-        timer = TimerDuration;
-    }
+    private void ResetTimer() => timer = TimerDuration;
 
-    public void RestartGame()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
+    public void RestartGame() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
-    private void SetButtonImageTransparent(Image buttonImage)
-    {
-        buttonImage.color = new Color(0f, 0f, 0f, 0f);
-    }
+    private void SetButtonImageTransparent(Image buttonImage) => buttonImage.color = new Color(0f, 0f, 0f, 0f);
 
     private void HighlightActiveLevel()
     {
