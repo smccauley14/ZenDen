@@ -7,8 +7,6 @@ using UnityEngine.InputSystem;
 
 public class DragDropToDistance : MonoBehaviour
 {
-    //followed this tutorial for basic touchscreen dragging: https://www.youtube.com/watch?v=zo1dkYfIJVg
-
     //variables
     [SerializeField] private InputAction press;
     [SerializeField] private InputAction screenPosition;
