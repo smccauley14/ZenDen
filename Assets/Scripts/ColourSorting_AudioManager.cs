@@ -19,8 +19,6 @@ public class ColourSorting_AudioManager : MonoBehaviour
     8 = grey
     */
 
-    private ColourSorting_GameManager gameManagerScript;
-
     [HideInInspector] public int wellDoneCounter = 0;
     [HideInInspector] public AudioSource gameAudio;
     private bool isPreviousAudioFinished = true;
@@ -69,21 +67,11 @@ public class ColourSorting_AudioManager : MonoBehaviour
     public AudioClip ohhTryAgain;
     public AudioClip tryAgain;
 
-
-
     // Start is called before the first frame update
     void Start()
     {
         //getting player audio
         gameAudio = GetComponent<AudioSource>();
-        //get game manager script
-        gameManagerScript = GameObject.Find("GameManager").GetComponent<ColourSorting_GameManager>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     //general directions
@@ -92,7 +80,7 @@ public class ColourSorting_AudioManager : MonoBehaviour
         int randomNum = Random.Range(0, 4);
 
         isPreviousAudioFinished = false;
-        StartCoroutine(AudioDelay(3f));
+        StartCoroutine(AudioDelay(2.5f));
 
         if (randomNum == 0)
         {
@@ -188,7 +176,6 @@ public class ColourSorting_AudioManager : MonoBehaviour
                 }
             }
         }
- 
     }
 
     //sounds for when a user has put the object in the wrong tray
@@ -197,54 +184,56 @@ public class ColourSorting_AudioManager : MonoBehaviour
     {
         int randomNum = Random.Range(0, 4);
 
-        //TESTING
-        isPreviousAudioFinished = false;
-        StartCoroutine(AudioDelay(3f));
+        if (isPreviousAudioFinished == true)
+        {
+            isPreviousAudioFinished = false;
+            StartCoroutine(AudioDelay(3f));
 
-        if (randomNum == 0)
-        {
-            gameAudio.PlayOneShot(tryAgain);
-        }
-        else if (randomNum == 1)
-        {
-            gameAudio.PlayOneShot(ohhTryAgain);
-        }
-        else if (randomNum == 2)
-        {
-            if (colourNumber == 0)
+            if (randomNum == 0)
             {
-                gameAudio.PlayOneShot(thatToyWasYellow);
+                gameAudio.PlayOneShot(tryAgain);
             }
-            if (colourNumber == 1)
+            else if (randomNum == 1)
             {
-                gameAudio.PlayOneShot(thatToyWasRed);
+                gameAudio.PlayOneShot(ohhTryAgain);
             }
-            if (colourNumber == 3)
+            else if (randomNum == 2)
             {
-                gameAudio.PlayOneShot(thatToyWasGreen);
+                if (colourNumber == 0)
+                {
+                    gameAudio.PlayOneShot(thatToyWasYellow);
+                }
+                if (colourNumber == 1)
+                {
+                    gameAudio.PlayOneShot(thatToyWasRed);
+                }
+                if (colourNumber == 3)
+                {
+                    gameAudio.PlayOneShot(thatToyWasGreen);
+                }
+                if (colourNumber == 5)
+                {
+                    gameAudio.PlayOneShot(thatToyWasPink);
+                }
             }
-            if (colourNumber == 5)
+            else if (randomNum == 3)
             {
-                gameAudio.PlayOneShot(thatToyWasPink);
-            }
-        }
-        else if (randomNum == 3)
-        {
-            if (wrongTrayNumber == 0)
-            {
-                gameAudio.PlayOneShot(thatTrayWasYellow);
-            }
-            else if (wrongTrayNumber == 1)
-            {
-                gameAudio.PlayOneShot(thatTrayWasRed);
-            }
-            else if (wrongTrayNumber == 3)
-            {
-                gameAudio.PlayOneShot(thatTrayWasGreen);
-            }
-            else if (wrongTrayNumber == 5)
-            {
-                gameAudio.PlayOneShot(thatTrayWasPink);
+                if (wrongTrayNumber == 0)
+                {
+                    gameAudio.PlayOneShot(thatTrayWasYellow);
+                }
+                else if (wrongTrayNumber == 1)
+                {
+                    gameAudio.PlayOneShot(thatTrayWasRed);
+                }
+                else if (wrongTrayNumber == 3)
+                {
+                    gameAudio.PlayOneShot(thatTrayWasGreen);
+                }
+                else if (wrongTrayNumber == 5)
+                {
+                    gameAudio.PlayOneShot(thatTrayWasPink);
+                }
             }
         }
     }
@@ -258,42 +247,37 @@ public class ColourSorting_AudioManager : MonoBehaviour
 
         int randomNum = Random.Range(0, 4);
 
-        if (wellDoneCounter < 4)
+        if (wellDoneCounter < 3 && isPreviousAudioFinished == true)
         {
             //add 1 to counter
             wellDoneCounter++;
 
+            isPreviousAudioFinished = false;
+
             if (randomNum == 0)
             {
-                isPreviousAudioFinished = false;
-                StartCoroutine(AudioDelay(3f));
-
+                StartCoroutine(AudioDelay(1f));
                 gameAudio.PlayOneShot(wellDoneBrief);
             }
             else if (randomNum == 1)
             {
-                isPreviousAudioFinished = false;
-                StartCoroutine(AudioDelay(3f));
-
+                StartCoroutine(AudioDelay(1.5f));
                 gameAudio.PlayOneShot(wellDoneEncouraging);
             }
             else if (randomNum == 2)
             {
-                isPreviousAudioFinished = false;
-                StartCoroutine(AudioDelay(3f));
-
+                StartCoroutine(AudioDelay(1.5f));
                 gameAudio.PlayOneShot(wellDoneMoreForceful);
             }
             else if (randomNum == 3)
             {
-                isPreviousAudioFinished = false;
-                StartCoroutine(AudioDelay(3f));
-
+                StartCoroutine(AudioDelay(1.5f));
                 gameAudio.PlayOneShot(wellDoneWisper);
             }
         }
     }
 
+    //Coroutine to prevent another audio clip from being triggered too soon
     private IEnumerator AudioDelay(float seconds)
     {
         yield return new WaitForSeconds(seconds);
