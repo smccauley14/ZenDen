@@ -91,6 +91,9 @@ public class ColourSorting_AudioManager : MonoBehaviour
     {
         int randomNum = Random.Range(0, 4);
 
+        isPreviousAudioFinished = false;
+        StartCoroutine(AudioDelay(3f));
+
         if (randomNum == 0)
         {
             gameAudio.PlayOneShot(sortToysInToTraysOfTheSameColour);
@@ -117,9 +120,9 @@ public class ColourSorting_AudioManager : MonoBehaviour
 
         if (isPreviousAudioFinished == true)
         {
-            //TESTING
+            
             isPreviousAudioFinished = false;
-            StartCoroutine(AudioDelay(2f));
+            StartCoroutine(AudioDelay(2.5f));
 
             if (colourNumber == 0)
             {
@@ -194,6 +197,10 @@ public class ColourSorting_AudioManager : MonoBehaviour
     {
         int randomNum = Random.Range(0, 4);
 
+        //TESTING
+        isPreviousAudioFinished = false;
+        StartCoroutine(AudioDelay(3f));
+
         if (randomNum == 0)
         {
             gameAudio.PlayOneShot(tryAgain);
@@ -249,27 +256,39 @@ public class ColourSorting_AudioManager : MonoBehaviour
         //meaning sounds won't necessarily be played every time
         //the 'wellDoneCounter' prevents these sounds effects from being called too often in one wave
 
-        int randomNum = Random.Range(0, 6);
+        int randomNum = Random.Range(0, 4);
 
-        if (wellDoneCounter < 3)
+        if (wellDoneCounter < 4)
         {
             //add 1 to counter
             wellDoneCounter++;
 
             if (randomNum == 0)
             {
+                isPreviousAudioFinished = false;
+                StartCoroutine(AudioDelay(3f));
+
                 gameAudio.PlayOneShot(wellDoneBrief);
             }
             else if (randomNum == 1)
             {
+                isPreviousAudioFinished = false;
+                StartCoroutine(AudioDelay(3f));
+
                 gameAudio.PlayOneShot(wellDoneEncouraging);
             }
             else if (randomNum == 2)
             {
+                isPreviousAudioFinished = false;
+                StartCoroutine(AudioDelay(3f));
+
                 gameAudio.PlayOneShot(wellDoneMoreForceful);
             }
             else if (randomNum == 3)
             {
+                isPreviousAudioFinished = false;
+                StartCoroutine(AudioDelay(3f));
+
                 gameAudio.PlayOneShot(wellDoneWisper);
             }
         }
