@@ -3,7 +3,21 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+
+  tags:
+  - gold
+  - pink
+  - green
+  - brown
+  - Circle
+  - Square
+  - Yellow
+  - Star
+  - Arch
+  - Rectangle
+  - Pentagon
+  - Perimeter
+
   layers:
   - Default
   - TransparentFX
