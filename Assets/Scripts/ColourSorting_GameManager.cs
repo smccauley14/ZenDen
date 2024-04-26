@@ -10,29 +10,24 @@ public class ColourSorting_GameManager : MonoBehaviour
 
     //variables
     [HideInInspector] public bool isDragging;
-
     [HideInInspector] public ObjectPool_ColourSorting poolScript;
 
     //being added/substracted from to by DragDropToForeground script
     [HideInInspector] public int objectsClickedOn = 0;
 
     [HideInInspector] public bool UIisActive;//true if UI menu is activated by colour selector script
-
     [SerializeField] private GameObject[] objectPrefabs;
-
     public GameObject handObject;
 
-    //[HideInInspector]
-    public int objectsInScene;
+    [HideInInspector] public int objectsInScene;
     private float tableXlength = 19;
     private float tableYheight = -1.2f;
     private float tableZmin = 4;
     private float tableZmax = 20;
-
     private int prefabNumberMinimum = 0;
     private int prefabNumberMaximum = 3;
-
     [HideInInspector] public AudioSource gameAudio;
+    private ColourSorting_AudioManager audioManagerScript;
 
     //public sound clips that are called in other scripts
     public AudioClip correctSound;
@@ -52,9 +47,11 @@ public class ColourSorting_GameManager : MonoBehaviour
 
     void Start()
     {
-
         //getting player audio
         gameAudio = GetComponent<AudioSource>();
+
+        //get audioManager
+        audioManagerScript = GameObject.Find("GameManager").GetComponent<ColourSorting_AudioManager>();
 
         //adding listeners to UI buttons
         dinoButton.onClick.AddListener(DinoSelected);
@@ -62,9 +59,7 @@ public class ColourSorting_GameManager : MonoBehaviour
 
         //getting pooling script
         poolScript = GetComponent<ObjectPool_ColourSorting>();
-
     }
-
 
     // Update is called once per frame
     void Update()
@@ -72,8 +67,6 @@ public class ColourSorting_GameManager : MonoBehaviour
         //activate a new wave when all objects are inactive
         ActivateWaveOfObjects(prefabNumberMinimum, prefabNumberMaximum);
     }
-
-
 
     //generates a random position within bounds to spawn dino prefab
     public Vector3 GenerateSpawnPos()
@@ -112,6 +105,9 @@ public class ColourSorting_GameManager : MonoBehaviour
         dinoSelected.SetActive(true);
         tractorSelected.SetActive(false);
         DeactivateAllObjects();
+
+        //resetting 'well-done' audio effect counter
+        audioManagerScript.wellDoneCounter = 0;
     }
 
     //if user presses tractor UI button
@@ -122,6 +118,9 @@ public class ColourSorting_GameManager : MonoBehaviour
         dinoSelected.SetActive(false);
         tractorSelected.SetActive(true);
         DeactivateAllObjects();
+
+        //resetting 'well-done' audio effect counter
+        audioManagerScript.wellDoneCounter = 0;
     }
 
     //generates a random number, corresponding with prefab number
@@ -153,12 +152,19 @@ public class ColourSorting_GameManager : MonoBehaviour
     //nested for loop to activate a full wave of objects
     private void ActivateWaveOfObjects(int min, int max)
     {
-        //specifying the number of each separate prefab
+
+        //specifying the quantity of each separate prefab
         int numberOfEachPrefab = 4;
 
         //if all objects are deactivated, activate a new wave
         if (objectsInScene < 1)
         {
+            //resetting 'well-done' audio effect counter
+            audioManagerScript.wellDoneCounter = 0;
+
+            //giving instruction at start of wave
+            audioManagerScript.GiveUserVerbalDirectionsAtBeginningOfGame();
+
             //activating 12 objects - 4 of each colour
             for (int i = min; i < max; i++)
             {
@@ -169,6 +175,9 @@ public class ColourSorting_GameManager : MonoBehaviour
                 }
             }
         }
+
+
+
     }
 
 

@@ -86,7 +86,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 748ed0062774b174eb780392dca3be90, type: 3}
       propertyPath: m_TagString
-      value: gold
+      value: left
       objectReference: {fileID: 0}
     - target: {fileID: 2699881619333975026, guid: 748ed0062774b174eb780392dca3be90, type: 3}
       propertyPath: m_Materials.Array.data[0]
