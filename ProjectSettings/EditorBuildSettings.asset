@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 73a7898780a3045519f91a351d762409
+  - enabled: 1
     path: Assets/Scenes/School Sensory Room.unity
     guid: fbc7f32cf97ee4e85981b5118134a5f6
   - enabled: 1
