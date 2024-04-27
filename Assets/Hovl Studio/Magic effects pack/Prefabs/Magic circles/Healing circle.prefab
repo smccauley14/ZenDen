@@ -25,22 +25,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3301859001294354502}
-<<<<<<< HEAD
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8037160467862551414}
-=======
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8037160467862551414}
   m_RootOrder: 2
->>>>>>> main
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &1649048597955103039
 ParticleSystem:
@@ -49,30 +39,19 @@ ParticleSystem:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3301859001294354502}
-<<<<<<< HEAD
-  serializedVersion: 8
-=======
   serializedVersion: 7
->>>>>>> main
   lengthInSec: 4
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-<<<<<<< HEAD
-  emitterVelocityMode: 0
-=======
->>>>>>> main
   looping: 1
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
-<<<<<<< HEAD
-=======
   useRigidbodyForVelocity: 1
->>>>>>> main
   startDelay:
     serializedVersion: 2
     minMaxState: 0
@@ -271,10 +250,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -304,10 +279,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     startSize:
@@ -629,13 +600,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-<<<<<<< HEAD
-    gravitySource: 0
     maxNumParticles: 1000
-    customEmitterVelocity: {x: 0, y: 0, z: 0}
-=======
-    maxNumParticles: 1000
->>>>>>> main
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -1430,10 +1395,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -1463,10 +1424,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
   UVModule:
@@ -3687,10 +3644,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -3720,10 +3673,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
@@ -4101,10 +4050,6 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
-<<<<<<< HEAD
-    textureScale: {x: 1, y: 1}
-=======
->>>>>>> main
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -4147,10 +4092,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -4180,10 +4121,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     widthOverTrail:
@@ -4271,10 +4208,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -4304,10 +4237,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
   CustomDataModule:
@@ -4346,10 +4275,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -4379,10 +4304,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     colorLabel0: Color
@@ -4636,10 +4557,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -4669,10 +4586,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     colorLabel1: Color
@@ -4904,10 +4817,6 @@ ParticleSystemRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
-<<<<<<< HEAD
-  m_StaticShadowCaster: 0
-=======
->>>>>>> main
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
@@ -4938,10 +4847,6 @@ ParticleSystemRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_RenderMode: 1
-<<<<<<< HEAD
-  m_MeshDistribution: 0
-=======
->>>>>>> main
   m_SortMode: 0
   m_MinParticleSize: 0
   m_MaxParticleSize: 0.5
@@ -4954,34 +4859,17 @@ ParticleSystemRenderer:
   m_RenderAlignment: 0
   m_Pivot: {x: 0, y: 0, z: 0}
   m_Flip: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
-=======
   m_UseCustomVertexStreams: 0
->>>>>>> main
   m_EnableGPUInstancing: 1
   m_ApplyActiveColorSpace: 1
   m_AllowRoll: 1
   m_FreeformStretching: 0
   m_RotateWithStretchDirection: 1
-<<<<<<< HEAD
-  m_UseCustomVertexStreams: 0
   m_VertexStreams: 00010304
-  m_UseCustomTrailVertexStreams: 0
-  m_TrailVertexStreams: 00010304
-=======
-  m_VertexStreams: 00010304
->>>>>>> main
   m_Mesh: {fileID: 0}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
-<<<<<<< HEAD
-  m_MeshWeighting: 1
-  m_MeshWeighting1: 1
-  m_MeshWeighting2: 1
-  m_MeshWeighting3: 1
-=======
->>>>>>> main
   m_MaskInteraction: 0
 --- !u!1 &3989901854192163758
 GameObject:
@@ -5008,22 +4896,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3989901854192163758}
-<<<<<<< HEAD
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8037160467862551414}
-=======
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8037160467862551414}
   m_RootOrder: 0
->>>>>>> main
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &5510952348061193321
 ParticleSystem:
@@ -5032,30 +4910,19 @@ ParticleSystem:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3989901854192163758}
-<<<<<<< HEAD
-  serializedVersion: 8
-=======
   serializedVersion: 7
->>>>>>> main
   lengthInSec: 4
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-<<<<<<< HEAD
-  emitterVelocityMode: 0
-=======
->>>>>>> main
   looping: 1
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
-<<<<<<< HEAD
-=======
   useRigidbodyForVelocity: 1
->>>>>>> main
   startDelay:
     serializedVersion: 2
     minMaxState: 0
@@ -5254,10 +5121,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -5287,10 +5150,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     startSize:
@@ -5612,13 +5471,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-<<<<<<< HEAD
-    gravitySource: 0
     maxNumParticles: 1000
-    customEmitterVelocity: {x: 0, y: 0, z: 0}
-=======
-    maxNumParticles: 1000
->>>>>>> main
     size3D: 1
     rotation3D: 1
     gravityModifier:
@@ -6404,10 +6257,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -6437,10 +6286,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
   UVModule:
@@ -8661,10 +8506,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -8694,10 +8535,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
@@ -9075,10 +8912,6 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
-<<<<<<< HEAD
-    textureScale: {x: 1, y: 1}
-=======
->>>>>>> main
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -9121,10 +8954,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -9154,10 +8983,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     widthOverTrail:
@@ -9245,10 +9070,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -9278,10 +9099,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
   CustomDataModule:
@@ -9320,10 +9137,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -9353,10 +9166,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     colorLabel0: Color
@@ -9610,10 +9419,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -9643,10 +9448,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     colorLabel1: Color
@@ -9878,10 +9679,6 @@ ParticleSystemRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
-<<<<<<< HEAD
-  m_StaticShadowCaster: 0
-=======
->>>>>>> main
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
@@ -9912,10 +9709,6 @@ ParticleSystemRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_RenderMode: 4
-<<<<<<< HEAD
-  m_MeshDistribution: 0
-=======
->>>>>>> main
   m_SortMode: 0
   m_MinParticleSize: 0
   m_MaxParticleSize: 32
@@ -9928,34 +9721,17 @@ ParticleSystemRenderer:
   m_RenderAlignment: 2
   m_Pivot: {x: 0, y: 0, z: 0}
   m_Flip: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
-=======
   m_UseCustomVertexStreams: 1
->>>>>>> main
   m_EnableGPUInstancing: 1
   m_ApplyActiveColorSpace: 1
   m_AllowRoll: 1
   m_FreeformStretching: 0
   m_RotateWithStretchDirection: 1
-<<<<<<< HEAD
-  m_UseCustomVertexStreams: 1
   m_VertexStreams: 00030409
-  m_UseCustomTrailVertexStreams: 0
-  m_TrailVertexStreams: 00010304
-=======
-  m_VertexStreams: 00030409
->>>>>>> main
   m_Mesh: {fileID: 2534964839176971238, guid: 4a8c064de5d1b4045a9e9d4ebd5d6575, type: 3}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
-<<<<<<< HEAD
-  m_MeshWeighting: 1
-  m_MeshWeighting1: 1
-  m_MeshWeighting2: 1
-  m_MeshWeighting3: 1
-=======
->>>>>>> main
   m_MaskInteraction: 0
 --- !u!1 &4217862762997978641
 GameObject:
@@ -9982,22 +9758,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4217862762997978641}
-<<<<<<< HEAD
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8037160467862551414}
-=======
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8037160467862551414}
   m_RootOrder: 3
->>>>>>> main
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &524572398670386221
 ParticleSystem:
@@ -10006,30 +9772,19 @@ ParticleSystem:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4217862762997978641}
-<<<<<<< HEAD
-  serializedVersion: 8
-=======
   serializedVersion: 7
->>>>>>> main
   lengthInSec: 4
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-<<<<<<< HEAD
-  emitterVelocityMode: 0
-=======
->>>>>>> main
   looping: 1
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
-<<<<<<< HEAD
-=======
   useRigidbodyForVelocity: 1
->>>>>>> main
   startDelay:
     serializedVersion: 2
     minMaxState: 0
@@ -10228,10 +9983,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -10261,10 +10012,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     startSize:
@@ -10586,13 +10333,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-<<<<<<< HEAD
-    gravitySource: 0
     maxNumParticles: 1000
-    customEmitterVelocity: {x: 0, y: 0, z: 0}
-=======
-    maxNumParticles: 1000
->>>>>>> main
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -11387,10 +11128,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -11420,10 +11157,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
   UVModule:
@@ -13644,10 +13377,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -13677,10 +13406,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
@@ -14058,10 +13783,6 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
-<<<<<<< HEAD
-    textureScale: {x: 1, y: 1}
-=======
->>>>>>> main
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -14104,10 +13825,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -14137,10 +13854,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     widthOverTrail:
@@ -14228,10 +13941,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -14261,10 +13970,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
   CustomDataModule:
@@ -14303,10 +14008,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -14336,10 +14037,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     colorLabel0: Color
@@ -14593,10 +14290,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -14626,10 +14319,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     colorLabel1: Color
@@ -14861,10 +14550,6 @@ ParticleSystemRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
-<<<<<<< HEAD
-  m_StaticShadowCaster: 0
-=======
->>>>>>> main
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
@@ -14895,10 +14580,6 @@ ParticleSystemRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_RenderMode: 0
-<<<<<<< HEAD
-  m_MeshDistribution: 0
-=======
->>>>>>> main
   m_SortMode: 0
   m_MinParticleSize: 0
   m_MaxParticleSize: 0.5
@@ -14911,34 +14592,17 @@ ParticleSystemRenderer:
   m_RenderAlignment: 0
   m_Pivot: {x: 0, y: 0, z: 0}
   m_Flip: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
-=======
   m_UseCustomVertexStreams: 0
->>>>>>> main
   m_EnableGPUInstancing: 1
   m_ApplyActiveColorSpace: 1
   m_AllowRoll: 1
   m_FreeformStretching: 0
   m_RotateWithStretchDirection: 1
-<<<<<<< HEAD
-  m_UseCustomVertexStreams: 0
   m_VertexStreams: 00010304
-  m_UseCustomTrailVertexStreams: 0
-  m_TrailVertexStreams: 00010304
-=======
-  m_VertexStreams: 00010304
->>>>>>> main
   m_Mesh: {fileID: 0}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
-<<<<<<< HEAD
-  m_MeshWeighting: 1
-  m_MeshWeighting1: 1
-  m_MeshWeighting2: 1
-  m_MeshWeighting3: 1
-=======
->>>>>>> main
   m_MaskInteraction: 0
 --- !u!1 &7834758006639453087
 GameObject:
@@ -14966,22 +14630,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7834758006639453087}
-<<<<<<< HEAD
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8037160467862551414}
-=======
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8037160467862551414}
   m_RootOrder: 1
->>>>>>> main
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &7834758006639453083
 ParticleSystem:
@@ -14990,30 +14644,19 @@ ParticleSystem:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7834758006639453087}
-<<<<<<< HEAD
-  serializedVersion: 8
-=======
   serializedVersion: 7
->>>>>>> main
   lengthInSec: 4
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-<<<<<<< HEAD
-  emitterVelocityMode: 0
-=======
->>>>>>> main
   looping: 1
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
-<<<<<<< HEAD
-=======
   useRigidbodyForVelocity: 1
->>>>>>> main
   startDelay:
     serializedVersion: 2
     minMaxState: 0
@@ -15212,10 +14855,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -15245,10 +14884,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     startSize:
@@ -15570,13 +15205,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-<<<<<<< HEAD
-    gravitySource: 0
     maxNumParticles: 1000
-    customEmitterVelocity: {x: 0, y: 0, z: 0}
-=======
-    maxNumParticles: 1000
->>>>>>> main
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -16425,10 +16054,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 4
       minGradient:
@@ -16458,10 +16083,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
   UVModule:
@@ -18682,10 +18303,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -18715,10 +18332,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
@@ -19096,10 +18709,6 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
-<<<<<<< HEAD
-    textureScale: {x: 1, y: 1}
-=======
->>>>>>> main
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -19142,10 +18751,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -19175,10 +18780,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     widthOverTrail:
@@ -19266,10 +18867,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -19299,10 +18896,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
   CustomDataModule:
@@ -19341,10 +18934,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -19374,10 +18963,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     colorLabel0: Color
@@ -19631,10 +19216,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -19664,10 +19245,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     colorLabel1: Color
@@ -19899,10 +19476,6 @@ ParticleSystemRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
-<<<<<<< HEAD
-  m_StaticShadowCaster: 0
-=======
->>>>>>> main
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
@@ -19933,10 +19506,6 @@ ParticleSystemRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_RenderMode: 5
-<<<<<<< HEAD
-  m_MeshDistribution: 0
-=======
->>>>>>> main
   m_SortMode: 0
   m_MinParticleSize: 0
   m_MaxParticleSize: 0.5
@@ -19949,34 +19518,17 @@ ParticleSystemRenderer:
   m_RenderAlignment: 0
   m_Pivot: {x: 0, y: 0, z: 0}
   m_Flip: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
-=======
   m_UseCustomVertexStreams: 0
->>>>>>> main
   m_EnableGPUInstancing: 1
   m_ApplyActiveColorSpace: 1
   m_AllowRoll: 1
   m_FreeformStretching: 0
   m_RotateWithStretchDirection: 1
-<<<<<<< HEAD
-  m_UseCustomVertexStreams: 0
   m_VertexStreams: 00010304
-  m_UseCustomTrailVertexStreams: 0
-  m_TrailVertexStreams: 00010304
-=======
-  m_VertexStreams: 00010304
->>>>>>> main
   m_Mesh: {fileID: 0}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
-<<<<<<< HEAD
-  m_MeshWeighting: 1
-  m_MeshWeighting1: 1
-  m_MeshWeighting2: 1
-  m_MeshWeighting3: 1
-=======
->>>>>>> main
   m_MaskInteraction: 0
 --- !u!108 &7834758006639453081
 Light:
@@ -20065,27 +19617,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7986504087968017091}
-<<<<<<< HEAD
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-=======
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
->>>>>>> main
   m_Children:
   - {fileID: 7457615570839298223}
   - {fileID: 7834758006639453080}
   - {fileID: 2195905884542783037}
   - {fileID: 3938747928277076420}
   m_Father: {fileID: 0}
-<<<<<<< HEAD
-=======
   m_RootOrder: 0
->>>>>>> main
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &6211125795773073634
 ParticleSystem:
@@ -20094,30 +19635,19 @@ ParticleSystem:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7986504087968017091}
-<<<<<<< HEAD
-  serializedVersion: 8
-=======
   serializedVersion: 7
->>>>>>> main
   lengthInSec: 4
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-<<<<<<< HEAD
-  emitterVelocityMode: 0
-=======
->>>>>>> main
   looping: 1
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
-<<<<<<< HEAD
-=======
   useRigidbodyForVelocity: 1
->>>>>>> main
   startDelay:
     serializedVersion: 2
     minMaxState: 0
@@ -20288,11 +19818,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-<<<<<<< HEAD
-      maxColor: {r: 0.3218621, g: 0.97459686, b: 0.99371064, a: 1}
-=======
       maxColor: {r: 0.33333337, g: 1, b: 0.4454416, a: 1}
->>>>>>> main
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -20320,10 +19846,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -20353,10 +19875,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     startSize:
@@ -20678,13 +20196,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-<<<<<<< HEAD
-    gravitySource: 0
     maxNumParticles: 1000
-    customEmitterVelocity: {x: 0, y: 0, z: 0}
-=======
-    maxNumParticles: 1000
->>>>>>> main
     size3D: 0
     rotation3D: 1
     gravityModifier:
@@ -21470,10 +20982,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -21503,10 +21011,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
   UVModule:
@@ -23727,10 +23231,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -23760,10 +23260,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
@@ -24141,10 +23637,6 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
-<<<<<<< HEAD
-    textureScale: {x: 1, y: 1}
-=======
->>>>>>> main
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -24187,10 +23679,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -24220,10 +23708,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     widthOverTrail:
@@ -24311,10 +23795,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -24344,10 +23824,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
   CustomDataModule:
@@ -24386,10 +23862,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -24419,10 +23891,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     colorLabel0: Color
@@ -24676,10 +24144,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -24709,10 +24173,6 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-<<<<<<< HEAD
-        m_ColorSpace: -1
-=======
->>>>>>> main
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     colorLabel1: Color
@@ -24936,11 +24396,7 @@ ParticleSystem:
 ParticleSystemRenderer:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-<<<<<<< HEAD
-  m_CorrespondingSourceObject: {fileID: 0}
-=======
   m_CorrespondingSourceObject: {fileID: 5796355061092580784, guid: a2a060732547fe64581bb0cb3c2bdf1d, type: 3}
->>>>>>> main
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7986504087968017091}
@@ -24948,10 +24404,6 @@ ParticleSystemRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
-<<<<<<< HEAD
-  m_StaticShadowCaster: 0
-=======
->>>>>>> main
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
@@ -24982,10 +24434,6 @@ ParticleSystemRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_RenderMode: 0
-<<<<<<< HEAD
-  m_MeshDistribution: 0
-=======
->>>>>>> main
   m_SortMode: 0
   m_MinParticleSize: 0
   m_MaxParticleSize: 32
@@ -24998,32 +24446,15 @@ ParticleSystemRenderer:
   m_RenderAlignment: 2
   m_Pivot: {x: 0, y: 0, z: 0}
   m_Flip: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
-=======
   m_UseCustomVertexStreams: 1
->>>>>>> main
   m_EnableGPUInstancing: 1
   m_ApplyActiveColorSpace: 1
   m_AllowRoll: 1
   m_FreeformStretching: 0
   m_RotateWithStretchDirection: 1
-<<<<<<< HEAD
-  m_UseCustomVertexStreams: 1
   m_VertexStreams: 000304
-  m_UseCustomTrailVertexStreams: 0
-  m_TrailVertexStreams: 00010304
-=======
-  m_VertexStreams: 000304
->>>>>>> main
   m_Mesh: {fileID: 0}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
-<<<<<<< HEAD
-  m_MeshWeighting: 1
-  m_MeshWeighting1: 1
-  m_MeshWeighting2: 1
-  m_MeshWeighting3: 1
-=======
->>>>>>> main
   m_MaskInteraction: 0

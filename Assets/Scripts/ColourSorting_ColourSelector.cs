@@ -6,14 +6,27 @@ using UnityEngine.UI;
 
 public class ColourSorting_ColourSelector : MonoBehaviour
 {
+    /*
+    colour array number code:
+    0 = yellow
+    1 = red
+    2 = navy blue
+    3 = green
+    4 = purple
+    5 = pink
+    6 = orange
+    7 = sky blue
+    8 = grey
+    */
+
     //number indexes used to select prefabs and colours
     private int prefabSelector;
     private int colourSelector;
 
     //to identify the colours that our selected at any given point
-    private int currentLeft = 0;//yellow at start
-    private int currentMiddle = 5;//pink at start
-    private int currentRight = 3;//green at start
+    [HideInInspector] public int currentLeft = 0;//yellow at start
+    [HideInInspector] public int currentMiddle = 5;//pink at start
+    [HideInInspector] public int currentRight = 3;//green at start
 
     //holding all available colours for user to choose between
     [SerializeField] private Color[] allColours;
