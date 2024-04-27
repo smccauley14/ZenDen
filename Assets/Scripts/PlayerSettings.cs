@@ -70,21 +70,26 @@ public class PlayerSettings : MonoBehaviour
 
     private void RemoveOptionsOutlines()
     {
+        DisableMusicButtonsOutline();
+        DisableLevelButtonsOutline();
+        DisableVoiceButtonsOutline();
+    }
+
+    private void DisableMusicButtonsOutline()
+    {
         guitarButton.GetComponent<Outline>().enabled = false;
         noiseButton.GetComponent<Outline>().enabled = false;
         synthButton.GetComponent<Outline>().enabled = false;
-        NewMethod();
-        DisableVoiceButtons();
     }
 
-    private void NewMethod()
+    private void DisableLevelButtonsOutline()
     {
         levelOneButton.GetComponent<Outline>().enabled = false;
         levelTwoButton.GetComponent<Outline>().enabled = false;
         levelThreeButton.GetComponent<Outline>().enabled = false;
     }
 
-    private void DisableVoiceButtons()
+    private void DisableVoiceButtonsOutline()
     {
         maleVoiceButton.GetComponent<Outline>().enabled = false;
         femaleVoiceButton.GetComponent<Outline>().enabled = false;
