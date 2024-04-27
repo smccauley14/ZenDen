@@ -9,9 +9,21 @@ public class FingerTipGame : MonoBehaviour
 {
     [SerializeField] private Button[] fingerButtons;
     [SerializeField] private Button restartButton;
+    [SerializeField] private Button exitButton;
+    [SerializeField] private Button levelOneButton;
+    [SerializeField] private Button levelTwoButton;
+    [SerializeField] private Button levelThreeButton;
     [SerializeField] private int level;
-    [SerializeField] private TextMeshProUGUI messageText;
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private Image gameOverImage;
+    [SerializeField] private Image breatheInMessage;
+    [SerializeField] private Image breatheOutMessage;
+
+    [SerializeField] private AudioClip breatheInFemaleVoice;
+    [SerializeField] private AudioClip breatheOutFemaleVoice;
+    [SerializeField] private AudioClip breatheInMaleVoice;
+    [SerializeField] private AudioClip breatheOutMaleVoice;
+    private AudioSource gameAudio;
 
     private int currentIndex = 0;
     private int score = 0;
@@ -23,17 +35,34 @@ public class FingerTipGame : MonoBehaviour
     private const float TimerDuration = 10f;
     private float timer;
 
+    private string voiceGender = "female";
+
     private void Start()
     {
         InitializeGame();
         AttachButtonListeners();
+        HighlightActiveLevel();
+        SetupLevelButtonListeners();
+
+        gameAudio = GetComponent<AudioSource>();
+    }
+
+    private void SetupLevelButtonListeners()
+    {
+        levelOneButton.onClick.AddListener(() => SetNewLevel(1));
+        levelTwoButton.onClick.AddListener(() => SetNewLevel(2));
+        levelThreeButton.onClick.AddListener(() => SetNewLevel(3));
     }
 
     private void InitializeGame()
     {
-        if (level == 2)
+        if (level == 2 || level == 1)
         {
-            ShuffleButtons();
+            if (level == 2)
+            {
+                ShuffleButtons();
+            }
+            
             InitializeButtons();
         }
         else if (level == 3)
@@ -48,7 +77,7 @@ public class FingerTipGame : MonoBehaviour
         for (int i = 0; i < fingerButtons.Length; i++)
         {
             int randomIndex = Random.Range(i, fingerButtons.Length);
-            Button temp = fingerButtons[i];
+            var temp = fingerButtons[i];
             fingerButtons[i] = fingerButtons[randomIndex];
             fingerButtons[randomIndex] = temp;
         }
@@ -71,6 +100,7 @@ public class FingerTipGame : MonoBehaviour
 
     private void InitializeLevel3()
     {
+        scoreText.gameObject.SetActive(true);
         SetNextSelections();
     }
 
@@ -117,6 +147,43 @@ public class FingerTipGame : MonoBehaviour
         }
     }
 
+    public void SetNewLevel(int newLevel)
+    {
+        level = newLevel;
+        HighlightActiveLevel();
+        ResetGame();
+    }
+
+    public void ResetGame()
+    {
+        FilterGameEndButtons(false);
+        scoreText.gameObject.SetActive(false);
+        currentIndex = 0;
+        score = 0;
+        StopCoroutine(nameof(UpdateTimer));
+        RemoveButtonListeners();
+        InitializeGame();
+        AttachButtonListeners();
+    }
+
+    public void LoadSensoryRoomScene() => SceneManager.LoadScene(0, LoadSceneMode.Single);
+
+    private void FilterGameEndButtons(bool status)
+    {
+        restartButton.gameObject.SetActive(status);
+        exitButton.gameObject.SetActive(status);
+        gameOverImage.gameObject.SetActive(status);
+    }
+
+    private void RemoveButtonListeners()
+    {
+        for (int i = 0; i < fingerButtons.Length; i++)
+        {
+            int buttonIndex = i;
+            fingerButtons[i].onClick.RemoveAllListeners();
+        }
+    }
+
     private void FingerClicked(int buttonIndex)
     {
         if (level == 3 && buttonIndex == redButtonIndex)
@@ -125,7 +192,7 @@ public class FingerTipGame : MonoBehaviour
             return;
         }
 
-        if (level != 3 && (messageText.enabled || buttonIndex != currentIndex))
+        if (level != 3 && (breatheInMessage.IsActive() || breatheOutMessage.IsActive() || buttonIndex != currentIndex))
             return;
 
         SetButtonImageTransparent(fingerButtons[currentIndex].GetComponent<Image>());
@@ -150,42 +217,51 @@ public class FingerTipGame : MonoBehaviour
         }
 
         if (allButtonsPressed && level != 3)
-            restartButton.gameObject.SetActive(true);
+        {
+            FilterGameEndButtons(true);
+        }
     }
 
-    private void HandleGameOver()
-    {
-        messageText.text = "Game Over!";
-        restartButton.gameObject.SetActive(true);
-    }
+    private void HandleGameOver() => FilterGameEndButtons(true);
 
     private IEnumerator ShowBreatheMessages()
     {
-        messageText.enabled = true;
+
         foreach (var button in fingerButtons)
             button.interactable = false;
 
-        messageText.text = "Breathe In";
+        breatheInMessage.gameObject.SetActive(true);
+        PlayBreathingAudio(breatheInFemaleVoice, breatheInMaleVoice);
         yield return new WaitForSeconds(MessageDisplayDuration);
 
-        messageText.text = "Breathe Out";
+        breatheInMessage.gameObject.SetActive(false);
+        breatheOutMessage.gameObject.SetActive(true);
+        PlayBreathingAudio(breatheOutFemaleVoice, breatheOutMaleVoice);
         yield return new WaitForSeconds(MessageDisplayDuration);
 
-        messageText.text = "";
+        breatheOutMessage.gameObject.SetActive(false);
 
         foreach (var button in fingerButtons)
             button.interactable = true;
 
-        messageText.enabled = false;
-
         if (allButtonsPressed && level != 3)
-            restartButton.gameObject.SetActive(true);
+        {
+            FilterGameEndButtons(true);
+        }
+    }
+
+    private void PlayBreathingAudio(AudioClip female, AudioClip male)
+    {
+        if (voiceGender == "female")
+            gameAudio.PlayOneShot(female);
+        if (voiceGender == "male")
+            gameAudio.PlayOneShot(male);
     }
 
     private void StartTimer()
     {
         timer = TimerDuration;
-        StartCoroutine(UpdateTimer());
+        StartCoroutine(nameof(UpdateTimer));
     }
 
     private IEnumerator UpdateTimer()
@@ -198,18 +274,29 @@ public class FingerTipGame : MonoBehaviour
         HandleGameOver();
     }
 
-    private void ResetTimer()
-    {
-        timer = TimerDuration;
-    }
+    private void ResetTimer() => timer = TimerDuration;
 
-    public void RestartGame()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
+    public void RestartGame() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
-    private void SetButtonImageTransparent(Image buttonImage)
+    private void SetButtonImageTransparent(Image buttonImage) => buttonImage.color = new Color(0f, 0f, 0f, 0f);
+
+    private void HighlightActiveLevel()
     {
-        buttonImage.color = new Color(0f, 0f, 0f, 0f);
+        levelThreeButton.GetComponent<Outline>().enabled = false;
+        levelTwoButton.GetComponent<Outline>().enabled = false;
+        levelOneButton.GetComponent<Outline>().enabled = false;
+
+        if (level == 3)
+        {
+            levelThreeButton.GetComponent<Outline>().enabled = true;
+        }
+        if (level == 2)
+        {
+            levelTwoButton.GetComponent<Outline>().enabled = true;
+        }
+        if (level == 1)
+        {
+            levelOneButton.GetComponent<Outline>().enabled = true;
+        }
     }
 }
