@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4465788, g: 0.49641287, b: 0.5748173, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -372,6 +372,7 @@ GameObject:
   - component: {fileID: 110629244}
   - component: {fileID: 110629243}
   - component: {fileID: 110629242}
+  - component: {fileID: 110629246}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -464,6 +465,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &110629246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110629241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5e267ad259560c4ab9dabc8be6a4eb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settingsMenu: {fileID: 1539670012}
 --- !u!1 &215293910
 GameObject:
   m_ObjectHideFlags: 0
@@ -819,6 +833,7 @@ GameObject:
   - component: {fileID: 468468024}
   - component: {fileID: 468468023}
   - component: {fileID: 468468022}
+  - component: {fileID: 468468025}
   m_Layer: 5
   m_Name: Synth
   m_TagString: Untagged
@@ -889,7 +904,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 468468023}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1539670017}
+        m_TargetAssemblyTypeName: PlayerSettings, Assembly-CSharp
+        m_MethodName: SaveMusic
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Synth
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &468468023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -928,6 +955,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 468468020}
   m_CullTransparentMesh: 1
+--- !u!114 &468468025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468468020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 10, y: 2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &475496727
 GameObject:
   m_ObjectHideFlags: 0
@@ -940,6 +982,7 @@ GameObject:
   - component: {fileID: 475496731}
   - component: {fileID: 475496730}
   - component: {fileID: 475496729}
+  - component: {fileID: 475496732}
   m_Layer: 5
   m_Name: Guitar
   m_TagString: Untagged
@@ -1010,7 +1053,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 475496730}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1539670017}
+        m_TargetAssemblyTypeName: PlayerSettings, Assembly-CSharp
+        m_MethodName: SaveMusic
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Guitar
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &475496730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1049,6 +1104,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 475496727}
   m_CullTransparentMesh: 1
+--- !u!114 &475496732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 475496727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 10, y: 2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &547461991
 GameObject:
   m_ObjectHideFlags: 0
@@ -1061,6 +1131,7 @@ GameObject:
   - component: {fileID: 547461995}
   - component: {fileID: 547461994}
   - component: {fileID: 547461993}
+  - component: {fileID: 547461996}
   m_Layer: 5
   m_Name: Female
   m_TagString: Untagged
@@ -1131,7 +1202,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 547461994}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1539670017}
+        m_TargetAssemblyTypeName: PlayerSettings, Assembly-CSharp
+        m_MethodName: SaveVoice
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Female
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &547461994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1170,6 +1253,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 547461991}
   m_CullTransparentMesh: 1
+--- !u!114 &547461996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547461991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 10, y: 2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &733158346
 GameObject:
   m_ObjectHideFlags: 0
@@ -1252,7 +1350,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 733158349}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 110629246}
+        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
+        m_MethodName: ExitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &733158349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1373,7 +1483,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 752875065}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 110629246}
+        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
+        m_MethodName: ExitSettings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &752875065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1588,7 +1710,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1085522895}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 110629246}
+        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
+        m_MethodName: LoadSettings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1085522895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2393,6 +2527,7 @@ GameObject:
   - component: {fileID: 1536122173}
   - component: {fileID: 1536122172}
   - component: {fileID: 1536122171}
+  - component: {fileID: 1536122174}
   m_Layer: 5
   m_Name: Noise
   m_TagString: Untagged
@@ -2463,7 +2598,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1536122172}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1539670017}
+        m_TargetAssemblyTypeName: PlayerSettings, Assembly-CSharp
+        m_MethodName: SaveMusic
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Noise
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1536122172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2502,6 +2649,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1536122169}
   m_CullTransparentMesh: 1
+--- !u!114 &1536122174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536122169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 10, y: 2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1539670012
 GameObject:
   m_ObjectHideFlags: 0
@@ -2514,6 +2676,7 @@ GameObject:
   - component: {fileID: 1539670015}
   - component: {fileID: 1539670014}
   - component: {fileID: 1539670013}
+  - component: {fileID: 1539670017}
   m_Layer: 5
   m_Name: SetupMenu
   m_TagString: Untagged
@@ -2616,6 +2779,26 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1539670017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539670012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a133f93d8fe2dbe40bc47f5612b364a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  guitarButton: {fileID: 475496729}
+  noiseButton: {fileID: 1536122171}
+  synthButton: {fileID: 468468022}
+  levelOneButton: {fileID: 1996719643}
+  levelTwoButton: {fileID: 1763088867}
+  levelThreeButton: {fileID: 1892723012}
+  maleVoiceButton: {fileID: 1609049662}
+  femaleVoiceButton: {fileID: 547461993}
 --- !u!1 &1594033106
 GameObject:
   m_ObjectHideFlags: 0
@@ -2698,7 +2881,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1594033109}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 110629246}
+        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
+        m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1594033109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2749,6 +2944,7 @@ GameObject:
   - component: {fileID: 1609049664}
   - component: {fileID: 1609049663}
   - component: {fileID: 1609049662}
+  - component: {fileID: 1609049665}
   m_Layer: 5
   m_Name: Male
   m_TagString: Untagged
@@ -2819,7 +3015,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1609049663}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1539670017}
+        m_TargetAssemblyTypeName: PlayerSettings, Assembly-CSharp
+        m_MethodName: SaveVoice
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Male
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1609049663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2858,6 +3066,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1609049660}
   m_CullTransparentMesh: 1
+--- !u!114 &1609049665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1609049660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 10, y: 2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1699453291
 GameObject:
   m_ObjectHideFlags: 0
@@ -3004,6 +3227,7 @@ GameObject:
   - component: {fileID: 1763088869}
   - component: {fileID: 1763088868}
   - component: {fileID: 1763088867}
+  - component: {fileID: 1763088870}
   m_Layer: 5
   m_Name: Level2
   m_TagString: Untagged
@@ -3074,7 +3298,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1763088868}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1539670017}
+        m_TargetAssemblyTypeName: PlayerSettings, Assembly-CSharp
+        m_MethodName: SaveLevel
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1763088868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3113,6 +3349,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1763088865}
   m_CullTransparentMesh: 1
+--- !u!114 &1763088870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1763088865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 10, y: 2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1826437320
 GameObject:
   m_ObjectHideFlags: 0
@@ -3543,6 +3794,7 @@ GameObject:
   - component: {fileID: 1892723014}
   - component: {fileID: 1892723013}
   - component: {fileID: 1892723012}
+  - component: {fileID: 1892723015}
   m_Layer: 5
   m_Name: Level3
   m_TagString: Untagged
@@ -3613,7 +3865,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1892723013}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1539670017}
+        m_TargetAssemblyTypeName: PlayerSettings, Assembly-CSharp
+        m_MethodName: SaveLevel
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1892723013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3652,6 +3916,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1892723010}
   m_CullTransparentMesh: 1
+--- !u!114 &1892723015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1892723010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 10, y: 2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1901830253
 GameObject:
   m_ObjectHideFlags: 0
@@ -3932,6 +4211,7 @@ GameObject:
   - component: {fileID: 1996719645}
   - component: {fileID: 1996719644}
   - component: {fileID: 1996719643}
+  - component: {fileID: 1996719646}
   m_Layer: 5
   m_Name: Level1
   m_TagString: Untagged
@@ -4002,7 +4282,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1996719644}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1539670017}
+        m_TargetAssemblyTypeName: PlayerSettings, Assembly-CSharp
+        m_MethodName: SaveLevel
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1996719644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4041,6 +4333,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1996719641}
   m_CullTransparentMesh: 1
+--- !u!114 &1996719646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1996719641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 10, y: 2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &2100976115
 GameObject:
   m_ObjectHideFlags: 0
