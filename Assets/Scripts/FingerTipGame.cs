@@ -35,7 +35,7 @@ public class FingerTipGame : MonoBehaviour
     private const float TimerDuration = 10f;
     private float timer;
 
-    private string voiceGender = "female";
+    private string voiceGender;
     private const string sensoryRoomScene = "School Sensory Room";
 
     private void Start()
@@ -57,6 +57,8 @@ public class FingerTipGame : MonoBehaviour
 
     private void InitializeGame()
     {
+        level = PlayerPrefs.GetInt(SettingKeys.LevelKey, SettingKeys.LevelDefaultValue);
+        voiceGender = PlayerPrefs.GetString(SettingKeys.VoiceKey, SettingKeys.VoiceDefaultValue); 
         if (level == 2 || level == 1)
         {
             if (level == 2)
@@ -151,6 +153,7 @@ public class FingerTipGame : MonoBehaviour
     public void SetNewLevel(int newLevel)
     {
         level = newLevel;
+        PlayerPrefs.SetInt(SettingKeys.LevelKey, level);
         HighlightActiveLevel();
         ResetGame();
     }
@@ -253,9 +256,9 @@ public class FingerTipGame : MonoBehaviour
 
     private void PlayBreathingAudio(AudioClip female, AudioClip male)
     {
-        if (voiceGender == "female")
+        if (voiceGender == "Female")
             gameAudio.PlayOneShot(female);
-        if (voiceGender == "male")
+        if (voiceGender == "Male")
             gameAudio.PlayOneShot(male);
     }
 
