@@ -60,7 +60,7 @@ public class PosterController : MonoBehaviour
                 video.loopPointReached += OnVideoEnd;
             }
 
-            if(scene != null)
+            if(!String.IsNullOrEmpty(scene))
             {
                 SceneManager.LoadSceneAsync(scene);
             }
