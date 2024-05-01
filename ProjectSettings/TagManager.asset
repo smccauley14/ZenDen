@@ -4,9 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - gold
-  - pink
-  - green
   - brown
   - Circle
   - Square
@@ -16,16 +13,44 @@ TagManager:
   - Rectangle
   - Pentagon
   - Perimeter
-  
+  - Blue
+  - Red
+  - left
+  - right
+  - middle
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
   - Water
+  - Water
   - UI
-  - MirrorL
   - MirrorR
-
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   m_SortingLayers:
   - name: Default
     uniqueID: 0
