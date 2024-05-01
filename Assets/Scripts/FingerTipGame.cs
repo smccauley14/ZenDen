@@ -36,6 +36,7 @@ public class FingerTipGame : MonoBehaviour
     private float timer;
 
     private string voiceGender = "female";
+    private const string sensoryRoomScene = "School Sensory Room";
 
     private void Start()
     {
@@ -166,7 +167,7 @@ public class FingerTipGame : MonoBehaviour
         AttachButtonListeners();
     }
 
-    public void LoadSensoryRoomScene() => SceneManager.LoadScene(0, LoadSceneMode.Single);
+    public void LoadSensoryRoomScene() => SceneManager.LoadScene(sensoryRoomScene);
 
     private void FilterGameEndButtons(bool status)
     {
