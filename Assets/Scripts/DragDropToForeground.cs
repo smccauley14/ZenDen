@@ -21,14 +21,11 @@ public class DragDropToForeground : MonoBehaviour
     private Rigidbody objectRB;
     private bool isDragging = false;
     private string colour;
-    private string TrayPositionOfPickedUpObject;
+    //private string TrayPositionOfPickedUpObject;
 
     //particle effects
     [SerializeField] GameObject correctParticle;
     [SerializeField] GameObject wrongParticle;
-
-
-
 
     private Vector3 worldPosition //returns the position of the clicked on object, relevant to the camera
     {
@@ -48,8 +45,8 @@ public class DragDropToForeground : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit) && gameManagerScript.objectsClickedOn == 0)
             {
-                //getting the relevant tray position, determine colour
-                TrayPositionOfPickedUpObject = hit.transform.tag;
+                //getting the relevant tray position in order to determine colour
+                gameManagerScript.TrayPositionOfPickedUpObject = hit.transform.tag;
 
                 return hit.transform == transform;
             }
@@ -78,7 +75,6 @@ public class DragDropToForeground : MonoBehaviour
         //getting the orginal instantiated position/rotation - KEEP IN CODE FOR NOW
         //originalPosition = transform.position;
         //originalRotation = transform.rotation;
-
     }
 
     private void Awake()
@@ -98,7 +94,6 @@ public class DragDropToForeground : MonoBehaviour
             {
                 StartCoroutine(Drag());
             }
-
         };
 
         //declaring what should happen press interaction ends
@@ -106,7 +101,6 @@ public class DragDropToForeground : MonoBehaviour
         {
             isDragging = false;
         };
-
     }
 
     // Update is called once per frame
@@ -165,7 +159,6 @@ public class DragDropToForeground : MonoBehaviour
 
         //make hand disappear
         StartCoroutine(handDisappear());
-
     }
 
     //methods to turn off/on the Rigid Body
@@ -198,9 +191,7 @@ public class DragDropToForeground : MonoBehaviour
         //removing any RB physics effects from previous interactions
         objectRB.velocity = new Vector3(0, 0, 0);
         objectRB.angularVelocity = new Vector3(0, 0, 0);
-
         transform.position = gameManagerScript.GenerateSpawnPos();
-
     }
 
     //return the object to where it was first instantiated - KEEP FOR NOW
@@ -224,7 +215,9 @@ public class DragDropToForeground : MonoBehaviour
         gameManagerScript.objectsInScene--;
         gameObject.SetActive(false);
         correctParticle.SetActive(false);
-        //Destroy(gameObject);
+
+        //NEW
+        gameManagerScript.ActivateSortedObject();
     }
 
     //turn on particle effect
@@ -241,7 +234,6 @@ public class DragDropToForeground : MonoBehaviour
         wrongParticle.SetActive(false);
     }
 
-
     private void OnTriggerEnter(Collider other)
     {
         //if the object is not being dragged (i.e. if it has been dropped)
@@ -257,6 +249,8 @@ public class DragDropToForeground : MonoBehaviour
                 //play 'correct' sound effect
                 gameManagerScript.gameAudio.PlayOneShot(gameManagerScript.correctSound);
                 correctParticle.SetActive(true);
+
+
             }
             //if the object is a different colour, bounce object vertically
             else if (!other.CompareTag(colour))
@@ -279,18 +273,53 @@ public class DragDropToForeground : MonoBehaviour
                 //KEEP FOR NOW
                 //return to original position after a moment. NB - object pooling has made this more difficult
                 //StartCoroutine(ReturnToOriginalPosition());
-
             }
         }
     }
 
+    /*
+    //ActivateRelevantSortedObject
+    void ActivateSortedObject()
+    {
+        int trayPosition = determineWhatObjectIsPickedUp();
 
+        if (trayPosition == 1)
+        {
+            gameManagerScript.currentlySortedLeft++;
+            ActivateLeftTrayObject();
+        }
+        else if (trayPosition == 2)
+        {
+            gameManagerScript.currentlySortedMiddle++;
+            ActivateMiddleTrayObject();
+        }
+        else if (trayPosition == 3)
+        {
+            gameManagerScript.currentlySortedRight++;
+            ActivateRightTrayObject();
+        }
+    }
+    void ActivateLeftTrayObject()
+    {
+        int objectToSort = gameManagerScript.currentlySortedLeft - 1;
+        gameManagerScript.sortedLeftDinos[objectToSort].SetActive(true);
+    }
+    void ActivateMiddleTrayObject()
+    {
+        int objectToSort = gameManagerScript.currentlySortedMiddle - 1;
+        gameManagerScript.sortedMiddleDinos[objectToSort].SetActive(true);
+    }
+    void ActivateRightTrayObject()
+    {
+        int objectToSort = gameManagerScript.currentlySortedRight - 1;
+        gameManagerScript.sortedRightDinos[objectToSort].SetActive(true);
+    }
+    */
 
     private int GetColourNumber()
     {
-        return determineColourOfObject(determineWhatObjectIsPickedUp());
+        return determineColourOfObject(gameManagerScript.determineWhatObjectIsPickedUp());
     }
-
 
     private int determineColourOfObject(int objectPickedUp)
     {
@@ -304,25 +333,26 @@ public class DragDropToForeground : MonoBehaviour
         }
         else
             return colourSelectorScript.currentRight;
-        
     }
 
+    /*
     private int determineWhatObjectIsPickedUp()
     {
-        if (TrayPositionOfPickedUpObject == "left")
+        if (gameManagerScript.TrayPositionOfPickedUpObject == "left")
         {
             return 1;
         }
-        else if (TrayPositionOfPickedUpObject == "middle")
+        else if (gameManagerScript.TrayPositionOfPickedUpObject == "middle")
         {
             return 2;
         }
-        else if (TrayPositionOfPickedUpObject == "right")
+        else if (gameManagerScript.TrayPositionOfPickedUpObject == "right")
         {
             return 3;
         }
         else return 0;
     }
+    */
 
     private int GetWrongTrayNumber(string trayTag)
     {
@@ -338,7 +368,6 @@ public class DragDropToForeground : MonoBehaviour
         {
             return colourSelectorScript.currentRight;
         }
-
     }
 
 }

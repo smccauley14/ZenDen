@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 public class ColourSorting_GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-
     //variables
     [HideInInspector] public bool isDragging;
     [HideInInspector] public ObjectPool_ColourSorting poolScript;
@@ -29,6 +27,9 @@ public class ColourSorting_GameManager : MonoBehaviour
     [HideInInspector] public AudioSource gameAudio;
     private ColourSorting_AudioManager audioManagerScript;
 
+    //NEW
+    public string TrayPositionOfPickedUpObject;
+
     //public sound clips that are called in other scripts
     public AudioClip correctSound;
     public AudioClip wrongSound;
@@ -44,7 +45,20 @@ public class ColourSorting_GameManager : MonoBehaviour
     public Color[] allColours;
     [SerializeField] private Material[] prefabMaterials;
 
+    //Sorted GameObjects: Dinos & Tractors
+    public GameObject[] sortedLeftDinos;
+    public GameObject[] sortedMiddleDinos;
+    public GameObject[] sortedRightDinos;
+    public GameObject[] sortedLeftTractors;
+    public GameObject[] sortedMiddleTractors;
+    public GameObject[] sortedRightTractors;
 
+    public int currentlySortedLeft;
+    public int currentlySortedMiddle;
+    public int currentlySortedRight;
+
+
+    // Start is called before the first frame update
     void Start()
     {
         //getting player audio
@@ -180,6 +194,60 @@ public class ColourSorting_GameManager : MonoBehaviour
 
     }
 
+    public int determineWhatObjectIsPickedUp()
+    {
+        if (TrayPositionOfPickedUpObject == "left")
+        {
+            return 1;
+        }
+        else if (TrayPositionOfPickedUpObject == "middle")
+        {
+            return 2;
+        }
+        else if (TrayPositionOfPickedUpObject == "right")
+        {
+            return 3;
+        }
+        else return 0;
+    }
+
+
+    //ActivateRelevantSortedObject
+    public void ActivateSortedObject()
+    {
+        int trayPosition = determineWhatObjectIsPickedUp();
+
+        if (trayPosition == 1)
+        {
+            currentlySortedLeft++;
+            ActivateLeftTrayObject();
+        }
+        else if (trayPosition == 2)
+        {
+            currentlySortedMiddle++;
+            ActivateMiddleTrayObject();
+        }
+        else if (trayPosition == 3)
+        {
+            currentlySortedRight++;
+            ActivateRightTrayObject();
+        }
+    }
+    void ActivateLeftTrayObject()
+    {
+        int objectToSort = currentlySortedLeft - 1;
+        sortedLeftDinos[objectToSort].SetActive(true);
+    }
+    void ActivateMiddleTrayObject()
+    {
+        int objectToSort = currentlySortedMiddle - 1;
+        sortedMiddleDinos[objectToSort].SetActive(true);
+    }
+    void ActivateRightTrayObject()
+    {
+        int objectToSort = currentlySortedRight - 1;
+        sortedRightDinos[objectToSort].SetActive(true);
+    }
 
     //method to deactivate every draggable object in the scene
     private void DeactivateAllObjects()
