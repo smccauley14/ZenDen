@@ -260,7 +260,6 @@ public class ColourSorting_GameManager : MonoBehaviour
 
         //reduce number objects to 0, to trigger another wave
         objectsInScene = 0;
-
     }
 
 }

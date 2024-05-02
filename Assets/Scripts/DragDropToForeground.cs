@@ -209,14 +209,14 @@ public class DragDropToForeground : MonoBehaviour
     */
 
     //set object inactive, after a delay
-    private IEnumerator DestroyDelay ()
+    private IEnumerator DestroyObjectAndSetTrayObjectActive()
     {
         yield return new WaitForSeconds(1f);
         gameManagerScript.objectsInScene--;
         gameObject.SetActive(false);
         correctParticle.SetActive(false);
 
-        //NEW
+        //activate relevant sorted object
         gameManagerScript.ActivateSortedObject();
     }
 
@@ -245,12 +245,10 @@ public class DragDropToForeground : MonoBehaviour
                 //audioManager sound effects:
                 audioManagerScript.WhenToyPutInCorrectTray();
 
-                StartCoroutine(DestroyDelay());
+                StartCoroutine(DestroyObjectAndSetTrayObjectActive());
                 //play 'correct' sound effect
                 gameManagerScript.gameAudio.PlayOneShot(gameManagerScript.correctSound);
                 correctParticle.SetActive(true);
-
-
             }
             //if the object is a different colour, bounce object vertically
             else if (!other.CompareTag(colour))
@@ -276,45 +274,6 @@ public class DragDropToForeground : MonoBehaviour
             }
         }
     }
-
-    /*
-    //ActivateRelevantSortedObject
-    void ActivateSortedObject()
-    {
-        int trayPosition = determineWhatObjectIsPickedUp();
-
-        if (trayPosition == 1)
-        {
-            gameManagerScript.currentlySortedLeft++;
-            ActivateLeftTrayObject();
-        }
-        else if (trayPosition == 2)
-        {
-            gameManagerScript.currentlySortedMiddle++;
-            ActivateMiddleTrayObject();
-        }
-        else if (trayPosition == 3)
-        {
-            gameManagerScript.currentlySortedRight++;
-            ActivateRightTrayObject();
-        }
-    }
-    void ActivateLeftTrayObject()
-    {
-        int objectToSort = gameManagerScript.currentlySortedLeft - 1;
-        gameManagerScript.sortedLeftDinos[objectToSort].SetActive(true);
-    }
-    void ActivateMiddleTrayObject()
-    {
-        int objectToSort = gameManagerScript.currentlySortedMiddle - 1;
-        gameManagerScript.sortedMiddleDinos[objectToSort].SetActive(true);
-    }
-    void ActivateRightTrayObject()
-    {
-        int objectToSort = gameManagerScript.currentlySortedRight - 1;
-        gameManagerScript.sortedRightDinos[objectToSort].SetActive(true);
-    }
-    */
 
     private int GetColourNumber()
     {
