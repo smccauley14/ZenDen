@@ -172,6 +172,22 @@ public class ColourSorting_AudioManager : MonoBehaviour
                 }
             }
 
+            if (colourNumber == 2)
+            {
+                if (randomNum == 0)
+                {
+                    gameAudio.PlayOneShot(navyMale);
+                }
+                else if (randomNum == 1)
+                {
+                    gameAudio.PlayOneShot(putThisInTheNavyTrayMale);
+                }
+                else
+                {
+                    gameAudio.PlayOneShot(thisToyIsNavyMale);
+                }
+            }
+
             if (colourNumber == 3)
             {
                 if (randomNum == 0)
@@ -188,6 +204,22 @@ public class ColourSorting_AudioManager : MonoBehaviour
                 }
             }
 
+            if (colourNumber == 4)
+            {
+                if (randomNum == 0)
+                {
+                    gameAudio.PlayOneShot(purpleMale);
+                }
+                else if (randomNum == 1)
+                {
+                    gameAudio.PlayOneShot(putThisInThePurpleTrayMale);
+                }
+                else
+                {
+                    gameAudio.PlayOneShot(thisToyIsPurpleMale);
+                }
+            }
+
             if (colourNumber == 5)
             {
                 if (randomNum == 0)
@@ -201,6 +233,54 @@ public class ColourSorting_AudioManager : MonoBehaviour
                 else
                 {
                     gameAudio.PlayOneShot(thisToyIsPinkMale);
+                }
+            }
+
+            if (colourNumber == 6)
+            {
+                if (randomNum == 0)
+                {
+                    gameAudio.PlayOneShot(orangeMale);
+                }
+                else if (randomNum == 1)
+                {
+                    gameAudio.PlayOneShot(putThisInTheOrangeTrayMale);
+                }
+                else
+                {
+                    gameAudio.PlayOneShot(thisToyIsOrangeMale);
+                }
+            }
+
+            if (colourNumber == 7)
+            {
+                if (randomNum == 0)
+                {
+                    gameAudio.PlayOneShot(skyBlueMale);
+                }
+                else if (randomNum == 1)
+                {
+                    gameAudio.PlayOneShot(putThisInTheSkyBlueTrayMale);
+                }
+                else
+                {
+                    gameAudio.PlayOneShot(thisToyIsSkyBlueMale);
+                }
+            }
+
+            if (colourNumber == 8)
+            {
+                if (randomNum == 0)
+                {
+                    gameAudio.PlayOneShot(greyMale);
+                }
+                else if (randomNum == 1)
+                {
+                    gameAudio.PlayOneShot(putThisInTheGreyTrayMale);
+                }
+                else
+                {
+                    gameAudio.PlayOneShot(thisToyIsGreyMale);
                 }
             }
         }
@@ -245,13 +325,33 @@ public class ColourSorting_AudioManager : MonoBehaviour
                 {
                     gameAudio.PlayOneShot(thatToyWasRedMale);
                 }
+                if (colourNumber == 2)
+                {
+                    gameAudio.PlayOneShot(thatToyWasNavyMale);
+                }
                 if (colourNumber == 3)
                 {
                     gameAudio.PlayOneShot(thatToyWasGreenMale);
                 }
+                if (colourNumber == 4)
+                {
+                    gameAudio.PlayOneShot(thatToyWasPurpleMale);
+                }
                 if (colourNumber == 5)
                 {
                     gameAudio.PlayOneShot(thatToyWasPinkMale);
+                }
+                if (colourNumber == 6)
+                {
+                    gameAudio.PlayOneShot(thatToyWasOrangeMale);
+                }
+                if (colourNumber == 7)
+                {
+                    gameAudio.PlayOneShot(thatToyWasSkyBlueMale);
+                }
+                if (colourNumber == 8)
+                {
+                    gameAudio.PlayOneShot(thatToyWasGreyMale);
                 }
             }
             else if (randomNum == 3)
@@ -264,13 +364,33 @@ public class ColourSorting_AudioManager : MonoBehaviour
                 {
                     gameAudio.PlayOneShot(thatTrayWasRedMale);
                 }
+                else if (wrongTrayNumber == 2)
+                {
+                    gameAudio.PlayOneShot(thatTrayWasNavyMale);
+                }
                 else if (wrongTrayNumber == 3)
                 {
                     gameAudio.PlayOneShot(thatTrayWasGreenMale);
                 }
+                else if (wrongTrayNumber == 4)
+                {
+                    gameAudio.PlayOneShot(thatTrayWasPurpleMale);
+                }
                 else if (wrongTrayNumber == 5)
                 {
                     gameAudio.PlayOneShot(thatTrayWasPinkMale);
+                }
+                else if (wrongTrayNumber == 6)
+                {
+                    gameAudio.PlayOneShot(thatTrayWasOrangeMale);
+                }
+                else if (wrongTrayNumber == 7)
+                {
+                    gameAudio.PlayOneShot(thatTrayWasSkyBlueMale);
+                }
+                else if (wrongTrayNumber == 8)
+                {
+                    gameAudio.PlayOneShot(thatTrayWasGreyMale);
                 }
             }
         }
