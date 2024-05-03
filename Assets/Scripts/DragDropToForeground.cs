@@ -21,7 +21,6 @@ public class DragDropToForeground : MonoBehaviour
     private Rigidbody objectRB;
     private bool isDragging = false;
     private string colour;
-    //private string TrayPositionOfPickedUpObject;
 
     //particle effects
     [SerializeField] GameObject correctParticle;
@@ -43,10 +42,10 @@ public class DragDropToForeground : MonoBehaviour
             Ray ray = playerCamera.ScreenPointToRay(currentScreenPosition);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit) && gameManagerScript.objectsClickedOn == 0)
+            if (Physics.Raycast(ray, out hit) && gameManagerScript.readyToPickUpAgain)
             {
                 //getting the relevant tray position in order to determine colour
-                gameManagerScript.TrayPositionOfPickedUpObject = hit.transform.tag;
+                gameManagerScript.trayPositionOfPickedUpObject = hit.transform.tag;
 
                 return hit.transform == transform;
             }
@@ -89,10 +88,12 @@ public class DragDropToForeground : MonoBehaviour
         //declaring what should happen press interaction starts
         press.performed += _ =>
         {
-
-            if (isClickedOn && !gameManagerScript.UIisActive)//only starts if UI menu is not active
+            if (isClickedOn && !gameManagerScript.UIisActive && gameManagerScript.readyToPickUpAgain)
             {
-                StartCoroutine(Drag());
+                if (gameManagerScript.readyToPickUpAgain)
+                {
+                    StartCoroutine(Drag());
+                }
             }
         };
 
@@ -103,19 +104,10 @@ public class DragDropToForeground : MonoBehaviour
         };
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-
-    }
-
-
     private IEnumerator Drag()
     {
-        //telling the game manager to count how many objects have been clicked on
-        //to avoid lifting more than one
-        gameManagerScript.objectsClickedOn++;
+        //preventing you from picking up another object
+        gameManagerScript.readyToPickUpAgain = false;
 
         //making 'isDragging' script true when object interaction is taking place
         isDragging = true;
@@ -151,9 +143,6 @@ public class DragDropToForeground : MonoBehaviour
             yield return null;
         }
 
-        //reducing variable in GameManager by 1
-        gameManagerScript.objectsClickedOn--;
-
         //turning RB back on
         TurnOnRB();
 
@@ -179,7 +168,6 @@ public class DragDropToForeground : MonoBehaviour
     //make the hand disappear after a delay
     private IEnumerator handDisappear()
     {
-
         yield return new WaitForSeconds(1f);
         gameManagerScript.handObject.SetActive(false);
     }
@@ -216,8 +204,9 @@ public class DragDropToForeground : MonoBehaviour
         gameObject.SetActive(false);
         correctParticle.SetActive(false);
 
-        //activate relevant sorted object
-        gameManagerScript.ActivateSortedObject();
+        gameManagerScript.ActivateRelevantSortedObject();
+
+        gameManagerScript.readyToPickUpAgain = true;
     }
 
     //turn on particle effect
@@ -225,13 +214,13 @@ public class DragDropToForeground : MonoBehaviour
     {
         yield return new WaitForSeconds(1.15f);
         wrongParticle.SetActive(true);
-        
     }
     //turn off particle effect
     private IEnumerator TurnOffWrongParticle()
     {
         yield return new WaitForSeconds(2.5f);
         wrongParticle.SetActive(false);
+        gameManagerScript.readyToPickUpAgain = true;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -250,8 +239,16 @@ public class DragDropToForeground : MonoBehaviour
                 gameManagerScript.gameAudio.PlayOneShot(gameManagerScript.correctSound);
                 correctParticle.SetActive(true);
             }
-            //if the object is a different colour, bounce object vertically
-            else if (!other.CompareTag(colour))
+            //if object falls between trays
+            else if (other.CompareTag("Table"))
+            {
+                audioManagerScript.IfPlacedBetweenTrays();
+                StartCoroutine(TurnOnWrongParticle());
+                StartCoroutine(TurnOffWrongParticle());
+                StartCoroutine(ReturnToRandomPosition());
+            }
+            //if the object is placed in the wrong tray
+            else if (!other.CompareTag("Table") && !other.CompareTag(colour))
             {
                 //wrongParticle.SetActive(true);
                 StartCoroutine(TurnOnWrongParticle());
@@ -267,10 +264,6 @@ public class DragDropToForeground : MonoBehaviour
 
                 //transporting to a random position - perhaps fix below method if possible
                 StartCoroutine(ReturnToRandomPosition());
-
-                //KEEP FOR NOW
-                //return to original position after a moment. NB - object pooling has made this more difficult
-                //StartCoroutine(ReturnToOriginalPosition());
             }
         }
     }
@@ -294,25 +287,6 @@ public class DragDropToForeground : MonoBehaviour
             return colourSelectorScript.currentRight;
     }
 
-    /*
-    private int determineWhatObjectIsPickedUp()
-    {
-        if (gameManagerScript.TrayPositionOfPickedUpObject == "left")
-        {
-            return 1;
-        }
-        else if (gameManagerScript.TrayPositionOfPickedUpObject == "middle")
-        {
-            return 2;
-        }
-        else if (gameManagerScript.TrayPositionOfPickedUpObject == "right")
-        {
-            return 3;
-        }
-        else return 0;
-    }
-    */
-
     private int GetWrongTrayNumber(string trayTag)
     {
         if (trayTag == "left")
@@ -323,10 +297,10 @@ public class DragDropToForeground : MonoBehaviour
         {
             return colourSelectorScript.currentMiddle;
         }
-        else
+        else if (trayTag == "right")
         {
             return colourSelectorScript.currentRight;
         }
+        else return -1;//invalid number to prevent inaccurate audio
     }
-
 }

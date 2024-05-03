@@ -24,48 +24,48 @@ public class ColourSorting_AudioManager : MonoBehaviour
     private bool isPreviousAudioFinished = true;
 
     //encouragements
-    public AudioClip wellDoneWisper;
-    public AudioClip wellDoneMoreForceful;
-    public AudioClip wellDoneEncouraging;
+    [SerializeField] private AudioClip wellDoneWisper;
+    [SerializeField] private AudioClip wellDoneMoreForceful;
+    [SerializeField] private AudioClip wellDoneEncouraging;
     public AudioClip wellDoneBrief;
 
     //naming picked up colours
-    public AudioClip yellow;
-    public AudioClip thisToyIsYellow;
-    public AudioClip red;
-    public AudioClip thisToyIsRed;
-    public AudioClip pink;
-    public AudioClip thisToyIsPink;
-    public AudioClip green;
-    public AudioClip thisToyIsGreen;
+    [SerializeField] private AudioClip yellow;
+    [SerializeField] private AudioClip thisToyIsYellow;
+    [SerializeField] private AudioClip red;
+    [SerializeField] private AudioClip thisToyIsRed;
+    [SerializeField] private AudioClip pink;
+    [SerializeField] private AudioClip thisToyIsPink;
+    [SerializeField] private AudioClip green;
+    [SerializeField] private AudioClip thisToyIsGreen;
 
     //colour-based directions
-    public AudioClip putThisInTheYellowTray;
-    public AudioClip putThisInTheRedTray;
-    public AudioClip putThisInThePinkTray;
-    public AudioClip putThisInTheGreenTray;
+    [SerializeField] private AudioClip putThisInTheYellowTray;
+    [SerializeField] private AudioClip putThisInTheRedTray;
+    [SerializeField] private AudioClip putThisInThePinkTray;
+    [SerializeField] private AudioClip putThisInTheGreenTray;
 
     //naming tray colours
-    public AudioClip thatTrayWasYellow;
-    public AudioClip thatTrayWasRed;
-    public AudioClip thatTrayWasGreen;
-    public AudioClip thatTrayWasPink;
+    [SerializeField] private AudioClip thatTrayWasYellow;
+    [SerializeField] private AudioClip thatTrayWasRed;
+    [SerializeField] private AudioClip thatTrayWasGreen;
+    [SerializeField] private AudioClip thatTrayWasPink;
 
     //naming toys after being dropped
-    public AudioClip thatToyWasYellow;
-    public AudioClip thatToyWasRed;
-    public AudioClip thatToyWasPink;
-    public AudioClip thatToyWasGreen;
+    [SerializeField] private AudioClip thatToyWasYellow;
+    [SerializeField] private AudioClip thatToyWasRed;
+    [SerializeField] private AudioClip thatToyWasPink;
+    [SerializeField] private AudioClip thatToyWasGreen;
 
     //general directions
-    public AudioClip sortToysInToTraysOfTheSameColour;
-    public AudioClip matchToysToTheColourOfTheTray;
-    public AudioClip matchTheColours;
-    public AudioClip toysGoBackIntheTrays;
+    [SerializeField] private AudioClip sortToysInToTraysOfTheSameColour;
+    [SerializeField] private AudioClip matchToysToTheColourOfTheTray;
+    [SerializeField] private AudioClip matchTheColours;
+    [SerializeField] private AudioClip toysGoBackIntheTrays;
 
     //try agains
-    public AudioClip ohhTryAgain;
-    public AudioClip tryAgain;
+    [SerializeField] private AudioClip ohhTryAgain;
+    [SerializeField] private AudioClip tryAgain;
 
     // Start is called before the first frame update
     void Start()
@@ -175,6 +175,16 @@ public class ColourSorting_AudioManager : MonoBehaviour
                     gameAudio.PlayOneShot(thisToyIsPink);
                 }
             }
+        }
+    }
+
+    public void IfPlacedBetweenTrays()
+    {
+        if (isPreviousAudioFinished == true)
+        {
+            isPreviousAudioFinished = false;
+            StartCoroutine(AudioDelay(2.5f));
+            gameAudio.PlayOneShot(ohhTryAgain);
         }
     }
 
