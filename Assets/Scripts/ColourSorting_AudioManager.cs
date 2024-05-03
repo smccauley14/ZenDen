@@ -23,49 +23,77 @@ public class ColourSorting_AudioManager : MonoBehaviour
     [HideInInspector] public AudioSource gameAudio;
     private bool isPreviousAudioFinished = true;
 
+    //MALE AUDIO:
     //encouragements
     [SerializeField] private AudioClip wellDoneWisperMale;
     [SerializeField] private AudioClip wellDoneMoreForcefulMale;
     [SerializeField] private AudioClip wellDoneEncouragingMale;
     public AudioClip wellDoneBrief;
-
     //naming picked up colours
     [SerializeField] private AudioClip yellowMale;
     [SerializeField] private AudioClip thisToyIsYellowMale;
     [SerializeField] private AudioClip redMale;
     [SerializeField] private AudioClip thisToyIsRedMale;
-    [SerializeField] private AudioClip pinkMale;
-    [SerializeField] private AudioClip thisToyIsPinkMale;
+    [SerializeField] private AudioClip navyMale;
+    [SerializeField] private AudioClip thisToyIsNavyMale;
     [SerializeField] private AudioClip greenMale;
     [SerializeField] private AudioClip thisToyIsGreenMale;
-
+    [SerializeField] private AudioClip purpleMale;
+    [SerializeField] private AudioClip thisToyIsPurpleMale;
+    [SerializeField] private AudioClip pinkMale;
+    [SerializeField] private AudioClip thisToyIsPinkMale;
+    [SerializeField] private AudioClip orangeMale;
+    [SerializeField] private AudioClip thisToyIsOrangeMale;
+    [SerializeField] private AudioClip skyBlueMale;
+    [SerializeField] private AudioClip thisToyIsSkyBlueMale;
+    [SerializeField] private AudioClip greyMale;
+    [SerializeField] private AudioClip thisToyIsGreyMale;
     //colour-based directions
     [SerializeField] private AudioClip putThisInTheYellowTrayMale;
     [SerializeField] private AudioClip putThisInTheRedTrayMale;
-    [SerializeField] private AudioClip putThisInThePinkTrayMale;
+    [SerializeField] private AudioClip putThisInTheNavyTrayMale;
     [SerializeField] private AudioClip putThisInTheGreenTrayMale;
-
+    [SerializeField] private AudioClip putThisInThePurpleTrayMale;
+    [SerializeField] private AudioClip putThisInThePinkTrayMale;
+    [SerializeField] private AudioClip putThisInTheOrangeTrayMale;
+    [SerializeField] private AudioClip putThisInTheSkyBlueTrayMale;
+    [SerializeField] private AudioClip putThisInTheGreyTrayMale;
     //naming tray colours
     [SerializeField] private AudioClip thatTrayWasYellowMale;
     [SerializeField] private AudioClip thatTrayWasRedMale;
+    [SerializeField] private AudioClip thatTrayWasNavyMale;
     [SerializeField] private AudioClip thatTrayWasGreenMale;
+    [SerializeField] private AudioClip thatTrayWasPurpleMale;
     [SerializeField] private AudioClip thatTrayWasPinkMale;
-
+    [SerializeField] private AudioClip thatTrayWasOrangeMale;
+    [SerializeField] private AudioClip thatTrayWasSkyBlueMale;
+    [SerializeField] private AudioClip thatTrayWasGreyMale;
     //naming toys after being dropped
     [SerializeField] private AudioClip thatToyWasYellowMale;
     [SerializeField] private AudioClip thatToyWasRedMale;
-    [SerializeField] private AudioClip thatToyWasPinkMale;
+    [SerializeField] private AudioClip thatToyWasNavyMale;
     [SerializeField] private AudioClip thatToyWasGreenMale;
+    [SerializeField] private AudioClip thatToyWasPurpleMale;
+    [SerializeField] private AudioClip thatToyWasPinkMale;
+    [SerializeField] private AudioClip thatToyWasOrangeMale;
+    [SerializeField] private AudioClip thatToyWasSkyBlueMale;
+    [SerializeField] private AudioClip thatToyWasGreyMale;
 
     //general directions
     [SerializeField] private AudioClip sortToysInToTraysOfTheSameColourMale;
     [SerializeField] private AudioClip matchToysToTheColourOfTheTrayMale;
     [SerializeField] private AudioClip matchTheColoursMale;
     [SerializeField] private AudioClip toysGoBackIntheTraysMale;
-
     //try agains
     [SerializeField] private AudioClip ohhTryAgainMale;
     [SerializeField] private AudioClip tryAgainMale;
+
+    //FEMALE AUDIO
+    //encouragements
+
+
+
+
 
     // Start is called before the first frame update
     void Start()

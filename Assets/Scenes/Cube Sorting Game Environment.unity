@@ -8549,22 +8549,47 @@ MonoBehaviour:
   thisToyIsYellowMale: {fileID: 8300000, guid: a67df3a97ccd24645ac617297f70f0be, type: 3}
   redMale: {fileID: 8300000, guid: 21fe350cc1e233a42b2bd24696715e9f, type: 3}
   thisToyIsRedMale: {fileID: 8300000, guid: dd878675a4f0dc245814b43bffebecd2, type: 3}
-  pinkMale: {fileID: 8300000, guid: 2215735fe23960245a9f43f1179012c3, type: 3}
-  thisToyIsPinkMale: {fileID: 8300000, guid: 5f95541121c98654c97be2f10fa40b39, type: 3}
+  navyMale: {fileID: 8300000, guid: aa5edc08654c76e4cb3037e065c845ea, type: 3}
+  thisToyIsNavyMale: {fileID: 8300000, guid: d7ee812c041eaf846b1afbfdd5b60a9f, type: 3}
   greenMale: {fileID: 8300000, guid: dbea39dee3cc7584a81b3f96333f23bc, type: 3}
   thisToyIsGreenMale: {fileID: 8300000, guid: 46fbf7f02a3c5b848a11382039e729d9, type: 3}
+  purpleMale: {fileID: 8300000, guid: ada509a7ec6807847b9ac78d77be8fa4, type: 3}
+  thisToyIsPurpleMale: {fileID: 8300000, guid: 1cf3f97b3918d3a4c996d818ed87f29e, type: 3}
+  pinkMale: {fileID: 8300000, guid: 2215735fe23960245a9f43f1179012c3, type: 3}
+  thisToyIsPinkMale: {fileID: 8300000, guid: 5f95541121c98654c97be2f10fa40b39, type: 3}
+  orangeMale: {fileID: 8300000, guid: c2c90eebd8c35804195b60a1f2883ccd, type: 3}
+  thisToyIsOrangeMale: {fileID: 8300000, guid: 546d5b049a173574aa417a53bb044ede, type: 3}
+  skyBlueMale: {fileID: 8300000, guid: c245b4c5108b26340a9e96eaa49d6b91, type: 3}
+  thisToyIsSkyBlueMale: {fileID: 8300000, guid: 4ac75e5c6c9540a459b29322ff555523, type: 3}
+  greyMale: {fileID: 8300000, guid: 1bc10fdad4702134bb16506f138db3d9, type: 3}
+  thisToyIsGreyMale: {fileID: 8300000, guid: cea7fcfac4c5e86439a2fd778ccad924, type: 3}
   putThisInTheYellowTrayMale: {fileID: 8300000, guid: 5200c2dcfd9ae3c469d571ee81f141b2, type: 3}
   putThisInTheRedTrayMale: {fileID: 8300000, guid: f2a1798d48713f6418e3a5b6241f3bd7, type: 3}
-  putThisInThePinkTrayMale: {fileID: 8300000, guid: a8b00163f7d77424285ba3115d86865a, type: 3}
+  putThisInTheNavyTrayMale: {fileID: 8300000, guid: e207bd3dec136e4468c28cf9608b69bc, type: 3}
   putThisInTheGreenTrayMale: {fileID: 8300000, guid: 55ebef2599f10344ba48e1b13fe5a69c, type: 3}
+  putThisInThePurpleTrayMale: {fileID: 8300000, guid: c639036b83e718a4e8913832618b0502, type: 3}
+  putThisInThePinkTrayMale: {fileID: 8300000, guid: a8b00163f7d77424285ba3115d86865a, type: 3}
+  putThisInTheOrangeTrayMale: {fileID: 8300000, guid: 4c33bebee4ee09f4a848355093d98a60, type: 3}
+  putThisInTheSkyBlueTrayMale: {fileID: 8300000, guid: d8b07b728f434e348b0ebb19f2f630c8, type: 3}
+  putThisInTheGreyTrayMale: {fileID: 8300000, guid: 049de982969abf74faf0b5655e3aa9cb, type: 3}
   thatTrayWasYellowMale: {fileID: 8300000, guid: bd390875f93be66419888bf473914514, type: 3}
   thatTrayWasRedMale: {fileID: 8300000, guid: 858b4498274977d4e978299d19e4fe1e, type: 3}
+  thatTrayWasNavyMale: {fileID: 8300000, guid: ed133bf513dfb084bb8a2c641017a70a, type: 3}
   thatTrayWasGreenMale: {fileID: 8300000, guid: 23d993227b6ea714a897e5a0f1aa2ea8, type: 3}
+  thatTrayWasPurpleMale: {fileID: 8300000, guid: 8f8a86e38f95da847a28f1a1d45b395c, type: 3}
   thatTrayWasPinkMale: {fileID: 8300000, guid: 11f6746aba1eba249bd4605d9c3626b7, type: 3}
+  thatTrayWasOrangeMale: {fileID: 8300000, guid: 357f59951d1da4543a4ceabd46f88e43, type: 3}
+  thatTrayWasSkyBlueMale: {fileID: 8300000, guid: f1a5e5baa21ec7b4cb612ab9c1b6d121, type: 3}
+  thatTrayWasGreyMale: {fileID: 8300000, guid: 7738c5c735966024893a2180b900322a, type: 3}
   thatToyWasYellowMale: {fileID: 8300000, guid: c036576cb65630b42be2b9a430d33d7b, type: 3}
   thatToyWasRedMale: {fileID: 8300000, guid: aa7bef102f5405d4588236c8786d8bc0, type: 3}
-  thatToyWasPinkMale: {fileID: 8300000, guid: 93efd83ccbf911942a4cd6a4becf1d5b, type: 3}
+  thatToyWasNavyMale: {fileID: 8300000, guid: ff45e1263f872404098773a743db72d9, type: 3}
   thatToyWasGreenMale: {fileID: 8300000, guid: d8b99f815243f164abddc9c741be98c1, type: 3}
+  thatToyWasPurpleMale: {fileID: 8300000, guid: 672e57c58f4cc12418df2c34771b9a4e, type: 3}
+  thatToyWasPinkMale: {fileID: 8300000, guid: 93efd83ccbf911942a4cd6a4becf1d5b, type: 3}
+  thatToyWasOrangeMale: {fileID: 8300000, guid: 74135a81c171d5446867b92879950282, type: 3}
+  thatToyWasSkyBlueMale: {fileID: 8300000, guid: 108ba6cf5414a9e408298b4b1a02c2bb, type: 3}
+  thatToyWasGreyMale: {fileID: 8300000, guid: 9f1582a64735b404cb6834e5b1a10023, type: 3}
   sortToysInToTraysOfTheSameColourMale: {fileID: 8300000, guid: 4443a54c007cfe343b1e8d6975736ff0, type: 3}
   matchToysToTheColourOfTheTrayMale: {fileID: 8300000, guid: 6e73224bd5af6ee448573d5ca9d027c3, type: 3}
   matchTheColoursMale: {fileID: 8300000, guid: cebbcfe12848de0428244393b71022a8, type: 3}
