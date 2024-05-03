@@ -108,7 +108,7 @@ public class ColourSorting_AudioManager : MonoBehaviour
         int randomNum = Random.Range(0, 4);
 
         isPreviousAudioFinished = false;
-        StartCoroutine(AudioDelay(2.5f));
+        StartCoroutine(AudioDelay(1.5f));
 
         if (randomNum == 0)
         {

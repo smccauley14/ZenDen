@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ColourSorting_GameManager : MonoBehaviour
@@ -34,6 +35,7 @@ public class ColourSorting_GameManager : MonoBehaviour
     [SerializeField] private Button tractorButton;
     [SerializeField] private GameObject tractorSelected;
     [SerializeField] private GameObject dinoSelected;
+    [SerializeField] private Button exitButton;
 
     //for managing colour changing functionality
     public Color[] allColours;
@@ -53,6 +55,8 @@ public class ColourSorting_GameManager : MonoBehaviour
     public int currentlySortedRight;
     public int sortedObjectToMakeActive;
 
+    private const string sensoryRoomScene = "School Sensory Room";
+
     // Start is called before the first frame update
     void Start()
     {
@@ -65,6 +69,7 @@ public class ColourSorting_GameManager : MonoBehaviour
         //adding listeners to UI buttons
         dinoButton.onClick.AddListener(DinoSelected);
         tractorButton.onClick.AddListener(TractorSelected);
+        exitButton.onClick.AddListener(LoadSensoryRoomScene);
 
         //getting pooling script
         poolScript = GetComponent<ObjectPool_ColourSorting>();
@@ -76,6 +81,8 @@ public class ColourSorting_GameManager : MonoBehaviour
         //activate a new wave when all objects are inactive
         ActivateWaveOfObjects(prefabNumberMinimum, prefabNumberMaximum);
     }
+
+    public void LoadSensoryRoomScene() => SceneManager.LoadScene(sensoryRoomScene);
 
     //generates a random position within bounds to spawn dino prefab
     public Vector3 GenerateSpawnPos()
