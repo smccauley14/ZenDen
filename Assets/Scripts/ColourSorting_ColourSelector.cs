@@ -44,7 +44,6 @@ public class ColourSorting_ColourSelector : MonoBehaviour
 
     private ColourSorting_GameManager gameManager;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -53,7 +52,6 @@ public class ColourSorting_ColourSelector : MonoBehaviour
 
         //adding all required listeners to UI buttons
         AddListeners();
-        
     }
 
     // Update is called once per frame
@@ -127,7 +125,6 @@ public class ColourSorting_ColourSelector : MonoBehaviour
     //activates the correct UI icon colour, corresponding to the current colour
     void ActivateCorrectIcon(int iconNumber, int colourNumber)
     {
-
         if (iconNumber == 0)
         {
             colourIconLeft[currentLeft].gameObject.SetActive(false);
@@ -143,7 +140,6 @@ public class ColourSorting_ColourSelector : MonoBehaviour
             colourIconRight[currentRight].gameObject.SetActive(false);
             colourIconRight[colourNumber].gameObject.SetActive(true);
         }
-        
     }
 
     //turns off the whole array of buttons (NOT CURRENTLY REQUIRED)

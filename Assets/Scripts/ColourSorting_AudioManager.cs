@@ -24,48 +24,48 @@ public class ColourSorting_AudioManager : MonoBehaviour
     private bool isPreviousAudioFinished = true;
 
     //encouragements
-    [SerializeField] private AudioClip wellDoneWisper;
-    [SerializeField] private AudioClip wellDoneMoreForceful;
-    [SerializeField] private AudioClip wellDoneEncouraging;
+    [SerializeField] private AudioClip wellDoneWisperMale;
+    [SerializeField] private AudioClip wellDoneMoreForcefulMale;
+    [SerializeField] private AudioClip wellDoneEncouragingMale;
     public AudioClip wellDoneBrief;
 
     //naming picked up colours
-    [SerializeField] private AudioClip yellow;
-    [SerializeField] private AudioClip thisToyIsYellow;
-    [SerializeField] private AudioClip red;
-    [SerializeField] private AudioClip thisToyIsRed;
-    [SerializeField] private AudioClip pink;
-    [SerializeField] private AudioClip thisToyIsPink;
-    [SerializeField] private AudioClip green;
-    [SerializeField] private AudioClip thisToyIsGreen;
+    [SerializeField] private AudioClip yellowMale;
+    [SerializeField] private AudioClip thisToyIsYellowMale;
+    [SerializeField] private AudioClip redMale;
+    [SerializeField] private AudioClip thisToyIsRedMale;
+    [SerializeField] private AudioClip pinkMale;
+    [SerializeField] private AudioClip thisToyIsPinkMale;
+    [SerializeField] private AudioClip greenMale;
+    [SerializeField] private AudioClip thisToyIsGreenMale;
 
     //colour-based directions
-    [SerializeField] private AudioClip putThisInTheYellowTray;
-    [SerializeField] private AudioClip putThisInTheRedTray;
-    [SerializeField] private AudioClip putThisInThePinkTray;
-    [SerializeField] private AudioClip putThisInTheGreenTray;
+    [SerializeField] private AudioClip putThisInTheYellowTrayMale;
+    [SerializeField] private AudioClip putThisInTheRedTrayMale;
+    [SerializeField] private AudioClip putThisInThePinkTrayMale;
+    [SerializeField] private AudioClip putThisInTheGreenTrayMale;
 
     //naming tray colours
-    [SerializeField] private AudioClip thatTrayWasYellow;
-    [SerializeField] private AudioClip thatTrayWasRed;
-    [SerializeField] private AudioClip thatTrayWasGreen;
-    [SerializeField] private AudioClip thatTrayWasPink;
+    [SerializeField] private AudioClip thatTrayWasYellowMale;
+    [SerializeField] private AudioClip thatTrayWasRedMale;
+    [SerializeField] private AudioClip thatTrayWasGreenMale;
+    [SerializeField] private AudioClip thatTrayWasPinkMale;
 
     //naming toys after being dropped
-    [SerializeField] private AudioClip thatToyWasYellow;
-    [SerializeField] private AudioClip thatToyWasRed;
-    [SerializeField] private AudioClip thatToyWasPink;
-    [SerializeField] private AudioClip thatToyWasGreen;
+    [SerializeField] private AudioClip thatToyWasYellowMale;
+    [SerializeField] private AudioClip thatToyWasRedMale;
+    [SerializeField] private AudioClip thatToyWasPinkMale;
+    [SerializeField] private AudioClip thatToyWasGreenMale;
 
     //general directions
-    [SerializeField] private AudioClip sortToysInToTraysOfTheSameColour;
-    [SerializeField] private AudioClip matchToysToTheColourOfTheTray;
-    [SerializeField] private AudioClip matchTheColours;
-    [SerializeField] private AudioClip toysGoBackIntheTrays;
+    [SerializeField] private AudioClip sortToysInToTraysOfTheSameColourMale;
+    [SerializeField] private AudioClip matchToysToTheColourOfTheTrayMale;
+    [SerializeField] private AudioClip matchTheColoursMale;
+    [SerializeField] private AudioClip toysGoBackIntheTraysMale;
 
     //try agains
-    [SerializeField] private AudioClip ohhTryAgain;
-    [SerializeField] private AudioClip tryAgain;
+    [SerializeField] private AudioClip ohhTryAgainMale;
+    [SerializeField] private AudioClip tryAgainMale;
 
     // Start is called before the first frame update
     void Start()
@@ -84,19 +84,19 @@ public class ColourSorting_AudioManager : MonoBehaviour
 
         if (randomNum == 0)
         {
-            gameAudio.PlayOneShot(sortToysInToTraysOfTheSameColour);
+            gameAudio.PlayOneShot(sortToysInToTraysOfTheSameColourMale);
         }
         else if (randomNum == 1)
         {
-            gameAudio.PlayOneShot(matchToysToTheColourOfTheTray);
+            gameAudio.PlayOneShot(matchToysToTheColourOfTheTrayMale);
         }
         else if (randomNum == 2)
         {
-            gameAudio.PlayOneShot(matchTheColours);
+            gameAudio.PlayOneShot(matchTheColoursMale);
         }
         else
         {
-            gameAudio.PlayOneShot(toysGoBackIntheTrays);
+            gameAudio.PlayOneShot(toysGoBackIntheTraysMale);
         }
     }
 
@@ -116,15 +116,15 @@ public class ColourSorting_AudioManager : MonoBehaviour
             {
                 if (randomNum == 0)
                 {
-                    gameAudio.PlayOneShot(yellow);
+                    gameAudio.PlayOneShot(yellowMale);
                 }
                 else if (randomNum == 1)
                 {
-                    gameAudio.PlayOneShot(putThisInTheYellowTray);
+                    gameAudio.PlayOneShot(putThisInTheYellowTrayMale);
                 }
                 else
                 {
-                    gameAudio.PlayOneShot(thisToyIsYellow);
+                    gameAudio.PlayOneShot(thisToyIsYellowMale);
                 }
             }
 
@@ -132,15 +132,15 @@ public class ColourSorting_AudioManager : MonoBehaviour
             {
                 if (randomNum == 0)
                 {
-                    gameAudio.PlayOneShot(red);
+                    gameAudio.PlayOneShot(redMale);
                 }
                 else if (randomNum == 1)
                 {
-                    gameAudio.PlayOneShot(putThisInTheRedTray);
+                    gameAudio.PlayOneShot(putThisInTheRedTrayMale);
                 }
                 else
                 {
-                    gameAudio.PlayOneShot(thisToyIsRed);
+                    gameAudio.PlayOneShot(thisToyIsRedMale);
                 }
             }
 
@@ -148,15 +148,15 @@ public class ColourSorting_AudioManager : MonoBehaviour
             {
                 if (randomNum == 0)
                 {
-                    gameAudio.PlayOneShot(green);
+                    gameAudio.PlayOneShot(greenMale);
                 }
                 else if (randomNum == 1)
                 {
-                    gameAudio.PlayOneShot(putThisInTheGreenTray);
+                    gameAudio.PlayOneShot(putThisInTheGreenTrayMale);
                 }
                 else
                 {
-                    gameAudio.PlayOneShot(thisToyIsGreen);
+                    gameAudio.PlayOneShot(thisToyIsGreenMale);
                 }
             }
 
@@ -164,15 +164,15 @@ public class ColourSorting_AudioManager : MonoBehaviour
             {
                 if (randomNum == 0)
                 {
-                    gameAudio.PlayOneShot(pink);
+                    gameAudio.PlayOneShot(pinkMale);
                 }
                 else if (randomNum == 1)
                 {
-                    gameAudio.PlayOneShot(putThisInThePinkTray);
+                    gameAudio.PlayOneShot(putThisInThePinkTrayMale);
                 }
                 else
                 {
-                    gameAudio.PlayOneShot(thisToyIsPink);
+                    gameAudio.PlayOneShot(thisToyIsPinkMale);
                 }
             }
         }
@@ -184,7 +184,7 @@ public class ColourSorting_AudioManager : MonoBehaviour
         {
             isPreviousAudioFinished = false;
             StartCoroutine(AudioDelay(2.5f));
-            gameAudio.PlayOneShot(ohhTryAgain);
+            gameAudio.PlayOneShot(ohhTryAgainMale);
         }
     }
 
@@ -201,48 +201,48 @@ public class ColourSorting_AudioManager : MonoBehaviour
 
             if (randomNum == 0)
             {
-                gameAudio.PlayOneShot(tryAgain);
+                gameAudio.PlayOneShot(tryAgainMale);
             }
             else if (randomNum == 1)
             {
-                gameAudio.PlayOneShot(ohhTryAgain);
+                gameAudio.PlayOneShot(ohhTryAgainMale);
             }
             else if (randomNum == 2)
             {
                 if (colourNumber == 0)
                 {
-                    gameAudio.PlayOneShot(thatToyWasYellow);
+                    gameAudio.PlayOneShot(thatToyWasYellowMale);
                 }
                 if (colourNumber == 1)
                 {
-                    gameAudio.PlayOneShot(thatToyWasRed);
+                    gameAudio.PlayOneShot(thatToyWasRedMale);
                 }
                 if (colourNumber == 3)
                 {
-                    gameAudio.PlayOneShot(thatToyWasGreen);
+                    gameAudio.PlayOneShot(thatToyWasGreenMale);
                 }
                 if (colourNumber == 5)
                 {
-                    gameAudio.PlayOneShot(thatToyWasPink);
+                    gameAudio.PlayOneShot(thatToyWasPinkMale);
                 }
             }
             else if (randomNum == 3)
             {
                 if (wrongTrayNumber == 0)
                 {
-                    gameAudio.PlayOneShot(thatTrayWasYellow);
+                    gameAudio.PlayOneShot(thatTrayWasYellowMale);
                 }
                 else if (wrongTrayNumber == 1)
                 {
-                    gameAudio.PlayOneShot(thatTrayWasRed);
+                    gameAudio.PlayOneShot(thatTrayWasRedMale);
                 }
                 else if (wrongTrayNumber == 3)
                 {
-                    gameAudio.PlayOneShot(thatTrayWasGreen);
+                    gameAudio.PlayOneShot(thatTrayWasGreenMale);
                 }
                 else if (wrongTrayNumber == 5)
                 {
-                    gameAudio.PlayOneShot(thatTrayWasPink);
+                    gameAudio.PlayOneShot(thatTrayWasPinkMale);
                 }
             }
         }
@@ -272,17 +272,17 @@ public class ColourSorting_AudioManager : MonoBehaviour
             else if (randomNum == 1)
             {
                 StartCoroutine(AudioDelay(1.5f));
-                gameAudio.PlayOneShot(wellDoneEncouraging);
+                gameAudio.PlayOneShot(wellDoneEncouragingMale);
             }
             else if (randomNum == 2)
             {
                 StartCoroutine(AudioDelay(1.5f));
-                gameAudio.PlayOneShot(wellDoneMoreForceful);
+                gameAudio.PlayOneShot(wellDoneMoreForcefulMale);
             }
             else if (randomNum == 3)
             {
                 StartCoroutine(AudioDelay(1.5f));
-                gameAudio.PlayOneShot(wellDoneWisper);
+                gameAudio.PlayOneShot(wellDoneWisperMale);
             }
         }
     }

@@ -8541,36 +8541,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wellDoneCounter: 0
   gameAudio: {fileID: 0}
-  wellDoneWisper: {fileID: 8300000, guid: 7cd7b64a4c2e8b24aa63e9c17eb7fb4c, type: 3}
-  wellDoneMoreForceful: {fileID: 8300000, guid: 78963d527a6ae7b4d9124a72f00ca109, type: 3}
-  wellDoneEncouraging: {fileID: 8300000, guid: a56c50f43470ee743bfa1cfdc874df90, type: 3}
+  wellDoneWisperMale: {fileID: 8300000, guid: 7cd7b64a4c2e8b24aa63e9c17eb7fb4c, type: 3}
+  wellDoneMoreForcefulMale: {fileID: 8300000, guid: 78963d527a6ae7b4d9124a72f00ca109, type: 3}
+  wellDoneEncouragingMale: {fileID: 8300000, guid: a56c50f43470ee743bfa1cfdc874df90, type: 3}
   wellDoneBrief: {fileID: 8300000, guid: 3eed1c6a1e182cb4d853658410ec5efb, type: 3}
-  yellow: {fileID: 8300000, guid: 5293ee62620d388478c062c5b77d1b60, type: 3}
-  thisToyIsYellow: {fileID: 8300000, guid: a67df3a97ccd24645ac617297f70f0be, type: 3}
-  red: {fileID: 0}
-  thisToyIsRed: {fileID: 8300000, guid: dd878675a4f0dc245814b43bffebecd2, type: 3}
-  pink: {fileID: 8300000, guid: 2215735fe23960245a9f43f1179012c3, type: 3}
-  thisToyIsPink: {fileID: 8300000, guid: 5f95541121c98654c97be2f10fa40b39, type: 3}
-  green: {fileID: 8300000, guid: dbea39dee3cc7584a81b3f96333f23bc, type: 3}
-  thisToyIsGreen: {fileID: 8300000, guid: 46fbf7f02a3c5b848a11382039e729d9, type: 3}
-  putThisInTheYellowTray: {fileID: 8300000, guid: 5200c2dcfd9ae3c469d571ee81f141b2, type: 3}
-  putThisInTheRedTray: {fileID: 8300000, guid: f2a1798d48713f6418e3a5b6241f3bd7, type: 3}
-  putThisInThePinkTray: {fileID: 8300000, guid: a8b00163f7d77424285ba3115d86865a, type: 3}
-  putThisInTheGreenTray: {fileID: 8300000, guid: 55ebef2599f10344ba48e1b13fe5a69c, type: 3}
-  thatTrayWasYellow: {fileID: 8300000, guid: bd390875f93be66419888bf473914514, type: 3}
-  thatTrayWasRed: {fileID: 8300000, guid: aa7bef102f5405d4588236c8786d8bc0, type: 3}
-  thatTrayWasGreen: {fileID: 8300000, guid: 23d993227b6ea714a897e5a0f1aa2ea8, type: 3}
-  thatTrayWasPink: {fileID: 8300000, guid: 11f6746aba1eba249bd4605d9c3626b7, type: 3}
-  thatToyWasYellow: {fileID: 8300000, guid: c036576cb65630b42be2b9a430d33d7b, type: 3}
-  thatToyWasRed: {fileID: 8300000, guid: aa7bef102f5405d4588236c8786d8bc0, type: 3}
-  thatToyWasPink: {fileID: 8300000, guid: 93efd83ccbf911942a4cd6a4becf1d5b, type: 3}
-  thatToyWasGreen: {fileID: 8300000, guid: d8b99f815243f164abddc9c741be98c1, type: 3}
-  sortToysInToTraysOfTheSameColour: {fileID: 8300000, guid: 4443a54c007cfe343b1e8d6975736ff0, type: 3}
-  matchToysToTheColourOfTheTray: {fileID: 8300000, guid: 6e73224bd5af6ee448573d5ca9d027c3, type: 3}
-  matchTheColours: {fileID: 8300000, guid: cebbcfe12848de0428244393b71022a8, type: 3}
-  toysGoBackIntheTrays: {fileID: 8300000, guid: e7f14ee0060595b4186c4f97e37c0b82, type: 3}
-  ohhTryAgain: {fileID: 8300000, guid: 8197cb3b3300dc443b0c207159654778, type: 3}
-  tryAgain: {fileID: 8300000, guid: 0f28e437f576b654daf10886a57115c5, type: 3}
+  yellowMale: {fileID: 8300000, guid: 5293ee62620d388478c062c5b77d1b60, type: 3}
+  thisToyIsYellowMale: {fileID: 8300000, guid: a67df3a97ccd24645ac617297f70f0be, type: 3}
+  redMale: {fileID: 8300000, guid: 21fe350cc1e233a42b2bd24696715e9f, type: 3}
+  thisToyIsRedMale: {fileID: 8300000, guid: dd878675a4f0dc245814b43bffebecd2, type: 3}
+  pinkMale: {fileID: 8300000, guid: 2215735fe23960245a9f43f1179012c3, type: 3}
+  thisToyIsPinkMale: {fileID: 8300000, guid: 5f95541121c98654c97be2f10fa40b39, type: 3}
+  greenMale: {fileID: 8300000, guid: dbea39dee3cc7584a81b3f96333f23bc, type: 3}
+  thisToyIsGreenMale: {fileID: 8300000, guid: 46fbf7f02a3c5b848a11382039e729d9, type: 3}
+  putThisInTheYellowTrayMale: {fileID: 8300000, guid: 5200c2dcfd9ae3c469d571ee81f141b2, type: 3}
+  putThisInTheRedTrayMale: {fileID: 8300000, guid: f2a1798d48713f6418e3a5b6241f3bd7, type: 3}
+  putThisInThePinkTrayMale: {fileID: 8300000, guid: a8b00163f7d77424285ba3115d86865a, type: 3}
+  putThisInTheGreenTrayMale: {fileID: 8300000, guid: 55ebef2599f10344ba48e1b13fe5a69c, type: 3}
+  thatTrayWasYellowMale: {fileID: 8300000, guid: bd390875f93be66419888bf473914514, type: 3}
+  thatTrayWasRedMale: {fileID: 8300000, guid: 858b4498274977d4e978299d19e4fe1e, type: 3}
+  thatTrayWasGreenMale: {fileID: 8300000, guid: 23d993227b6ea714a897e5a0f1aa2ea8, type: 3}
+  thatTrayWasPinkMale: {fileID: 8300000, guid: 11f6746aba1eba249bd4605d9c3626b7, type: 3}
+  thatToyWasYellowMale: {fileID: 8300000, guid: c036576cb65630b42be2b9a430d33d7b, type: 3}
+  thatToyWasRedMale: {fileID: 8300000, guid: aa7bef102f5405d4588236c8786d8bc0, type: 3}
+  thatToyWasPinkMale: {fileID: 8300000, guid: 93efd83ccbf911942a4cd6a4becf1d5b, type: 3}
+  thatToyWasGreenMale: {fileID: 8300000, guid: d8b99f815243f164abddc9c741be98c1, type: 3}
+  sortToysInToTraysOfTheSameColourMale: {fileID: 8300000, guid: 4443a54c007cfe343b1e8d6975736ff0, type: 3}
+  matchToysToTheColourOfTheTrayMale: {fileID: 8300000, guid: 6e73224bd5af6ee448573d5ca9d027c3, type: 3}
+  matchTheColoursMale: {fileID: 8300000, guid: cebbcfe12848de0428244393b71022a8, type: 3}
+  toysGoBackIntheTraysMale: {fileID: 8300000, guid: e7f14ee0060595b4186c4f97e37c0b82, type: 3}
+  ohhTryAgainMale: {fileID: 8300000, guid: 8197cb3b3300dc443b0c207159654778, type: 3}
+  tryAgainMale: {fileID: 8300000, guid: 0f28e437f576b654daf10886a57115c5, type: 3}
 --- !u!1 &1651215240
 GameObject:
   m_ObjectHideFlags: 0
