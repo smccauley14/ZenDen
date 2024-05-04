@@ -8,14 +8,16 @@ using UnityEngine.Video;
 public class PosterController : MonoBehaviour
 {
     [SerializeField] private Camera playerCamera;
-    [SerializeField] private ParticleSystem particle;
     [SerializeField] private VideoPlayer video;
     [SerializeField] private string scene;
     [SerializeField] private GameObject objectToHighlight;
     [SerializeField] private Button interactiveButton;
+    [SerializeField] private GameObject sensoryRoomManager;
+    [SerializeField] private GameObject[] gameControllers;
     private float distanceThreshold = 5f;
     private bool clickable;
     private Color objectToHighlightDefaultColor;
+    private bool isVideoPlaying = false;
 
     // Adjust this angle to set the field of view
     public float fieldOfViewAngle = 60f;
@@ -44,7 +46,7 @@ public class PosterController : MonoBehaviour
         {
 
             objectToHighlight.GetComponent<MeshRenderer>().material.color = Color.red;
-            if (distanceFromObject <= distanceThreshold)
+            if (distanceFromObject <= distanceThreshold && !isVideoPlaying)
             {
                 objectToHighlight.GetComponent<MeshRenderer>().material.color = Color.green;
                 interactiveButton.gameObject.SetActive(true);
@@ -85,19 +87,41 @@ public class PosterController : MonoBehaviour
             {
                 video.gameObject.SetActive(true);
                 video.Play();
+                isVideoPlaying = true;
                 video.loopPointReached += OnVideoEnd;
+                ChangeNextGameObject();
+                sensoryRoomManager.GetComponent<SensoryRoomManager>().DisableAllImages();
+                interactiveButton.gameObject.SetActive(false);
+                foreach (var controller in gameControllers)
+                {
+                    controller.GetComponent<Image>().enabled = false;
+                }
             }
 
-            if(!String.IsNullOrEmpty(scene))
+            if (!String.IsNullOrEmpty(scene))
             {
+                if (gameObject.name != "DoorR")
+                {
+                    ChangeNextGameObject();
+                }
                 SceneManager.LoadSceneAsync(scene);
             }
                 
         }
     }
 
+    private static void ChangeNextGameObject()
+    {
+        PlayerPrefs.SetInt(SettingKeys.SensoryRoomObjectKey, PlayerPrefs.GetInt(SettingKeys.SensoryRoomObjectKey, SettingKeys.SensoryRoomObjectDefaultValue) + 1);
+    }
+
     private void OnVideoEnd(VideoPlayer vp)
     {
         vp.gameObject.SetActive(false);
+        isVideoPlaying = false;
+        foreach (var controller in gameControllers)
+        {
+            controller.GetComponent<Image>().enabled = true;
+        }
     }
 }
