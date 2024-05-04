@@ -7,8 +7,7 @@ public class ShapeSorting_AudioManager : MonoBehaviour
     [HideInInspector] public AudioSource gameAudio;
     private ShapeSorting_GameManager gameManagerScript;
     private bool isPreviousAudioFinished = true;
-    
-    public int maleOrFemale = 1;//how to read from settings?
+    private string voiceGender;
 
     //CORRECT SOUND
     [SerializeField] private AudioClip correctSound;
@@ -69,6 +68,8 @@ public class ShapeSorting_AudioManager : MonoBehaviour
     {
         gameAudio = GetComponent<AudioSource>();
         gameManagerScript = GameObject.Find("GameManager").GetComponent<ShapeSorting_GameManager>();
+        voiceGender = PlayerPrefs.GetString(SettingKeys.VoiceKey, SettingKeys.VoiceDefaultValue);
+
     }
 
     // Update is called once per frame
@@ -83,27 +84,23 @@ public class ShapeSorting_AudioManager : MonoBehaviour
 
     public void GiveUserVerbalDirectionsAtBeginningOfGame()
     {
-        //isPreviousAudioFinished = false;
-        //StartCoroutine(AudioDelay(1.5f));
-
         gameManagerScript.readyToSortAgain = false;
         StartCoroutine(gameManagerScript.PlayDelay(1.5f));
 
-        if (maleOrFemale == 1)
+        if (voiceGender == "Male")
         {
             gameAudio.PlayOneShot(putShapesInTheRightHolesMale);
         }
         
-        else if (maleOrFemale == 2)
+        else if (voiceGender == "Female")
         {
             //gameAudio.PlayOneShot(); - NEED RELEVANT AUDIO
         }
-        
     }
 
     public void NamePickedUpShape(string shapeName)
     {
-        if (maleOrFemale == 1 && isPreviousAudioFinished)
+        if (voiceGender == "Male" && isPreviousAudioFinished)
         {
             isPreviousAudioFinished = false;
             StartCoroutine(AudioDelay(1.5f));
@@ -141,7 +138,7 @@ public class ShapeSorting_AudioManager : MonoBehaviour
                 }
             }
         }
-        else if (maleOrFemale == 2 && isPreviousAudioFinished)
+        else if (voiceGender == "Female" && isPreviousAudioFinished)
         {
             isPreviousAudioFinished = false;
             StartCoroutine(AudioDelay(1.5f));
@@ -194,7 +191,7 @@ public class ShapeSorting_AudioManager : MonoBehaviour
         gameManagerScript.readyToSortAgain = false;
         StartCoroutine(gameManagerScript.PlayDelay(1.5f));
 
-        if (maleOrFemale == 1)
+        if (voiceGender == "Male")
         {
             int randomNum = Random.Range(0, 4);
 
@@ -215,7 +212,7 @@ public class ShapeSorting_AudioManager : MonoBehaviour
                 gameAudio.PlayOneShot(thatWasTheWrongHoleMale);
             }
         }
-        else if (maleOrFemale == 2)
+        else if (voiceGender == "Female")
         {
                 gameAudio.PlayOneShot(tryAgainFemale);
         }
@@ -226,7 +223,7 @@ public class ShapeSorting_AudioManager : MonoBehaviour
         gameManagerScript.readyToSortAgain = false;
         StartCoroutine(gameManagerScript.PlayDelay(1.5f));
 
-        if (maleOrFemale == 1 && isPreviousAudioFinished)
+        if (voiceGender == "Male" && isPreviousAudioFinished)
         {
             isPreviousAudioFinished = false;
             StartCoroutine(AudioDelay(1.5f));
@@ -263,7 +260,7 @@ public class ShapeSorting_AudioManager : MonoBehaviour
         gameManagerScript.readyToSortAgain = false;
         StartCoroutine(gameManagerScript.PlayDelay(1.5f));
 
-        if (maleOrFemale == 1 && isPreviousAudioFinished)
+        if (voiceGender == "Male" && isPreviousAudioFinished)
         {
             StartCoroutine(AudioDelay(1f));
             int randomNum = Random.Range(0, 3);
@@ -281,7 +278,7 @@ public class ShapeSorting_AudioManager : MonoBehaviour
                 gameAudio.PlayOneShot(wellDoneEncouragingMale);
             }
         }
-        else if (maleOrFemale == 2 && isPreviousAudioFinished)
+        else if (voiceGender == "Female" && isPreviousAudioFinished)
         {
             StartCoroutine(AudioDelay(1f));
             gameAudio.PlayOneShot(wellDoneFemale);
@@ -293,7 +290,7 @@ public class ShapeSorting_AudioManager : MonoBehaviour
     {
         int randomNum;
 
-        if (maleOrFemale == 1)
+        if (voiceGender == "Male")
         {
             if (shapeName == "Star")
             {
