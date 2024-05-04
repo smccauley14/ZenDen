@@ -145,6 +145,8 @@ public class DragDropToDistance : MonoBehaviour
 
     private IEnumerator Drag()
     {
+        audioManagerScript.PickedUpSound();
+
         //making 'isDragging' script true when object interaction is taking place
         isDragging = true;
 
@@ -193,7 +195,7 @@ public class DragDropToDistance : MonoBehaviour
         //if object tag matches the target
         if (other.CompareTag(targetTag))
         {
-
+            audioManagerScript.CorrectSound();
             audioManagerScript.WellDone();
 
             // Set the target transform and start moving towards it
@@ -207,6 +209,7 @@ public class DragDropToDistance : MonoBehaviour
         //or if object tag doesn't match target
         else if (!other.CompareTag(targetTag))
         {
+            audioManagerScript.WrongSound();
             redHighlight.SetActive(true);
             audioManagerScript.GenericTryAgainForWrongHole();
         }

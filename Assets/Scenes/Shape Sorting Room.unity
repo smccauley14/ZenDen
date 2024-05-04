@@ -3781,6 +3781,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameAudio: {fileID: 0}
+  maleOrFemale: 1
+  correctSound: {fileID: 8300000, guid: 280dc4c71ed7818458e0659ad167debc, type: 3}
+  pickedUpSound: {fileID: 8300000, guid: ba37d10fce0573b4ba2310a8bd3564d4, type: 3}
+  wrongSound: {fileID: 8300000, guid: e08d3ff97011d444ab166362f8f70b00, type: 3}
   thatsACircleMale: {fileID: 8300000, guid: 00af7899bd576564aad4a349005335f9, type: 3}
   thatsAPentagonMale: {fileID: 8300000, guid: 8602a4e7984747241aebaf7370d9228a, type: 3}
   thatsARectangleMale: {fileID: 8300000, guid: a401c796a61f2f341b2c73a9da7d8062, type: 3}

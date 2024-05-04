@@ -10,6 +10,11 @@ public class ShapeSorting_AudioManager : MonoBehaviour
     
     public int maleOrFemale = 1;//how to read from settings?
 
+    //CORRECT SOUND
+    [SerializeField] private AudioClip correctSound;
+    [SerializeField] private AudioClip pickedUpSound;
+    [SerializeField] private AudioClip wrongSound;
+
     //MALE VOICE AUDIO:
     //naming shapes upon lifing:
     [SerializeField] private AudioClip thatsACircleMale;
@@ -71,6 +76,10 @@ public class ShapeSorting_AudioManager : MonoBehaviour
     {
         
     }
+
+    public void PickedUpSound() => gameAudio.PlayOneShot(pickedUpSound);
+    public void CorrectSound() => gameAudio.PlayOneShot(correctSound);
+    public void WrongSound() => gameAudio.PlayOneShot(wrongSound);
 
     public void GiveUserVerbalDirectionsAtBeginningOfGame()
     {
