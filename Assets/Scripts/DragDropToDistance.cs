@@ -15,6 +15,7 @@ public class DragDropToDistance : MonoBehaviour
     [SerializeField] private GameObject redHighlight;
     [SerializeField] private GameObject greenCorrectIcon;
     private ShapeSorting_GameManager gameManagerScript;
+    private ShapeSorting_AudioManager audioManagerScript;
     private Vector3 centrePosition = new Vector3(-0.614f, 11.33f, 7.18f);
     private bool noTriggers;
     private Vector3 currentScreenPosition;
@@ -44,7 +45,7 @@ public class DragDropToDistance : MonoBehaviour
             Ray ray = playerCamera.ScreenPointToRay(currentScreenPosition);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit) )
+            if (Physics.Raycast(ray, out hit))
             {
                 return hit.transform == transform;
             }
@@ -55,8 +56,9 @@ public class DragDropToDistance : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //getting GameManager
+        //getting GameManager & AudioManager
         gameManagerScript = GameObject.Find("GameManager").GetComponent<ShapeSorting_GameManager>();
+        audioManagerScript = GameObject.Find("GameManager").GetComponent<ShapeSorting_AudioManager>();
 
         //setting the target point in the Z axis for objects to be dragged into
         playerCamera = Camera.main;
@@ -72,15 +74,16 @@ public class DragDropToDistance : MonoBehaviour
         screenPosition.Enable();
         press.Enable();
 
-        //to allow you to assess where on the screen has been clicked (I think)
+        //to allow you to assess where on the screen has been clicked
         screenPosition.performed += context => { currentScreenPosition = context.ReadValue<Vector2>(); };
 
         //declaring what should happen press interaction starts
         press.performed += _ =>
         {
-            if (isClickedOn)
+            if (isClickedOn && gameManagerScript.readyToSortAgain)
             {
                 StartCoroutine(Drag());
+                audioManagerScript.NamePickedUpShape(targetTag);
             }
         };
 
@@ -190,6 +193,9 @@ public class DragDropToDistance : MonoBehaviour
         //if object tag matches the target
         if (other.CompareTag(targetTag))
         {
+
+            audioManagerScript.WellDone();
+
             // Set the target transform and start moving towards it
             greenCorrectIcon.SetActive(true);
             StartCoroutine(SetShapeInactive());
@@ -202,6 +208,7 @@ public class DragDropToDistance : MonoBehaviour
         else if (!other.CompareTag(targetTag))
         {
             redHighlight.SetActive(true);
+            audioManagerScript.GenericTryAgainForWrongHole();
         }
     }
 
