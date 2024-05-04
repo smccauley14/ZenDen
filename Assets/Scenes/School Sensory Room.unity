@@ -1088,6 +1088,7 @@ RectTransform:
   - {fileID: 612133676}
   - {fileID: 1940241492}
   - {fileID: 346289185}
+  - {fileID: 958575022}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1868,6 +1869,103 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 734197165}
   m_CullTransparentMesh: 1
+--- !u!1001 &890146438
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 483377008}
+    m_Modifications:
+    - target: {fileID: 5096765532693011128, guid: 2831be370197117428ab468137e7452c, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5096765532693011128, guid: 2831be370197117428ab468137e7452c, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5096765532693011128, guid: 2831be370197117428ab468137e7452c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5096765532693011128, guid: 2831be370197117428ab468137e7452c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5096765532693011128, guid: 2831be370197117428ab468137e7452c, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5096765532693011128, guid: 2831be370197117428ab468137e7452c, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5096765532693011128, guid: 2831be370197117428ab468137e7452c, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5096765532693011128, guid: 2831be370197117428ab468137e7452c, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5096765532693011128, guid: 2831be370197117428ab468137e7452c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5096765532693011128, guid: 2831be370197117428ab468137e7452c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5096765532693011128, guid: 2831be370197117428ab468137e7452c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5096765532693011128, guid: 2831be370197117428ab468137e7452c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5096765532693011128, guid: 2831be370197117428ab468137e7452c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5096765532693011128, guid: 2831be370197117428ab468137e7452c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5096765532693011128, guid: 2831be370197117428ab468137e7452c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5096765532693011128, guid: 2831be370197117428ab468137e7452c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5096765532693011128, guid: 2831be370197117428ab468137e7452c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5096765532693011128, guid: 2831be370197117428ab468137e7452c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5096765532693011128, guid: 2831be370197117428ab468137e7452c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5096765532693011128, guid: 2831be370197117428ab468137e7452c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6409291992495132595, guid: 2831be370197117428ab468137e7452c, type: 3}
+      propertyPath: m_Name
+      value: BackgroundMusic
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2831be370197117428ab468137e7452c, type: 3}
 --- !u!1 &893778164
 GameObject:
   m_ObjectHideFlags: 0
@@ -2195,6 +2293,11 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!224 &958575022 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5096765532693011128, guid: 2831be370197117428ab468137e7452c, type: 3}
+  m_PrefabInstance: {fileID: 890146438}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &983736373
 GameObject:
   m_ObjectHideFlags: 0
@@ -2651,6 +2754,8 @@ MonoBehaviour:
   scene: Cube Sorting Game Environment
   objectToHighlight: {fileID: 1056120499}
   interactiveButton: {fileID: 1926582908}
+  sensoryRoomManager: {fileID: 0}
+  gameControllers: []
   fieldOfViewAngle: 60
 --- !u!114 &1116397554
 MonoBehaviour:
@@ -3863,6 +3968,12 @@ MonoBehaviour:
   scene: 
   objectToHighlight: {fileID: 1377274022}
   interactiveButton: {fileID: 103833}
+  sensoryRoomManager: {fileID: 235464176}
+  gameControllers:
+  - {fileID: 2018324874}
+  - {fileID: 734197165}
+  - {fileID: 1103843021}
+  - {fileID: 729833261}
   fieldOfViewAngle: 60
 --- !u!1 &1535424903
 GameObject:
@@ -4641,6 +4752,8 @@ MonoBehaviour:
   scene: MainMenu
   objectToHighlight: {fileID: 1948954774}
   interactiveButton: {fileID: 1535424905}
+  sensoryRoomManager: {fileID: 0}
+  gameControllers: []
   fieldOfViewAngle: 60
 --- !u!1001 &1952855398
 PrefabInstance:
@@ -5249,6 +5362,8 @@ MonoBehaviour:
   scene: Finger Tip
   objectToHighlight: {fileID: 985046271}
   interactiveButton: {fileID: 1358615271}
+  sensoryRoomManager: {fileID: 0}
+  gameControllers: []
   fieldOfViewAngle: 60
 --- !u!4 &2115674556 stripped
 Transform:
