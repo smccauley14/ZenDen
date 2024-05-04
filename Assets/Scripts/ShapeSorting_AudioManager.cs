@@ -7,7 +7,8 @@ public class ShapeSorting_AudioManager : MonoBehaviour
     [HideInInspector] public AudioSource gameAudio;
     private ShapeSorting_GameManager gameManagerScript;
     private bool isPreviousAudioFinished = true;
-    private int maleOrFemale = 1;
+    
+    public int maleOrFemale = 1;//how to read from settings?
 
     //MALE VOICE AUDIO:
     //naming shapes upon lifing:
@@ -44,8 +45,19 @@ public class ShapeSorting_AudioManager : MonoBehaviour
     [SerializeField] private AudioClip thatWasGreatMale;
 
     //FEMALE VOICE AUDIO:
+    //naming shapes
+    [SerializeField] private AudioClip thatsACircleFemale;
+    [SerializeField] private AudioClip thatsAStarFemale;
+    [SerializeField] private AudioClip thatsASquareFemale;
+    //[SerializeField] private AudioClip thatsARectangleFemale;
+    [SerializeField] private AudioClip thatsAnArchFemale;
+    [SerializeField] private AudioClip thatsAPentagonFemale;
 
+    //well done
+    [SerializeField] private AudioClip wellDoneFemale;
 
+    //try agains
+    [SerializeField] private AudioClip tryAgainFemale;
 
     // Start is called before the first frame update
     void Start()
@@ -73,12 +85,11 @@ public class ShapeSorting_AudioManager : MonoBehaviour
             gameAudio.PlayOneShot(putShapesInTheRightHolesMale);
         }
         
-        /*
         else if (maleOrFemale == 2)
         {
-            gameAudio.PlayOneShot(p);
+            //gameAudio.PlayOneShot(); - NEED RELEVANT AUDIO
         }
-        */
+        
     }
 
     public void NamePickedUpShape(string shapeName)
@@ -119,6 +130,36 @@ public class ShapeSorting_AudioManager : MonoBehaviour
                 {
                     gameAudio.PlayOneShot(rectangleMale);
                 }
+            }
+        }
+        else if (maleOrFemale == 2 && isPreviousAudioFinished)
+        {
+            isPreviousAudioFinished = false;
+            StartCoroutine(AudioDelay(1.5f));
+
+            if (shapeName == "Star")
+            {
+                gameAudio.PlayOneShot(thatsAStarFemale);
+            }
+            else if (shapeName == "Arch")
+            {
+                gameAudio.PlayOneShot(thatsAnArchFemale);
+            }
+            else if (shapeName == "Pentagon")
+            {
+                gameAudio.PlayOneShot(thatsAPentagonFemale);
+            }
+            else if (shapeName == "Circle")
+            {
+                gameAudio.PlayOneShot(thatsACircleFemale);
+            }
+            else if (shapeName == "Square")
+            {
+                gameAudio.PlayOneShot(thatsASquareFemale);
+            }
+            else if (shapeName == "Rectangle")
+            {
+                //gameAudio.PlayOneShot( NEED RELEVANT AUDIO
             }
         }
     }
@@ -165,10 +206,10 @@ public class ShapeSorting_AudioManager : MonoBehaviour
                 gameAudio.PlayOneShot(thatWasTheWrongHoleMale);
             }
         }
-        /*
-        else if (maleOrFemale == 1)
-        */      
-
+        else if (maleOrFemale == 2)
+        {
+                gameAudio.PlayOneShot(tryAgainFemale);
+        }
     }
 
     public void TryAgainWithShapeName(string shapeName)
@@ -205,7 +246,6 @@ public class ShapeSorting_AudioManager : MonoBehaviour
             {
                 gameAudio.PlayOneShot(tryagainThatsARectangleMale);
             }
-
         }
     }
 
@@ -214,7 +254,7 @@ public class ShapeSorting_AudioManager : MonoBehaviour
         gameManagerScript.readyToSortAgain = false;
         StartCoroutine(gameManagerScript.PlayDelay(1.5f));
 
-        if (isPreviousAudioFinished)
+        if (maleOrFemale == 1 && isPreviousAudioFinished)
         {
             StartCoroutine(AudioDelay(1f));
             int randomNum = Random.Range(0, 3);
@@ -232,8 +272,14 @@ public class ShapeSorting_AudioManager : MonoBehaviour
                 gameAudio.PlayOneShot(wellDoneEncouragingMale);
             }
         }
+        else if (maleOrFemale == 2 && isPreviousAudioFinished)
+        {
+            StartCoroutine(AudioDelay(1f));
+            gameAudio.PlayOneShot(wellDoneFemale);
+        }
     }
 
+    //NOT SURE I UNDERSTAND HOW TEAM WANTS THIS USED
     public void ShapeInWrongHole(string shapeName)
     {
         int randomNum;

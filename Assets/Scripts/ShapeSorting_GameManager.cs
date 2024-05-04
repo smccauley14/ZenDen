@@ -23,7 +23,8 @@ public class ShapeSorting_GameManager : MonoBehaviour
         GetStartingPositionsOfHoles();
         GetStartingPositionsOfShapes();
         GetRigidBodies();
-        
+
+        shapesInScene = 0;
         audioManagerScript.GiveUserVerbalDirectionsAtBeginningOfGame();
     }
 
