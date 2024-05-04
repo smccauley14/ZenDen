@@ -22,6 +22,7 @@ public class ColourSorting_AudioManager : MonoBehaviour
     [HideInInspector] public int wellDoneCounter = 0;
     [HideInInspector] public AudioSource gameAudio;
     private bool isPreviousAudioFinished = true;
+    private string voiceGender;
 
     //MALE AUDIO:
     //encouragements
@@ -100,6 +101,9 @@ public class ColourSorting_AudioManager : MonoBehaviour
     {
         //getting player audio
         gameAudio = GetComponent<AudioSource>();
+
+        voiceGender = PlayerPrefs.GetString(SettingKeys.VoiceKey, SettingKeys.VoiceDefaultValue);
+
     }
 
     //general directions
@@ -110,21 +114,28 @@ public class ColourSorting_AudioManager : MonoBehaviour
         isPreviousAudioFinished = false;
         StartCoroutine(AudioDelay(1.5f));
 
-        if (randomNum == 0)
+        if (voiceGender == "Male")
         {
-            gameAudio.PlayOneShot(sortToysInToTraysOfTheSameColourMale);
+            if (randomNum == 0)
+            {
+                gameAudio.PlayOneShot(sortToysInToTraysOfTheSameColourMale);
+            }
+            else if (randomNum == 1)
+            {
+                gameAudio.PlayOneShot(matchToysToTheColourOfTheTrayMale);
+            }
+            else if (randomNum == 2)
+            {
+                gameAudio.PlayOneShot(matchTheColoursMale);
+            }
+            else
+            {
+                gameAudio.PlayOneShot(toysGoBackIntheTraysMale);
+            }
         }
-        else if (randomNum == 1)
+        else if (voiceGender == "Female")
         {
-            gameAudio.PlayOneShot(matchToysToTheColourOfTheTrayMale);
-        }
-        else if (randomNum == 2)
-        {
-            gameAudio.PlayOneShot(matchTheColoursMale);
-        }
-        else
-        {
-            gameAudio.PlayOneShot(toysGoBackIntheTraysMale);
+
         }
     }
 
@@ -134,155 +145,162 @@ public class ColourSorting_AudioManager : MonoBehaviour
     {
         int randomNum = Random.Range(0, 3);
 
-        if (isPreviousAudioFinished == true)
+        if (voiceGender == "Male")
         {
-            
-            isPreviousAudioFinished = false;
-            StartCoroutine(AudioDelay(2.5f));
-
-            if (colourNumber == 0)
+            if (isPreviousAudioFinished == true)
             {
-                if (randomNum == 0)
+
+                isPreviousAudioFinished = false;
+                StartCoroutine(AudioDelay(2.5f));
+
+                if (colourNumber == 0)
                 {
-                    gameAudio.PlayOneShot(yellowMale);
+                    if (randomNum == 0)
+                    {
+                        gameAudio.PlayOneShot(yellowMale);
+                    }
+                    else if (randomNum == 1)
+                    {
+                        gameAudio.PlayOneShot(putThisInTheYellowTrayMale);
+                    }
+                    else
+                    {
+                        gameAudio.PlayOneShot(thisToyIsYellowMale);
+                    }
                 }
-                else if (randomNum == 1)
+
+                if (colourNumber == 1)
                 {
-                    gameAudio.PlayOneShot(putThisInTheYellowTrayMale);
+                    if (randomNum == 0)
+                    {
+                        gameAudio.PlayOneShot(redMale);
+                    }
+                    else if (randomNum == 1)
+                    {
+                        gameAudio.PlayOneShot(putThisInTheRedTrayMale);
+                    }
+                    else
+                    {
+                        gameAudio.PlayOneShot(thisToyIsRedMale);
+                    }
                 }
-                else
+
+                if (colourNumber == 2)
                 {
-                    gameAudio.PlayOneShot(thisToyIsYellowMale);
+                    if (randomNum == 0)
+                    {
+                        gameAudio.PlayOneShot(navyMale);
+                    }
+                    else if (randomNum == 1)
+                    {
+                        gameAudio.PlayOneShot(putThisInTheNavyTrayMale);
+                    }
+                    else
+                    {
+                        gameAudio.PlayOneShot(thisToyIsNavyMale);
+                    }
+                }
+
+                if (colourNumber == 3)
+                {
+                    if (randomNum == 0)
+                    {
+                        gameAudio.PlayOneShot(greenMale);
+                    }
+                    else if (randomNum == 1)
+                    {
+                        gameAudio.PlayOneShot(putThisInTheGreenTrayMale);
+                    }
+                    else
+                    {
+                        gameAudio.PlayOneShot(thisToyIsGreenMale);
+                    }
+                }
+
+                if (colourNumber == 4)
+                {
+                    if (randomNum == 0)
+                    {
+                        gameAudio.PlayOneShot(purpleMale);
+                    }
+                    else if (randomNum == 1)
+                    {
+                        gameAudio.PlayOneShot(putThisInThePurpleTrayMale);
+                    }
+                    else
+                    {
+                        gameAudio.PlayOneShot(thisToyIsPurpleMale);
+                    }
+                }
+
+                if (colourNumber == 5)
+                {
+                    if (randomNum == 0)
+                    {
+                        gameAudio.PlayOneShot(pinkMale);
+                    }
+                    else if (randomNum == 1)
+                    {
+                        gameAudio.PlayOneShot(putThisInThePinkTrayMale);
+                    }
+                    else
+                    {
+                        gameAudio.PlayOneShot(thisToyIsPinkMale);
+                    }
+                }
+
+                if (colourNumber == 6)
+                {
+                    if (randomNum == 0)
+                    {
+                        gameAudio.PlayOneShot(orangeMale);
+                    }
+                    else if (randomNum == 1)
+                    {
+                        gameAudio.PlayOneShot(putThisInTheOrangeTrayMale);
+                    }
+                    else
+                    {
+                        gameAudio.PlayOneShot(thisToyIsOrangeMale);
+                    }
+                }
+
+                if (colourNumber == 7)
+                {
+                    if (randomNum == 0)
+                    {
+                        gameAudio.PlayOneShot(skyBlueMale);
+                    }
+                    else if (randomNum == 1)
+                    {
+                        gameAudio.PlayOneShot(putThisInTheSkyBlueTrayMale);
+                    }
+                    else
+                    {
+                        gameAudio.PlayOneShot(thisToyIsSkyBlueMale);
+                    }
+                }
+
+                if (colourNumber == 8)
+                {
+                    if (randomNum == 0)
+                    {
+                        gameAudio.PlayOneShot(greyMale);
+                    }
+                    else if (randomNum == 1)
+                    {
+                        gameAudio.PlayOneShot(putThisInTheGreyTrayMale);
+                    }
+                    else
+                    {
+                        gameAudio.PlayOneShot(thisToyIsGreyMale);
+                    }
                 }
             }
-
-            if (colourNumber == 1)
-            {
-                if (randomNum == 0)
-                {
-                    gameAudio.PlayOneShot(redMale);
-                }
-                else if (randomNum == 1)
-                {
-                    gameAudio.PlayOneShot(putThisInTheRedTrayMale);
-                }
-                else
-                {
-                    gameAudio.PlayOneShot(thisToyIsRedMale);
-                }
-            }
-
-            if (colourNumber == 2)
-            {
-                if (randomNum == 0)
-                {
-                    gameAudio.PlayOneShot(navyMale);
-                }
-                else if (randomNum == 1)
-                {
-                    gameAudio.PlayOneShot(putThisInTheNavyTrayMale);
-                }
-                else
-                {
-                    gameAudio.PlayOneShot(thisToyIsNavyMale);
-                }
-            }
-
-            if (colourNumber == 3)
-            {
-                if (randomNum == 0)
-                {
-                    gameAudio.PlayOneShot(greenMale);
-                }
-                else if (randomNum == 1)
-                {
-                    gameAudio.PlayOneShot(putThisInTheGreenTrayMale);
-                }
-                else
-                {
-                    gameAudio.PlayOneShot(thisToyIsGreenMale);
-                }
-            }
-
-            if (colourNumber == 4)
-            {
-                if (randomNum == 0)
-                {
-                    gameAudio.PlayOneShot(purpleMale);
-                }
-                else if (randomNum == 1)
-                {
-                    gameAudio.PlayOneShot(putThisInThePurpleTrayMale);
-                }
-                else
-                {
-                    gameAudio.PlayOneShot(thisToyIsPurpleMale);
-                }
-            }
-
-            if (colourNumber == 5)
-            {
-                if (randomNum == 0)
-                {
-                    gameAudio.PlayOneShot(pinkMale);
-                }
-                else if (randomNum == 1)
-                {
-                    gameAudio.PlayOneShot(putThisInThePinkTrayMale);
-                }
-                else
-                {
-                    gameAudio.PlayOneShot(thisToyIsPinkMale);
-                }
-            }
-
-            if (colourNumber == 6)
-            {
-                if (randomNum == 0)
-                {
-                    gameAudio.PlayOneShot(orangeMale);
-                }
-                else if (randomNum == 1)
-                {
-                    gameAudio.PlayOneShot(putThisInTheOrangeTrayMale);
-                }
-                else
-                {
-                    gameAudio.PlayOneShot(thisToyIsOrangeMale);
-                }
-            }
-
-            if (colourNumber == 7)
-            {
-                if (randomNum == 0)
-                {
-                    gameAudio.PlayOneShot(skyBlueMale);
-                }
-                else if (randomNum == 1)
-                {
-                    gameAudio.PlayOneShot(putThisInTheSkyBlueTrayMale);
-                }
-                else
-                {
-                    gameAudio.PlayOneShot(thisToyIsSkyBlueMale);
-                }
-            }
-
-            if (colourNumber == 8)
-            {
-                if (randomNum == 0)
-                {
-                    gameAudio.PlayOneShot(greyMale);
-                }
-                else if (randomNum == 1)
-                {
-                    gameAudio.PlayOneShot(putThisInTheGreyTrayMale);
-                }
-                else
-                {
-                    gameAudio.PlayOneShot(thisToyIsGreyMale);
-                }
-            }
+        }
+        else if (voiceGender == "Female")
+        {
+            //
         }
     }
 
@@ -292,7 +310,15 @@ public class ColourSorting_AudioManager : MonoBehaviour
         {
             isPreviousAudioFinished = false;
             StartCoroutine(AudioDelay(2.5f));
-            gameAudio.PlayOneShot(ohhTryAgainMale);
+
+            if (voiceGender == "Male")
+            {
+                gameAudio.PlayOneShot(ohhTryAgainMale);
+            }
+            else if (voiceGender == "Female")
+            {
+                //
+            }
         }
     }
 
@@ -307,91 +333,98 @@ public class ColourSorting_AudioManager : MonoBehaviour
             isPreviousAudioFinished = false;
             StartCoroutine(AudioDelay(3f));
 
-            if (randomNum == 0)
+            if (voiceGender == "Male")
             {
-                gameAudio.PlayOneShot(tryAgainMale);
+                if (randomNum == 0)
+                {
+                    gameAudio.PlayOneShot(tryAgainMale);
+                }
+                else if (randomNum == 1)
+                {
+                    gameAudio.PlayOneShot(ohhTryAgainMale);
+                }
+                else if (randomNum == 2)
+                {
+                    if (colourNumber == 0)
+                    {
+                        gameAudio.PlayOneShot(thatToyWasYellowMale);
+                    }
+                    if (colourNumber == 1)
+                    {
+                        gameAudio.PlayOneShot(thatToyWasRedMale);
+                    }
+                    if (colourNumber == 2)
+                    {
+                        gameAudio.PlayOneShot(thatToyWasNavyMale);
+                    }
+                    if (colourNumber == 3)
+                    {
+                        gameAudio.PlayOneShot(thatToyWasGreenMale);
+                    }
+                    if (colourNumber == 4)
+                    {
+                        gameAudio.PlayOneShot(thatToyWasPurpleMale);
+                    }
+                    if (colourNumber == 5)
+                    {
+                        gameAudio.PlayOneShot(thatToyWasPinkMale);
+                    }
+                    if (colourNumber == 6)
+                    {
+                        gameAudio.PlayOneShot(thatToyWasOrangeMale);
+                    }
+                    if (colourNumber == 7)
+                    {
+                        gameAudio.PlayOneShot(thatToyWasSkyBlueMale);
+                    }
+                    if (colourNumber == 8)
+                    {
+                        gameAudio.PlayOneShot(thatToyWasGreyMale);
+                    }
+                }
+                else if (randomNum == 3)
+                {
+                    if (wrongTrayNumber == 0)
+                    {
+                        gameAudio.PlayOneShot(thatTrayWasYellowMale);
+                    }
+                    else if (wrongTrayNumber == 1)
+                    {
+                        gameAudio.PlayOneShot(thatTrayWasRedMale);
+                    }
+                    else if (wrongTrayNumber == 2)
+                    {
+                        gameAudio.PlayOneShot(thatTrayWasNavyMale);
+                    }
+                    else if (wrongTrayNumber == 3)
+                    {
+                        gameAudio.PlayOneShot(thatTrayWasGreenMale);
+                    }
+                    else if (wrongTrayNumber == 4)
+                    {
+                        gameAudio.PlayOneShot(thatTrayWasPurpleMale);
+                    }
+                    else if (wrongTrayNumber == 5)
+                    {
+                        gameAudio.PlayOneShot(thatTrayWasPinkMale);
+                    }
+                    else if (wrongTrayNumber == 6)
+                    {
+                        gameAudio.PlayOneShot(thatTrayWasOrangeMale);
+                    }
+                    else if (wrongTrayNumber == 7)
+                    {
+                        gameAudio.PlayOneShot(thatTrayWasSkyBlueMale);
+                    }
+                    else if (wrongTrayNumber == 8)
+                    {
+                        gameAudio.PlayOneShot(thatTrayWasGreyMale);
+                    }
+                }
             }
-            else if (randomNum == 1)
+            else if (voiceGender == "Female")
             {
-                gameAudio.PlayOneShot(ohhTryAgainMale);
-            }
-            else if (randomNum == 2)
-            {
-                if (colourNumber == 0)
-                {
-                    gameAudio.PlayOneShot(thatToyWasYellowMale);
-                }
-                if (colourNumber == 1)
-                {
-                    gameAudio.PlayOneShot(thatToyWasRedMale);
-                }
-                if (colourNumber == 2)
-                {
-                    gameAudio.PlayOneShot(thatToyWasNavyMale);
-                }
-                if (colourNumber == 3)
-                {
-                    gameAudio.PlayOneShot(thatToyWasGreenMale);
-                }
-                if (colourNumber == 4)
-                {
-                    gameAudio.PlayOneShot(thatToyWasPurpleMale);
-                }
-                if (colourNumber == 5)
-                {
-                    gameAudio.PlayOneShot(thatToyWasPinkMale);
-                }
-                if (colourNumber == 6)
-                {
-                    gameAudio.PlayOneShot(thatToyWasOrangeMale);
-                }
-                if (colourNumber == 7)
-                {
-                    gameAudio.PlayOneShot(thatToyWasSkyBlueMale);
-                }
-                if (colourNumber == 8)
-                {
-                    gameAudio.PlayOneShot(thatToyWasGreyMale);
-                }
-            }
-            else if (randomNum == 3)
-            {
-                if (wrongTrayNumber == 0)
-                {
-                    gameAudio.PlayOneShot(thatTrayWasYellowMale);
-                }
-                else if (wrongTrayNumber == 1)
-                {
-                    gameAudio.PlayOneShot(thatTrayWasRedMale);
-                }
-                else if (wrongTrayNumber == 2)
-                {
-                    gameAudio.PlayOneShot(thatTrayWasNavyMale);
-                }
-                else if (wrongTrayNumber == 3)
-                {
-                    gameAudio.PlayOneShot(thatTrayWasGreenMale);
-                }
-                else if (wrongTrayNumber == 4)
-                {
-                    gameAudio.PlayOneShot(thatTrayWasPurpleMale);
-                }
-                else if (wrongTrayNumber == 5)
-                {
-                    gameAudio.PlayOneShot(thatTrayWasPinkMale);
-                }
-                else if (wrongTrayNumber == 6)
-                {
-                    gameAudio.PlayOneShot(thatTrayWasOrangeMale);
-                }
-                else if (wrongTrayNumber == 7)
-                {
-                    gameAudio.PlayOneShot(thatTrayWasSkyBlueMale);
-                }
-                else if (wrongTrayNumber == 8)
-                {
-                    gameAudio.PlayOneShot(thatTrayWasGreyMale);
-                }
+                //
             }
         }
     }
@@ -412,25 +445,32 @@ public class ColourSorting_AudioManager : MonoBehaviour
 
             isPreviousAudioFinished = false;
 
-            if (randomNum == 0)
+            if (voiceGender == "Male")
             {
-                StartCoroutine(AudioDelay(1f));
-                gameAudio.PlayOneShot(wellDoneBrief);
+                if (randomNum == 0)
+                {
+                    StartCoroutine(AudioDelay(1f));
+                    gameAudio.PlayOneShot(wellDoneBrief);
+                }
+                else if (randomNum == 1)
+                {
+                    StartCoroutine(AudioDelay(1.5f));
+                    gameAudio.PlayOneShot(wellDoneEncouragingMale);
+                }
+                else if (randomNum == 2)
+                {
+                    StartCoroutine(AudioDelay(1.5f));
+                    gameAudio.PlayOneShot(wellDoneMoreForcefulMale);
+                }
+                else if (randomNum == 3)
+                {
+                    StartCoroutine(AudioDelay(1.5f));
+                    gameAudio.PlayOneShot(wellDoneWisperMale);
+                }
             }
-            else if (randomNum == 1)
+            else if (voiceGender == "Female")
             {
-                StartCoroutine(AudioDelay(1.5f));
-                gameAudio.PlayOneShot(wellDoneEncouragingMale);
-            }
-            else if (randomNum == 2)
-            {
-                StartCoroutine(AudioDelay(1.5f));
-                gameAudio.PlayOneShot(wellDoneMoreForcefulMale);
-            }
-            else if (randomNum == 3)
-            {
-                StartCoroutine(AudioDelay(1.5f));
-                gameAudio.PlayOneShot(wellDoneWisperMale);
+                //
             }
         }
     }
