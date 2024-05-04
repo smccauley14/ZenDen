@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ShapeSorting_GameManager : MonoBehaviour
 {
+    private ShapeSorting_AudioManager audioManagerScript;
     private Vector3[] receiverLocations = new Vector3[6];
     private Vector3[] shapeLocations = new Vector3[6];
     [SerializeField] private GameObject[] shapeHoles = new GameObject[6];
@@ -13,24 +14,23 @@ public class ShapeSorting_GameManager : MonoBehaviour
     public bool shapeOutOfBounds = false;
     public int shapeToReturn;
 
+    public bool readyToSortAgain = true;
+
     // Start is called before the first frame update
     void Start()
     {
+        audioManagerScript = GameObject.Find("GameManager").GetComponent<ShapeSorting_AudioManager>();
         GetStartingPositionsOfHoles();
         GetStartingPositionsOfShapes();
         GetRigidBodies();
+
+        shapesInScene = 0;
+        audioManagerScript.GiveUserVerbalDirectionsAtBeginningOfGame();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Check if the Escape key is pressed
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            // Randomly swap the positions of the objects
-            RandomizeHolePositions();
-        }
-
         //spawn new wave of objects
         if (shapesInScene <1)
         {
@@ -56,6 +56,8 @@ public class ShapeSorting_GameManager : MonoBehaviour
     //respawn shapes, and shuffle positions of shapes and holes
     void RespawnShapesInNewPositions()
     {
+        audioManagerScript.GiveUserVerbalDirectionsAtBeginningOfGame();
+
         RandomizeHolePositions();
         RandomizeShapePositions();
 
@@ -137,5 +139,11 @@ public class ShapeSorting_GameManager : MonoBehaviour
             array[i] = array[j];
             array[j] = temp;
         }
+    }
+
+    public IEnumerator PlayDelay(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        readyToSortAgain = true;
     }
 }
