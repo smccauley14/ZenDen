@@ -4,7 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - brown
   - Circle
   - Square
   - Yellow
@@ -18,6 +17,7 @@ TagManager:
   - left
   - right
   - middle
+  - Table
   layers:
   - Default
   - TransparentFX

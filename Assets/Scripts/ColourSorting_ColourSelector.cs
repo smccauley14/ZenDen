@@ -44,16 +44,16 @@ public class ColourSorting_ColourSelector : MonoBehaviour
 
     private ColourSorting_GameManager gameManager;
 
-
     // Start is called before the first frame update
     void Start()
     {
+        ResetPrefabMaterialColour();
+
         //getting gameManager script
         gameManager = GameObject.Find("GameManager").GetComponent<ColourSorting_GameManager>();
 
         //adding all required listeners to UI buttons
         AddListeners();
-        
     }
 
     // Update is called once per frame
@@ -75,13 +75,9 @@ public class ColourSorting_ColourSelector : MonoBehaviour
     //method to assign value to colourNumber based on user choice. Also calls method to change colour of prefab
     void ColourSelector(int colourNumber)
     {
-
         colourSelector = colourNumber;
-
         SetPrefabMaterialColour(prefabSelector, colourSelector);
-
         DeactivateSelectorMenu();
-
     }
 
     //sets the selected prefab to the selected colour (provided the colour isn't already attached to another prefab)
@@ -127,7 +123,6 @@ public class ColourSorting_ColourSelector : MonoBehaviour
     //activates the correct UI icon colour, corresponding to the current colour
     void ActivateCorrectIcon(int iconNumber, int colourNumber)
     {
-
         if (iconNumber == 0)
         {
             colourIconLeft[currentLeft].gameObject.SetActive(false);
@@ -143,18 +138,15 @@ public class ColourSorting_ColourSelector : MonoBehaviour
             colourIconRight[currentRight].gameObject.SetActive(false);
             colourIconRight[colourNumber].gameObject.SetActive(true);
         }
-        
     }
 
     //turns off the whole array of buttons (NOT CURRENTLY REQUIRED)
     void SetAllIconsInactive(Button[] iconNumber)
     {
-
         for (int i = 0; i < iconNumber.Length; i++)
         {
             iconNumber[i].gameObject.SetActive(false);
         }
-
     }
 
     //adding all required listeners to all UI buttons
@@ -163,13 +155,10 @@ public class ColourSorting_ColourSelector : MonoBehaviour
         for (int i = 0; i <= colourIconLeft.Length; i++)
         {
             int index = i; // Capture the current value of i - required because of how lambda expressions work
-
             colourMenuButtons[i].onClick.AddListener(() => ColourSelector(index));
-
             colourIconLeft[i].onClick.AddListener(() => PrefabSelector(0));
             colourIconMiddle[i].onClick.AddListener(() => PrefabSelector(1));
             colourIconRight[i].onClick.AddListener(() => PrefabSelector(2));
-
         }
     }
 
@@ -184,7 +173,6 @@ public class ColourSorting_ColourSelector : MonoBehaviour
 
         prefabMaterials[2].color = allColours[3];//green
         currentRight = 3;
-
     }
 
     //resets prefab colour scheme back to original upon quitting

@@ -78,7 +78,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 2990e0d3bcd368d4999bba719243fd19, type: 2}
     - target: {fileID: 919132149155446097, guid: 748ed0062774b174eb780392dca3be90, type: 3}
       propertyPath: m_Name
-      value: TractorGreen
+      value: Tractor right
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 748ed0062774b174eb780392dca3be90, type: 3}
       propertyPath: m_IsActive
