@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class DragDropToForeground : MonoBehaviour
+public class ColourSorting_DragDrop : MonoBehaviour
 {
     //followed this tutorial for basic touchscreen dragging: https://www.youtube.com/watch?v=zo1dkYfIJVg
 

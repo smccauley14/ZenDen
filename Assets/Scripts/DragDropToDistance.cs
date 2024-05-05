@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-public class DragDropToDistance : MonoBehaviour
+public class ShapeSorting_DragDrop : MonoBehaviour
 {
     //variables
     [SerializeField] private InputAction press;

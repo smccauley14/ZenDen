@@ -298,8 +298,8 @@ public class ColourSorting_GameManager : MonoBehaviour
     //method to deactivate every draggable object in the scene
     private void DeactivateAllDraggableObjects()
     {
-        DragDropToForeground[] allObjects = FindObjectsOfType<DragDropToForeground>();
-        foreach (DragDropToForeground singleObject in allObjects)
+        ColourSorting_DragDrop[] allObjects = FindObjectsOfType<ColourSorting_DragDrop>();
+        foreach (ColourSorting_DragDrop singleObject in allObjects)
         {
             singleObject.gameObject.SetActive(false);
         }
