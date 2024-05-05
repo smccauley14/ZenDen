@@ -23,28 +23,23 @@ public class ShapeSorting_AudioManager : MonoBehaviour
     [SerializeField] private AudioClip thatsAStarMale;
     [SerializeField] private AudioClip thatsAnArchMale;
     [SerializeField] private AudioClip rectangleMale;
-
     //general instruction
     [SerializeField] private AudioClip putShapesInTheRightHolesMale;
-
     //try agains generic
     [SerializeField] private AudioClip tryAgainMale;
     [SerializeField] private AudioClip tryAgain2Male;
     [SerializeField] private AudioClip tryAgainUpliftingMale;
     [SerializeField] private AudioClip thatWasTheWrongHoleMale;
-
     //try agains with name shape
     [SerializeField] private AudioClip tryAgainThatWasACircleMale;
     [SerializeField] private AudioClip tryAgainThatsAPentagonMale;
     [SerializeField] private AudioClip tryagainThatsARectangleMale;
     [SerializeField] private AudioClip tryAgainThatsASquareMale;
     [SerializeField] private AudioClip tryAgainThatsAnArchMale;
-
     //well dones
     [SerializeField] private AudioClip wellDoneMale;
     [SerializeField] private AudioClip wellDoneEncouragingMale;
     [SerializeField] private AudioClip wellDoneSolidarityMale;
-
     //when all shapes are sorted:
     [SerializeField] private AudioClip thatWasGreatMale;
 
@@ -53,13 +48,11 @@ public class ShapeSorting_AudioManager : MonoBehaviour
     [SerializeField] private AudioClip thatsACircleFemale;
     [SerializeField] private AudioClip thatsAStarFemale;
     [SerializeField] private AudioClip thatsASquareFemale;
-    //[SerializeField] private AudioClip thatsARectangleFemale;
+    //[SerializeField] private AudioClip thatsARectangleFemale; - DON'T HAVE
     [SerializeField] private AudioClip thatsAnArchFemale;
     [SerializeField] private AudioClip thatsAPentagonFemale;
-
     //well done
     [SerializeField] private AudioClip wellDoneFemale;
-
     //try agains
     [SerializeField] private AudioClip tryAgainFemale;
 
@@ -70,12 +63,6 @@ public class ShapeSorting_AudioManager : MonoBehaviour
         gameManagerScript = GameObject.Find("GameManager").GetComponent<ShapeSorting_GameManager>();
         voiceGender = PlayerPrefs.GetString(SettingKeys.VoiceKey, SettingKeys.VoiceDefaultValue);
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void PickedUpSound() => gameAudio.PlayOneShot(pickedUpSound);
@@ -183,7 +170,6 @@ public class ShapeSorting_AudioManager : MonoBehaviour
         {
             TryAgainWithShapeName(shapeName);
         }
-
     }
 
     public void GenericTryAgainForWrongHole()
@@ -322,7 +308,7 @@ public class ShapeSorting_AudioManager : MonoBehaviour
             }
             else if (shapeName == "Rectangle")
             {
-
+                //DON'T HAVE
             }
         }
     }
@@ -332,5 +318,4 @@ public class ShapeSorting_AudioManager : MonoBehaviour
         yield return new WaitForSeconds(seconds);
         isPreviousAudioFinished = true;
     }
-
 }

@@ -92,13 +92,10 @@ public class ColourSorting_AudioManager : MonoBehaviour
     //FEMALE AUDIO
     //general instruction
     [SerializeField] private AudioClip matchToysToTheColourOfTheTrayFemale;
-
     //encouragements
     [SerializeField] private AudioClip wellDoneFemale;
-
     //try again
     [SerializeField] private AudioClip tryAgainFemale;
-
     //naming colours
     [SerializeField] private AudioClip yellowFemale;
     [SerializeField] private AudioClip redFemale;
@@ -121,7 +118,6 @@ public class ColourSorting_AudioManager : MonoBehaviour
     [SerializeField] private AudioClip putThisInTheOrangeTrayFemale;
     [SerializeField] private AudioClip putThisInTheSkyBlueTrayFemale;
     [SerializeField] private AudioClip putThisInTheGreyTrayFemale;
-
     //naming tray colour
     [SerializeField] private AudioClip thatTrayWasPurpleFemale;
     [SerializeField] private AudioClip thatTrayWasOrangeFemale;
@@ -220,7 +216,6 @@ public class ColourSorting_AudioManager : MonoBehaviour
                         gameAudio.PlayOneShot(thisToyIsRedMale);
                     }
                 }
-
                 if (colourNumber == 2)
                 {
                     if (randomNum == 0)
@@ -236,7 +231,6 @@ public class ColourSorting_AudioManager : MonoBehaviour
                         gameAudio.PlayOneShot(thisToyIsNavyMale);
                     }
                 }
-
                 if (colourNumber == 3)
                 {
                     if (randomNum == 0)
@@ -252,7 +246,6 @@ public class ColourSorting_AudioManager : MonoBehaviour
                         gameAudio.PlayOneShot(thisToyIsGreenMale);
                     }
                 }
-
                 if (colourNumber == 4)
                 {
                     if (randomNum == 0)
@@ -268,7 +261,6 @@ public class ColourSorting_AudioManager : MonoBehaviour
                         gameAudio.PlayOneShot(thisToyIsPurpleMale);
                     }
                 }
-
                 if (colourNumber == 5)
                 {
                     if (randomNum == 0)
@@ -284,7 +276,6 @@ public class ColourSorting_AudioManager : MonoBehaviour
                         gameAudio.PlayOneShot(thisToyIsPinkMale);
                     }
                 }
-
                 if (colourNumber == 6)
                 {
                     if (randomNum == 0)
@@ -300,7 +291,6 @@ public class ColourSorting_AudioManager : MonoBehaviour
                         gameAudio.PlayOneShot(thisToyIsOrangeMale);
                     }
                 }
-
                 if (colourNumber == 7)
                 {
                     if (randomNum == 0)
@@ -316,7 +306,6 @@ public class ColourSorting_AudioManager : MonoBehaviour
                         gameAudio.PlayOneShot(thisToyIsSkyBlueMale);
                     }
                 }
-
                 if (colourNumber == 8)
                 {
                     if (randomNum == 0)

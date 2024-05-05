@@ -9,7 +9,6 @@ public class ObjectPool_ColourSorting : MonoBehaviour
     public GameObject[] objectsToPool;
     private int amountToPool = 4;
 
-
     void Awake()
     {
         SharedInstance = this;
@@ -67,22 +66,4 @@ public class ObjectPool_ColourSorting : MonoBehaviour
         return newObj;
         
     }
-
-    //TEST - KEEP FOR NOW, AS I MAY WISH TO RETURN TO IT...
-    /*
-    public void AssignOriginalPosition(Vector3 AssignedPosition, int poolObject, int poolIndex)
-    {
-        originalPositions[poolObject][poolIndex] = AssignedPosition;
-    }
-
-    public void UpdateSpawnPosition(Vector3 newPosition, int poolObject, int poolIndex)
-    {
-        if (poolObject >= 0 && poolObject < originalPositions.Length &&
-            poolIndex >= 0 && poolIndex < originalPositions[poolObject].Count)
-        {
-            originalPositions[poolObject][poolIndex] = newPosition;
-        }
-    }
-    */
-
 }

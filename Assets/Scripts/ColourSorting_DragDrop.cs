@@ -70,10 +70,6 @@ public class ColourSorting_DragDrop : MonoBehaviour
         //setting the target point in the Z axis for objects to be dragged into
         playerCamera = Camera.main;
         targetZ = playerCamera.transform.position.z + cameraDifferential;
-
-        //getting the orginal instantiated position/rotation - KEEP IN CODE FOR NOW
-        //originalPosition = transform.position;
-        //originalRotation = transform.rotation;
     }
 
     private void Awake()
@@ -181,20 +177,6 @@ public class ColourSorting_DragDrop : MonoBehaviour
         objectRB.angularVelocity = new Vector3(0, 0, 0);
         transform.position = gameManagerScript.GenerateSpawnPos();
     }
-
-    //return the object to where it was first instantiated - KEEP FOR NOW
-    /*
-    private IEnumerator ReturnToOriginalPosition()
-    {
-        yield return new WaitForSeconds(1.75f);
-        //removing any RB physics effects from previous interactions
-        objectRB.velocity = new Vector3(0, 0, 0);
-        objectRB.angularVelocity = new Vector3(0, 0, 0);
-
-        transform.position = originalPosition;
-        transform.rotation = originalRotation;
-    }
-    */
 
     //set object inactive, after a delay
     private IEnumerator DestroyObjectAndSetTrayObjectActive()

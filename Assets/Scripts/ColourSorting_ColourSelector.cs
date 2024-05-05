@@ -56,15 +56,6 @@ public class ColourSorting_ColourSelector : MonoBehaviour
         AddListeners();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-
-
-    }
-
-
     //method to assign value to 'prefabNumber' based on which colour selecting icon has been pressed
     void PrefabSelector(int prefabNumber)
     {
@@ -94,7 +85,6 @@ public class ColourSorting_ColourSelector : MonoBehaviour
             prefabMaterials[prefabSelector].color = allColours[colourNumber];
             ActivateCorrectIcon(prefabNumber, colourNumber);
             currentMiddle = colourNumber;
-
         }
         else if (prefabNumber == 2 && colourNumber != currentLeft && colourNumber != currentMiddle && colourNumber != currentRight)
         {
@@ -121,7 +111,6 @@ public class ColourSorting_ColourSelector : MonoBehaviour
         colourMenuButtons[currentLeft].gameObject.SetActive(false);
         colourMenuButtons[currentMiddle].gameObject.SetActive(false);
         colourMenuButtons[currentRight].gameObject.SetActive(false);
-
     }
 
     //turns off the colour selector UI

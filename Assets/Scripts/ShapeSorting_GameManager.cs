@@ -13,7 +13,6 @@ public class ShapeSorting_GameManager : MonoBehaviour
     [HideInInspector] public int shapesInScene = 6;
     public bool shapeOutOfBounds = false;
     public int shapeToReturn;
-
     public bool readyToSortAgain = true;
 
     // Start is called before the first frame update

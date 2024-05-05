@@ -142,13 +142,6 @@ public class ColourSorting_GameManager : MonoBehaviour
         audioManagerScript.wellDoneCounter = 0;
     }
 
-    //generates a random number, corresponding with prefab number
-    private int GenerateRandomArray()
-    {
-        int number = Random.Range(prefabNumberMinimum, prefabNumberMaximum);
-        return number;
-    }
-
     //activating a single pool object
     private void ActivateOnePoolObject(int objectNumber)
     {
@@ -162,7 +155,6 @@ public class ColourSorting_GameManager : MonoBehaviour
         draggableObject.transform.position = spawnPos;
         draggableObject.transform.rotation = spawnRotation;
         draggableObject.SetActive(true);
-
     }
 
     //nested for loop to activate a full wave of objects
@@ -327,5 +319,4 @@ public class ColourSorting_GameManager : MonoBehaviour
         currentlySortedRight = 0;
         currentlySortedMiddle = 0;
     }
-
 }
