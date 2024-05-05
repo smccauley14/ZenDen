@@ -110,6 +110,18 @@ public class ColourSorting_ColourSelector : MonoBehaviour
         background.SetActive(true);
         menuIcons.SetActive(true);
         gameManager.UIisActive = true;
+
+        // Activate all color icons initially
+        for (int i = 0; i < colourMenuButtons.Length; i++)
+        {
+            colourMenuButtons[i].gameObject.SetActive(true);
+        }
+
+        // Deactivate color menu buttons corresponding to currentLeft, currentMiddle, and currentRight
+        colourMenuButtons[currentLeft].gameObject.SetActive(false);
+        colourMenuButtons[currentMiddle].gameObject.SetActive(false);
+        colourMenuButtons[currentRight].gameObject.SetActive(false);
+
     }
 
     //turns off the colour selector UI
