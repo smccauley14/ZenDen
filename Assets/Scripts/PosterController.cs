@@ -29,6 +29,10 @@ public class PosterController : MonoBehaviour
     // Check if the player is looking at this object
     private bool IsInSight()
     {
+        if (gameObject.name == "SensoryRoomShapeSortingInteractable")
+        {
+            Debug.Log("test");
+        }
         interactiveButton.gameObject.SetActive(false);
         if (playerCamera == null)
         {
@@ -81,6 +85,7 @@ public class PosterController : MonoBehaviour
 
     public void PosterClick()
     {
+        Debug.Log(gameObject.name);
         if (clickable)
         {
             if (video != null)
