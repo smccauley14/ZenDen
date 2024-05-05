@@ -44,17 +44,21 @@ public class ShapeSorting_AudioManager : MonoBehaviour
     [SerializeField] private AudioClip thatWasGreatMale;
 
     //FEMALE VOICE AUDIO:
+    //general instruction
+    [SerializeField] private AudioClip putShapesInTheRightHolesFemale;
+
     //naming shapes
     [SerializeField] private AudioClip thatsACircleFemale;
     [SerializeField] private AudioClip thatsAStarFemale;
     [SerializeField] private AudioClip thatsASquareFemale;
-    //[SerializeField] private AudioClip thatsARectangleFemale; - DON'T HAVE
+    [SerializeField] private AudioClip thatsARectangleFemale;
     [SerializeField] private AudioClip thatsAnArchFemale;
     [SerializeField] private AudioClip thatsAPentagonFemale;
     //well done
     [SerializeField] private AudioClip wellDoneFemale;
     //try agains
     [SerializeField] private AudioClip tryAgainFemale;
+    [SerializeField] private AudioClip thatWasTheWrongHoleFemale;
 
     // Start is called before the first frame update
     void Start()
@@ -81,7 +85,7 @@ public class ShapeSorting_AudioManager : MonoBehaviour
         
         else if (voiceGender == "Female")
         {
-            //gameAudio.PlayOneShot(); - NEED RELEVANT AUDIO
+            gameAudio.PlayOneShot(putShapesInTheRightHolesFemale);
         }
     }
 
@@ -152,7 +156,7 @@ public class ShapeSorting_AudioManager : MonoBehaviour
             }
             else if (shapeName == "Rectangle")
             {
-                //gameAudio.PlayOneShot( NEED RELEVANT AUDIO
+                gameAudio.PlayOneShot(thatsARectangleFemale);
             }
         }
     }
@@ -200,7 +204,15 @@ public class ShapeSorting_AudioManager : MonoBehaviour
         }
         else if (voiceGender == "Female")
         {
+            int randomNum = Random.Range(0, 2);
+            if (randomNum == 0)
+            {
                 gameAudio.PlayOneShot(tryAgainFemale);
+            }
+            else if (randomNum == 1)
+            {
+                gameAudio.PlayOneShot(thatWasTheWrongHoleFemale);
+            }
         }
     }
 
