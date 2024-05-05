@@ -5417,7 +5417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9339623, g: 0.083704144, b: 0.083704144, a: 1}
+  m_Color: {r: 0.08235291, g: 0.93333334, b: 0.8728771, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -8551,6 +8551,7 @@ GameObject:
   - component: {fileID: 1599688052}
   - component: {fileID: 1599688053}
   - component: {fileID: 1599688054}
+  - component: {fileID: 1599688055}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -8909,6 +8910,52 @@ MonoBehaviour:
   toysGoBackIntheTraysMale: {fileID: 8300000, guid: e7f14ee0060595b4186c4f97e37c0b82, type: 3}
   ohhTryAgainMale: {fileID: 8300000, guid: 8197cb3b3300dc443b0c207159654778, type: 3}
   tryAgainMale: {fileID: 8300000, guid: 0f28e437f576b654daf10886a57115c5, type: 3}
+  matchToysToTheColourOfTheTrayFemale: {fileID: 8300000, guid: 2ee8da199ec31964e87586360cb4d755, type: 3}
+  wellDoneFemale: {fileID: 8300000, guid: c8c86e0d332223045941aeb400db8d82, type: 3}
+  tryAgainFemale: {fileID: 8300000, guid: be9eee216d3b7e7448f422bac5002972, type: 3}
+  yellowFemale: {fileID: 8300000, guid: 762a947acab42a74a91ebbbc7df8ca07, type: 3}
+  redFemale: {fileID: 8300000, guid: deab5b84fd2bd204587fe09d9f97b1cd, type: 3}
+  navyFemale: {fileID: 8300000, guid: a0ef034b6c007f04d80b572132e862ca, type: 3}
+  greenFemale: {fileID: 8300000, guid: cb79df85859b54a45beee2234fca5cd1, type: 3}
+  purpleFemale: {fileID: 8300000, guid: f41182d5f9ad7984fbf23c59992b3ea5, type: 3}
+  pinkFemale: {fileID: 8300000, guid: a58d91f1794e3354ab4fb6c49cc44a9f, type: 3}
+  orangeFemale: {fileID: 8300000, guid: d220337c0e0b3f442ba98c76ea6b390f, type: 3}
+  skyBlueFemale: {fileID: 8300000, guid: 5c25b5fa206e41d4cb1056d55060de01, type: 3}
+  greyFemale: {fileID: 8300000, guid: d0a0c719974b28f4c91ef59dc39c10e9, type: 3}
+  thisToyIsNavyFemale: {fileID: 8300000, guid: 8ad219cd123ecaf47bc3ac885097d128, type: 3}
+  thisToyIsPurpleFemale: {fileID: 8300000, guid: 7c803caa6500f5e42b2853394255325c, type: 3}
+  thisToyIsOrangeFemale: {fileID: 8300000, guid: 5aa764fe776165d4291335fb6ef67b92, type: 3}
+  thisToyIsSkyBlueFemale: {fileID: 8300000, guid: 27f90217f6e95e849abf6fd6f48da064, type: 3}
+  thisToyIsGreyFemale: {fileID: 8300000, guid: e186c6aeb518c2b4fa83a77fffd2b0ae, type: 3}
+  putThisInTheNavyTrayFemale: {fileID: 8300000, guid: 9e75c430f7bdbc24c95a6723bd6e81fc, type: 3}
+  putThisInThePurpleTrayFemale: {fileID: 8300000, guid: 65ce9b27575723349a612a4296f6dd01, type: 3}
+  putThisInTheOrangeTrayFemale: {fileID: 8300000, guid: e344c777e9213874da1c8193e81fb506, type: 3}
+  putThisInTheSkyBlueTrayFemale: {fileID: 8300000, guid: afa8f4dd28cd0e4459fbdedd273053ea, type: 3}
+  putThisInTheGreyTrayFemale: {fileID: 8300000, guid: 3e0420c2f39fd2e4eba59f8ec9630b46, type: 3}
+  thatTrayWasPurpleFemale: {fileID: 8300000, guid: 2a4c5e8f8dc586f409acf983b2ea8032, type: 3}
+  thatTrayWasOrangeFemale: {fileID: 8300000, guid: 4e61ef4324da79749979e25940929a54, type: 3}
+  thatTrayWasSkyBlueFemale: {fileID: 8300000, guid: d54ebde6c20f8854abdace03f551cb6f, type: 3}
+  thatTrayWasGreyFemale: {fileID: 8300000, guid: 254188e283a19a54b9a14541d1d4ffca, type: 3}
+  thatToyWasNavyFemale: {fileID: 8300000, guid: 722f226e2c7d1274bb9d1c0cf9e72874, type: 3}
+  thatToyWasOrangeFemale: {fileID: 8300000, guid: 39c2844f1c62dad43b81f87e0168b043, type: 3}
+  thatToyWasPurpleFemale: {fileID: 8300000, guid: 86a08d48348f6a448810f0fe7170db21, type: 3}
+  thatToyWasGreyFemale: {fileID: 8300000, guid: dd7c99b44680ae04396261ccb5d5fbeb, type: 3}
+  thatToyWasSkyBlueFemale: {fileID: 8300000, guid: 0c06b7b96e2379647aeb7a4f13198a01, type: 3}
+--- !u!114 &1599688055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599688047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a03d75fe61ad0a4eb8ef1a3016d1e17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  guitarMusic: {fileID: 8300000, guid: 4243ae9e5c84c4a4096d8d6ea21d5589, type: 3}
+  synthMusic: {fileID: 8300000, guid: 2d0c8527cd5272e4b91bc0007077a15d, type: 3}
+  noiseMusic: {fileID: 8300000, guid: 13a93e4298531bf4c8b180e917f2eefb, type: 3}
 --- !u!1 &1651215240
 GameObject:
   m_ObjectHideFlags: 0
@@ -9854,7 +9901,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9339623, g: 0.083704144, b: 0.083704144, a: 1}
+  m_Color: {r: 0.08235291, g: 0.93333334, b: 0.93333316, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

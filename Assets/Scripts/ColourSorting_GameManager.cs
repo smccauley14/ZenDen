@@ -63,7 +63,7 @@ public class ColourSorting_GameManager : MonoBehaviour
         //getting player audio
         gameAudio = GetComponent<AudioSource>();
 
-        //get audioManager
+        //get audioManagers
         audioManagerScript = GameObject.Find("GameManager").GetComponent<ColourSorting_AudioManager>();
 
         //adding listeners to UI buttons

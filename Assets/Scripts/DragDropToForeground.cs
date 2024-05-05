@@ -258,7 +258,7 @@ public class DragDropToForeground : MonoBehaviour
                 gameManagerScript.gameAudio.PlayOneShot(gameManagerScript.wrongSound);
                 
                 //bespoke sound effects from audioManager
-                audioManagerScript.AdviceForWrongTray_MaleVoice(GetColourNumber(), GetWrongTrayNumber(other.tag));
+                audioManagerScript.AdviceForWrongTray(GetColourNumber(), GetWrongTrayNumber(other.tag));
 
                 objectRB.AddForce(new Vector3(0, 1.2f, 0.10f) * 18f, ForceMode.Impulse);
 

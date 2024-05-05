@@ -3582,6 +3582,7 @@ GameObject:
   - component: {fileID: 867244105}
   - component: {fileID: 867244107}
   - component: {fileID: 867244108}
+  - component: {fileID: 867244109}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3647,7 +3648,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameAudio: {fileID: 0}
-  maleOrFemale: 1
   correctSound: {fileID: 8300000, guid: 280dc4c71ed7818458e0659ad167debc, type: 3}
   pickedUpSound: {fileID: 8300000, guid: ba37d10fce0573b4ba2310a8bd3564d4, type: 3}
   wrongSound: {fileID: 8300000, guid: e08d3ff97011d444ab166362f8f70b00, type: 3}
@@ -3775,6 +3775,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &867244109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 867244104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a03d75fe61ad0a4eb8ef1a3016d1e17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  guitarMusic: {fileID: 8300000, guid: 4243ae9e5c84c4a4096d8d6ea21d5589, type: 3}
+  synthMusic: {fileID: 8300000, guid: 2d0c8527cd5272e4b91bc0007077a15d, type: 3}
+  noiseMusic: {fileID: 8300000, guid: 13a93e4298531bf4c8b180e917f2eefb, type: 3}
 --- !u!1 &878585437
 GameObject:
   m_ObjectHideFlags: 0
