@@ -22,6 +22,7 @@ public class ColourSorting_GameManager : MonoBehaviour
     private int prefabNumberMaximum = 3;
     [HideInInspector] public AudioSource gameAudio;
     private ColourSorting_AudioManager audioManagerScript;
+    private ColourSorting_ColourSelector colourManagerScript;
     public string trayPositionOfPickedUpObject;
     public bool readyToPickUpAgain = true;
 
@@ -65,6 +66,7 @@ public class ColourSorting_GameManager : MonoBehaviour
 
         //get audioManagers
         audioManagerScript = GameObject.Find("GameManager").GetComponent<ColourSorting_AudioManager>();
+        colourManagerScript = GameObject.Find("GameManager").GetComponent<ColourSorting_ColourSelector>();
 
         //adding listeners to UI buttons
         dinoButton.onClick.AddListener(DinoSelected);
@@ -172,6 +174,8 @@ public class ColourSorting_GameManager : MonoBehaviour
         //if all objects are deactivated, activate a new wave
         if (objectsInScene < 1)
         {
+            colourManagerScript.RandomlyAssignColors();
+
             //remove all 'sorted' objects from scene
             DeactivateTrayObjects();
 
