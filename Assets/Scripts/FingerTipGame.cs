@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using UnityEditor;
 
 public class FingerTipGame : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class FingerTipGame : MonoBehaviour
     [SerializeField] private AudioClip breatheOutFemaleVoice;
     [SerializeField] private AudioClip breatheInMaleVoice;
     [SerializeField] private AudioClip breatheOutMaleVoice;
+    [SerializeField] private AudioClip playHandyFiveMaleVoice;
+    [SerializeField] private AudioClip playHandyFiveFemaleVoice;
     private AudioSource gameAudio;
 
     private int currentIndex = 0;
@@ -32,7 +35,7 @@ public class FingerTipGame : MonoBehaviour
     private int redButtonIndex;
 
     private const float MessageDisplayDuration = 3f;
-    private const float TimerDuration = 10f;
+    private float TimerDuration = 10f;
     private float timer;
 
     private string voiceGender;
@@ -46,6 +49,13 @@ public class FingerTipGame : MonoBehaviour
         SetupLevelButtonListeners();
 
         gameAudio = GetComponent<AudioSource>();
+        PlayAudio(playHandyFiveFemaleVoice, playHandyFiveMaleVoice);
+
+    }
+
+    private void Update()
+    {
+        Debug.Log(timer);
     }
 
     private void SetupLevelButtonListeners()
@@ -192,6 +202,7 @@ public class FingerTipGame : MonoBehaviour
     {
         if (level == 3 && buttonIndex == redButtonIndex)
         {
+            StopCoroutine(nameof(UpdateTimer));
             HandleGameOver();
             return;
         }
@@ -217,6 +228,10 @@ public class FingerTipGame : MonoBehaviour
             score++;
             scoreText.text = "Score: " + score.ToString();
             SetNextSelections();
+            if(TimerDuration > 2)
+            {
+                TimerDuration -= 0.5f;
+            }
             ResetTimer();
         }
 
@@ -235,12 +250,12 @@ public class FingerTipGame : MonoBehaviour
             button.interactable = false;
 
         breatheInMessage.gameObject.SetActive(true);
-        PlayBreathingAudio(breatheInFemaleVoice, breatheInMaleVoice);
+        PlayAudio(breatheInFemaleVoice, breatheInMaleVoice);
         yield return new WaitForSeconds(MessageDisplayDuration);
 
         breatheInMessage.gameObject.SetActive(false);
         breatheOutMessage.gameObject.SetActive(true);
-        PlayBreathingAudio(breatheOutFemaleVoice, breatheOutMaleVoice);
+        PlayAudio(breatheOutFemaleVoice, breatheOutMaleVoice);
         yield return new WaitForSeconds(MessageDisplayDuration);
 
         breatheOutMessage.gameObject.SetActive(false);
@@ -254,7 +269,7 @@ public class FingerTipGame : MonoBehaviour
         }
     }
 
-    private void PlayBreathingAudio(AudioClip female, AudioClip male)
+    private void PlayAudio(AudioClip female, AudioClip male)
     {
         if (voiceGender == "Female")
             gameAudio.PlayOneShot(female);
