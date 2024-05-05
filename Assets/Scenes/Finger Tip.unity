@@ -2559,6 +2559,8 @@ MonoBehaviour:
   breatheOutFemaleVoice: {fileID: 8300000, guid: 71e3766f8707bd84e8377a9b633106ca, type: 3}
   breatheInMaleVoice: {fileID: 8300000, guid: 13669feb5a46d55439dbfe40a8917405, type: 3}
   breatheOutMaleVoice: {fileID: 8300000, guid: 271462c112da3e04f9d0ac307e1065c1, type: 3}
+  playHandyFiveMaleVoice: {fileID: 8300000, guid: a052986b08b71424ab8f3d7a83ad7e56, type: 3}
+  playHandyFiveFemaleVoice: {fileID: 8300000, guid: e50ea401b8b2a2f408848e545a8ecf02, type: 3}
 --- !u!82 &1920053071
 AudioSource:
   m_ObjectHideFlags: 0
