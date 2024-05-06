@@ -45,7 +45,7 @@ public class SensoryRoomManager : MonoBehaviour
         playShapesImage.gameObject.SetActive(false);
     }
 
-    private void SelectNextGame()
+    public void SelectNextGame()
     {
         if (roomObjects[nextGame] == "HandyFive")
         {
