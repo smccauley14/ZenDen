@@ -24,7 +24,7 @@ public class ShapeSorting_GameManager : MonoBehaviour
         GetRigidBodies();
 
         shapesInScene = 0;
-        audioManagerScript.GiveUserVerbalDirectionsAtBeginningOfGame();
+        //audioManagerScript.GiveUserVerbalDirectionsAtBeginningOfGame();
     }
 
     // Update is called once per frame

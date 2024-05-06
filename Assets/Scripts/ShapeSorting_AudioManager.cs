@@ -66,6 +66,7 @@ public class ShapeSorting_AudioManager : MonoBehaviour
         gameAudio = GetComponent<AudioSource>();
         gameManagerScript = GameObject.Find("GameManager").GetComponent<ShapeSorting_GameManager>();
         voiceGender = PlayerPrefs.GetString(SettingKeys.VoiceKey, SettingKeys.VoiceDefaultValue);
+        //GiveUserVerbalDirectionsAtBeginningOfGame();
 
     }
 
