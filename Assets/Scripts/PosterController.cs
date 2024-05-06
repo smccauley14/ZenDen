@@ -40,10 +40,6 @@ public class PosterController : MonoBehaviour
     // Check if the player is looking at this object
     private bool IsInSight()
     {
-        if (gameObject.name == "SensoryRoomShapeSortingInteractable")
-        {
-            Debug.Log("test");
-        }
         interactiveButton.gameObject.SetActive(false);
         if (playerCamera == null)
         {
@@ -96,7 +92,6 @@ public class PosterController : MonoBehaviour
 
     public void PosterClick()
     {
-        Debug.Log(gameObject.name);
         if (clickable)
         {
             if (video != null)
@@ -106,13 +101,13 @@ public class PosterController : MonoBehaviour
                 isVideoPlaying = true;
                 StartCoroutine(nameof(FeatherAudio));
                 video.loopPointReached += OnVideoEnd;
-                ChangeNextGameObject();
                 sensoryRoomManager.GetComponent<SensoryRoomManager>().DisableAllImages();
                 interactiveButton.gameObject.SetActive(false);
                 foreach (var controller in gameControllers)
                 {
                     controller.GetComponent<Image>().enabled = false;
                 }
+                
             }
 
             if (!String.IsNullOrEmpty(scene))
@@ -130,9 +125,9 @@ public class PosterController : MonoBehaviour
     private IEnumerator FeatherAudio()
     {
         PlayAudio(letsPlayFeatherFemaleVoice, letsPlayFeatherMaleVoice);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         PlayAudio(putYourHandOutFemaleVoice, putYourHandOutMaleVoice);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(7f);
         PlayAudio(doYouFeelFeatherFemaleVoice, doYouFeelFeatherMaleVoice);
     }
 
@@ -157,5 +152,7 @@ public class PosterController : MonoBehaviour
         {
             controller.GetComponent<Image>().enabled = true;
         }
+        ChangeNextGameObject();
+        sensoryRoomManager.GetComponent<SensoryRoomManager>().SelectNextGame();
     }
 }
