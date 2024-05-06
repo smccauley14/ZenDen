@@ -90,20 +90,52 @@ public class ColourSorting_AudioManager : MonoBehaviour
     [SerializeField] private AudioClip tryAgainMale;
 
     //FEMALE AUDIO
+    //general instruction
+    [SerializeField] private AudioClip matchToysToTheColourOfTheTrayFemale;
     //encouragements
-
-
-
-
+    [SerializeField] private AudioClip wellDoneFemale;
+    //try again
+    [SerializeField] private AudioClip tryAgainFemale;
+    //naming colours
+    [SerializeField] private AudioClip yellowFemale;
+    [SerializeField] private AudioClip redFemale;
+    [SerializeField] private AudioClip navyFemale;
+    [SerializeField] private AudioClip greenFemale;
+    [SerializeField] private AudioClip purpleFemale;
+    [SerializeField] private AudioClip pinkFemale;
+    [SerializeField] private AudioClip orangeFemale;
+    [SerializeField] private AudioClip skyBlueFemale;
+    [SerializeField] private AudioClip greyFemale;
+    //"this toy is..."
+    [SerializeField] private AudioClip thisToyIsNavyFemale;
+    [SerializeField] private AudioClip thisToyIsPurpleFemale;
+    [SerializeField] private AudioClip thisToyIsOrangeFemale;
+    [SerializeField] private AudioClip thisToyIsSkyBlueFemale;
+    [SerializeField] private AudioClip thisToyIsGreyFemale;
+    //"put this in the ... Tray"
+    [SerializeField] private AudioClip putThisInTheNavyTrayFemale;
+    [SerializeField] private AudioClip putThisInThePurpleTrayFemale;
+    [SerializeField] private AudioClip putThisInTheOrangeTrayFemale;
+    [SerializeField] private AudioClip putThisInTheSkyBlueTrayFemale;
+    [SerializeField] private AudioClip putThisInTheGreyTrayFemale;
+    //naming tray colour
+    [SerializeField] private AudioClip thatTrayWasPurpleFemale;
+    [SerializeField] private AudioClip thatTrayWasOrangeFemale;
+    [SerializeField] private AudioClip thatTrayWasSkyBlueFemale;
+    [SerializeField] private AudioClip thatTrayWasGreyFemale;
+    //"that toy was..."
+    [SerializeField] private AudioClip thatToyWasNavyFemale;
+    [SerializeField] private AudioClip thatToyWasOrangeFemale;
+    [SerializeField] private AudioClip thatToyWasPurpleFemale;
+    [SerializeField] private AudioClip thatToyWasGreyFemale;
+    [SerializeField] private AudioClip thatToyWasSkyBlueFemale;
 
     // Start is called before the first frame update
     void Start()
     {
         //getting player audio
         gameAudio = GetComponent<AudioSource>();
-
         voiceGender = PlayerPrefs.GetString(SettingKeys.VoiceKey, SettingKeys.VoiceDefaultValue);
-
     }
 
     //general directions
@@ -111,11 +143,11 @@ public class ColourSorting_AudioManager : MonoBehaviour
     {
         int randomNum = Random.Range(0, 4);
 
-        isPreviousAudioFinished = false;
-        StartCoroutine(AudioDelay(1.5f));
+        StartCoroutine(AudioDelay(2f));
 
-        if (voiceGender == "Male")
+        if (voiceGender == "Male" && isPreviousAudioFinished)
         {
+            isPreviousAudioFinished = false;
             if (randomNum == 0)
             {
                 gameAudio.PlayOneShot(sortToysInToTraysOfTheSameColourMale);
@@ -133,9 +165,10 @@ public class ColourSorting_AudioManager : MonoBehaviour
                 gameAudio.PlayOneShot(toysGoBackIntheTraysMale);
             }
         }
-        else if (voiceGender == "Female")
+        else if (voiceGender == "Female" && isPreviousAudioFinished)
         {
-
+            isPreviousAudioFinished = false;
+            gameAudio.PlayOneShot(matchToysToTheColourOfTheTrayFemale);
         }
     }
 
@@ -143,13 +176,12 @@ public class ColourSorting_AudioManager : MonoBehaviour
     //naming the object picked up, or advising user which tray to drop it into
     public void NamePickedUpColour_MaleVoice(int colourNumber)
     {
-        int randomNum = Random.Range(0, 3);
-
         if (voiceGender == "Male")
         {
+            int randomNum = Random.Range(0, 3);
+
             if (isPreviousAudioFinished == true)
             {
-
                 isPreviousAudioFinished = false;
                 StartCoroutine(AudioDelay(2.5f));
 
@@ -184,7 +216,6 @@ public class ColourSorting_AudioManager : MonoBehaviour
                         gameAudio.PlayOneShot(thisToyIsRedMale);
                     }
                 }
-
                 if (colourNumber == 2)
                 {
                     if (randomNum == 0)
@@ -200,7 +231,6 @@ public class ColourSorting_AudioManager : MonoBehaviour
                         gameAudio.PlayOneShot(thisToyIsNavyMale);
                     }
                 }
-
                 if (colourNumber == 3)
                 {
                     if (randomNum == 0)
@@ -216,7 +246,6 @@ public class ColourSorting_AudioManager : MonoBehaviour
                         gameAudio.PlayOneShot(thisToyIsGreenMale);
                     }
                 }
-
                 if (colourNumber == 4)
                 {
                     if (randomNum == 0)
@@ -232,7 +261,6 @@ public class ColourSorting_AudioManager : MonoBehaviour
                         gameAudio.PlayOneShot(thisToyIsPurpleMale);
                     }
                 }
-
                 if (colourNumber == 5)
                 {
                     if (randomNum == 0)
@@ -248,7 +276,6 @@ public class ColourSorting_AudioManager : MonoBehaviour
                         gameAudio.PlayOneShot(thisToyIsPinkMale);
                     }
                 }
-
                 if (colourNumber == 6)
                 {
                     if (randomNum == 0)
@@ -264,7 +291,6 @@ public class ColourSorting_AudioManager : MonoBehaviour
                         gameAudio.PlayOneShot(thisToyIsOrangeMale);
                     }
                 }
-
                 if (colourNumber == 7)
                 {
                     if (randomNum == 0)
@@ -280,7 +306,6 @@ public class ColourSorting_AudioManager : MonoBehaviour
                         gameAudio.PlayOneShot(thisToyIsSkyBlueMale);
                     }
                 }
-
                 if (colourNumber == 8)
                 {
                     if (randomNum == 0)
@@ -300,7 +325,108 @@ public class ColourSorting_AudioManager : MonoBehaviour
         }
         else if (voiceGender == "Female")
         {
-            //
+            if (isPreviousAudioFinished == true)
+            {
+                isPreviousAudioFinished = false;
+                StartCoroutine(AudioDelay(2.5f));
+
+                if (colourNumber == 0)
+                {
+                    gameAudio.PlayOneShot(yellowFemale);
+                }
+                if (colourNumber == 1)
+                {
+                    gameAudio.PlayOneShot(redFemale);
+                }
+                if (colourNumber == 2)
+                {
+                    int randomNum = Random.Range(0, 3);
+                    if (randomNum == 0)
+                    {
+                        gameAudio.PlayOneShot(navyFemale);
+                    }
+                    else if(randomNum == 1)
+                    {
+                        gameAudio.PlayOneShot(putThisInTheNavyTrayFemale);
+                    }
+                    else if (randomNum == 2)
+                    {
+                        gameAudio.PlayOneShot(thisToyIsNavyFemale);
+                    }
+                }
+                if (colourNumber == 3)
+                {
+                    gameAudio.PlayOneShot(greenFemale);
+                }
+                if (colourNumber == 4)
+                {
+                    int randomNum = Random.Range(0, 3);
+                    if (randomNum == 0)
+                    {
+                        gameAudio.PlayOneShot(purpleFemale);
+                    }
+                    else if (randomNum == 1)
+                    {
+                        gameAudio.PlayOneShot(putThisInThePurpleTrayFemale);
+                    }
+                    else if (randomNum == 2)
+                    {
+                        gameAudio.PlayOneShot(thisToyIsPurpleFemale);
+                    }
+                }
+                if (colourNumber == 5)
+                {
+                    gameAudio.PlayOneShot(pinkFemale);
+                }
+                if (colourNumber == 6)
+                {
+                    int randomNum = Random.Range(0, 3);
+                    if (randomNum == 0)
+                    {
+                        gameAudio.PlayOneShot(orangeFemale);
+                    }
+                    else if (randomNum == 1)
+                    {
+                        gameAudio.PlayOneShot(putThisInTheOrangeTrayFemale);
+                    }
+                    else if (randomNum == 2)
+                    {
+                        gameAudio.PlayOneShot(thisToyIsOrangeFemale);
+                    }
+                }
+                if (colourNumber == 7)
+                {
+                    int randomNum = Random.Range(0, 3);
+                    if (randomNum == 0)
+                    {
+                        gameAudio.PlayOneShot(skyBlueFemale);
+                    }
+                    else if (randomNum == 1)
+                    {
+                        gameAudio.PlayOneShot(putThisInTheSkyBlueTrayFemale);
+                    }
+                    else if (randomNum == 2)
+                    {
+                        gameAudio.PlayOneShot(thisToyIsSkyBlueFemale);
+                    }
+                }
+                if (colourNumber == 8)
+                {
+                    int randomNum = Random.Range(0, 3);
+                    if (randomNum == 0)
+                    {
+                        gameAudio.PlayOneShot(greyFemale);
+                    }
+                    else if (randomNum == 1)
+                    {
+                        gameAudio.PlayOneShot(putThisInTheGreyTrayFemale);
+                    }
+                    else if (randomNum == 2)
+                    {
+                        gameAudio.PlayOneShot(thisToyIsGreyFemale);
+                    }
+                }
+            }
         }
     }
 
@@ -317,19 +443,18 @@ public class ColourSorting_AudioManager : MonoBehaviour
             }
             else if (voiceGender == "Female")
             {
-                //
+                gameAudio.PlayOneShot(tryAgainFemale);
             }
         }
     }
 
     //sounds for when a user has put the object in the wrong tray
     //i.e. 'try again' or advising which tray to put it into
-    public void AdviceForWrongTray_MaleVoice(int colourNumber, int wrongTrayNumber)
+    public void AdviceForWrongTray(int colourNumber, int wrongTrayNumber)
     {
-        int randomNum = Random.Range(0, 4);
-
         if (isPreviousAudioFinished == true)
         {
+            int randomNum = Random.Range(0, 4);
             isPreviousAudioFinished = false;
             StartCoroutine(AudioDelay(3f));
 
@@ -424,7 +549,7 @@ public class ColourSorting_AudioManager : MonoBehaviour
             }
             else if (voiceGender == "Female")
             {
-                //
+                gameAudio.PlayOneShot(tryAgainFemale);
             }
         }
     }
@@ -470,7 +595,8 @@ public class ColourSorting_AudioManager : MonoBehaviour
             }
             else if (voiceGender == "Female")
             {
-                //
+                StartCoroutine(AudioDelay(1.5f));
+                gameAudio.PlayOneShot(wellDoneFemale);
             }
         }
     }

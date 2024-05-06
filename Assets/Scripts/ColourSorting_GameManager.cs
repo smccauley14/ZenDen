@@ -22,6 +22,7 @@ public class ColourSorting_GameManager : MonoBehaviour
     private int prefabNumberMaximum = 3;
     [HideInInspector] public AudioSource gameAudio;
     private ColourSorting_AudioManager audioManagerScript;
+    private ColourSorting_ColourSelector colourManagerScript;
     public string trayPositionOfPickedUpObject;
     public bool readyToPickUpAgain = true;
 
@@ -63,8 +64,9 @@ public class ColourSorting_GameManager : MonoBehaviour
         //getting player audio
         gameAudio = GetComponent<AudioSource>();
 
-        //get audioManager
+        //get audioManagers
         audioManagerScript = GameObject.Find("GameManager").GetComponent<ColourSorting_AudioManager>();
+        colourManagerScript = GameObject.Find("GameManager").GetComponent<ColourSorting_ColourSelector>();
 
         //adding listeners to UI buttons
         dinoButton.onClick.AddListener(DinoSelected);
@@ -140,13 +142,6 @@ public class ColourSorting_GameManager : MonoBehaviour
         audioManagerScript.wellDoneCounter = 0;
     }
 
-    //generates a random number, corresponding with prefab number
-    private int GenerateRandomArray()
-    {
-        int number = Random.Range(prefabNumberMinimum, prefabNumberMaximum);
-        return number;
-    }
-
     //activating a single pool object
     private void ActivateOnePoolObject(int objectNumber)
     {
@@ -160,7 +155,6 @@ public class ColourSorting_GameManager : MonoBehaviour
         draggableObject.transform.position = spawnPos;
         draggableObject.transform.rotation = spawnRotation;
         draggableObject.SetActive(true);
-
     }
 
     //nested for loop to activate a full wave of objects
@@ -172,6 +166,8 @@ public class ColourSorting_GameManager : MonoBehaviour
         //if all objects are deactivated, activate a new wave
         if (objectsInScene < 1)
         {
+            colourManagerScript.RandomlyAssignColors();
+
             //remove all 'sorted' objects from scene
             DeactivateTrayObjects();
 
@@ -298,8 +294,8 @@ public class ColourSorting_GameManager : MonoBehaviour
     //method to deactivate every draggable object in the scene
     private void DeactivateAllDraggableObjects()
     {
-        DragDropToForeground[] allObjects = FindObjectsOfType<DragDropToForeground>();
-        foreach (DragDropToForeground singleObject in allObjects)
+        ColourSorting_DragDrop[] allObjects = FindObjectsOfType<ColourSorting_DragDrop>();
+        foreach (ColourSorting_DragDrop singleObject in allObjects)
         {
             singleObject.gameObject.SetActive(false);
         }
@@ -323,5 +319,4 @@ public class ColourSorting_GameManager : MonoBehaviour
         currentlySortedRight = 0;
         currentlySortedMiddle = 0;
     }
-
 }

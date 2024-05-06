@@ -23,45 +23,42 @@ public class ShapeSorting_AudioManager : MonoBehaviour
     [SerializeField] private AudioClip thatsAStarMale;
     [SerializeField] private AudioClip thatsAnArchMale;
     [SerializeField] private AudioClip rectangleMale;
-
     //general instruction
     [SerializeField] private AudioClip putShapesInTheRightHolesMale;
-
     //try agains generic
     [SerializeField] private AudioClip tryAgainMale;
     [SerializeField] private AudioClip tryAgain2Male;
     [SerializeField] private AudioClip tryAgainUpliftingMale;
     [SerializeField] private AudioClip thatWasTheWrongHoleMale;
-
     //try agains with name shape
     [SerializeField] private AudioClip tryAgainThatWasACircleMale;
     [SerializeField] private AudioClip tryAgainThatsAPentagonMale;
     [SerializeField] private AudioClip tryagainThatsARectangleMale;
     [SerializeField] private AudioClip tryAgainThatsASquareMale;
     [SerializeField] private AudioClip tryAgainThatsAnArchMale;
-
     //well dones
     [SerializeField] private AudioClip wellDoneMale;
     [SerializeField] private AudioClip wellDoneEncouragingMale;
     [SerializeField] private AudioClip wellDoneSolidarityMale;
-
     //when all shapes are sorted:
     [SerializeField] private AudioClip thatWasGreatMale;
 
     //FEMALE VOICE AUDIO:
+    //general instruction
+    [SerializeField] private AudioClip putShapesInTheRightHolesFemale;
+
     //naming shapes
     [SerializeField] private AudioClip thatsACircleFemale;
     [SerializeField] private AudioClip thatsAStarFemale;
     [SerializeField] private AudioClip thatsASquareFemale;
-    //[SerializeField] private AudioClip thatsARectangleFemale;
+    [SerializeField] private AudioClip thatsARectangleFemale;
     [SerializeField] private AudioClip thatsAnArchFemale;
     [SerializeField] private AudioClip thatsAPentagonFemale;
-
     //well done
     [SerializeField] private AudioClip wellDoneFemale;
-
     //try agains
     [SerializeField] private AudioClip tryAgainFemale;
+    [SerializeField] private AudioClip thatWasTheWrongHoleFemale;
 
     // Start is called before the first frame update
     void Start()
@@ -70,12 +67,6 @@ public class ShapeSorting_AudioManager : MonoBehaviour
         gameManagerScript = GameObject.Find("GameManager").GetComponent<ShapeSorting_GameManager>();
         voiceGender = PlayerPrefs.GetString(SettingKeys.VoiceKey, SettingKeys.VoiceDefaultValue);
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void PickedUpSound() => gameAudio.PlayOneShot(pickedUpSound);
@@ -94,7 +85,7 @@ public class ShapeSorting_AudioManager : MonoBehaviour
         
         else if (voiceGender == "Female")
         {
-            //gameAudio.PlayOneShot(); - NEED RELEVANT AUDIO
+            gameAudio.PlayOneShot(putShapesInTheRightHolesFemale);
         }
     }
 
@@ -165,7 +156,7 @@ public class ShapeSorting_AudioManager : MonoBehaviour
             }
             else if (shapeName == "Rectangle")
             {
-                //gameAudio.PlayOneShot( NEED RELEVANT AUDIO
+                gameAudio.PlayOneShot(thatsARectangleFemale);
             }
         }
     }
@@ -183,7 +174,6 @@ public class ShapeSorting_AudioManager : MonoBehaviour
         {
             TryAgainWithShapeName(shapeName);
         }
-
     }
 
     public void GenericTryAgainForWrongHole()
@@ -214,7 +204,15 @@ public class ShapeSorting_AudioManager : MonoBehaviour
         }
         else if (voiceGender == "Female")
         {
+            int randomNum = Random.Range(0, 2);
+            if (randomNum == 0)
+            {
                 gameAudio.PlayOneShot(tryAgainFemale);
+            }
+            else if (randomNum == 1)
+            {
+                gameAudio.PlayOneShot(thatWasTheWrongHoleFemale);
+            }
         }
     }
 
@@ -322,7 +320,7 @@ public class ShapeSorting_AudioManager : MonoBehaviour
             }
             else if (shapeName == "Rectangle")
             {
-
+                //DON'T HAVE
             }
         }
     }
@@ -332,5 +330,4 @@ public class ShapeSorting_AudioManager : MonoBehaviour
         yield return new WaitForSeconds(seconds);
         isPreviousAudioFinished = true;
     }
-
 }

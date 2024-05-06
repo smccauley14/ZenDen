@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class DragDropToForeground : MonoBehaviour
+public class ColourSorting_DragDrop : MonoBehaviour
 {
     //followed this tutorial for basic touchscreen dragging: https://www.youtube.com/watch?v=zo1dkYfIJVg
 
@@ -70,10 +70,6 @@ public class DragDropToForeground : MonoBehaviour
         //setting the target point in the Z axis for objects to be dragged into
         playerCamera = Camera.main;
         targetZ = playerCamera.transform.position.z + cameraDifferential;
-
-        //getting the orginal instantiated position/rotation - KEEP IN CODE FOR NOW
-        //originalPosition = transform.position;
-        //originalRotation = transform.rotation;
     }
 
     private void Awake()
@@ -182,20 +178,6 @@ public class DragDropToForeground : MonoBehaviour
         transform.position = gameManagerScript.GenerateSpawnPos();
     }
 
-    //return the object to where it was first instantiated - KEEP FOR NOW
-    /*
-    private IEnumerator ReturnToOriginalPosition()
-    {
-        yield return new WaitForSeconds(1.75f);
-        //removing any RB physics effects from previous interactions
-        objectRB.velocity = new Vector3(0, 0, 0);
-        objectRB.angularVelocity = new Vector3(0, 0, 0);
-
-        transform.position = originalPosition;
-        transform.rotation = originalRotation;
-    }
-    */
-
     //set object inactive, after a delay
     private IEnumerator DestroyObjectAndSetTrayObjectActive()
     {
@@ -258,7 +240,7 @@ public class DragDropToForeground : MonoBehaviour
                 gameManagerScript.gameAudio.PlayOneShot(gameManagerScript.wrongSound);
                 
                 //bespoke sound effects from audioManager
-                audioManagerScript.AdviceForWrongTray_MaleVoice(GetColourNumber(), GetWrongTrayNumber(other.tag));
+                audioManagerScript.AdviceForWrongTray(GetColourNumber(), GetWrongTrayNumber(other.tag));
 
                 objectRB.AddForce(new Vector3(0, 1.2f, 0.10f) * 18f, ForceMode.Impulse);
 

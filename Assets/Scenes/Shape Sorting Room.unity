@@ -3582,6 +3582,7 @@ GameObject:
   - component: {fileID: 867244105}
   - component: {fileID: 867244107}
   - component: {fileID: 867244108}
+  - component: {fileID: 867244109}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3647,7 +3648,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameAudio: {fileID: 0}
-  maleOrFemale: 1
   correctSound: {fileID: 8300000, guid: 280dc4c71ed7818458e0659ad167debc, type: 3}
   pickedUpSound: {fileID: 8300000, guid: ba37d10fce0573b4ba2310a8bd3564d4, type: 3}
   wrongSound: {fileID: 8300000, guid: e08d3ff97011d444ab166362f8f70b00, type: 3}
@@ -3672,13 +3672,16 @@ MonoBehaviour:
   wellDoneEncouragingMale: {fileID: 8300000, guid: ff90afb4d4938a04996d9cb10d318bcd, type: 3}
   wellDoneSolidarityMale: {fileID: 8300000, guid: bbf568e90f0a9c447a7b009292cd96f8, type: 3}
   thatWasGreatMale: {fileID: 8300000, guid: f26fdb3b5e465064e80cee26a8d7363a, type: 3}
+  putShapesInTheRightHolesFemale: {fileID: 8300000, guid: 0c1bebf1c933c8b418b70be4ce023e6b, type: 3}
   thatsACircleFemale: {fileID: 8300000, guid: 286d5c73ead4acb48afab1bd55b53c0b, type: 3}
   thatsAStarFemale: {fileID: 8300000, guid: 65d282155d55dd74c9731b708c6919b8, type: 3}
   thatsASquareFemale: {fileID: 8300000, guid: 2492b52f62eae324da611c4940df99d7, type: 3}
+  thatsARectangleFemale: {fileID: 8300000, guid: cf9e9073688264840bf0d93de7b81f13, type: 3}
   thatsAnArchFemale: {fileID: 8300000, guid: 4444e7c0afa23cb44897e4a426c43d26, type: 3}
   thatsAPentagonFemale: {fileID: 8300000, guid: d5506cc82b9e5da449e6215fa1542ff2, type: 3}
   wellDoneFemale: {fileID: 8300000, guid: d410bcc4889d290449e9cbe0681ed8b1, type: 3}
   tryAgainFemale: {fileID: 8300000, guid: 010ed83e193d4ae4dbd2ffc45dc7fbea, type: 3}
+  thatWasTheWrongHoleFemale: {fileID: 8300000, guid: 9c15eb071f8b29a4e976d23088eb5483, type: 3}
 --- !u!82 &867244108
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3775,6 +3778,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &867244109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 867244104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a03d75fe61ad0a4eb8ef1a3016d1e17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  guitarMusic: {fileID: 8300000, guid: c5f7460f4b532324797af6adabe26b3a, type: 3}
+  synthMusic: {fileID: 8300000, guid: 571806ff2e6c448458005aa317730c23, type: 3}
+  noiseMusic: {fileID: 8300000, guid: 4ee13d5213d4b8a46b69a6b128157208, type: 3}
 --- !u!1 &878585437
 GameObject:
   m_ObjectHideFlags: 0
@@ -5636,9 +5654,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2036327834}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 344, y: 190}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -56, y: -35}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1726456599

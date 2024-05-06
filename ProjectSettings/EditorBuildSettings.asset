@@ -20,7 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Finger Tip.unity
     guid: baf840b1db82b744599e9a9cc90cd8d6
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Shape Sorting Room.unity
     guid: 07eb964c44aafd24f850c0e8986b9ee0
   m_configObjects: {}

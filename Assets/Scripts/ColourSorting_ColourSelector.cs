@@ -56,15 +56,6 @@ public class ColourSorting_ColourSelector : MonoBehaviour
         AddListeners();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-
-
-    }
-
-
     //method to assign value to 'prefabNumber' based on which colour selecting icon has been pressed
     void PrefabSelector(int prefabNumber)
     {
@@ -94,7 +85,6 @@ public class ColourSorting_ColourSelector : MonoBehaviour
             prefabMaterials[prefabSelector].color = allColours[colourNumber];
             ActivateCorrectIcon(prefabNumber, colourNumber);
             currentMiddle = colourNumber;
-
         }
         else if (prefabNumber == 2 && colourNumber != currentLeft && colourNumber != currentMiddle && colourNumber != currentRight)
         {
@@ -110,6 +100,17 @@ public class ColourSorting_ColourSelector : MonoBehaviour
         background.SetActive(true);
         menuIcons.SetActive(true);
         gameManager.UIisActive = true;
+
+        // Activate all color icons initially
+        for (int i = 0; i < colourMenuButtons.Length; i++)
+        {
+            colourMenuButtons[i].gameObject.SetActive(true);
+        }
+
+        // Deactivate color menu buttons corresponding to currentLeft, currentMiddle, and currentRight
+        colourMenuButtons[currentLeft].gameObject.SetActive(false);
+        colourMenuButtons[currentMiddle].gameObject.SetActive(false);
+        colourMenuButtons[currentRight].gameObject.SetActive(false);
     }
 
     //turns off the colour selector UI
@@ -121,22 +122,28 @@ public class ColourSorting_ColourSelector : MonoBehaviour
     }
 
     //activates the correct UI icon colour, corresponding to the current colour
-    void ActivateCorrectIcon(int iconNumber, int colourNumber)
+    public void ActivateCorrectIcon(int iconNumber, int colourNumber)
     {
         if (iconNumber == 0)
         {
-            colourIconLeft[currentLeft].gameObject.SetActive(false);
-            colourIconLeft[colourNumber].gameObject.SetActive(true);
+            for (int i = 0; i < colourIconLeft.Length; i++)
+            {
+                colourIconLeft[i].gameObject.SetActive(i == colourNumber);
+            }
         }
         else if (iconNumber == 1)
         {
-            colourIconMiddle[currentMiddle].gameObject.SetActive(false);
-            colourIconMiddle[colourNumber].gameObject.SetActive(true);
+            for (int i = 0; i < colourIconMiddle.Length; i++)
+            {
+                colourIconMiddle[i].gameObject.SetActive(i == colourNumber);
+            }
         }
         else if (iconNumber == 2)
         {
-            colourIconRight[currentRight].gameObject.SetActive(false);
-            colourIconRight[colourNumber].gameObject.SetActive(true);
+            for (int i = 0; i < colourIconRight.Length; i++)
+            {
+                colourIconRight[i].gameObject.SetActive(i == colourNumber);
+            }
         }
     }
 
@@ -175,10 +182,40 @@ public class ColourSorting_ColourSelector : MonoBehaviour
         currentRight = 3;
     }
 
+    public void RandomlyAssignColors()
+    {
+        // Create a list of available color indices
+        List<int> availableColors = new List<int>();
+        for (int i = 0; i < allColours.Length; i++)
+        {
+            availableColors.Add(i);
+        }
+
+        // Randomly select 3 indices without repetition
+        System.Random rnd = new System.Random();
+        currentLeft = availableColors[rnd.Next(0, availableColors.Count)];
+        availableColors.Remove(currentLeft);
+
+        currentMiddle = availableColors[rnd.Next(0, availableColors.Count)];
+        availableColors.Remove(currentMiddle);
+
+        currentRight = availableColors[rnd.Next(0, availableColors.Count)];
+        availableColors.Remove(currentRight);
+
+        // Assign colors to the prefabs and update 'current' values
+        prefabMaterials[0].color = allColours[currentLeft];
+        prefabMaterials[1].color = allColours[currentMiddle];
+        prefabMaterials[2].color = allColours[currentRight];
+
+        // Update UI icons
+        ActivateCorrectIcon(0, currentLeft);
+        ActivateCorrectIcon(1, currentMiddle);
+        ActivateCorrectIcon(2, currentRight);
+    }
+
     //resets prefab colour scheme back to original upon quitting
     private void OnApplicationQuit()
     {
         ResetPrefabMaterialColour();
     }
-
 }
