@@ -3672,13 +3672,16 @@ MonoBehaviour:
   wellDoneEncouragingMale: {fileID: 8300000, guid: ff90afb4d4938a04996d9cb10d318bcd, type: 3}
   wellDoneSolidarityMale: {fileID: 8300000, guid: bbf568e90f0a9c447a7b009292cd96f8, type: 3}
   thatWasGreatMale: {fileID: 8300000, guid: f26fdb3b5e465064e80cee26a8d7363a, type: 3}
+  putShapesInTheRightHolesFemale: {fileID: 8300000, guid: 0c1bebf1c933c8b418b70be4ce023e6b, type: 3}
   thatsACircleFemale: {fileID: 8300000, guid: 286d5c73ead4acb48afab1bd55b53c0b, type: 3}
   thatsAStarFemale: {fileID: 8300000, guid: 65d282155d55dd74c9731b708c6919b8, type: 3}
   thatsASquareFemale: {fileID: 8300000, guid: 2492b52f62eae324da611c4940df99d7, type: 3}
+  thatsARectangleFemale: {fileID: 8300000, guid: cf9e9073688264840bf0d93de7b81f13, type: 3}
   thatsAnArchFemale: {fileID: 8300000, guid: 4444e7c0afa23cb44897e4a426c43d26, type: 3}
   thatsAPentagonFemale: {fileID: 8300000, guid: d5506cc82b9e5da449e6215fa1542ff2, type: 3}
   wellDoneFemale: {fileID: 8300000, guid: d410bcc4889d290449e9cbe0681ed8b1, type: 3}
   tryAgainFemale: {fileID: 8300000, guid: 010ed83e193d4ae4dbd2ffc45dc7fbea, type: 3}
+  thatWasTheWrongHoleFemale: {fileID: 8300000, guid: 9c15eb071f8b29a4e976d23088eb5483, type: 3}
 --- !u!82 &867244108
 AudioSource:
   m_ObjectHideFlags: 0
