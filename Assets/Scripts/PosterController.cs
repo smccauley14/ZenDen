@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,10 +15,19 @@ public class PosterController : MonoBehaviour
     [SerializeField] private Button interactiveButton;
     [SerializeField] private GameObject sensoryRoomManager;
     [SerializeField] private GameObject[] gameControllers;
+    [SerializeField] private AudioSource gameAudio;
+
+    [SerializeField] private AudioClip letsPlayFeatherFemaleVoice;
+    [SerializeField] private AudioClip putYourHandOutFemaleVoice;
+    [SerializeField] private AudioClip doYouFeelFeatherFemaleVoice;
+    [SerializeField] private AudioClip letsPlayFeatherMaleVoice;
+    [SerializeField] private AudioClip doYouFeelFeatherMaleVoice;
+    [SerializeField] private AudioClip putYourHandOutMaleVoice;
     private float distanceThreshold = 5f;
     private bool clickable;
     private Color objectToHighlightDefaultColor;
     private bool isVideoPlaying = false;
+    private string voiceGender;
 
     // Adjust this angle to set the field of view
     public float fieldOfViewAngle = 60f;
@@ -25,6 +35,7 @@ public class PosterController : MonoBehaviour
     private void Start()
     {
         objectToHighlightDefaultColor = objectToHighlight.GetComponent<MeshRenderer>().material.color;
+        voiceGender = PlayerPrefs.GetString(SettingKeys.VoiceKey, SettingKeys.VoiceDefaultValue);
     }
     // Check if the player is looking at this object
     private bool IsInSight()
@@ -93,6 +104,7 @@ public class PosterController : MonoBehaviour
                 video.gameObject.SetActive(true);
                 video.Play();
                 isVideoPlaying = true;
+                StartCoroutine(nameof(FeatherAudio));
                 video.loopPointReached += OnVideoEnd;
                 ChangeNextGameObject();
                 sensoryRoomManager.GetComponent<SensoryRoomManager>().DisableAllImages();
@@ -113,6 +125,23 @@ public class PosterController : MonoBehaviour
             }
                 
         }
+    }
+
+    private IEnumerator FeatherAudio()
+    {
+        PlayAudio(letsPlayFeatherFemaleVoice, letsPlayFeatherMaleVoice);
+        yield return new WaitForSeconds(3f);
+        PlayAudio(putYourHandOutFemaleVoice, putYourHandOutMaleVoice);
+        yield return new WaitForSeconds(3f);
+        PlayAudio(doYouFeelFeatherFemaleVoice, doYouFeelFeatherMaleVoice);
+    }
+
+    private void PlayAudio(AudioClip female, AudioClip male)
+    {
+        if (voiceGender == "Female")
+            gameAudio.PlayOneShot(female);
+        if (voiceGender == "Male")
+            gameAudio.PlayOneShot(male);
     }
 
     private static void ChangeNextGameObject()

@@ -2961,6 +2961,13 @@ MonoBehaviour:
   interactiveButton: {fileID: 1926582908}
   sensoryRoomManager: {fileID: 0}
   gameControllers: []
+  gameAudio: {fileID: 0}
+  letsPlayFeatherFemaleVoice: {fileID: 0}
+  putYourHandOutFemaleVoice: {fileID: 0}
+  doYouFeelFeatherFemaleVoice: {fileID: 0}
+  letsPlayFeatherMaleVoice: {fileID: 0}
+  doYouFeelFeatherMaleVoice: {fileID: 0}
+  putYourHandOutMaleVoice: {fileID: 0}
   fieldOfViewAngle: 60
 --- !u!114 &1116397554
 MonoBehaviour:
@@ -4179,6 +4186,13 @@ MonoBehaviour:
   - {fileID: 734197165}
   - {fileID: 1103843021}
   - {fileID: 729833261}
+  gameAudio: {fileID: 346289184}
+  letsPlayFeatherFemaleVoice: {fileID: 8300000, guid: ca360652a7a2cee4483dbcd8a2b37aa6, type: 3}
+  putYourHandOutFemaleVoice: {fileID: 8300000, guid: 0aab4fbc36135044982bbc6a88388155, type: 3}
+  doYouFeelFeatherFemaleVoice: {fileID: 8300000, guid: 0aab4fbc36135044982bbc6a88388155, type: 3}
+  letsPlayFeatherMaleVoice: {fileID: 8300000, guid: 60e038bf9ef160c48b85d54cd3fa8bf7, type: 3}
+  doYouFeelFeatherMaleVoice: {fileID: 8300000, guid: acdb57fd0bebc724fbf00b71b1f1e58f, type: 3}
+  putYourHandOutMaleVoice: {fileID: 8300000, guid: 08e509f4314b1f443a6b31845570e500, type: 3}
   fieldOfViewAngle: 60
 --- !u!1 &1535424903
 GameObject:
@@ -4468,6 +4482,13 @@ MonoBehaviour:
   interactiveButton: {fileID: 853164671}
   sensoryRoomManager: {fileID: 235464176}
   gameControllers: []
+  gameAudio: {fileID: 0}
+  letsPlayFeatherFemaleVoice: {fileID: 0}
+  putYourHandOutFemaleVoice: {fileID: 0}
+  doYouFeelFeatherFemaleVoice: {fileID: 0}
+  letsPlayFeatherMaleVoice: {fileID: 0}
+  doYouFeelFeatherMaleVoice: {fileID: 0}
+  putYourHandOutMaleVoice: {fileID: 0}
   fieldOfViewAngle: 60
 --- !u!1 &1724442967
 GameObject:
@@ -4984,6 +5005,13 @@ MonoBehaviour:
   interactiveButton: {fileID: 1535424905}
   sensoryRoomManager: {fileID: 0}
   gameControllers: []
+  gameAudio: {fileID: 0}
+  letsPlayFeatherFemaleVoice: {fileID: 0}
+  putYourHandOutFemaleVoice: {fileID: 0}
+  doYouFeelFeatherFemaleVoice: {fileID: 0}
+  letsPlayFeatherMaleVoice: {fileID: 0}
+  doYouFeelFeatherMaleVoice: {fileID: 0}
+  putYourHandOutMaleVoice: {fileID: 0}
   fieldOfViewAngle: 60
 --- !u!1001 &1952855398
 PrefabInstance:
@@ -5599,6 +5627,13 @@ MonoBehaviour:
   interactiveButton: {fileID: 1358615271}
   sensoryRoomManager: {fileID: 235464176}
   gameControllers: []
+  gameAudio: {fileID: 0}
+  letsPlayFeatherFemaleVoice: {fileID: 0}
+  putYourHandOutFemaleVoice: {fileID: 0}
+  doYouFeelFeatherFemaleVoice: {fileID: 0}
+  letsPlayFeatherMaleVoice: {fileID: 0}
+  doYouFeelFeatherMaleVoice: {fileID: 0}
+  putYourHandOutMaleVoice: {fileID: 0}
   fieldOfViewAngle: 60
 --- !u!4 &2115674556 stripped
 Transform:
